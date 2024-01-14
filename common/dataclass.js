@@ -1,15 +1,15 @@
 class User {
     static prevID =10;
     constructor(userData) {
-        this.ID = ++User.prevID;
-        this.UserType = userData.UserType || "";
-        this.UserName = userData.UserName || "";
-        this.Email = userData.Email || "";
-        this.Password = userData.Password || "";
-        this.FirstName = userData.FirstName || "";
-        this.LastName = userData.LastName || "";
-        this.PhoneNumber = userData.PhoneNumber || "";
-        this.Location = {
+        this.id = ++User.prevID;
+        this.userType = userData.userType || "";
+        this.userName = userData.userName || "";
+        this.email = userData.email || "";
+        this.password = userData.password || "";
+        this.firstName = userData.firstName || "";
+        this.lastName = userData.lastName || "";
+        this.phoneNumber = userData.phoneNumber || "";
+        this.location = {
             street: userData.Location.street || "",
             city: userData.Location.city || "",
             state: userData.Location.state || "",
@@ -22,8 +22,8 @@ class User {
 class Costumer extends User{
         constructor(userData){
             super(userData);
-            this.OrderHistory=[];
-            this.WishList=[];
+            this.orderHistory=[];
+            this.wishList=[];
 
     }
 }
@@ -31,12 +31,12 @@ class Costumer extends User{
 class Seller extends User {
     constructor(userData){
         super(userData);
-        this.Products=[];
-        this.Orders=[];
+        this.products=[];
+        this.orders=[];
     }
 }
 
-class Admin extends user{
+class Admin extends User{
     constructor(userData){super(userData);}
 }
 
@@ -71,28 +71,11 @@ class Product {
 class Order {
     static prevID=0;
     constructor(){
-        this.ID=++Order.prevID;
-        this.ProductID;
+        this.id=++Order.prevID;
+        this.productID;
         this.sellerID;
-        this.Price;
-        this.Quantity;
+        this.price;
+        this.quantity;
+        this.status;
     }
 }
-
-
-const exampleUserData = {
-    UserType: "Regular",
-    UserName: "example_username",
-    Email: "example@example.com",
-    Password: "example_password",
-    FirstName: "John",
-    LastName: "Doe",
-    PhoneNumber: "1234567890",
-    Location: {
-        street: "123 Main St",
-        city: "Example City",
-        state: "Example State",
-        country: "Example Country",
-        zipCode: "12345",
-    }
-};
