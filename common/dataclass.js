@@ -36,7 +36,7 @@ export class Seller extends User {
     }
 }
 
-class Admin extends User{
+export class Admin extends User{
     constructor(userData){super(userData);}
 }
 

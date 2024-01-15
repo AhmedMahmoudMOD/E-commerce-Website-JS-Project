@@ -8,4 +8,4 @@ const storageModule = {
     },
   };
   
-  export default storageModule;
+  export {storageModule};
