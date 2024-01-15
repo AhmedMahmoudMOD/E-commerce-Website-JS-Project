@@ -6,6 +6,7 @@ class Product {
         this.name = productData.name || "";
         this.brand = productData.brand || "";
         this.price = productData.price || 0;
+        this.rating = productData.rating || 0;
         this.category = productData.category || "";
         this.discount = productData.discount || 0;
         this.stock = productData.stock || 0;

@@ -1,4 +1,4 @@
-class User {
+export class User {
     static prevID =10;
     constructor(userData) {
         this.id = ++User.prevID;
@@ -19,7 +19,7 @@ class User {
     }    
 }
 
-class Costumer extends User{
+export class Costumer extends User{
         constructor(userData){
             super(userData);
             this.orderHistory=[];
@@ -28,7 +28,7 @@ class Costumer extends User{
     }
 }
 
-class Seller extends User {
+export class Seller extends User {
     constructor(userData){
         super(userData);
         this.products=[];
@@ -40,7 +40,7 @@ class Admin extends User{
     constructor(userData){super(userData);}
 }
 
-class Product {
+export class Product {
     static prevID = 0;
 
     constructor(productData) {
@@ -69,7 +69,7 @@ class Product {
     }
 }
 
-class Order {
+export class Order {
     static prevID=0;
     constructor(){
         this.id=++Order.prevID;
