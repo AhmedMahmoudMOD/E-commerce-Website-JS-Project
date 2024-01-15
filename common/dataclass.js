@@ -47,6 +47,7 @@ class Product {
         this.productId = ++Product.prevID;
         this.name = productData.name || "";
         this.brand = productData.brand || "";
+        this.rating = productData.rating || 0;
         this.price = productData.price || 0;
         this.category = productData.category || "";
         this.discount = productData.discount || 0;
