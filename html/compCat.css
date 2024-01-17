@@ -43,9 +43,10 @@
 .product-inner-box .onsale .badge{
     background-color: black;
     font-size: 12px;
-    padding: 5px 14px;
+    padding: 5px 5px;
     top : 0px;
     position: absolute;
+    opacity: 0;
 }
 .product-inner-box .onsale .badge::before{
     border-width: 10px 0px 0px 10px;
@@ -67,6 +68,9 @@
     top: 0;
     border-style: solid;
 }
+.product-box:hover .badge{
+    opacity: 1;
+}
 .product-box:hover .icons{
     transform: rotateY(-3%);
     top : 3%;
@@ -86,6 +90,9 @@
 .product-info{
     margin-top: 5px;
     text-align: center;
+}
+.product-price span{
+    font-size: large;
 }
 
 /* .product-price{

@@ -214,11 +214,11 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SO27B100_1200x.jpg?v=1665667752",
-        "https://egywatch.com/cdn/shop/products/SO27B100_5000x.jpg?v=1665667752",
-        "https://egywatch.com/cdn/shop/products/SO27B100_5000x.jpg?v=1665667752",
-        "https://egywatch.com/cdn/shop/products/SO27B100_5000x.jpg?v=1665667752",
-        "https://egywatch.com/cdn/shop/products/SO27B100_5000x.jpg?v=1665667752"
+        "https://egywatch.com/cdn/shop/products/SO27B100_2048x.jpg?v=1665667752",
+        "https://egywatch.com/cdn/shop/products/SO27B100-1_2048x.jpg?v=1665667752",
+        "https://egywatch.com/cdn/shop/products/SO27B100-2_2048x.jpg?v=1665667751",
+        "https://egywatch.com/cdn/shop/products/SO27B100-4_2048x.jpg?v=1665667765",
+        "https://egywatch.com/cdn/shop/products/SO27B100-3_2048x.jpg?v=1665667765"
       ]
     },
     {
@@ -244,11 +244,10 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/F-91wm-9adf_1200x.jpg?v=1634567773",
-        "https://egywatch.com/cdn/shop/products/F-91wm-9adf_5000x.jpg?v=1634567773",
-        "https://egywatch.com/cdn/shop/products/F-91wm-9adf_5000x.jpg?v=1634567773",
-        "https://egywatch.com/cdn/shop/products/F-91wm-9adf_5000x.jpg?v=1634567773",
-        "https://egywatch.com/cdn/shop/products/F-91wm-9adf_5000x.jpg?v=1634567773"
+        "https://egywatch.com/cdn/shop/products/F-91wm-9adf_2048x.jpg?v=1634567773",
+        "https://egywatch.com/cdn/shop/products/F-91wm-9adf-2_2048x.jpg?v=1634567774",
+        "https://egywatch.com/cdn/shop/products/F-91wm-9adf-1_2048x.jpg?v=1634567774",
+        "https://egywatch.com/cdn/shop/products/F-91wm-9adf-3_2048x.jpg?v=1634567774"
       ]
     },
     {
@@ -274,11 +273,9 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF_1200x.jpg?v=1634563260",
-        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF_5000x.jpg?v=1634563260",
-        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF_5000x.jpg?v=1634563260",
-        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF_5000x.jpg?v=1634563260",
-        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF_5000x.jpg?v=1634563260"
+        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF_2048x.jpg?v=1634563260",
+        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF-1_2048x.jpg?v=1634563259",
+        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF-2_2048x.jpg?v=1634563259"
       ]
     },
     {
@@ -304,11 +301,12 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/files/YVS410G_1200x.jpg?v=1694510181",
-        "https://egywatch.com/cdn/shop/files/YVS410G_5000x.jpg?v=1694510181",
-        "https://egywatch.com/cdn/shop/files/YVS410G_5000x.jpg?v=1694510181",
-        "https://egywatch.com/cdn/shop/files/YVS410G_5000x.jpg?v=1694510181",
-        "https://egywatch.com/cdn/shop/files/YVS410G_5000x.jpg?v=1694510181"
+        "https://egywatch.com/cdn/shop/files/YVS410G_2048x.jpg?v=1694510181",
+        "https://egywatch.com/cdn/shop/files/YVS410G-1_2048x.jpg?v=1694510509",
+        "https://egywatch.com/cdn/shop/files/YVS410G-2_2048x.jpg?v=1694510509",
+        "https://egywatch.com/cdn/shop/files/YVS410G-5_2048x.jpg?v=1694510509",
+        "https://egywatch.com/cdn/shop/files/YVS410G-3_2048x.jpg?v=1694510505",
+        "https://egywatch.com/cdn/shop/files/YVS410G-4_2048x.jpg?v=1694510505"
       ]
     },
     {
@@ -334,11 +332,11 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF_1200x.jpg?v=1654592760",
-        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF_5000x.jpg?v=1654592760",
-        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF_5000x.jpg?v=1654592760",
-        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF_5000x.jpg?v=1654592760",
-        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF_5000x.jpg?v=1654592760"
+        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF_2048x.jpg?v=1654592760",
+        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF-4_2048x.jpg?v=1654592759",
+        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF-2_2048x.jpg?v=1654592760",
+        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF-3_2048x.jpg?v=1654592759",
+        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF-1_2048x.jpg?v=1654592760"
       ]
     },
     {
@@ -364,11 +362,9 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF_1200x.jpg?v=1628602832",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF_5000x.jpg?v=1628602832",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF_5000x.jpg?v=1628602832",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF_5000x.jpg?v=1628602832",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF_5000x.jpg?v=1628602832"
+        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF_2048x.jpg?v=1628602832",
+        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF-1_2048x.jpg?v=1628602832",
+        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF-2_2048x.jpg?v=1628602832"
       ]
     },
     {
@@ -394,11 +390,9 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T137.410.11.041_1200x.jpg?v=1638273269",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.041_5000x.jpg?v=1638273269",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.041_5000x.jpg?v=1638273269",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.041_5000x.jpg?v=1638273269",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.041_5000x.jpg?v=1638273269"
+        "https://egywatch.com/cdn/shop/products/T137.410.11.041_2048x.jpg?v=1638273269",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.041-2_2048x.jpg?v=1638273269",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.041-1_2048x.jpg?v=1638273269"
       ]
     },
     {
@@ -424,11 +418,9 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/F-91WS-7DF_1200x.jpg?v=1638607524",
-        "https://egywatch.com/cdn/shop/products/F-91WS-7DF_5000x.jpg?v=1638607524",
-        "https://egywatch.com/cdn/shop/products/F-91WS-7DF_5000x.jpg?v=1638607524",
-        "https://egywatch.com/cdn/shop/products/F-91WS-7DF_5000x.jpg?v=1638607524",
-        "https://egywatch.com/cdn/shop/products/F-91WS-7DF_5000x.jpg?v=1638607524"
+        "https://egywatch.com/cdn/shop/products/F-91WS-7DF_2048x.jpg?v=1638607524",
+        "https://egywatch.com/cdn/shop/products/F-91WS-7DF-1_2048x.jpg?v=1638607525",
+        "https://egywatch.com/cdn/shop/products/F-91WS-7DF-2_2048x.jpg?v=1638607524"
       ]
     },
     {
@@ -454,11 +446,12 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SB02B400_1200x.jpg?v=1665582254",
-        "https://egywatch.com/cdn/shop/products/SB02B400_5000x.jpg?v=1665582254",
-        "https://egywatch.com/cdn/shop/products/SB02B400_5000x.jpg?v=1665582254",
-        "https://egywatch.com/cdn/shop/products/SB02B400_5000x.jpg?v=1665582254",
-        "https://egywatch.com/cdn/shop/products/SB02B400_5000x.jpg?v=1665582254"
+        "https://egywatch.com/cdn/shop/products/SB02B400_2048x.jpg?v=1665582254",
+        "https://egywatch.com/cdn/shop/products/SB02B400-4_2048x.jpg?v=1665582260",
+        "https://egywatch.com/cdn/shop/products/SB02B400-3_2048x.jpg?v=1665582260",
+        "https://egywatch.com/cdn/shop/products/SB02B400-5_2048x.jpg?v=1665582260",
+        "https://egywatch.com/cdn/shop/products/SB02B400-1_2048x.jpg?v=1665582260",
+        "https://egywatch.com/cdn/shop/products/SB02B400-2_2048x.jpg?v=1665582260"
       ]
     },
     {
@@ -484,11 +477,11 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T137.410.11.091_1200x.jpg?v=1663146985",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.091_5000x.jpg?v=1663146985",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.091_5000x.jpg?v=1663146985",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.091_5000x.jpg?v=1663146985",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.091_5000x.jpg?v=1663146985"
+        "https://egywatch.com/cdn/shop/products/T137.410.11.091_2048x.jpg?v=1663146985",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.091-2_2048x.jpg?v=1663146985",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.091-4_2048x.jpg?v=1663146985",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.091-1_2048x.jpg?v=1663146986",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.091-3_2048x.jpg?v=1663147193"
       ]
     },
     {
@@ -514,11 +507,10 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01_1200x.jpg?v=1630635216",
-        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01_5000x.jpg?v=1630635216",
-        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01_5000x.jpg?v=1630635216",
-        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01_5000x.jpg?v=1630635216",
-        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01_5000x.jpg?v=1630635216"
+        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01_2048x.jpg?v=1630635216",
+        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01-2_2048x.jpg?v=1630635216",
+        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01-3_2048x.jpg?v=1630635216",
+        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01-1_2048x.jpg?v=1630635216"
       ]
     },
     {
@@ -544,11 +536,9 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/172.0025_1200x.jpg?v=1658830431",
-        "https://egywatch.com/cdn/shop/products/172.0025_5000x.jpg?v=1658830431",
-        "https://egywatch.com/cdn/shop/products/172.0025_5000x.jpg?v=1658830431",
-        "https://egywatch.com/cdn/shop/products/172.0025_5000x.jpg?v=1658830431",
-        "https://egywatch.com/cdn/shop/products/172.0025_5000x.jpg?v=1658830431"
+        "https://egywatch.com/cdn/shop/products/172.0025_2048x.jpg?v=1658830431",
+        "https://egywatch.com/cdn/shop/products/172.0025-1_2048x.jpg?v=1658830431",
+        "https://egywatch.com/cdn/shop/products/172.0025-2_2048x.jpg?v=1658830431"
       ]
     },
     {
@@ -574,11 +564,10 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/2011156_1200x.jpg?v=1643447544",
-        "https://egywatch.com/cdn/shop/products/2011156_5000x.jpg?v=1643447544",
-        "https://egywatch.com/cdn/shop/products/2011156_5000x.jpg?v=1643447544",
-        "https://egywatch.com/cdn/shop/products/2011156_5000x.jpg?v=1643447544",
-        "https://egywatch.com/cdn/shop/products/2011156_5000x.jpg?v=1643447544"
+        "https://egywatch.com/cdn/shop/products/2011156_2048x.jpg?v=1643447544",
+        "https://egywatch.com/cdn/shop/products/2011156-1_2048x.jpg?v=1643447544",
+        "https://egywatch.com/cdn/shop/products/2011156-2_2048x.jpg?v=1643447544",
+        "https://egywatch.com/cdn/shop/products/2011156-3_2048x.jpg?v=1643447544"
       ]
     },
     {
@@ -604,11 +593,11 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T137.410.11.031_1200x.jpg?v=1638270585",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.031_5000x.jpg?v=1638270585",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.031_5000x.jpg?v=1638270585",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.031_5000x.jpg?v=1638270585",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.031_5000x.jpg?v=1638270585"
+        "https://egywatch.com/cdn/shop/products/T137.410.11.031_2048x.jpg?v=1638270585",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.031-1_2048x.jpg?v=1638270585",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.031-3_2048x.jpg?v=1638270584",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.031-4_2048x.jpg?v=1638270584",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.031-2_2048x.jpg?v=1638270585"
       ]
     },
     {
@@ -634,11 +623,10 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T116.617.22.041_1200x.jpg?v=1637660241",
-        "https://egywatch.com/cdn/shop/products/T116.617.22.041_5000x.jpg?v=1637660241",
-        "https://egywatch.com/cdn/shop/products/T116.617.22.041_5000x.jpg?v=1637660241",
-        "https://egywatch.com/cdn/shop/products/T116.617.22.041_5000x.jpg?v=1637660241",
-        "https://egywatch.com/cdn/shop/products/T116.617.22.041_5000x.jpg?v=1637660241"
+        "https://egywatch.com/cdn/shop/products/T116.617.22.041_2048x.jpg?v=1637660241",
+        "https://egywatch.com/cdn/shop/products/T116.617.22.041-2_2048x.jpg?v=1637660245",
+        "https://egywatch.com/cdn/shop/products/T116.617.22.041-3_2048x.jpg?v=1637660245",
+        "https://egywatch.com/cdn/shop/products/T116.617.22.041-1_2048x.jpg?v=1637660241"
       ]
     },
     {
@@ -664,11 +652,9 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_1200x.jpg?v=1625575132",
-        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_5000x.jpg?v=1625575132",
-        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_5000x.jpg?v=1625575132",
-        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_5000x.jpg?v=1625575132",
-        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_5000x.jpg?v=1625575132"
+        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_2048x.jpg?v=1625575132",
+        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-4_2048x.jpg?v=1625575132",
+        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-5_2048x.jpg?v=1625575132"
       ]
     },
     {
@@ -694,11 +680,11 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF_1200x.jpg?v=1654504460",
-        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF_5000x.jpg?v=1654504460",
-        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF_5000x.jpg?v=1654504460",
-        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF_5000x.jpg?v=1654504460",
-        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF_5000x.jpg?v=1654504460"
+        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF_2048x.jpg?v=1654504460",
+        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF-5_2048x.jpg?v=1654504461",
+        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF-2_2048x.jpg?v=1654504461",
+        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF-1_2048x.jpg?v=1654504460",
+        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF-4_2048x.jpg?v=1654504460"
       ]
     },
     {
@@ -724,11 +710,13 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01_1200x.jpg?v=1637749877",
-        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01_5000x.jpg?v=1637749877",
-        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01_5000x.jpg?v=1637749877",
-        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01_5000x.jpg?v=1637749877",
-        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01_5000x.jpg?v=1637749877"
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01_2048x.jpg?v=1637749877",
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01-2_2048x.jpg?v=1637750149",
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01-1_2048x.jpg?v=1637750149",
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01-3_2048x.jpg?v=1637750149",
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01-6_2048x.jpg?v=1637750149",
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01-5_2048x.jpg?v=1637750149",
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01-4_2048x.jpg?v=1637750149"
       ]
     },
     {
@@ -754,11 +742,9 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF_1200x.jpg?v=1628604063",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF_5000x.jpg?v=1628604063",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF_5000x.jpg?v=1628604063",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF_5000x.jpg?v=1628604063",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF_5000x.jpg?v=1628604063"
+        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF_2048x.jpg?v=1628604063",
+        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF-1_2048x.jpg?v=1628604064",
+        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF-3_2048x.jpg?v=1628604064"
       ]
     },
     {
@@ -784,11 +770,9 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/YVS441GC_1200x.jpg?v=1636451060",
-        "https://egywatch.com/cdn/shop/products/YVS441GC_5000x.jpg?v=1636451060",
-        "https://egywatch.com/cdn/shop/products/YVS441GC_5000x.jpg?v=1636451060",
-        "https://egywatch.com/cdn/shop/products/YVS441GC_5000x.jpg?v=1636451060",
-        "https://egywatch.com/cdn/shop/products/YVS441GC_5000x.jpg?v=1636451060"
+        "https://egywatch.com/cdn/shop/products/YVS441GC_2048x.jpg?v=1636451060",
+        "https://egywatch.com/cdn/shop/products/YVS441GC-1_2048x.jpg?v=1636451060",
+        "https://egywatch.com/cdn/shop/products/YVS441GC-3_2048x.jpg?v=1636451060"
       ]
     },
     {
@@ -814,11 +798,11 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SO27E100_1200x.jpg?v=1665836935",
-        "https://egywatch.com/cdn/shop/products/SO27E100_5000x.jpg?v=1665836935",
-        "https://egywatch.com/cdn/shop/products/SO27E100_5000x.jpg?v=1665836935",
-        "https://egywatch.com/cdn/shop/products/SO27E100_5000x.jpg?v=1665836935",
-        "https://egywatch.com/cdn/shop/products/SO27E100_5000x.jpg?v=1665836935"
+        "https://egywatch.com/cdn/shop/products/SO27E100_2048x.jpg?v=1665836935",
+        "https://egywatch.com/cdn/shop/products/SO27E100-2_2048x.jpg?v=1665836939",
+        "https://egywatch.com/cdn/shop/products/SO27E100-3_2048x.jpg?v=1665836939",
+        "https://egywatch.com/cdn/shop/products/SO27E100-1_2048x.jpg?v=1665836939",
+        "https://egywatch.com/cdn/shop/products/SO27E100-4_2048x.jpg?v=1665836936"
       ]
     },
     {
@@ -844,11 +828,11 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/YVS454_1200x.jpg?v=1664023462",
-        "https://egywatch.com/cdn/shop/products/YVS454_5000x.jpg?v=1664023462",
-        "https://egywatch.com/cdn/shop/products/YVS454_5000x.jpg?v=1664023462",
-        "https://egywatch.com/cdn/shop/products/YVS454_5000x.jpg?v=1664023462",
-        "https://egywatch.com/cdn/shop/products/YVS454_5000x.jpg?v=1664023462"
+        "https://egywatch.com/cdn/shop/products/YVS454_2048x.jpg?v=1664023462",
+        "https://egywatch.com/cdn/shop/products/YVS454-3_2048x.jpg?v=1664023474",
+        "https://egywatch.com/cdn/shop/products/YVS454-4_2048x.jpg?v=1664023474",
+        "https://egywatch.com/cdn/shop/products/YVS454-1_2048x.jpg?v=1664023474",
+        "https://egywatch.com/cdn/shop/products/YVS454-2_2048x.jpg?v=1664023474"
       ]
     },
     {
@@ -874,11 +858,9 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF_1200x.jpg?v=1695464618",
-        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF_5000x.jpg?v=1695464618",
-        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF_5000x.jpg?v=1695464618",
-        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF_5000x.jpg?v=1695464618",
-        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF_5000x.jpg?v=1695464618"
+        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF_2048x.jpg?v=1695464618",
+        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF-2_2048x.jpg?v=1695464618",
+        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF-1_2048x.jpg?v=1695464618"
       ]
     },
     {
@@ -904,11 +886,10 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/171.0.423_1200x.jpg?v=1649151006",
-        "https://egywatch.com/cdn/shop/products/171.0.423_5000x.jpg?v=1649151006",
-        "https://egywatch.com/cdn/shop/products/171.0.423_5000x.jpg?v=1649151006",
-        "https://egywatch.com/cdn/shop/products/171.0.423_5000x.jpg?v=1649151006",
-        "https://egywatch.com/cdn/shop/products/171.0.423_5000x.jpg?v=1649151006"
+        "https://egywatch.com/cdn/shop/products/171.0.423_2048x.jpg?v=1649151006",
+        "https://egywatch.com/cdn/shop/products/171.0.423-1_2048x.jpg?v=1649151006",
+        "https://egywatch.com/cdn/shop/products/171.0.423-2_2048x.jpg?v=1649151006",
+        "https://egywatch.com/cdn/shop/products/171.0.423-3_2048x.jpg?v=1649151007"
       ]
     },
     {
@@ -934,11 +915,11 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/2011146_1200x.jpg?v=1648645506",
-        "https://egywatch.com/cdn/shop/products/2011146_5000x.jpg?v=1648645506",
-        "https://egywatch.com/cdn/shop/products/2011146_5000x.jpg?v=1648645506",
-        "https://egywatch.com/cdn/shop/products/2011146_5000x.jpg?v=1648645506",
-        "https://egywatch.com/cdn/shop/products/2011146_5000x.jpg?v=1648645506"
+        "https://egywatch.com/cdn/shop/products/2011146_2048x.jpg?v=1648645506",
+        "https://egywatch.com/cdn/shop/products/2011146-1_2048x.jpg?v=1648645506",
+        "https://egywatch.com/cdn/shop/products/2011146-2_2048x.jpg?v=1648645507",
+        "https://egywatch.com/cdn/shop/products/2011146-3_2_2048x.jpg?v=1648645506",
+        "https://egywatch.com/cdn/shop/products/2011146-3_2048x.jpg?v=1648645507"
       ]
     },
     {
@@ -964,11 +945,10 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF_1200x.jpg?v=1638950338",
-        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF_5000x.jpg?v=1638950338",
-        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF_5000x.jpg?v=1638950338",
-        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF_5000x.jpg?v=1638950338",
-        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF_5000x.jpg?v=1638950338"
+        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF_2048x.jpg?v=1638950338",
+        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF-3_2048x.jpg?v=1638950340",
+        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF-2_2048x.jpg?v=1638950338",
+        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF-1_2048x.jpg?v=1638950340"
       ]
     },
     {
@@ -994,11 +974,10 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/171.0.450_1200x.jpg?v=1630143997",
-        "https://egywatch.com/cdn/shop/products/171.0.450_5000x.jpg?v=1630143997",
-        "https://egywatch.com/cdn/shop/products/171.0.450_5000x.jpg?v=1630143997",
-        "https://egywatch.com/cdn/shop/products/171.0.450_5000x.jpg?v=1630143997",
-        "https://egywatch.com/cdn/shop/products/171.0.450_5000x.jpg?v=1630143997"
+        "https://egywatch.com/cdn/shop/products/171.0.450_2048x.jpg?v=1630143997",
+        "https://egywatch.com/cdn/shop/products/171.0.450-1_2048x.jpg?v=1630143998",
+        "https://egywatch.com/cdn/shop/products/171.0.450-2_2048x.jpg?v=1630143998",
+        "https://egywatch.com/cdn/shop/products/171.0.450-3_2048x.jpg?v=1630143998"
       ]
     },
     {
@@ -1024,11 +1003,9 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF_1200x.jpg?v=1628606576",
-        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF_5000x.jpg?v=1628606576",
-        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF_5000x.jpg?v=1628606576",
-        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF_5000x.jpg?v=1628606576",
-        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF_5000x.jpg?v=1628606576"
+        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF_2048x.jpg?v=1628606576",
+        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF-1_2048x.jpg?v=1628606577",
+        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF-2_2048x.jpg?v=1628606577"
       ]
     },
     {
@@ -1054,11 +1031,10 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR_1200x.jpg?v=1652536931",
-        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR_5000x.jpg?v=1652536931",
-        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR_5000x.jpg?v=1652536931",
-        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR_5000x.jpg?v=1652536931",
-        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR_5000x.jpg?v=1652536931"
+        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR_2048x.jpg?v=1652536931",
+        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR-1_2048x.jpg?v=1652536930",
+        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR-2_2048x.jpg?v=1652536930",
+        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR-3_2048x.jpg?v=1652536930"
       ]
     },
     {
@@ -1084,11 +1060,12 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-1_1200x.jpg?v=1637657053",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-1_5000x.jpg?v=1637657053",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-1_5000x.jpg?v=1637657053",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-1_5000x.jpg?v=1637657053",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-1_5000x.jpg?v=1637657053"
+        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-1_2048x.jpg?v=1637657053",
+        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-3_2048x.jpg?v=1637657075",
+        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01_2048x.jpg?v=1637657075",
+        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-2_2048x.jpg?v=1637657075",
+        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-4_2048x.jpg?v=1637657073",
+        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-5_2048x.jpg?v=1637657073"
       ]
     },
     {
@@ -1114,11 +1091,9 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-01_1200x.jpg?v=1624886717",
-        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-01_5000x.jpg?v=1624886717",
-        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-01_5000x.jpg?v=1624886717",
-        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-01_5000x.jpg?v=1624886717",
-        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-01_5000x.jpg?v=1624886717"
+        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-01_2048x.jpg?v=1624886717",
+        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-02_2048x.jpg?v=1624886717",
+        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-03_2048x.jpg?v=1624886717"
       ]
     },
     {
@@ -1144,11 +1119,9 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF_1200x.jpg?v=1639568974",
-        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF_5000x.jpg?v=1639568974",
-        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF_5000x.jpg?v=1639568974",
-        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF_5000x.jpg?v=1639568974",
-        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF_5000x.jpg?v=1639568974"
+        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF_2048x.jpg?v=1639568974",
+        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF-1_2048x.jpg?v=1639568977",
+        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF-2_2048x.jpg?v=1639568977"
       ]
     },
     {
@@ -1174,11 +1147,10 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF_1200x.jpg?v=1695281414",
-        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF_5000x.jpg?v=1695281414",
-        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF_5000x.jpg?v=1695281414",
-        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF_5000x.jpg?v=1695281414",
-        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF_5000x.jpg?v=1695281414"
+        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF_2048x.jpg?v=1695281414",
+        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF-1_2048x.jpg?v=1695281413",
+        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF-2_2048x.jpg?v=1695281414",
+        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF-3_2048x.jpg?v=1695281413"
       ]
     },
     {
@@ -1204,11 +1176,10 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF_1200x.jpg?v=1654765499",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF_5000x.jpg?v=1654765499",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF_5000x.jpg?v=1654765499",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF_5000x.jpg?v=1654765499",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF_5000x.jpg?v=1654765499"
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF_2048x.jpg?v=1654765499",
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF-1_2048x.jpg?v=1654765499",
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF-2_2048x.jpg?v=1654765499",
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF-3_2048x.jpg?v=1654765499"
       ]
     },
     {
@@ -1234,11 +1205,10 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF_1200x.jpg?v=1654500907",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF_5000x.jpg?v=1654500907",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF_5000x.jpg?v=1654500907",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF_5000x.jpg?v=1654500907",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF_5000x.jpg?v=1654500907"
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF_2048x.jpg?v=1654500907",
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF-3_2048x.jpg?v=1654500907",
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF-1_2048x.jpg?v=1654500907",
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF-2_2048x.jpg?v=1654500907"
       ]
     },
     {
@@ -1264,11 +1234,10 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF_1200x.jpg?v=1654499909",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF_5000x.jpg?v=1654499909",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF_5000x.jpg?v=1654499909",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF_5000x.jpg?v=1654499909",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF_5000x.jpg?v=1654499909"
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF_2048x.jpg?v=1654499909",
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF-3_2048x.jpg?v=1654499909",
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF-1_2048x.jpg?v=1654499909",
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF-2_2048x.jpg?v=1654499909"
       ]
     },
     {
@@ -1294,11 +1263,10 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/HB151.3912_1200x.jpg?v=1648453964",
-        "https://egywatch.com/cdn/shop/products/HB151.3912_5000x.jpg?v=1648453964",
-        "https://egywatch.com/cdn/shop/products/HB151.3912_5000x.jpg?v=1648453964",
-        "https://egywatch.com/cdn/shop/products/HB151.3912_5000x.jpg?v=1648453964",
-        "https://egywatch.com/cdn/shop/products/HB151.3912_5000x.jpg?v=1648453964"
+        "https://egywatch.com/cdn/shop/products/HB151.3912_2048x.jpg?v=1648453964",
+        "https://egywatch.com/cdn/shop/products/HB151.3912-1_2048x.jpg?v=1648453964",
+        "https://egywatch.com/cdn/shop/products/HB151.3912-2_2048x.jpg?v=1648453964",
+        "https://egywatch.com/cdn/shop/products/HB151.3912-3_2048x.jpg?v=1648453964"
       ]
     },
     {
@@ -1324,11 +1292,9 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T137.410.11.051_1200x.jpg?v=1638279255",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.051_5000x.jpg?v=1638279255",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.051_5000x.jpg?v=1638279255",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.051_5000x.jpg?v=1638279255",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.051_5000x.jpg?v=1638279255"
+        "https://egywatch.com/cdn/shop/products/T137.410.11.051_2048x.jpg?v=1638279255",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.051-2_2048x.jpg?v=1638279256",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.051-1_2048x.jpg?v=1638279256"
       ]
     },
     {
@@ -1354,11 +1320,9 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SUOZ329_1200x.jpg?v=1636366630",
-        "https://egywatch.com/cdn/shop/products/SUOZ329_5000x.jpg?v=1636366630",
-        "https://egywatch.com/cdn/shop/products/SUOZ329_5000x.jpg?v=1636366630",
-        "https://egywatch.com/cdn/shop/products/SUOZ329_5000x.jpg?v=1636366630",
-        "https://egywatch.com/cdn/shop/products/SUOZ329_5000x.jpg?v=1636366630"
+        "https://egywatch.com/cdn/shop/products/SUOZ329_2048x.jpg?v=1636366630",
+        "https://egywatch.com/cdn/shop/products/SUOZ329-2_2048x.jpg?v=1636366630",
+        "https://egywatch.com/cdn/shop/products/SUOZ329-1_2048x.jpg?v=1636366630"
       ]
     },
     {
@@ -1384,11 +1348,13 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SO32B106_1200x.jpg?v=1636204048",
-        "https://egywatch.com/cdn/shop/products/SO32B106_5000x.jpg?v=1636204048",
-        "https://egywatch.com/cdn/shop/products/SO32B106_5000x.jpg?v=1636204048",
-        "https://egywatch.com/cdn/shop/products/SO32B106_5000x.jpg?v=1636204048",
-        "https://egywatch.com/cdn/shop/products/SO32B106_5000x.jpg?v=1636204048"
+        "https://egywatch.com/cdn/shop/products/SO32B106_2048x.jpg?v=1636204048",
+        "https://egywatch.com/cdn/shop/products/S032B106-2_2048x.jpg?v=1648719794",
+        "https://egywatch.com/cdn/shop/products/SO32B106-1_2048x.jpg?v=1648719794",
+        "https://egywatch.com/cdn/shop/products/SO32B106-2_2048x.jpg?v=1648719794",
+        "https://egywatch.com/cdn/shop/products/SO32B106-3_2048x.jpg?v=1648719794",
+        "https://egywatch.com/cdn/shop/products/SO32B106-4_2048x.jpg?v=1648719794",
+        "https://egywatch.com/cdn/shop/products/S032B106-1_2048x.jpg?v=1648719794"
       ]
     },
     {
@@ -1414,11 +1380,9 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SO28Z101_1200x.jpg?v=1636190627",
-        "https://egywatch.com/cdn/shop/products/SO28Z101_5000x.jpg?v=1636190627",
-        "https://egywatch.com/cdn/shop/products/SO28Z101_5000x.jpg?v=1636190627",
-        "https://egywatch.com/cdn/shop/products/SO28Z101_5000x.jpg?v=1636190627",
-        "https://egywatch.com/cdn/shop/products/SO28Z101_5000x.jpg?v=1636190627"
+        "https://egywatch.com/cdn/shop/products/SO28Z101_2048x.jpg?v=1636190627",
+        "https://egywatch.com/cdn/shop/products/SO28Z101-2_2048x.jpg?v=1636190628",
+        "https://egywatch.com/cdn/shop/products/SO28Z101-3_2048x.jpg?v=1636190627"
       ]
     },
     {
@@ -1444,11 +1408,10 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF_1200x.png?v=1634636969",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF_5000x.png?v=1634636969",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF_5000x.png?v=1634636969",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF_5000x.png?v=1634636969",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF_5000x.png?v=1634636969"
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF_2048x.png?v=1634636969",
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF-2_2048x.jpg?v=1634636969",
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF-1_2048x.png?v=1634636969",
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF-3_2048x.jpg?v=1634636969"
       ]
     },
     {
@@ -1474,11 +1437,9 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF_1200x.jpg?v=1634635114",
-        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF_5000x.jpg?v=1634635114",
-        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF_5000x.jpg?v=1634635114",
-        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF_5000x.jpg?v=1634635114",
-        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF_5000x.jpg?v=1634635114"
+        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF_2048x.jpg?v=1634635114",
+        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF-1_2048x.jpg?v=1634635114",
+        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF-2_2048x.jpg?v=1634635114"
       ]
     },
     {
@@ -1504,11 +1465,10 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SB02M400_1200x.jpg?v=1628677347",
-        "https://egywatch.com/cdn/shop/products/SB02M400_5000x.jpg?v=1628677347",
-        "https://egywatch.com/cdn/shop/products/SB02M400_5000x.jpg?v=1628677347",
-        "https://egywatch.com/cdn/shop/products/SB02M400_5000x.jpg?v=1628677347",
-        "https://egywatch.com/cdn/shop/products/SB02M400_5000x.jpg?v=1628677347"
+        "https://egywatch.com/cdn/shop/products/SB02M400_2048x.jpg?v=1628677347",
+        "https://egywatch.com/cdn/shop/products/SB02M400-1_2048x.jpg?v=1628677347",
+        "https://egywatch.com/cdn/shop/products/SB02M400-2_2048x.jpg?v=1628677347",
+        "https://egywatch.com/cdn/shop/products/SB02M400-3_2048x.jpg?v=1628677347"
       ]
     },
     {
@@ -1534,11 +1494,9 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF_1200x.jpg?v=1628673947",
-        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF_5000x.jpg?v=1628673947",
-        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF_5000x.jpg?v=1628673947",
-        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF_5000x.jpg?v=1628673947",
-        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF_5000x.jpg?v=1628673947"
+        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF_2048x.jpg?v=1628673947",
+        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF-1_2048x.jpg?v=1628673989",
+        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF-2_2048x.jpg?v=1628673989"
       ]
     },
     {
@@ -1564,11 +1522,12 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/GA-W-218H-1AVDF_1200x.jpg?v=1625756845",
-        "https://egywatch.com/cdn/shop/products/GA-W-218H-1AVDF_5000x.jpg?v=1625756845",
-        "https://egywatch.com/cdn/shop/products/GA-W-218H-1AVDF_5000x.jpg?v=1625756845",
-        "https://egywatch.com/cdn/shop/products/GA-W-218H-1AVDF_5000x.jpg?v=1625756845",
-        "https://egywatch.com/cdn/shop/products/GA-W-218H-1AVDF_5000x.jpg?v=1625756845"
+        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR-1_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/Casio_GA-2100-1A1DR_4___33158.1617062305_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR-2_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/Untitled_b2a09cbb-ed92-4bd9-8c14-3d182030a8eb_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/70413945_2463617747006623_8074200459604131840_n_2048x.jpg?v=1638354880"
       ]
     },
     {
@@ -1594,11 +1553,10 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_1200x.jpg?v=1638354880",
-        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_5000x.jpg?v=1638354880",
-        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_5000x.jpg?v=1638354880",
-        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_5000x.jpg?v=1638354880",
-        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_5000x.jpg?v=1638354880"
+        "https://egywatch.com/cdn/shop/products/SO27N100_2048x.jpg?v=1675777178",
+        "https://egywatch.com/cdn/shop/products/SO27N100-3_2048x.jpg?v=1675777180",
+        "https://egywatch.com/cdn/shop/products/SO27N100-1_2048x.jpg?v=1675777180",
+        "https://egywatch.com/cdn/shop/products/SO27N100-2_2048x.jpg?v=1675777180"
       ]
     },
     {
@@ -1624,11 +1582,12 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SO27N100_1200x.jpg?v=1675777178",
-        "https://egywatch.com/cdn/shop/products/SO27N100_5000x.jpg?v=1675777178",
-        "https://egywatch.com/cdn/shop/products/SO27N100_5000x.jpg?v=1675777178",
-        "https://egywatch.com/cdn/shop/products/SO27N100_5000x.jpg?v=1675777178",
-        "https://egywatch.com/cdn/shop/products/SO27N100_5000x.jpg?v=1675777178"
+        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR-1_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/Casio_GA-2100-1A1DR_4___33158.1617062305_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR-2_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/Untitled_b2a09cbb-ed92-4bd9-8c14-3d182030a8eb_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/70413945_2463617747006623_8074200459604131840_n_2048x.jpg?v=1638354880"
       ]
     },
     {
@@ -1654,11 +1613,10 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T116.617.11.057.01_1200x.jpg?v=1637657691",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.057.01_5000x.jpg?v=1637657691",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.057.01_5000x.jpg?v=1637657691",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.057.01_5000x.jpg?v=1637657691",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.057.01_5000x.jpg?v=1637657691"
+        "https://egywatch.com/cdn/shop/products/SO27N100_2048x.jpg?v=1675777178",
+        "https://egywatch.com/cdn/shop/products/SO27N100-3_2048x.jpg?v=1675777180",
+        "https://egywatch.com/cdn/shop/products/SO27N100-1_2048x.jpg?v=1675777180",
+        "https://egywatch.com/cdn/shop/products/SO27N100-2_2048x.jpg?v=1675777180"
       ]
     },
     {
@@ -1684,12 +1642,11 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/GE709_1200x.jpg?v=1661602980",
-        "https://egywatch.com/cdn/shop/products/GE709_5000x.jpg?v=1661602980",
-        "https://egywatch.com/cdn/shop/products/GE709_5000x.jpg?v=1661602980",
-        "https://egywatch.com/cdn/shop/products/GE709_5000x.jpg?v=1661602980",
-        "https://egywatch.com/cdn/shop/products/GE709_5000x.jpg?v=1661602980"
+        "https://egywatch.com/cdn/shop/products/SO27N100_2048x.jpg?v=1675777178",
+        "https://egywatch.com/cdn/shop/products/SO27N100-3_2048x.jpg?v=1675777180",
+        "https://egywatch.com/cdn/shop/products/SO27N100-1_2048x.jpg?v=1675777180",
+        "https://egywatch.com/cdn/shop/products/SO27N100-2_2048x.jpg?v=1675777180"
       ]
     }
-  ]
+  ];
 export {users,cart,products};
