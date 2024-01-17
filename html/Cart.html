@@ -9,7 +9,7 @@
     <title>Cart</title>
 </head>
 
-    <nav class="navbar navbar-expand-lg bg-warning fixed-top"> 
+    <nav class="navbar navbar-expand-lg bg-warning"> 
     <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,12 +46,13 @@
   </div>
 </nav>
 
-    <div class="container-fluid bg-light mt-5 pt-4">
+    <div class="container-fluid bg-light pt-4">
      <h3>Shopping Cart</h3>
      
      <div class="row p-3 gap-3 flex-lg-nowrap">
+
+        <!-- cards container -->
         <div class="col-12 col-lg-9 bg-danger p-3 d-flex flex-column gap-3">
-            
             <!-- card  -->
             <div class="card m-auto">
               <!-- Row 1 in card -->
@@ -74,7 +75,7 @@
                       <!-- Controls -->
                       <div class="d-flex flex-sm-column col-12 col-sm-3 gap-3 justify-content-evenly">
                         <h1 class ="fw-bold align-self-center">$500<sup>.99 </sup></h1>
-                        <input type="text" class="form-control" id="input1" placeholder="Quantity" min= 1 max = 10>
+                        <input type="number" class="form-control" id="input1" placeholder="Quantity" min= 1 max = 999>
                         <button type="button" class="btn btn-danger col-5 flex-shrink-1 align-self-center"><i class="fa-solid fa-trash fa-xl" style="color: #ffffff;"></i></button>
                       </div>
                       <!-- End of controls -->
@@ -107,7 +108,7 @@
                       <!-- Controls -->
                       <div class="d-flex flex-sm-column col-12 col-sm-3 gap-3 justify-content-evenly">
                         <h1 class ="fw-bold align-self-center">$500<sup>.99 </sup></h1>
-                        <input type="text" class="form-control" id="input1" placeholder="Quantity" min= 1 max = 10>
+                        <input type="number" class="form-control" id="input1" placeholder="Quantity" min= 1 max = 10>
                         <button type="button" class="btn btn-danger col-5 flex-shrink-1 align-self-center"><i class="fa-solid fa-trash fa-xl" style="color: #ffffff;"></i></button>
                       </div>
                       <!-- End of controls -->
@@ -140,7 +141,7 @@
                       <!-- Controls -->
                       <div class="d-flex flex-sm-column col-12 col-sm-3 gap-3 justify-content-evenly">
                         <h1 class ="fw-bold align-self-center">$500<sup>.99 </sup></h1>
-                        <input type="text" class="form-control" id="input1" placeholder="Quantity" min= 1 max = 10>
+                        <input type="number" class="form-control" id="input1" placeholder="Quantity" min= 1 max = 10>
                         <button type="button" class="btn btn-danger col-5 flex-shrink-1 align-self-center"><i class="fa-solid fa-trash fa-xl" style="color: #ffffff;"></i></button>
                       </div>
                       <!-- End of controls -->
@@ -173,7 +174,7 @@
                       <!-- Controls -->
                       <div class="d-flex flex-sm-column col-12 col-sm-3 gap-3 justify-content-evenly">
                         <h1 class ="fw-bold align-self-center">$500<sup>.99 </sup></h1>
-                        <input type="text" class="form-control" id="input1" placeholder="Quantity" min= 1 max = 10>
+                        <input type="number" class="form-control" id="input1" placeholder="Quantity" min= 1 max = 10>
                         <button type="button" class="btn btn-danger col-5 flex-shrink-1 align-self-center"><i class="fa-solid fa-trash fa-xl" style="color: #ffffff;"></i></button>
                       </div>
                       <!-- End of controls -->
@@ -185,19 +186,36 @@
             <!-- end card -->
             
         </div>
-
+        <!-- End of cards continer -->
         <!-- Check out container -->
-        <div class="col-md-3 flex-grow-1 bg-success">
+        <div class="col-md-3 flex-grow-1 bg-light">
+           <!-- start of table -->
+           <div class="sticky-top pt-3">
+              <table class="table table-secondary table-borderless">
+                <thead>
+                  <tr>
+                    <th scope="row" colspan="2"><h4>Summary</h4></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Item(s):</td>
+                    <td class="text-end">$500.99</td>
+                  </tr>
+                  <tr>
+                    <td>Est. Delivery: :</td>
+                    <td class="text-end">$0.00</td>
+                  </tr>
+                  <tr>
+                    <td><h4>Est. Total:</h4></td>
+                    <td class="text-end"><h4>$500.99</h4></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" class="text-center"><button type="button" class="btn btn-success col-12">Check Out</button></td>
+                  </tbody>
+              </table>
+           </div>
            
-          <pre>
-
-
-
-
-
-
-
-          </pre>
         </div>
      </div>
   
