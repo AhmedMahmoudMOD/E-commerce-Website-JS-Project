@@ -198,8 +198,6 @@ let users = [
     cart: []
   }
 ];
-
-
 let products = [
     {
       productId: "P1",
