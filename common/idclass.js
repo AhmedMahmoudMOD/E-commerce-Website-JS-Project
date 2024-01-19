@@ -1,4 +1,4 @@
-class IDGenerator {
+export class IDGenerator {
     static UserID = 10;
     static ProductID = 50;
     static OrderID = 0;
