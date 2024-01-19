@@ -188,7 +188,7 @@ let users = [
       wishList: [],
     },
   ];
-  let cart = [];  
+  let cart = [{productId:1,quantity:2},{productId:2,quantity:1},{productId:3,quantity:3},{productId:4,quantity:1}]; 
 
   let products = [
     {
