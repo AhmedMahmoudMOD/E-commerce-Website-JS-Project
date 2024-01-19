@@ -1,198 +1,208 @@
 let users = [
-    {
-      id: 1,
-      userType: "admin",
-      userName: "admin",
-      email: "admin@example.com",
-      password: "adminpassword",
-      firstName: "Ahmed",
-      lastName: "Mahmoud",
-      phoneNumber: "1234567890",
-      location: {
-        street: "Willow",
-        city: "Los Angeles",
-        state: "AZ",
-        country: "Australia",
-        zipCode: "12345",
-      },
+  {
+    id: 'U1',
+    userType: "admin",
+    userName: "admin",
+    email: "admin@example.com",
+    password: "adminpassword",
+    firstName: "Ahmed",
+    lastName: "Mahmoud",
+    phoneNumber: "1234567890",
+    location: {
+      street: "Willow",
+      city: "Los Angeles",
+      state: "AZ",
+      country: "Australia",
+      zipCode: "12345",
     },
-    {
-      id: 2,
-      userType: "seller",
-      userName: "alpha_user",
-      email: "seller1@example.com",
-      password: "secretPass",
-      firstName: "John",
-      lastName: "Doe",
-      phoneNumber: "9786386705",
-      location: {
-        street: "Willow",
-        city: "Seattle",
-        state: "AZ",
-        country: "UK",
-        zipCode: "70734",
-      },
-      products: [],
-      orders: [],
+    cart: []
+  },
+  {
+    id: 'U2',
+    userType: "seller",
+    userName: "alpha_user",
+    email: "seller1@example.com",
+    password: "secretPass",
+    firstName: "John",
+    lastName: "Doe",
+    phoneNumber: "9786386705",
+    location: {
+      street: "Willow",
+      city: "Seattle",
+      state: "AZ",
+      country: "UK",
+      zipCode: "70734",
     },
-    {
-      id: 3,
-      userType: "seller",
-      userName: "john_doe",
-      email: "seller2@example.com",
-      password: "password123",
-      firstName: "Frank",
-      lastName: "Doe",
-      phoneNumber: "9007849974",
-      location: {
-        street: "Pine",
-        city: "San Francisco",
-        state: "AZ",
-        country: "France",
-        zipCode: "13564",
-      },
-      products: [],
-      orders: [],
+    products: [],
+    orders: [],
+    cart: []
+  },
+  {
+    id: 'U3',
+    userType: "seller",
+    userName: "john_doe",
+    email: "seller2@example.com",
+    password: "password123",
+    firstName: "Frank",
+    lastName: "Doe",
+    phoneNumber: "9007849974",
+    location: {
+      street: "Pine",
+      city: "San Francisco",
+      state: "AZ",
+      country: "France",
+      zipCode: "13564",
     },
-    {
-      id: 4,
-      userType: "customer",
-      userName: "gamma_customer",
-      email: "customer1@example.com",
-      password: "qwerty123",
-      firstName: "Grace",
-      lastName: "Brown",
-      phoneNumber: "4497460887",
-      location: {
-        street: "Maple",
-        city: "Houston",
-        state: "MA",
-        country: "China",
-        zipCode: "18746",
-      },
-      orderHistory: [],
-      wishList: [],
+    products: [],
+    orders: [],
+    cart: []
+  },
+  {
+    id: 'U4',
+    userType: "customer",
+    userName: "gamma_customer",
+    email: "customer1@example.com",
+    password: "qwerty123",
+    firstName: "Grace",
+    lastName: "Brown",
+    phoneNumber: "4497460887",
+    location: {
+      street: "Maple",
+      city: "Houston",
+      state: "MA",
+      country: "China",
+      zipCode: "18746",
     },
-    {
-      id: 5,
-      userType: "customer",
-      userName: "jane_smith",
-      email: "customer2@example.com",
-      password: "sellerPass",
-      firstName: "Jane",
-      lastName: "Williams",
-      phoneNumber: "3800221970",
-      location: {
-        street: "Elm",
-        city: "Phoenix",
-        state: "FL",
-        country: "India",
-        zipCode: "18289",
-      },
-      orderHistory: [],
-      wishList: [],
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  },
+  {
+    id: 'U5',
+    userType: "customer",
+    userName: "jane_smith",
+    email: "customer2@example.com",
+    password: "sellerPass",
+    firstName: "Jane",
+    lastName: "Williams",
+    phoneNumber: "3800221970",
+    location: {
+      street: "Elm",
+      city: "Phoenix",
+      state: "FL",
+      country: "India",
+      zipCode: "18289",
     },
-    {
-      id: 6,
-      userType: "customer",
-      userName: "customerA",
-      email: "customer3@example.com",
-      password: "passphrase123",
-      firstName: "Henry",
-      lastName: "Smith",
-      phoneNumber: "2453616519",
-      location: {
-        street: "Birch",
-        city: "Los Angeles",
-        state: "MA",
-        country: "China",
-        zipCode: "95668",
-      },
-      orderHistory: [],
-      wishList: [],
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  },
+  {
+    id: 'U6',
+    userType: "customer",
+    userName: "customerA",
+    email: "customer3@example.com",
+    password: "passphrase123",
+    firstName: "Henry",
+    lastName: "Smith",
+    phoneNumber: "2453616519",
+    location: {
+      street: "Birch",
+      city: "Los Angeles",
+      state: "MA",
+      country: "China",
+      zipCode: "95668",
     },
-    {
-      id: 7,
-      userType: "customer",
-      userName: "beta_seller",
-      email: "customer4@example.com",
-      password: "adminPass",
-      firstName: "Charlie",
-      lastName: "Doe",
-      phoneNumber: "4448668569",
-      location: {
-        street: "Birch",
-        city: "Los Angeles",
-        state: "NY",
-        country: "France",
-        zipCode: "68235",
-      },
-      orderHistory: [],
-      wishList: [],
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  },
+  {
+    id: 'U7',
+    userType: "customer",
+    userName: "beta_seller",
+    email: "customer4@example.com",
+    password: "adminPass",
+    firstName: "Charlie",
+    lastName: "Doe",
+    phoneNumber: "4448668569",
+    location: {
+      street: "Birch",
+      city: "Los Angeles",
+      state: "NY",
+      country: "France",
+      zipCode: "68235",
     },
-    {
-      id: 8,
-      userType: "customer",
-      userName: "delta_user",
-      email: "customer5@example.com",
-      password: "masterPass",
-      firstName: "John",
-      lastName: "Miller",
-      phoneNumber: "2380698770",
-      location: {
-        street: "Birch",
-        city: "Houston",
-        state: "FL",
-        country: "India",
-        zipCode: "25019",
-      },
-      orderHistory: [],
-      wishList: [],
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  },
+  {
+    id: 'U8',
+    userType: "customer",
+    userName: "delta_user",
+    email: "customer5@example.com",
+    password: "masterPass",
+    firstName: "John",
+    lastName: "Miller",
+    phoneNumber: "2380698770",
+    location: {
+      street: "Birch",
+      city: "Houston",
+      state: "FL",
+      country: "India",
+      zipCode: "25019",
     },
-    {
-      id: 9,
-      userType: "customer",
-      userName: "seller1",
-      email: "customer6@example.com",
-      password: "pass123",
-      firstName: "Frank",
-      lastName: "Doe",
-      phoneNumber: "5021403485",
-      location: {
-        street: "Cherry",
-        city: "New York",
-        state: "IL",
-        country: "Germany",
-        zipCode: "38545",
-      },
-      orderHistory: [],
-      wishList: [],
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  },
+  {
+    id: 'U9',
+    userType: "customer",
+    userName: "seller1",
+    email: "customer6@example.com",
+    password: "pass123",
+    firstName: "Frank",
+    lastName: "Doe",
+    phoneNumber: "5021403485",
+    location: {
+      street: "Cherry",
+      city: "New York",
+      state: "IL",
+      country: "Germany",
+      zipCode: "38545",
     },
-    {
-      id: 10,
-      userType: "customer",
-      userName: "epsilon_seller",
-      email: "customer7@example.com",
-      password: "securePass",
-      firstName: "Bob",
-      lastName: "Johnson",
-      phoneNumber: "1110439535",
-      location: {
-        street: "Cedar",
-        city: "New York",
-        state: "AZ",
-        country: "China",
-        zipCode: "94802",
-      },
-      orderHistory: [],
-      wishList: [],
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  },
+  {
+    id: 'U10',
+    userType: "customer",
+    userName: "epsilon_seller",
+    email: "customer7@example.com",
+    password: "securePass",
+    firstName: "Bob",
+    lastName: "Johnson",
+    phoneNumber: "1110439535",
+    location: {
+      street: "Cedar",
+      city: "New York",
+      state: "AZ",
+      country: "China",
+      zipCode: "94802",
     },
-  ];
-  let cart = [];  
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  }
+];
 
-  let products = [
+
+let products = [
     {
-      productId: 1,
+      productId: "P1",
       name: "Watch 1",
       brand: "Swatch",
       price: 200,
@@ -222,7 +232,7 @@ let users = [
       ]
     },
     {
-      productId: 2,
+      productId: "P2",
       name: "Watch 2",
       brand: "Casio",
       price: 1100,
@@ -251,7 +261,7 @@ let users = [
       ]
     },
     {
-      productId: 3,
+      productId: "P3",
       name: "Watch 3",
       brand: "Tissot",
       price: 1700,
@@ -279,7 +289,7 @@ let users = [
       ]
     },
     {
-      productId: 4,
+      productId: "P4",
       name: "Watch 4",
       brand: "Tommy Hilfiger",
       price: 500,
@@ -310,7 +320,7 @@ let users = [
       ]
     },
     {
-      productId: 5,
+      productId: "P5",
       name: "Watch 5",
       brand: "Tommy Hilfiger",
       price: 600,
@@ -340,7 +350,7 @@ let users = [
       ]
     },
     {
-      productId: 6,
+      productId: "P6",
       name: "Watch 6",
       brand: "Swatch",
       price: 1700,
@@ -368,7 +378,7 @@ let users = [
       ]
     },
     {
-      productId: 7,
+      productId: "P7",
       name: "Watch 7",
       brand: "Lacoste",
       price: 450,
@@ -396,7 +406,7 @@ let users = [
       ]
     },
     {
-      productId: 8,
+      productId: "P8",
       name: "Watch 8",
       brand: "Swatch",
       price: 1000,
@@ -424,7 +434,7 @@ let users = [
       ]
     },
     {
-      productId: 9,
+      productId: "P9",
       name: "Watch 9",
       brand: "Tommy Hilfiger",
       price: 750,
@@ -455,7 +465,7 @@ let users = [
       ]
     },
     {
-      productId: 10,
+      productId: "P10",
       name: "Watch 10",
       brand: "Swatch",
       price: 750,
@@ -485,7 +495,7 @@ let users = [
       ]
     },
     {
-      productId: 11,
+      productId: "P11",
       name: "Watch 11",
       brand: "Swatch",
       price: 250,
@@ -514,7 +524,7 @@ let users = [
       ]
     },
     {
-      productId: 12,
+      productId: "P12",
       name: "Watch 12",
       brand: "Tommy Hilfiger",
       price: 1250,
@@ -542,7 +552,7 @@ let users = [
       ]
     },
     {
-      productId: 13,
+      productId: "P13",
       name: "Watch 13",
       brand: "Lacoste",
       price: 1250,
@@ -571,7 +581,7 @@ let users = [
       ]
     },
     {
-      productId: 14,
+      productId: "P14",
       name: "Watch 14",
       brand: "Tommy Hilfiger",
       price: 450,
@@ -601,7 +611,7 @@ let users = [
       ]
     },
     {
-      productId: 15,
+      productId: "P15",
       name: "Watch 15",
       brand: "Tissot",
       price: 1250,
@@ -630,7 +640,7 @@ let users = [
       ]
     },
     {
-      productId: 16,
+      productId: "P16",
       name: "Watch 16",
       brand: "Tissot",
       price: 1250,
@@ -658,7 +668,7 @@ let users = [
       ]
     },
     {
-      productId: 17,
+      productId: "P17",
       name: "Watch 17",
       brand: "Tommy Hilfiger",
       price: 750,
@@ -688,7 +698,7 @@ let users = [
       ]
     },
     {
-      productId: 18,
+      productId: "P18",
       name: "Watch 18",
       brand: "Tissot",
       price: 1100,
@@ -720,7 +730,7 @@ let users = [
       ]
     },
     {
-      productId: 19,
+      productId: "P19",
       name: "Watch 19",
       brand: "Lacoste",
       price: 1100,
@@ -748,7 +758,7 @@ let users = [
       ]
     },
     {
-      productId: 20,
+      productId: "P20",
       name: "Watch 20",
       brand: "Lacoste",
       price: 600,
@@ -776,7 +786,7 @@ let users = [
       ]
     },
     {
-      productId: 21,
+      productId: "P21",
       name: "Watch 21",
       brand: "Lacoste",
       price: 500,
@@ -806,7 +816,7 @@ let users = [
       ]
     },
     {
-      productId: 22,
+      productId: "P22",
       name: "Watch 22",
       brand: "Tissot",
       price: 1000,
@@ -836,7 +846,7 @@ let users = [
       ]
     },
     {
-      productId: 23,
+      productId: "P23",
       name: "Watch 23",
       brand: "Casio",
       price: 450,
@@ -864,7 +874,7 @@ let users = [
       ]
     },
     {
-      productId: 24,
+      productId: "P24",
       name: "Watch 24",
       brand: "Tommy Hilfiger",
       price: 750,
@@ -893,7 +903,7 @@ let users = [
       ]
     },
     {
-      productId: 25,
+      productId: "P25",
       name: "Watch 25",
       brand: "Tommy Hilfiger",
       price: 5000,
@@ -923,7 +933,7 @@ let users = [
       ]
     },
     {
-      productId: 26,
+      productId: "P26",
       name: "Watch 26",
       brand: "Tissot",
       price: 5000,
@@ -952,7 +962,7 @@ let users = [
       ]
     },
     {
-      productId: 27,
+      productId: "P27",
       name: "Watch 27",
       brand: "Tissot",
       price: 1700,
@@ -981,7 +991,7 @@ let users = [
       ]
     },
     {
-      productId: 28,
+      productId: "P28",
       name: "Watch 28",
       brand: "Casio",
       price: 200,
@@ -1009,7 +1019,7 @@ let users = [
       ]
     },
     {
-      productId: 29,
+      productId: "P29",
       name: "Watch 29",
       brand: "Tissot",
       price: 250,
@@ -1038,7 +1048,7 @@ let users = [
       ]
     },
     {
-      productId: 30,
+      productId: "P30",
       name: "Watch 30",
       brand: "Tissot",
       price: 1100,
@@ -1069,7 +1079,7 @@ let users = [
       ]
     },
     {
-      productId: 31,
+      productId: "P31",
       name: "Watch 31",
       brand: "Casio",
       price: 450,
@@ -1097,7 +1107,7 @@ let users = [
       ]
     },
     {
-      productId: 32,
+      productId: "P32",
       name: "Watch 32",
       brand: "Tommy Hilfiger",
       price: 900,
@@ -1125,7 +1135,7 @@ let users = [
       ]
     },
     {
-      productId: 33,
+      productId: "P33",
       name: "Watch 33",
       brand: "Tommy Hilfiger",
       price: 450,
@@ -1154,7 +1164,7 @@ let users = [
       ]
     },
     {
-      productId: 34,
+      productId: "P34",
       name: "Watch 34",
       brand: "Tissot",
       price: 5000,
@@ -1183,7 +1193,7 @@ let users = [
       ]
     },
     {
-      productId: 35,
+      productId: "P35",
       name: "Watch 35",
       brand: "Casio",
       price: 900,
@@ -1212,7 +1222,7 @@ let users = [
       ]
     },
     {
-      productId: 36,
+      productId: "P36",
       name: "Watch 36",
       brand: "Tommy Hilfiger",
       price: 500,
@@ -1241,7 +1251,7 @@ let users = [
       ]
     },
     {
-      productId: 37,
+      productId: "P37",
       name: "Watch 37",
       brand: "Swatch",
       price: 5000,
@@ -1270,7 +1280,7 @@ let users = [
       ]
     },
     {
-      productId: 38,
+      productId: "P38",
       name: "Watch 38",
       brand: "Casio",
       price: 450,
@@ -1298,7 +1308,7 @@ let users = [
       ]
     },
     {
-      productId: 39,
+      productId: "P39",
       name: "Watch 39",
       brand: "Lacoste",
       price: 2000,
@@ -1326,7 +1336,7 @@ let users = [
       ]
     },
     {
-      productId: 40,
+      productId: "P40",
       name: "Watch 40",
       brand: "Casio",
       price: 1700,
@@ -1358,7 +1368,7 @@ let users = [
       ]
     },
     {
-      productId: 41,
+      productId: "P41",
       name: "Watch 41",
       brand: "Casio",
       price: 250,
@@ -1386,7 +1396,7 @@ let users = [
       ]
     },
     {
-      productId: 42,
+      productId: "P42",
       name: "Watch 42",
       brand: "Tommy Hilfiger",
       price: 1250,
@@ -1415,7 +1425,7 @@ let users = [
       ]
     },
     {
-      productId: 43,
+      productId: "P43",
       name: "Watch 43",
       brand: "Swatch",
       price: 250,
@@ -1443,7 +1453,7 @@ let users = [
       ]
     },
     {
-      productId: 44,
+      productId: "P44",
       name: "Watch 44",
       brand: "Swatch",
       price: 500,
@@ -1472,7 +1482,7 @@ let users = [
       ]
     },
     {
-      productId: 45,
+      productId: "P45",
       name: "Watch 45",
       brand: "Tommy Hilfiger",
       price: 450,
@@ -1500,7 +1510,7 @@ let users = [
       ]
     },
     {
-      productId: 46,
+      productId: "P46",
       name: "Watch 46",
       brand: "Lacoste",
       price: 250,
@@ -1531,7 +1541,7 @@ let users = [
       ]
     },
     {
-      productId: 47,
+      productId: "P47",
       name: "Watch 47",
       brand: "Tommy Hilfiger",
       price: 5000,
@@ -1560,7 +1570,7 @@ let users = [
       ]
     },
     {
-      productId: 48,
+      productId: "P48",
       name: "Watch 48",
       brand: "Swatch",
       price: 1000,
@@ -1591,7 +1601,7 @@ let users = [
       ]
     },
     {
-      productId: 49,
+      productId: "P49",
       name: "Watch 49",
       brand: "Casio",
       price: 1000,
@@ -1620,7 +1630,7 @@ let users = [
       ]
     },
     {
-      productId: 50,
+      productId: "P50",
       name: "Watch 50",
       brand: "Swatch",
       price: 200,
@@ -1649,4 +1659,8 @@ let users = [
       ]
     }
   ];
-export {users,cart,products};
+
+let orders = [];
+let ordersHistory =[];
+
+export {users,orders,products,ordersHistory};

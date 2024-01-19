@@ -1,6 +1,6 @@
 import {storageModule} from "../common/storageModule.js"
 let allProducts = storageModule.getItem('products');
-let shownProducts = allProducts.slice(0,16);
+let shownProducts = allProducts.slice(16,32);
 
 window.addEventListener('load',function(){
     renderProducts(shownProducts);
