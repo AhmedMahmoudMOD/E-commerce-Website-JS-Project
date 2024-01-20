@@ -17,6 +17,17 @@ products.forEach(product => {
     }
 });
 ////////////////////////////////////////////////////////
+// Initialize a variable to store the current filter state
+
+let currentFilterState = {
+    men: true,
+    women: true,
+    brands: brands.reduce((filter, brand) => {
+        filter[brand] = true;
+        return filter;
+    }, {}),
+};
+///////////////////////////////////////////
 const productsPerPage = 16;
 let currentPage = 1;
 
@@ -25,6 +36,7 @@ window.addEventListener('load',function(){
     sortProducts();
     renderPagination(allProducts);
     RenderBrands();
+    addFilters();
    
     
 })
@@ -38,7 +50,20 @@ function renderProducts(products){
     // Display only the products for the current page
     const currentPageProducts = products.slice(startIndex, endIndex);
 
-    currentPageProducts.forEach((product,index) => {
+    const filteredProducts = currentPageProducts.filter((product) => {
+        const genderFilter =
+            (currentFilterState.men && product.category === 'Men') ||
+            (currentFilterState.women && product.category === 'Women');
+
+        const brandFilter =
+            currentFilterState.brands[product.brand] !== undefined &&
+            currentFilterState.brands[product.brand];
+
+        return genderFilter && brandFilter;
+    });
+    console.log(filteredProducts);
+
+    filteredProducts.forEach((product,index) => {
         let colDiv=document.createElement('div');
         colDiv.classList.add('col')
         /* col Div Created */
@@ -157,7 +182,7 @@ function renderProducts(products){
         productPanel.appendChild(colDiv);
         /* Body Appended */
 
-        imgHover(currentPageProducts);
+        imgHover(filteredProducts);
         
 
         });
@@ -353,6 +378,7 @@ brands.forEach(brand => {
     checkbox.type = 'checkbox';
     checkbox.value = brand;
     checkbox.id = brand.toLowerCase();
+    checkbox.classList.add('brand-checkbox');
 
     // Create label element
     let label = document.createElement('label');
@@ -369,4 +395,37 @@ brands.forEach(brand => {
 
     brandRow.appendChild(brandContainer);
 });
+}
+
+function addFilters(){
+    let genderFilters=document.querySelectorAll('.gender-checkbox');
+    for(let i = 0 ; i<genderFilters.length;i++){
+        genderFilters[i].addEventListener('change',filterProductsGender);
+    }
+    let brandFilters= document.querySelectorAll('.brand-checkbox');
+    for(let i = 0 ; i<brandFilters.length;i++){
+        brandFilters[i].addEventListener('change',filterProductsBrands)
+    }
+
+
+}
+function filterProductsGender() {
+    // Update the filter state for gender
+    currentFilterState.men = menCheckBox.checked;
+    currentFilterState.women = womenCheckBox.checked;
+
+    console.log(currentFilterState);
+
+    // Render the products with the updated filter
+    renderProducts(allProducts);
+}
+
+function filterProductsBrands(){
+    // Update The Filtering by brands
+    currentFilterState.brands = brands.reduce((filter, brand) => {
+        let checkbox = document.getElementById(brand.toLowerCase());
+        filter[brand] = checkbox.checked;
+        return filter;
+    }, {});
+    renderProducts(allProducts);
 }
