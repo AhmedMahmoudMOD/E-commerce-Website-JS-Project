@@ -1,17 +1,22 @@
 import {storageModule} from "../common/storageModule.js"
-import { products } from "../common/staticdata.js";
+import { products  , currentUser , users} from "../common/staticdata.js";
 
 storageModule.setItem('products',products);
+storageModule.setItem('users',users);
+storageModule.setItem('currentUser',currentUser);
+let allUsers = storageModule.getItem('users');
+let allProducts = storageModule.getItem('products');
+let currentUserObj = storageModule.getItem('currentUser'); 
+
 const productsPerPage = 16;
 let currentPage = 1;
-
-let allProducts = storageModule.getItem('products');
 
 window.addEventListener('load',function(){
     renderProducts(allProducts);
     sortProducts();
     renderPagination(allProducts);
-    // imgHover(shownProducts);
+   
+    
 })
 
 function renderProducts(products){
@@ -80,6 +85,7 @@ function renderProducts(products){
         /* Cart Button Div Created*/
         let cartBtnDiv =  document.createElement('div');
         cartBtnDiv.classList.add('cart-btn');
+        cartBtnDiv.id=product.productId;
         let cartBtn  = document.createElement('button');
         cartBtn.classList.add('btn','btn-light','shadow-sm','rounded-pill');
         let cartIcon = document.createElement('i');
@@ -142,8 +148,10 @@ function renderProducts(products){
         /* Body Appended */
 
         imgHover(currentPageProducts);
+        
 
         });
+        addToCart();
 }
 
 function imgHover (shownProducts){
@@ -291,4 +299,30 @@ function renderPagination(products) {
 
     nextPageItem.appendChild(nextPageLink);
     paginationSection.appendChild(nextPageItem);
+}
+
+// Adding To Cart Function // 
+
+function addToCart (){
+    let cartBtns=document.querySelectorAll('.cart-btn');
+    for (let i=0;i<cartBtns.length;i++){
+        cartBtns[i].addEventListener('click',function addAction(e){
+            let cartedProduct= {
+                productId : this.id,
+                quantity : 1,
+            }
+            if (currentUserObj!==null){
+                let index = allUsers.findIndex(user => user.id===currentUserObj.id)
+                allUsers[index].cart.push(cartedProduct);
+                currentUserObj.cart.push(cartedProduct);
+                console.log(allUsers[index]);
+            }
+            else{
+
+            }
+            cartBtns[i].querySelector('span').innerText = "  Added to Cart";
+            this.removeEventListener('click', addAction); // removing the event after the first click
+        })
+        
+    }
 }
