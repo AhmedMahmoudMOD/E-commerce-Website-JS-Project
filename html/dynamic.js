@@ -8,6 +8,15 @@ let allUsers = storageModule.getItem('users');
 let allProducts = storageModule.getItem('products');
 let currentUserObj = storageModule.getItem('currentUser'); 
 
+// getting an array of brands for dynamically creating filter options
+let brands = [];
+
+products.forEach(product => {
+    if (!brands.includes(product.brand)) {
+        brands.push(product.brand);
+    }
+});
+////////////////////////////////////////////////////////
 const productsPerPage = 16;
 let currentPage = 1;
 
@@ -15,6 +24,7 @@ window.addEventListener('load',function(){
     renderProducts(allProducts);
     sortProducts();
     renderPagination(allProducts);
+    RenderBrands();
    
     
 })
@@ -299,6 +309,7 @@ function renderPagination(products) {
 
     nextPageItem.appendChild(nextPageLink);
     paginationSection.appendChild(nextPageItem);
+    pageInd.textContent=`Page ${currentPage}`;
 }
 
 // Adding To Cart Function // 
@@ -321,8 +332,41 @@ function addToCart (){
 
             }
             cartBtns[i].querySelector('span').innerText = "  Added to Cart";
+            cartBtns[i].querySelector('button').style.backgroundColor='lightgreen';
             this.removeEventListener('click', addAction); // removing the event after the first click
         })
         
     }
+}
+
+function RenderBrands(){ 
+let brandRow = document.querySelector('#brandrow');   
+
+// Loop through the brands array and create checkboxes and labels
+brands.forEach(brand => {
+    
+    let brandContainer = document.createElement('div');
+    brandContainer.classList.add('col-12');
+
+    // Create checkbox element
+    let checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.value = brand;
+    checkbox.id = brand.toLowerCase();
+
+    // Create label element
+    let label = document.createElement('label');
+    label.htmlFor = brand.toLowerCase(); 
+    
+   
+
+    // Append checkbox and label to the brandContainer
+   
+    label.appendChild(checkbox);
+    brandContainer.appendChild(label);
+    label.appendChild(document.createTextNode(`  ${brand}`));
+   
+
+    brandRow.appendChild(brandContainer);
+});
 }
