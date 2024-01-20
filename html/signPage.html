@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Registration Form</title>
+    <link rel="stylesheet" href="../css/signTest.css" />
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+  </head>
+  <body>
+
+    <!-- Login From -->
+    <section class="home">
+      <div class="box">
+        <div class="form_container">
+          <div class="form login_form">
+            <form action="./home.html" method="post">
+              <h2>Login</h2>
+              <div class="input_box email">
+                <input type="email" placeholder="Enter your email" name="email" />
+                <i class="uil uil-envelope-alt email"></i>
+              </div>
+              <div class="error-txt">Please Enter Valid Email</div>
+              <div class="input_box password">
+                <input type="password" placeholder="Enter your password" name="password" />
+                <i class="uil uil-lock password"></i>
+                <i class="uil uil-eye-slash pw_hide"></i>
+              </div>
+              <div class="error-txt">Please Enter Valid Password</div>
+              <div class="option_field">
+                <span class="checkbox">
+                  <input type="checkbox" id="check" />
+                  <label for="check">Remember me</label>
+                </span>
+                <a href="#" class="forgot_pw">Forgot password?</a>
+              </div>
+              <input type="submit" class="button" value="Login Now">
+            </form>
+            <div class="login_signup">Don't have an account? <a href="#" id="signup">Signup</a></div>
+          </div>
+        </div>
+        <!-- Signup From -->
+        <div class="signup_container">
+          <div class="title">Registration</div>
+          <div class="signup_form">
+            <form action="#">
+              <div class="user-details">
+                <div class="input-box">
+                  <span class="details">First Name</span>
+                  <input type="text" placeholder="Enter your name" required>
+                </div>
+                <div class="input-box">
+                  <span class="details">Last Name</span>
+                  <input type="text" placeholder="Enter your username" required>
+                </div>
+                <div class="input-box">
+                  <span class="details">Phone Number</span>
+                  <input type="tel" placeholder="Enter your number" required>
+                </div>
+                <div class="input-box">
+                  <span class="details">Email</span>
+                  <input type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-box">
+                  <span class="details">Password</span>
+                  <input type="password" placeholder="Enter your password" required>
+                </div>
+                <div class="input-box">
+                  <span class="details">Confirm Password</span>
+                  <input type="password" placeholder="Confirm your password" required>
+                </div>
+                <div class="input-box">
+                  <span class="details">Street</span>
+                  <input type="text" placeholder="Street" required>
+                </div>
+                <div class="input-box">
+                  <span class="details">City</span>
+                  <select name="city" id="">
+                    <option value="" disabled selected>Enter Your city</option>
+                    <option value="Damietta">Damietta</option>
+                    <option value="Cairo">Cairo</option>
+                    <option value="Mansoura">Mansoura</option>
+                  </select>
+                </div>
+                <div class="input-box">
+                  <span class="details">State</span>
+                  <input type="text" placeholder="State" required>
+                </div>
+                <div class="input-box">
+                  <span class="details">Country</span>
+                  <input type="text" placeholder="Country" required>
+                </div>
+                <div class="input-box">
+                  <span class="details">Zip Code</span>
+                  <input type="number" placeholder="Zip Code" required>
+                </div>
+                
+              </div>
+              <button class="signup_button">
+                <input type="submit" value="Sign Up">
+              </button>
+              <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/signPage.js"></script>
+  </body>
+</html>

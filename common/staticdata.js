@@ -1,198 +1,208 @@
 let users = [
-    {
-      id: 1,
-      userType: "admin",
-      userName: "admin",
-      email: "admin@example.com",
-      password: "adminpassword",
-      firstName: "Ahmed",
-      lastName: "Mahmoud",
-      phoneNumber: "1234567890",
-      location: {
-        street: "Willow",
-        city: "Los Angeles",
-        state: "AZ",
-        country: "Australia",
-        zipCode: "12345",
-      },
+  {
+    id: 'U1',
+    userType: "admin",
+    userName: "admin",
+    email: "admin@example.com",
+    password: "adminpassword",
+    firstName: "Ahmed",
+    lastName: "Mahmoud",
+    phoneNumber: "1234567890",
+    location: {
+      street: "Willow",
+      city: "Los Angeles",
+      state: "AZ",
+      country: "Australia",
+      zipCode: "12345",
     },
-    {
-      id: 2,
-      userType: "seller",
-      userName: "alpha_user",
-      email: "seller1@example.com",
-      password: "secretPass",
-      firstName: "John",
-      lastName: "Doe",
-      phoneNumber: "9786386705",
-      location: {
-        street: "Willow",
-        city: "Seattle",
-        state: "AZ",
-        country: "UK",
-        zipCode: "70734",
-      },
-      products: [],
-      orders: [],
+    cart: []
+  },
+  {
+    id: 'U2',
+    userType: "seller",
+    userName: "alpha_user",
+    email: "seller1@example.com",
+    password: "secretPass",
+    firstName: "John",
+    lastName: "Doe",
+    phoneNumber: "9786386705",
+    location: {
+      street: "Willow",
+      city: "Seattle",
+      state: "AZ",
+      country: "UK",
+      zipCode: "70734",
     },
-    {
-      id: 3,
-      userType: "seller",
-      userName: "john_doe",
-      email: "seller2@example.com",
-      password: "password123",
-      firstName: "Frank",
-      lastName: "Doe",
-      phoneNumber: "9007849974",
-      location: {
-        street: "Pine",
-        city: "San Francisco",
-        state: "AZ",
-        country: "France",
-        zipCode: "13564",
-      },
-      products: [],
-      orders: [],
+    products: [],
+    orders: [],
+    cart: []
+  },
+  {
+    id: 'U3',
+    userType: "seller",
+    userName: "john_doe",
+    email: "seller2@example.com",
+    password: "password123",
+    firstName: "Frank",
+    lastName: "Doe",
+    phoneNumber: "9007849974",
+    location: {
+      street: "Pine",
+      city: "San Francisco",
+      state: "AZ",
+      country: "France",
+      zipCode: "13564",
     },
-    {
-      id: 4,
-      userType: "customer",
-      userName: "gamma_customer",
-      email: "customer1@example.com",
-      password: "qwerty123",
-      firstName: "Grace",
-      lastName: "Brown",
-      phoneNumber: "4497460887",
-      location: {
-        street: "Maple",
-        city: "Houston",
-        state: "MA",
-        country: "China",
-        zipCode: "18746",
-      },
-      orderHistory: [],
-      wishList: [],
+    products: [],
+    orders: [],
+    cart: []
+  },
+  {
+    id: 'U4',
+    userType: "customer",
+    userName: "gamma_customer",
+    email: "customer1@example.com",
+    password: "qwerty123",
+    firstName: "Grace",
+    lastName: "Brown",
+    phoneNumber: "4497460887",
+    location: {
+      street: "Maple",
+      city: "Houston",
+      state: "MA",
+      country: "China",
+      zipCode: "18746",
     },
-    {
-      id: 5,
-      userType: "customer",
-      userName: "jane_smith",
-      email: "customer2@example.com",
-      password: "sellerPass",
-      firstName: "Jane",
-      lastName: "Williams",
-      phoneNumber: "3800221970",
-      location: {
-        street: "Elm",
-        city: "Phoenix",
-        state: "FL",
-        country: "India",
-        zipCode: "18289",
-      },
-      orderHistory: [],
-      wishList: [],
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  },
+  {
+    id: 'U5',
+    userType: "customer",
+    userName: "jane_smith",
+    email: "customer2@example.com",
+    password: "sellerPass",
+    firstName: "Jane",
+    lastName: "Williams",
+    phoneNumber: "3800221970",
+    location: {
+      street: "Elm",
+      city: "Phoenix",
+      state: "FL",
+      country: "India",
+      zipCode: "18289",
     },
-    {
-      id: 6,
-      userType: "customer",
-      userName: "customerA",
-      email: "customer3@example.com",
-      password: "passphrase123",
-      firstName: "Henry",
-      lastName: "Smith",
-      phoneNumber: "2453616519",
-      location: {
-        street: "Birch",
-        city: "Los Angeles",
-        state: "MA",
-        country: "China",
-        zipCode: "95668",
-      },
-      orderHistory: [],
-      wishList: [],
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  },
+  {
+    id: 'U6',
+    userType: "customer",
+    userName: "customerA",
+    email: "customer3@example.com",
+    password: "passphrase123",
+    firstName: "Henry",
+    lastName: "Smith",
+    phoneNumber: "2453616519",
+    location: {
+      street: "Birch",
+      city: "Los Angeles",
+      state: "MA",
+      country: "China",
+      zipCode: "95668",
     },
-    {
-      id: 7,
-      userType: "customer",
-      userName: "beta_seller",
-      email: "customer4@example.com",
-      password: "adminPass",
-      firstName: "Charlie",
-      lastName: "Doe",
-      phoneNumber: "4448668569",
-      location: {
-        street: "Birch",
-        city: "Los Angeles",
-        state: "NY",
-        country: "France",
-        zipCode: "68235",
-      },
-      orderHistory: [],
-      wishList: [],
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  },
+  {
+    id: 'U7',
+    userType: "customer",
+    userName: "beta_seller",
+    email: "customer4@example.com",
+    password: "adminPass",
+    firstName: "Charlie",
+    lastName: "Doe",
+    phoneNumber: "4448668569",
+    location: {
+      street: "Birch",
+      city: "Los Angeles",
+      state: "NY",
+      country: "France",
+      zipCode: "68235",
     },
-    {
-      id: 8,
-      userType: "customer",
-      userName: "delta_user",
-      email: "customer5@example.com",
-      password: "masterPass",
-      firstName: "John",
-      lastName: "Miller",
-      phoneNumber: "2380698770",
-      location: {
-        street: "Birch",
-        city: "Houston",
-        state: "FL",
-        country: "India",
-        zipCode: "25019",
-      },
-      orderHistory: [],
-      wishList: [],
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  },
+  {
+    id: 'U8',
+    userType: "customer",
+    userName: "delta_user",
+    email: "customer5@example.com",
+    password: "masterPass",
+    firstName: "John",
+    lastName: "Miller",
+    phoneNumber: "2380698770",
+    location: {
+      street: "Birch",
+      city: "Houston",
+      state: "FL",
+      country: "India",
+      zipCode: "25019",
     },
-    {
-      id: 9,
-      userType: "customer",
-      userName: "seller1",
-      email: "customer6@example.com",
-      password: "pass123",
-      firstName: "Frank",
-      lastName: "Doe",
-      phoneNumber: "5021403485",
-      location: {
-        street: "Cherry",
-        city: "New York",
-        state: "IL",
-        country: "Germany",
-        zipCode: "38545",
-      },
-      orderHistory: [],
-      wishList: [],
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  },
+  {
+    id: 'U9',
+    userType: "customer",
+    userName: "seller1",
+    email: "customer6@example.com",
+    password: "pass123",
+    firstName: "Frank",
+    lastName: "Doe",
+    phoneNumber: "5021403485",
+    location: {
+      street: "Cherry",
+      city: "New York",
+      state: "IL",
+      country: "Germany",
+      zipCode: "38545",
     },
-    {
-      id: 10,
-      userType: "customer",
-      userName: "epsilon_seller",
-      email: "customer7@example.com",
-      password: "securePass",
-      firstName: "Bob",
-      lastName: "Johnson",
-      phoneNumber: "1110439535",
-      location: {
-        street: "Cedar",
-        city: "New York",
-        state: "AZ",
-        country: "China",
-        zipCode: "94802",
-      },
-      orderHistory: [],
-      wishList: [],
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  },
+  {
+    id: 'U10',
+    userType: "customer",
+    userName: "epsilon_seller",
+    email: "customer7@example.com",
+    password: "securePass",
+    firstName: "Bob",
+    lastName: "Johnson",
+    phoneNumber: "1110439535",
+    location: {
+      street: "Cedar",
+      city: "New York",
+      state: "AZ",
+      country: "China",
+      zipCode: "94802",
     },
-  ];
-  let cart = [];  
+    orderHistory: [],
+    wishList: [],
+    cart: []
+  }
+];
 
-  let products = [
+
+let products = [
     {
-      productId: 1,
+      productId: "P1",
       name: "Watch 1",
       brand: "Swatch",
       price: 200,
@@ -214,15 +224,15 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SO27B100_1200x.jpg?v=1665667752",
-        "https://egywatch.com/cdn/shop/products/SO27B100_5000x.jpg?v=1665667752",
-        "https://egywatch.com/cdn/shop/products/SO27B100_5000x.jpg?v=1665667752",
-        "https://egywatch.com/cdn/shop/products/SO27B100_5000x.jpg?v=1665667752",
-        "https://egywatch.com/cdn/shop/products/SO27B100_5000x.jpg?v=1665667752"
+        "https://egywatch.com/cdn/shop/products/SO27B100_2048x.jpg?v=1665667752",
+        "https://egywatch.com/cdn/shop/products/SO27B100-1_2048x.jpg?v=1665667752",
+        "https://egywatch.com/cdn/shop/products/SO27B100-2_2048x.jpg?v=1665667751",
+        "https://egywatch.com/cdn/shop/products/SO27B100-4_2048x.jpg?v=1665667765",
+        "https://egywatch.com/cdn/shop/products/SO27B100-3_2048x.jpg?v=1665667765"
       ]
     },
     {
-      productId: 2,
+      productId: "P2",
       name: "Watch 2",
       brand: "Casio",
       price: 1100,
@@ -244,15 +254,14 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/F-91wm-9adf_1200x.jpg?v=1634567773",
-        "https://egywatch.com/cdn/shop/products/F-91wm-9adf_5000x.jpg?v=1634567773",
-        "https://egywatch.com/cdn/shop/products/F-91wm-9adf_5000x.jpg?v=1634567773",
-        "https://egywatch.com/cdn/shop/products/F-91wm-9adf_5000x.jpg?v=1634567773",
-        "https://egywatch.com/cdn/shop/products/F-91wm-9adf_5000x.jpg?v=1634567773"
+        "https://egywatch.com/cdn/shop/products/F-91wm-9adf_2048x.jpg?v=1634567773",
+        "https://egywatch.com/cdn/shop/products/F-91wm-9adf-2_2048x.jpg?v=1634567774",
+        "https://egywatch.com/cdn/shop/products/F-91wm-9adf-1_2048x.jpg?v=1634567774",
+        "https://egywatch.com/cdn/shop/products/F-91wm-9adf-3_2048x.jpg?v=1634567774"
       ]
     },
     {
-      productId: 3,
+      productId: "P3",
       name: "Watch 3",
       brand: "Tissot",
       price: 1700,
@@ -274,15 +283,13 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF_1200x.jpg?v=1634563260",
-        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF_5000x.jpg?v=1634563260",
-        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF_5000x.jpg?v=1634563260",
-        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF_5000x.jpg?v=1634563260",
-        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF_5000x.jpg?v=1634563260"
+        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF_2048x.jpg?v=1634563260",
+        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF-1_2048x.jpg?v=1634563259",
+        "https://egywatch.com/cdn/shop/products/F-91WM-7ADF-2_2048x.jpg?v=1634563259"
       ]
     },
     {
-      productId: 4,
+      productId: "P4",
       name: "Watch 4",
       brand: "Tommy Hilfiger",
       price: 500,
@@ -304,15 +311,16 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/files/YVS410G_1200x.jpg?v=1694510181",
-        "https://egywatch.com/cdn/shop/files/YVS410G_5000x.jpg?v=1694510181",
-        "https://egywatch.com/cdn/shop/files/YVS410G_5000x.jpg?v=1694510181",
-        "https://egywatch.com/cdn/shop/files/YVS410G_5000x.jpg?v=1694510181",
-        "https://egywatch.com/cdn/shop/files/YVS410G_5000x.jpg?v=1694510181"
+        "https://egywatch.com/cdn/shop/files/YVS410G_2048x.jpg?v=1694510181",
+        "https://egywatch.com/cdn/shop/files/YVS410G-1_2048x.jpg?v=1694510509",
+        "https://egywatch.com/cdn/shop/files/YVS410G-2_2048x.jpg?v=1694510509",
+        "https://egywatch.com/cdn/shop/files/YVS410G-5_2048x.jpg?v=1694510509",
+        "https://egywatch.com/cdn/shop/files/YVS410G-3_2048x.jpg?v=1694510505",
+        "https://egywatch.com/cdn/shop/files/YVS410G-4_2048x.jpg?v=1694510505"
       ]
     },
     {
-      productId: 5,
+      productId: "P5",
       name: "Watch 5",
       brand: "Tommy Hilfiger",
       price: 600,
@@ -334,15 +342,15 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF_1200x.jpg?v=1654592760",
-        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF_5000x.jpg?v=1654592760",
-        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF_5000x.jpg?v=1654592760",
-        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF_5000x.jpg?v=1654592760",
-        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF_5000x.jpg?v=1654592760"
+        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF_2048x.jpg?v=1654592760",
+        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF-4_2048x.jpg?v=1654592759",
+        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF-2_2048x.jpg?v=1654592760",
+        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF-3_2048x.jpg?v=1654592759",
+        "https://egywatch.com/cdn/shop/products/MTP-V002D-1BUDF-1_2048x.jpg?v=1654592760"
       ]
     },
     {
-      productId: 6,
+      productId: "P6",
       name: "Watch 6",
       brand: "Swatch",
       price: 1700,
@@ -364,15 +372,13 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF_1200x.jpg?v=1628602832",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF_5000x.jpg?v=1628602832",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF_5000x.jpg?v=1628602832",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF_5000x.jpg?v=1628602832",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF_5000x.jpg?v=1628602832"
+        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF_2048x.jpg?v=1628602832",
+        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF-1_2048x.jpg?v=1628602832",
+        "https://egywatch.com/cdn/shop/products/MTP-1374D-1AVDF-2_2048x.jpg?v=1628602832"
       ]
     },
     {
-      productId: 7,
+      productId: "P7",
       name: "Watch 7",
       brand: "Lacoste",
       price: 450,
@@ -394,15 +400,13 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T137.410.11.041_1200x.jpg?v=1638273269",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.041_5000x.jpg?v=1638273269",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.041_5000x.jpg?v=1638273269",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.041_5000x.jpg?v=1638273269",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.041_5000x.jpg?v=1638273269"
+        "https://egywatch.com/cdn/shop/products/T137.410.11.041_2048x.jpg?v=1638273269",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.041-2_2048x.jpg?v=1638273269",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.041-1_2048x.jpg?v=1638273269"
       ]
     },
     {
-      productId: 8,
+      productId: "P8",
       name: "Watch 8",
       brand: "Swatch",
       price: 1000,
@@ -424,15 +428,13 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/F-91WS-7DF_1200x.jpg?v=1638607524",
-        "https://egywatch.com/cdn/shop/products/F-91WS-7DF_5000x.jpg?v=1638607524",
-        "https://egywatch.com/cdn/shop/products/F-91WS-7DF_5000x.jpg?v=1638607524",
-        "https://egywatch.com/cdn/shop/products/F-91WS-7DF_5000x.jpg?v=1638607524",
-        "https://egywatch.com/cdn/shop/products/F-91WS-7DF_5000x.jpg?v=1638607524"
+        "https://egywatch.com/cdn/shop/products/F-91WS-7DF_2048x.jpg?v=1638607524",
+        "https://egywatch.com/cdn/shop/products/F-91WS-7DF-1_2048x.jpg?v=1638607525",
+        "https://egywatch.com/cdn/shop/products/F-91WS-7DF-2_2048x.jpg?v=1638607524"
       ]
     },
     {
-      productId: 9,
+      productId: "P9",
       name: "Watch 9",
       brand: "Tommy Hilfiger",
       price: 750,
@@ -454,15 +456,16 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SB02B400_1200x.jpg?v=1665582254",
-        "https://egywatch.com/cdn/shop/products/SB02B400_5000x.jpg?v=1665582254",
-        "https://egywatch.com/cdn/shop/products/SB02B400_5000x.jpg?v=1665582254",
-        "https://egywatch.com/cdn/shop/products/SB02B400_5000x.jpg?v=1665582254",
-        "https://egywatch.com/cdn/shop/products/SB02B400_5000x.jpg?v=1665582254"
+        "https://egywatch.com/cdn/shop/products/SB02B400_2048x.jpg?v=1665582254",
+        "https://egywatch.com/cdn/shop/products/SB02B400-4_2048x.jpg?v=1665582260",
+        "https://egywatch.com/cdn/shop/products/SB02B400-3_2048x.jpg?v=1665582260",
+        "https://egywatch.com/cdn/shop/products/SB02B400-5_2048x.jpg?v=1665582260",
+        "https://egywatch.com/cdn/shop/products/SB02B400-1_2048x.jpg?v=1665582260",
+        "https://egywatch.com/cdn/shop/products/SB02B400-2_2048x.jpg?v=1665582260"
       ]
     },
     {
-      productId: 10,
+      productId: "P10",
       name: "Watch 10",
       brand: "Swatch",
       price: 750,
@@ -484,15 +487,15 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T137.410.11.091_1200x.jpg?v=1663146985",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.091_5000x.jpg?v=1663146985",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.091_5000x.jpg?v=1663146985",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.091_5000x.jpg?v=1663146985",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.091_5000x.jpg?v=1663146985"
+        "https://egywatch.com/cdn/shop/products/T137.410.11.091_2048x.jpg?v=1663146985",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.091-2_2048x.jpg?v=1663146985",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.091-4_2048x.jpg?v=1663146985",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.091-1_2048x.jpg?v=1663146986",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.091-3_2048x.jpg?v=1663147193"
       ]
     },
     {
-      productId: 11,
+      productId: "P11",
       name: "Watch 11",
       brand: "Swatch",
       price: 250,
@@ -514,15 +517,14 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01_1200x.jpg?v=1630635216",
-        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01_5000x.jpg?v=1630635216",
-        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01_5000x.jpg?v=1630635216",
-        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01_5000x.jpg?v=1630635216",
-        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01_5000x.jpg?v=1630635216"
+        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01_2048x.jpg?v=1630635216",
+        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01-2_2048x.jpg?v=1630635216",
+        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01-3_2048x.jpg?v=1630635216",
+        "https://egywatch.com/cdn/shop/products/T125.617.17.051.01-1_2048x.jpg?v=1630635216"
       ]
     },
     {
-      productId: 12,
+      productId: "P12",
       name: "Watch 12",
       brand: "Tommy Hilfiger",
       price: 1250,
@@ -544,15 +546,13 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/172.0025_1200x.jpg?v=1658830431",
-        "https://egywatch.com/cdn/shop/products/172.0025_5000x.jpg?v=1658830431",
-        "https://egywatch.com/cdn/shop/products/172.0025_5000x.jpg?v=1658830431",
-        "https://egywatch.com/cdn/shop/products/172.0025_5000x.jpg?v=1658830431",
-        "https://egywatch.com/cdn/shop/products/172.0025_5000x.jpg?v=1658830431"
+        "https://egywatch.com/cdn/shop/products/172.0025_2048x.jpg?v=1658830431",
+        "https://egywatch.com/cdn/shop/products/172.0025-1_2048x.jpg?v=1658830431",
+        "https://egywatch.com/cdn/shop/products/172.0025-2_2048x.jpg?v=1658830431"
       ]
     },
     {
-      productId: 13,
+      productId: "P13",
       name: "Watch 13",
       brand: "Lacoste",
       price: 1250,
@@ -574,15 +574,14 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/2011156_1200x.jpg?v=1643447544",
-        "https://egywatch.com/cdn/shop/products/2011156_5000x.jpg?v=1643447544",
-        "https://egywatch.com/cdn/shop/products/2011156_5000x.jpg?v=1643447544",
-        "https://egywatch.com/cdn/shop/products/2011156_5000x.jpg?v=1643447544",
-        "https://egywatch.com/cdn/shop/products/2011156_5000x.jpg?v=1643447544"
+        "https://egywatch.com/cdn/shop/products/2011156_2048x.jpg?v=1643447544",
+        "https://egywatch.com/cdn/shop/products/2011156-1_2048x.jpg?v=1643447544",
+        "https://egywatch.com/cdn/shop/products/2011156-2_2048x.jpg?v=1643447544",
+        "https://egywatch.com/cdn/shop/products/2011156-3_2048x.jpg?v=1643447544"
       ]
     },
     {
-      productId: 14,
+      productId: "P14",
       name: "Watch 14",
       brand: "Tommy Hilfiger",
       price: 450,
@@ -604,15 +603,15 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T137.410.11.031_1200x.jpg?v=1638270585",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.031_5000x.jpg?v=1638270585",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.031_5000x.jpg?v=1638270585",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.031_5000x.jpg?v=1638270585",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.031_5000x.jpg?v=1638270585"
+        "https://egywatch.com/cdn/shop/products/T137.410.11.031_2048x.jpg?v=1638270585",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.031-1_2048x.jpg?v=1638270585",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.031-3_2048x.jpg?v=1638270584",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.031-4_2048x.jpg?v=1638270584",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.031-2_2048x.jpg?v=1638270585"
       ]
     },
     {
-      productId: 15,
+      productId: "P15",
       name: "Watch 15",
       brand: "Tissot",
       price: 1250,
@@ -634,15 +633,14 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T116.617.22.041_1200x.jpg?v=1637660241",
-        "https://egywatch.com/cdn/shop/products/T116.617.22.041_5000x.jpg?v=1637660241",
-        "https://egywatch.com/cdn/shop/products/T116.617.22.041_5000x.jpg?v=1637660241",
-        "https://egywatch.com/cdn/shop/products/T116.617.22.041_5000x.jpg?v=1637660241",
-        "https://egywatch.com/cdn/shop/products/T116.617.22.041_5000x.jpg?v=1637660241"
+        "https://egywatch.com/cdn/shop/products/T116.617.22.041_2048x.jpg?v=1637660241",
+        "https://egywatch.com/cdn/shop/products/T116.617.22.041-2_2048x.jpg?v=1637660245",
+        "https://egywatch.com/cdn/shop/products/T116.617.22.041-3_2048x.jpg?v=1637660245",
+        "https://egywatch.com/cdn/shop/products/T116.617.22.041-1_2048x.jpg?v=1637660241"
       ]
     },
     {
-      productId: 16,
+      productId: "P16",
       name: "Watch 16",
       brand: "Tissot",
       price: 1250,
@@ -664,15 +662,13 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_1200x.jpg?v=1625575132",
-        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_5000x.jpg?v=1625575132",
-        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_5000x.jpg?v=1625575132",
-        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_5000x.jpg?v=1625575132",
-        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_5000x.jpg?v=1625575132"
+        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_2048x.jpg?v=1625575132",
+        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-4_2048x.jpg?v=1625575132",
+        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-5_2048x.jpg?v=1625575132"
       ]
     },
     {
-      productId: 17,
+      productId: "P17",
       name: "Watch 17",
       brand: "Tommy Hilfiger",
       price: 750,
@@ -694,15 +690,15 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF_1200x.jpg?v=1654504460",
-        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF_5000x.jpg?v=1654504460",
-        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF_5000x.jpg?v=1654504460",
-        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF_5000x.jpg?v=1654504460",
-        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF_5000x.jpg?v=1654504460"
+        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF_2048x.jpg?v=1654504460",
+        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF-5_2048x.jpg?v=1654504461",
+        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF-2_2048x.jpg?v=1654504461",
+        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF-1_2048x.jpg?v=1654504460",
+        "https://egywatch.com/cdn/shop/products/MTP-1303D-7AVDF-4_2048x.jpg?v=1654504460"
       ]
     },
     {
-      productId: 18,
+      productId: "P18",
       name: "Watch 18",
       brand: "Tissot",
       price: 1100,
@@ -724,15 +720,17 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01_1200x.jpg?v=1637749877",
-        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01_5000x.jpg?v=1637749877",
-        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01_5000x.jpg?v=1637749877",
-        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01_5000x.jpg?v=1637749877",
-        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01_5000x.jpg?v=1637749877"
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01_2048x.jpg?v=1637749877",
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01-2_2048x.jpg?v=1637750149",
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01-1_2048x.jpg?v=1637750149",
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01-3_2048x.jpg?v=1637750149",
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01-6_2048x.jpg?v=1637750149",
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01-5_2048x.jpg?v=1637750149",
+        "https://egywatch.com/cdn/shop/products/T120.417.11.091.01-4_2048x.jpg?v=1637750149"
       ]
     },
     {
-      productId: 19,
+      productId: "P19",
       name: "Watch 19",
       brand: "Lacoste",
       price: 1100,
@@ -754,15 +752,13 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF_1200x.jpg?v=1628604063",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF_5000x.jpg?v=1628604063",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF_5000x.jpg?v=1628604063",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF_5000x.jpg?v=1628604063",
-        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF_5000x.jpg?v=1628604063"
+        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF_2048x.jpg?v=1628604063",
+        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF-1_2048x.jpg?v=1628604064",
+        "https://egywatch.com/cdn/shop/products/MTP-1374D-2AVDF-3_2048x.jpg?v=1628604064"
       ]
     },
     {
-      productId: 20,
+      productId: "P20",
       name: "Watch 20",
       brand: "Lacoste",
       price: 600,
@@ -784,15 +780,13 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/YVS441GC_1200x.jpg?v=1636451060",
-        "https://egywatch.com/cdn/shop/products/YVS441GC_5000x.jpg?v=1636451060",
-        "https://egywatch.com/cdn/shop/products/YVS441GC_5000x.jpg?v=1636451060",
-        "https://egywatch.com/cdn/shop/products/YVS441GC_5000x.jpg?v=1636451060",
-        "https://egywatch.com/cdn/shop/products/YVS441GC_5000x.jpg?v=1636451060"
+        "https://egywatch.com/cdn/shop/products/YVS441GC_2048x.jpg?v=1636451060",
+        "https://egywatch.com/cdn/shop/products/YVS441GC-1_2048x.jpg?v=1636451060",
+        "https://egywatch.com/cdn/shop/products/YVS441GC-3_2048x.jpg?v=1636451060"
       ]
     },
     {
-      productId: 21,
+      productId: "P21",
       name: "Watch 21",
       brand: "Lacoste",
       price: 500,
@@ -814,15 +808,15 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SO27E100_1200x.jpg?v=1665836935",
-        "https://egywatch.com/cdn/shop/products/SO27E100_5000x.jpg?v=1665836935",
-        "https://egywatch.com/cdn/shop/products/SO27E100_5000x.jpg?v=1665836935",
-        "https://egywatch.com/cdn/shop/products/SO27E100_5000x.jpg?v=1665836935",
-        "https://egywatch.com/cdn/shop/products/SO27E100_5000x.jpg?v=1665836935"
+        "https://egywatch.com/cdn/shop/products/SO27E100_2048x.jpg?v=1665836935",
+        "https://egywatch.com/cdn/shop/products/SO27E100-2_2048x.jpg?v=1665836939",
+        "https://egywatch.com/cdn/shop/products/SO27E100-3_2048x.jpg?v=1665836939",
+        "https://egywatch.com/cdn/shop/products/SO27E100-1_2048x.jpg?v=1665836939",
+        "https://egywatch.com/cdn/shop/products/SO27E100-4_2048x.jpg?v=1665836936"
       ]
     },
     {
-      productId: 22,
+      productId: "P22",
       name: "Watch 22",
       brand: "Tissot",
       price: 1000,
@@ -844,15 +838,15 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/YVS454_1200x.jpg?v=1664023462",
-        "https://egywatch.com/cdn/shop/products/YVS454_5000x.jpg?v=1664023462",
-        "https://egywatch.com/cdn/shop/products/YVS454_5000x.jpg?v=1664023462",
-        "https://egywatch.com/cdn/shop/products/YVS454_5000x.jpg?v=1664023462",
-        "https://egywatch.com/cdn/shop/products/YVS454_5000x.jpg?v=1664023462"
+        "https://egywatch.com/cdn/shop/products/YVS454_2048x.jpg?v=1664023462",
+        "https://egywatch.com/cdn/shop/products/YVS454-3_2048x.jpg?v=1664023474",
+        "https://egywatch.com/cdn/shop/products/YVS454-4_2048x.jpg?v=1664023474",
+        "https://egywatch.com/cdn/shop/products/YVS454-1_2048x.jpg?v=1664023474",
+        "https://egywatch.com/cdn/shop/products/YVS454-2_2048x.jpg?v=1664023474"
       ]
     },
     {
-      productId: 23,
+      productId: "P23",
       name: "Watch 23",
       brand: "Casio",
       price: 450,
@@ -874,15 +868,13 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF_1200x.jpg?v=1695464618",
-        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF_5000x.jpg?v=1695464618",
-        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF_5000x.jpg?v=1695464618",
-        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF_5000x.jpg?v=1695464618",
-        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF_5000x.jpg?v=1695464618"
+        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF_2048x.jpg?v=1695464618",
+        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF-2_2048x.jpg?v=1695464618",
+        "https://egywatch.com/cdn/shop/files/LTP-VT01GL-2BUDF-1_2048x.jpg?v=1695464618"
       ]
     },
     {
-      productId: 24,
+      productId: "P24",
       name: "Watch 24",
       brand: "Tommy Hilfiger",
       price: 750,
@@ -904,15 +896,14 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/171.0.423_1200x.jpg?v=1649151006",
-        "https://egywatch.com/cdn/shop/products/171.0.423_5000x.jpg?v=1649151006",
-        "https://egywatch.com/cdn/shop/products/171.0.423_5000x.jpg?v=1649151006",
-        "https://egywatch.com/cdn/shop/products/171.0.423_5000x.jpg?v=1649151006",
-        "https://egywatch.com/cdn/shop/products/171.0.423_5000x.jpg?v=1649151006"
+        "https://egywatch.com/cdn/shop/products/171.0.423_2048x.jpg?v=1649151006",
+        "https://egywatch.com/cdn/shop/products/171.0.423-1_2048x.jpg?v=1649151006",
+        "https://egywatch.com/cdn/shop/products/171.0.423-2_2048x.jpg?v=1649151006",
+        "https://egywatch.com/cdn/shop/products/171.0.423-3_2048x.jpg?v=1649151007"
       ]
     },
     {
-      productId: 25,
+      productId: "P25",
       name: "Watch 25",
       brand: "Tommy Hilfiger",
       price: 5000,
@@ -934,15 +925,15 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/2011146_1200x.jpg?v=1648645506",
-        "https://egywatch.com/cdn/shop/products/2011146_5000x.jpg?v=1648645506",
-        "https://egywatch.com/cdn/shop/products/2011146_5000x.jpg?v=1648645506",
-        "https://egywatch.com/cdn/shop/products/2011146_5000x.jpg?v=1648645506",
-        "https://egywatch.com/cdn/shop/products/2011146_5000x.jpg?v=1648645506"
+        "https://egywatch.com/cdn/shop/products/2011146_2048x.jpg?v=1648645506",
+        "https://egywatch.com/cdn/shop/products/2011146-1_2048x.jpg?v=1648645506",
+        "https://egywatch.com/cdn/shop/products/2011146-2_2048x.jpg?v=1648645507",
+        "https://egywatch.com/cdn/shop/products/2011146-3_2_2048x.jpg?v=1648645506",
+        "https://egywatch.com/cdn/shop/products/2011146-3_2048x.jpg?v=1648645507"
       ]
     },
     {
-      productId: 26,
+      productId: "P26",
       name: "Watch 26",
       brand: "Tissot",
       price: 5000,
@@ -964,15 +955,14 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF_1200x.jpg?v=1638950338",
-        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF_5000x.jpg?v=1638950338",
-        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF_5000x.jpg?v=1638950338",
-        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF_5000x.jpg?v=1638950338",
-        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF_5000x.jpg?v=1638950338"
+        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF_2048x.jpg?v=1638950338",
+        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF-3_2048x.jpg?v=1638950340",
+        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF-2_2048x.jpg?v=1638950338",
+        "https://egywatch.com/cdn/shop/products/AEQ-100W-1BVDF-1_2048x.jpg?v=1638950340"
       ]
     },
     {
-      productId: 27,
+      productId: "P27",
       name: "Watch 27",
       brand: "Tissot",
       price: 1700,
@@ -994,15 +984,14 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/171.0.450_1200x.jpg?v=1630143997",
-        "https://egywatch.com/cdn/shop/products/171.0.450_5000x.jpg?v=1630143997",
-        "https://egywatch.com/cdn/shop/products/171.0.450_5000x.jpg?v=1630143997",
-        "https://egywatch.com/cdn/shop/products/171.0.450_5000x.jpg?v=1630143997",
-        "https://egywatch.com/cdn/shop/products/171.0.450_5000x.jpg?v=1630143997"
+        "https://egywatch.com/cdn/shop/products/171.0.450_2048x.jpg?v=1630143997",
+        "https://egywatch.com/cdn/shop/products/171.0.450-1_2048x.jpg?v=1630143998",
+        "https://egywatch.com/cdn/shop/products/171.0.450-2_2048x.jpg?v=1630143998",
+        "https://egywatch.com/cdn/shop/products/171.0.450-3_2048x.jpg?v=1630143998"
       ]
     },
     {
-      productId: 28,
+      productId: "P28",
       name: "Watch 28",
       brand: "Casio",
       price: 200,
@@ -1024,15 +1013,13 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF_1200x.jpg?v=1628606576",
-        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF_5000x.jpg?v=1628606576",
-        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF_5000x.jpg?v=1628606576",
-        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF_5000x.jpg?v=1628606576",
-        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF_5000x.jpg?v=1628606576"
+        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF_2048x.jpg?v=1628606576",
+        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF-1_2048x.jpg?v=1628606577",
+        "https://egywatch.com/cdn/shop/products/MTP-1374L-1AVDF-2_2048x.jpg?v=1628606577"
       ]
     },
     {
-      productId: 29,
+      productId: "P29",
       name: "Watch 29",
       brand: "Tissot",
       price: 250,
@@ -1054,15 +1041,14 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR_1200x.jpg?v=1652536931",
-        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR_5000x.jpg?v=1652536931",
-        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR_5000x.jpg?v=1652536931",
-        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR_5000x.jpg?v=1652536931",
-        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR_5000x.jpg?v=1652536931"
+        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR_2048x.jpg?v=1652536931",
+        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR-1_2048x.jpg?v=1652536930",
+        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR-2_2048x.jpg?v=1652536930",
+        "https://egywatch.com/cdn/shop/products/GM-110G-1A9DR-3_2048x.jpg?v=1652536930"
       ]
     },
     {
-      productId: 30,
+      productId: "P30",
       name: "Watch 30",
       brand: "Tissot",
       price: 1100,
@@ -1084,15 +1070,16 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-1_1200x.jpg?v=1637657053",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-1_5000x.jpg?v=1637657053",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-1_5000x.jpg?v=1637657053",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-1_5000x.jpg?v=1637657053",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-1_5000x.jpg?v=1637657053"
+        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-1_2048x.jpg?v=1637657053",
+        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-3_2048x.jpg?v=1637657075",
+        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01_2048x.jpg?v=1637657075",
+        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-2_2048x.jpg?v=1637657075",
+        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-4_2048x.jpg?v=1637657073",
+        "https://egywatch.com/cdn/shop/products/T116.617.11.047.01-5_2048x.jpg?v=1637657073"
       ]
     },
     {
-      productId: 31,
+      productId: "P31",
       name: "Watch 31",
       brand: "Casio",
       price: 450,
@@ -1114,15 +1101,13 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-01_1200x.jpg?v=1624886717",
-        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-01_5000x.jpg?v=1624886717",
-        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-01_5000x.jpg?v=1624886717",
-        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-01_5000x.jpg?v=1624886717",
-        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-01_5000x.jpg?v=1624886717"
+        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-01_2048x.jpg?v=1624886717",
+        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-02_2048x.jpg?v=1624886717",
+        "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-03_2048x.jpg?v=1624886717"
       ]
     },
     {
-      productId: 32,
+      productId: "P32",
       name: "Watch 32",
       brand: "Tommy Hilfiger",
       price: 900,
@@ -1144,15 +1129,13 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF_1200x.jpg?v=1639568974",
-        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF_5000x.jpg?v=1639568974",
-        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF_5000x.jpg?v=1639568974",
-        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF_5000x.jpg?v=1639568974",
-        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF_5000x.jpg?v=1639568974"
+        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF_2048x.jpg?v=1639568974",
+        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF-1_2048x.jpg?v=1639568977",
+        "https://egywatch.com/cdn/shop/products/HDC-700-3A3VDF-2_2048x.jpg?v=1639568977"
       ]
     },
     {
-      productId: 33,
+      productId: "P33",
       name: "Watch 33",
       brand: "Tommy Hilfiger",
       price: 450,
@@ -1174,15 +1157,14 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF_1200x.jpg?v=1695281414",
-        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF_5000x.jpg?v=1695281414",
-        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF_5000x.jpg?v=1695281414",
-        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF_5000x.jpg?v=1695281414",
-        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF_5000x.jpg?v=1695281414"
+        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF_2048x.jpg?v=1695281414",
+        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF-1_2048x.jpg?v=1695281413",
+        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF-2_2048x.jpg?v=1695281414",
+        "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF-3_2048x.jpg?v=1695281413"
       ]
     },
     {
-      productId: 34,
+      productId: "P34",
       name: "Watch 34",
       brand: "Tissot",
       price: 5000,
@@ -1204,15 +1186,14 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF_1200x.jpg?v=1654765499",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF_5000x.jpg?v=1654765499",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF_5000x.jpg?v=1654765499",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF_5000x.jpg?v=1654765499",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF_5000x.jpg?v=1654765499"
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF_2048x.jpg?v=1654765499",
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF-1_2048x.jpg?v=1654765499",
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF-2_2048x.jpg?v=1654765499",
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1A2VDF-3_2048x.jpg?v=1654765499"
       ]
     },
     {
-      productId: 35,
+      productId: "P35",
       name: "Watch 35",
       brand: "Casio",
       price: 900,
@@ -1234,15 +1215,14 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF_1200x.jpg?v=1654500907",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF_5000x.jpg?v=1654500907",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF_5000x.jpg?v=1654500907",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF_5000x.jpg?v=1654500907",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF_5000x.jpg?v=1654500907"
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF_2048x.jpg?v=1654500907",
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF-3_2048x.jpg?v=1654500907",
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF-1_2048x.jpg?v=1654500907",
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A2VDF-2_2048x.jpg?v=1654500907"
       ]
     },
     {
-      productId: 36,
+      productId: "P36",
       name: "Watch 36",
       brand: "Tommy Hilfiger",
       price: 500,
@@ -1264,15 +1244,14 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF_1200x.jpg?v=1654499909",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF_5000x.jpg?v=1654499909",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF_5000x.jpg?v=1654499909",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF_5000x.jpg?v=1654499909",
-        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF_5000x.jpg?v=1654499909"
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF_2048x.jpg?v=1654499909",
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF-3_2048x.jpg?v=1654499909",
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF-1_2048x.jpg?v=1654499909",
+        "https://egywatch.com/cdn/shop/products/MTP-1302D-1A1VDF-2_2048x.jpg?v=1654499909"
       ]
     },
     {
-      productId: 37,
+      productId: "P37",
       name: "Watch 37",
       brand: "Swatch",
       price: 5000,
@@ -1294,15 +1273,14 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/HB151.3912_1200x.jpg?v=1648453964",
-        "https://egywatch.com/cdn/shop/products/HB151.3912_5000x.jpg?v=1648453964",
-        "https://egywatch.com/cdn/shop/products/HB151.3912_5000x.jpg?v=1648453964",
-        "https://egywatch.com/cdn/shop/products/HB151.3912_5000x.jpg?v=1648453964",
-        "https://egywatch.com/cdn/shop/products/HB151.3912_5000x.jpg?v=1648453964"
+        "https://egywatch.com/cdn/shop/products/HB151.3912_2048x.jpg?v=1648453964",
+        "https://egywatch.com/cdn/shop/products/HB151.3912-1_2048x.jpg?v=1648453964",
+        "https://egywatch.com/cdn/shop/products/HB151.3912-2_2048x.jpg?v=1648453964",
+        "https://egywatch.com/cdn/shop/products/HB151.3912-3_2048x.jpg?v=1648453964"
       ]
     },
     {
-      productId: 38,
+      productId: "P38",
       name: "Watch 38",
       brand: "Casio",
       price: 450,
@@ -1324,15 +1302,13 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T137.410.11.051_1200x.jpg?v=1638279255",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.051_5000x.jpg?v=1638279255",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.051_5000x.jpg?v=1638279255",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.051_5000x.jpg?v=1638279255",
-        "https://egywatch.com/cdn/shop/products/T137.410.11.051_5000x.jpg?v=1638279255"
+        "https://egywatch.com/cdn/shop/products/T137.410.11.051_2048x.jpg?v=1638279255",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.051-2_2048x.jpg?v=1638279256",
+        "https://egywatch.com/cdn/shop/products/T137.410.11.051-1_2048x.jpg?v=1638279256"
       ]
     },
     {
-      productId: 39,
+      productId: "P39",
       name: "Watch 39",
       brand: "Lacoste",
       price: 2000,
@@ -1354,15 +1330,13 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SUOZ329_1200x.jpg?v=1636366630",
-        "https://egywatch.com/cdn/shop/products/SUOZ329_5000x.jpg?v=1636366630",
-        "https://egywatch.com/cdn/shop/products/SUOZ329_5000x.jpg?v=1636366630",
-        "https://egywatch.com/cdn/shop/products/SUOZ329_5000x.jpg?v=1636366630",
-        "https://egywatch.com/cdn/shop/products/SUOZ329_5000x.jpg?v=1636366630"
+        "https://egywatch.com/cdn/shop/products/SUOZ329_2048x.jpg?v=1636366630",
+        "https://egywatch.com/cdn/shop/products/SUOZ329-2_2048x.jpg?v=1636366630",
+        "https://egywatch.com/cdn/shop/products/SUOZ329-1_2048x.jpg?v=1636366630"
       ]
     },
     {
-      productId: 40,
+      productId: "P40",
       name: "Watch 40",
       brand: "Casio",
       price: 1700,
@@ -1384,15 +1358,17 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SO32B106_1200x.jpg?v=1636204048",
-        "https://egywatch.com/cdn/shop/products/SO32B106_5000x.jpg?v=1636204048",
-        "https://egywatch.com/cdn/shop/products/SO32B106_5000x.jpg?v=1636204048",
-        "https://egywatch.com/cdn/shop/products/SO32B106_5000x.jpg?v=1636204048",
-        "https://egywatch.com/cdn/shop/products/SO32B106_5000x.jpg?v=1636204048"
+        "https://egywatch.com/cdn/shop/products/SO32B106_2048x.jpg?v=1636204048",
+        "https://egywatch.com/cdn/shop/products/S032B106-2_2048x.jpg?v=1648719794",
+        "https://egywatch.com/cdn/shop/products/SO32B106-1_2048x.jpg?v=1648719794",
+        "https://egywatch.com/cdn/shop/products/SO32B106-2_2048x.jpg?v=1648719794",
+        "https://egywatch.com/cdn/shop/products/SO32B106-3_2048x.jpg?v=1648719794",
+        "https://egywatch.com/cdn/shop/products/SO32B106-4_2048x.jpg?v=1648719794",
+        "https://egywatch.com/cdn/shop/products/S032B106-1_2048x.jpg?v=1648719794"
       ]
     },
     {
-      productId: 41,
+      productId: "P41",
       name: "Watch 41",
       brand: "Casio",
       price: 250,
@@ -1414,15 +1390,13 @@ let users = [
         strapColor: "Brown"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SO28Z101_1200x.jpg?v=1636190627",
-        "https://egywatch.com/cdn/shop/products/SO28Z101_5000x.jpg?v=1636190627",
-        "https://egywatch.com/cdn/shop/products/SO28Z101_5000x.jpg?v=1636190627",
-        "https://egywatch.com/cdn/shop/products/SO28Z101_5000x.jpg?v=1636190627",
-        "https://egywatch.com/cdn/shop/products/SO28Z101_5000x.jpg?v=1636190627"
+        "https://egywatch.com/cdn/shop/products/SO28Z101_2048x.jpg?v=1636190627",
+        "https://egywatch.com/cdn/shop/products/SO28Z101-2_2048x.jpg?v=1636190628",
+        "https://egywatch.com/cdn/shop/products/SO28Z101-3_2048x.jpg?v=1636190627"
       ]
     },
     {
-      productId: 42,
+      productId: "P42",
       name: "Watch 42",
       brand: "Tommy Hilfiger",
       price: 1250,
@@ -1444,15 +1418,14 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF_1200x.png?v=1634636969",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF_5000x.png?v=1634636969",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF_5000x.png?v=1634636969",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF_5000x.png?v=1634636969",
-        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF_5000x.png?v=1634636969"
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF_2048x.png?v=1634636969",
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF-2_2048x.jpg?v=1634636969",
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF-1_2048x.png?v=1634636969",
+        "https://egywatch.com/cdn/shop/products/MWA-100H-1AVDF-3_2048x.jpg?v=1634636969"
       ]
     },
     {
-      productId: 43,
+      productId: "P43",
       name: "Watch 43",
       brand: "Swatch",
       price: 250,
@@ -1474,15 +1447,13 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF_1200x.jpg?v=1634635114",
-        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF_5000x.jpg?v=1634635114",
-        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF_5000x.jpg?v=1634635114",
-        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF_5000x.jpg?v=1634635114",
-        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF_5000x.jpg?v=1634635114"
+        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF_2048x.jpg?v=1634635114",
+        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF-1_2048x.jpg?v=1634635114",
+        "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF-2_2048x.jpg?v=1634635114"
       ]
     },
     {
-      productId: 44,
+      productId: "P44",
       name: "Watch 44",
       brand: "Swatch",
       price: 500,
@@ -1504,15 +1475,14 @@ let users = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SB02M400_1200x.jpg?v=1628677347",
-        "https://egywatch.com/cdn/shop/products/SB02M400_5000x.jpg?v=1628677347",
-        "https://egywatch.com/cdn/shop/products/SB02M400_5000x.jpg?v=1628677347",
-        "https://egywatch.com/cdn/shop/products/SB02M400_5000x.jpg?v=1628677347",
-        "https://egywatch.com/cdn/shop/products/SB02M400_5000x.jpg?v=1628677347"
+        "https://egywatch.com/cdn/shop/products/SB02M400_2048x.jpg?v=1628677347",
+        "https://egywatch.com/cdn/shop/products/SB02M400-1_2048x.jpg?v=1628677347",
+        "https://egywatch.com/cdn/shop/products/SB02M400-2_2048x.jpg?v=1628677347",
+        "https://egywatch.com/cdn/shop/products/SB02M400-3_2048x.jpg?v=1628677347"
       ]
     },
     {
-      productId: 45,
+      productId: "P45",
       name: "Watch 45",
       brand: "Tommy Hilfiger",
       price: 450,
@@ -1534,15 +1504,13 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF_1200x.jpg?v=1628673947",
-        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF_5000x.jpg?v=1628673947",
-        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF_5000x.jpg?v=1628673947",
-        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF_5000x.jpg?v=1628673947",
-        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF_5000x.jpg?v=1628673947"
+        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF_2048x.jpg?v=1628673947",
+        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF-1_2048x.jpg?v=1628673989",
+        "https://egywatch.com/cdn/shop/products/MTP-1375L-1AVDF-2_2048x.jpg?v=1628673989"
       ]
     },
     {
-      productId: 46,
+      productId: "P46",
       name: "Watch 46",
       brand: "Lacoste",
       price: 250,
@@ -1564,15 +1532,16 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/GA-W-218H-1AVDF_1200x.jpg?v=1625756845",
-        "https://egywatch.com/cdn/shop/products/GA-W-218H-1AVDF_5000x.jpg?v=1625756845",
-        "https://egywatch.com/cdn/shop/products/GA-W-218H-1AVDF_5000x.jpg?v=1625756845",
-        "https://egywatch.com/cdn/shop/products/GA-W-218H-1AVDF_5000x.jpg?v=1625756845",
-        "https://egywatch.com/cdn/shop/products/GA-W-218H-1AVDF_5000x.jpg?v=1625756845"
+        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR-1_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/Casio_GA-2100-1A1DR_4___33158.1617062305_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR-2_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/Untitled_b2a09cbb-ed92-4bd9-8c14-3d182030a8eb_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/70413945_2463617747006623_8074200459604131840_n_2048x.jpg?v=1638354880"
       ]
     },
     {
-      productId: 47,
+      productId: "P47",
       name: "Watch 47",
       brand: "Tommy Hilfiger",
       price: 5000,
@@ -1594,15 +1563,14 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_1200x.jpg?v=1638354880",
-        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_5000x.jpg?v=1638354880",
-        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_5000x.jpg?v=1638354880",
-        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_5000x.jpg?v=1638354880",
-        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_5000x.jpg?v=1638354880"
+        "https://egywatch.com/cdn/shop/products/SO27N100_2048x.jpg?v=1675777178",
+        "https://egywatch.com/cdn/shop/products/SO27N100-3_2048x.jpg?v=1675777180",
+        "https://egywatch.com/cdn/shop/products/SO27N100-1_2048x.jpg?v=1675777180",
+        "https://egywatch.com/cdn/shop/products/SO27N100-2_2048x.jpg?v=1675777180"
       ]
     },
     {
-      productId: 48,
+      productId: "P48",
       name: "Watch 48",
       brand: "Swatch",
       price: 1000,
@@ -1624,15 +1592,16 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/SO27N100_1200x.jpg?v=1675777178",
-        "https://egywatch.com/cdn/shop/products/SO27N100_5000x.jpg?v=1675777178",
-        "https://egywatch.com/cdn/shop/products/SO27N100_5000x.jpg?v=1675777178",
-        "https://egywatch.com/cdn/shop/products/SO27N100_5000x.jpg?v=1675777178",
-        "https://egywatch.com/cdn/shop/products/SO27N100_5000x.jpg?v=1675777178"
+        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR-1_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/Casio_GA-2100-1A1DR_4___33158.1617062305_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/GA-2100-1A1DR-2_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/Untitled_b2a09cbb-ed92-4bd9-8c14-3d182030a8eb_2048x.jpg?v=1638354880",
+        "https://egywatch.com/cdn/shop/products/70413945_2463617747006623_8074200459604131840_n_2048x.jpg?v=1638354880"
       ]
     },
     {
-      productId: 49,
+      productId: "P49",
       name: "Watch 49",
       brand: "Casio",
       price: 1000,
@@ -1654,15 +1623,14 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/T116.617.11.057.01_1200x.jpg?v=1637657691",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.057.01_5000x.jpg?v=1637657691",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.057.01_5000x.jpg?v=1637657691",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.057.01_5000x.jpg?v=1637657691",
-        "https://egywatch.com/cdn/shop/products/T116.617.11.057.01_5000x.jpg?v=1637657691"
+        "https://egywatch.com/cdn/shop/products/SO27N100_2048x.jpg?v=1675777178",
+        "https://egywatch.com/cdn/shop/products/SO27N100-3_2048x.jpg?v=1675777180",
+        "https://egywatch.com/cdn/shop/products/SO27N100-1_2048x.jpg?v=1675777180",
+        "https://egywatch.com/cdn/shop/products/SO27N100-2_2048x.jpg?v=1675777180"
       ]
     },
     {
-      productId: 50,
+      productId: "P50",
       name: "Watch 50",
       brand: "Swatch",
       price: 200,
@@ -1684,12 +1652,15 @@ let users = [
         strapColor: "Silver"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/GE709_1200x.jpg?v=1661602980",
-        "https://egywatch.com/cdn/shop/products/GE709_5000x.jpg?v=1661602980",
-        "https://egywatch.com/cdn/shop/products/GE709_5000x.jpg?v=1661602980",
-        "https://egywatch.com/cdn/shop/products/GE709_5000x.jpg?v=1661602980",
-        "https://egywatch.com/cdn/shop/products/GE709_5000x.jpg?v=1661602980"
+        "https://egywatch.com/cdn/shop/products/SO27N100_2048x.jpg?v=1675777178",
+        "https://egywatch.com/cdn/shop/products/SO27N100-3_2048x.jpg?v=1675777180",
+        "https://egywatch.com/cdn/shop/products/SO27N100-1_2048x.jpg?v=1675777180",
+        "https://egywatch.com/cdn/shop/products/SO27N100-2_2048x.jpg?v=1675777180"
       ]
     }
-  ]
-export {users,cart,products};
+  ];
+
+let orders = [];
+let ordersHistory =[];
+
+export {users,orders,products,ordersHistory};
