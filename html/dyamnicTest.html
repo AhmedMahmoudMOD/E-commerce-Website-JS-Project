@@ -78,7 +78,18 @@
         </div>
             </section>
     <section class="section-wrapper"> 
-        <div class="container-fluid " id="uppercat"></div> 
+        <div class="container-fluid " id="uppercat">
+          <div class="d-flex justify-content-between">
+            <p>Pagination Placeholder</p>
+            <select class="form-select-md" id="sortSelect" name="sort by">
+              <option value="" disabled selected hidden>Sort</option>
+              <option value="alph-asc">Alphabetically : A to Z</option>
+              <option value="alph-desc">Alphabetically : Z to A</option>
+              <option value="price-asc"> Price : Low to High</option>
+              <option value="price-desc"> Price : High to Low</option>
+            </select>
+          </div>
+        </div> 
         <div class="contaiter m-auto">
             <div class="cat-wrapper row">
                 <div class="filter-bar col-md-4 ">

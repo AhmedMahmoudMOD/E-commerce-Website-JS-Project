@@ -1,14 +1,17 @@
 import {storageModule} from "../common/storageModule.js"
+import { products } from "../common/staticdata.js";
+storageModule.setItem('products',products);
 let allProducts = storageModule.getItem('products');
-let shownProducts = allProducts.slice(16,32);
+let shownProducts = allProducts.slice(0,16);
 
 window.addEventListener('load',function(){
     renderProducts(shownProducts);
+    sortProducts();
     imgHover(shownProducts);
-
 })
 
 function renderProducts(shownProducts){
+    productPanel.innerHTML = "";
     shownProducts.forEach((product,index) => {
         let colDiv=document.createElement('div');
         colDiv.classList.add('col')
@@ -134,3 +137,63 @@ function imgHover (shownProducts){
     }
 }
 
+// Sorting Functions //
+
+function sortAlphAsc(unSortedArray){
+    unSortedArray.sort((pone,ptwo)=>{
+        if(pone.name>ptwo.name)
+            return 1;
+        if (pone.name<=ptwo.name)
+            return -1;
+    })
+    return unSortedArray;
+
+}
+function sortAlphDesc(unSortedArray){
+    unSortedArray.sort((pone,ptwo)=>{
+        if(pone.name>=ptwo.name)
+            return -1;
+        if (pone.name<ptwo.name)
+            return 1;
+    })
+    return unSortedArray;
+}
+function sortPriceAsc(unSortedArray){
+    unSortedArray.sort((pone,ptwo)=> pone.price-ptwo.price);
+    return unSortedArray;
+}
+function sortPriceDesc(unSortedArray){
+    unSortedArray.sort((pone,ptwo)=> ptwo.price-pone.price);
+    return unSortedArray;
+}
+
+// Function to add events listeners to enable the sorting of the array of products //
+function sortProducts(){
+    sortSelect.addEventListener('change',function(event){
+        let shownProducts;
+        let sortedArr;
+        
+        switch(event.target.value){
+            case "alph-asc":
+                sortedArr= sortAlphAsc(allProducts.slice())
+                shownProducts= sortedArr.slice(0,16);
+                renderProducts(shownProducts);
+                break;
+            case "alph-desc":
+                sortedArr = sortAlphDesc(allProducts.slice())
+                shownProducts = sortedArr.slice(0,16);
+                renderProducts(shownProducts);
+                break;
+            case "price-asc":
+                sortedArr= sortPriceAsc(allProducts.slice())
+                shownProducts= sortedArr.slice(0,16);
+                renderProducts(shownProducts);
+                break;  
+            case "price-desc":
+                sortedArr= sortPriceDesc(allProducts.slice())
+                shownProducts= sortedArr.slice(0,16);
+                renderProducts(shownProducts);
+                break;      
+            }
+        })
+}
