@@ -117,6 +117,14 @@ function renderProducts(products){
         productPriceSpan.textContent = `${product.price} EGP`;
         /* Product Price Created */
          productPriceDiv.appendChild(productPriceSpan);
+        if(product.discount!=0){
+            let discountedPriceSpan = document.createElement('span');
+            let discountedPrice=product.price-product.discount*product.price;
+            discountedPriceSpan.textContent = `  ${discountedPrice} EGP`;
+            productPriceSpan.style.textDecorationLine='line-through';
+            discountedPriceSpan.style.color='red';
+            productPriceDiv.appendChild(discountedPriceSpan);
+        }
          /* Product Price Appended */
 
         
