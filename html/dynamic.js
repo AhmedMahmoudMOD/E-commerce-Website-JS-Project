@@ -133,6 +133,8 @@ function renderProducts(products){
         productPanel.appendChild(colDiv);
         /* Body Appended */
 
+        imgHover(currentPageProducts);
+
         });
 }
 
