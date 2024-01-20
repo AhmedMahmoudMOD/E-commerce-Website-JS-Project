@@ -34,7 +34,6 @@ let currentPage = 1;
 window.addEventListener('load',function(){
     renderProducts(allProducts);
     sortProducts();
-    renderPagination(allProducts);
     RenderBrands();
     addFilters();
    
@@ -48,9 +47,9 @@ function renderProducts(products){
     const endIndex = startIndex + productsPerPage;
 
     // Display only the products for the current page
-    const currentPageProducts = products.slice(startIndex, endIndex);
+   
 
-    const filteredProducts = currentPageProducts.filter((product) => {
+    const filteredProducts = products.filter((product) => {
         const genderFilter =
             (currentFilterState.men && product.category === 'Men') ||
             (currentFilterState.women && product.category === 'Women');
@@ -61,9 +60,10 @@ function renderProducts(products){
 
         return genderFilter && brandFilter;
     });
-    console.log(filteredProducts);
+    const currentPageProducts = filteredProducts.slice(startIndex, endIndex);
+    console.log(currentPageProducts);
 
-    filteredProducts.forEach((product,index) => {
+    currentPageProducts.forEach((product,index) => {
         let colDiv=document.createElement('div');
         colDiv.classList.add('col')
         /* col Div Created */
@@ -182,11 +182,12 @@ function renderProducts(products){
         productPanel.appendChild(colDiv);
         /* Body Appended */
 
-        imgHover(filteredProducts);
+        imgHover(currentPageProducts);
         
 
         });
         addToCart();
+        renderPagination(filteredProducts);
 }
 
 function imgHover (shownProducts){
@@ -414,6 +415,12 @@ function filterProductsGender() {
     currentFilterState.men = menCheckBox.checked;
     currentFilterState.women = womenCheckBox.checked;
 
+    // Checking if every value is false , then settig them all true if that's the case
+    if(!currentFilterState.men&&!currentFilterState.women){
+        currentFilterState.men=true;
+        currentFilterState.women=true;
+    }
+
     console.log(currentFilterState);
 
     // Render the products with the updated filter
@@ -427,5 +434,14 @@ function filterProductsBrands(){
         filter[brand] = checkbox.checked;
         return filter;
     }, {});
+
+    // Checking if every value is false , then settig them all true if that's the case
+    if (!Object.values(currentFilterState.brands).some(Boolean)) {
+        brands.forEach(brand => {
+            currentFilterState.brands[brand] = true;
+    
+        });
+    }
+
     renderProducts(allProducts);
 }
