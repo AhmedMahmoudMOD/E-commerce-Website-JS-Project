@@ -1,18 +1,29 @@
 import {storageModule} from "../common/storageModule.js"
 import { products } from "../common/staticdata.js";
+
 storageModule.setItem('products',products);
+const productsPerPage = 16;
+let currentPage = 1;
+
 let allProducts = storageModule.getItem('products');
-let shownProducts = allProducts.slice(0,16);
 
 window.addEventListener('load',function(){
-    renderProducts(shownProducts);
+    renderProducts(allProducts);
     sortProducts();
-    imgHover(shownProducts);
+    renderPagination(allProducts);
+    // imgHover(shownProducts);
 })
 
-function renderProducts(shownProducts){
+function renderProducts(products){
     productPanel.innerHTML = "";
-    shownProducts.forEach((product,index) => {
+
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+
+    // Display only the products for the current page
+    const currentPageProducts = products.slice(startIndex, endIndex);
+
+    currentPageProducts.forEach((product,index) => {
         let colDiv=document.createElement('div');
         colDiv.classList.add('col')
         /* col Div Created */
@@ -175,25 +186,99 @@ function sortProducts(){
         
         switch(event.target.value){
             case "alph-asc":
-                sortedArr= sortAlphAsc(allProducts.slice())
-                shownProducts= sortedArr.slice(0,16);
-                renderProducts(shownProducts);
+                sortedArr= sortAlphAsc(allProducts)
+                renderProducts(sortedArr);
                 break;
             case "alph-desc":
-                sortedArr = sortAlphDesc(allProducts.slice())
-                shownProducts = sortedArr.slice(0,16);
-                renderProducts(shownProducts);
+                sortedArr = sortAlphDesc(allProducts)
+                renderProducts(sortedArr);
                 break;
             case "price-asc":
-                sortedArr= sortPriceAsc(allProducts.slice())
-                shownProducts= sortedArr.slice(0,16);
-                renderProducts(shownProducts);
+                sortedArr= sortPriceAsc(allProducts)
+                renderProducts(sortedArr);
                 break;  
             case "price-desc":
-                sortedArr= sortPriceDesc(allProducts.slice())
-                shownProducts= sortedArr.slice(0,16);
-                renderProducts(shownProducts);
+                sortedArr= sortPriceDesc(allProducts)
+                renderProducts(sortedArr);
                 break;      
             }
         })
+}
+
+// Pagination Function //
+function renderPagination(products) {
+    const totalPages = Math.ceil(products.length / productsPerPage);
+    const paginationSection = document.querySelector('.pagination');
+    paginationSection.innerHTML = ''; // Clear previous pagination links
+      
+     // Create and append "Previous" button
+     const prevPageItem = document.createElement('li');
+     prevPageItem.classList.add('page-item');
+     prevPageItem.id = 'prevPage';
+ 
+     const prevPageLink = document.createElement('a');
+     prevPageLink.classList.add('page-link');
+     if(currentPage == 1)
+        prevPageLink.classList.add('disabled')
+     prevPageLink.href = '#';
+     prevPageLink.textContent = 'Previous';
+ 
+     prevPageLink.addEventListener('click', function () {
+         if (currentPage > 1) {
+            e.preventDefault();
+             currentPage--;
+             renderProducts(products);
+             renderPagination(products);
+         }
+     });
+     prevPageItem.appendChild(prevPageLink);
+     paginationSection.appendChild(prevPageItem);
+
+    // Create and append Bootstrap pagination links
+    for (let i = 1; i <= totalPages; i++) {
+        const listItem = document.createElement('li');
+        listItem.classList.add('page-item');
+
+        const link = document.createElement('a');
+        link.classList.add('page-link');
+        if(currentPage==i)
+        link.classList.add('active');
+        link.href = '#';
+        link.textContent = i;
+
+        // Add click event listener to handle page change
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            currentPage = i;
+            renderProducts(products);
+            renderPagination(products);
+        });
+
+        listItem.appendChild(link);
+        paginationSection.appendChild(listItem);
+    }
+
+    // Create and append "Next" button
+    const nextPageItem = document.createElement('li');
+    nextPageItem.classList.add('page-item');
+    nextPageItem.id = 'nextPage';
+
+    const nextPageLink = document.createElement('a');
+    nextPageLink.classList.add('page-link');
+    if(currentPage==totalPages)
+        nextPageLink.classList.add('disabled');
+    nextPageLink.href='#';
+    nextPageLink.textContent = 'Next';
+
+    nextPageLink.addEventListener('click', function (e) {
+        if (currentPage < totalPages) {
+            e.preventDefault();
+            currentPage++;
+            renderProducts(products);
+            renderPagination(products);
+        }
+    });
+
+    nextPageItem.appendChild(nextPageLink);
+    paginationSection.appendChild(nextPageItem);
 }
