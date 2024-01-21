@@ -90,6 +90,7 @@ function renderProducts(products){
         secIconLink.classList.add('text-decoration-none','text-dark','modal-opener');
         secIconLink.setAttribute('data-bs-toggle','modal');
         secIconLink.setAttribute('data-bs-target','#productModal');
+        secIconLink.id=product.productId;
 
         let eyeIcon = document.createElement('i');
         eyeIcon.classList.add('fas','fa-eye');
@@ -194,6 +195,7 @@ function renderProducts(products){
         addToCart();
         renderPagination(filteredProducts);
         linkProducts();
+        openModal();
 }
 
 function imgHover (shownProducts){
@@ -462,9 +464,32 @@ function linkProducts(){
     }
 }
 
-// function openModal(){
-//     let openers = document.querySelectorAll('.modal-opener');
-//     for (let i = 0 ; i<openers.length;i++){
-//         openers[i].addEventListener('click',function(){})
-//     }
-// }
+function openModal(){
+    let openers = document.querySelectorAll('.modal-opener');
+    for (let i = 0 ; i<openers.length;i++){
+        openers[i].addEventListener('click',function(e){
+            let innerCarousel = document.querySelector('#innerCarousel');
+            innerCarousel.innerHTML='';
+            let modalProduct = allProducts.find((product) => product.productId==this.id)
+            modalProduct.images.forEach((img,index)=>{
+
+                
+                // Create Carousel Item Div
+                let carouselItem = document.createElement('div');
+                carouselItem.classList.add('carousel-item');
+                if(index==0)
+                    carouselItem.classList.add('active');
+
+                // Create Img 
+                let carouselImage= document.createElement('img');
+                carouselImage.src = img;
+                carouselImage.classList.add('d-block', 'w-100','img-c');
+                // Appending
+                carouselItem.appendChild(carouselImage);
+                innerCarousel.appendChild(carouselItem);
+
+            })
+
+        })
+    }
+}
