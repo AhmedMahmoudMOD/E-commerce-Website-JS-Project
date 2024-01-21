@@ -489,7 +489,33 @@ function openModal(){
                 innerCarousel.appendChild(carouselItem);
 
             })
+            let productView = document.querySelector('#productView');
+            productView.innerHTML='';
 
+            let brandP = document.createElement('p');
+            brandP.innerText=modalProduct.brand;
+            let nameP = document.createElement('h5');
+            nameP.classList.add('mb-4')
+            nameP.innerText=modalProduct.name;
+            let priceSpan = document.createElement('span');
+            priceSpan.innerText=`${modalProduct.price} EGP`
+            let discountSpan = document.createElement('span');
+            
+            if(modalProduct.discount!=0){
+                
+                let discountedPrice = modalProduct.price-modalProduct.price*modalProduct.discount;
+                discountSpan.innerText=`  ${discountedPrice} EGP`;
+                priceSpan.style.textDecorationLine='line-through';
+                discountSpan.style.color = 'red';
+            }
+            let descriptionP = document.createElement('p');
+            descriptionP.classList.add('mt-4');
+            descriptionP.innerText=modalProduct.description;
+
+            if(modalProduct.discount!=0)
+                productView.append(brandP,nameP,priceSpan,discountSpan,descriptionP)
+            else
+                productView.append(brandP,nameP,priceSpan,descriptionP);
         })
     }
 }

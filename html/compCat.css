@@ -135,6 +135,10 @@
     padding-left: 0;
     list-style: none;
 }
-.img-c{
-    height: 359px;
-}
+/* .img-c{
+    height: fit-content;
+} */
+.carousel-inner{
+    height: 370px; /* Set a fixed height */
+    overflow: hidden; /* Hide overflow to prevent additional issues */
+  }
