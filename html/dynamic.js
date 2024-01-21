@@ -87,7 +87,10 @@ function renderProducts(products){
         /* Wish Icon  Link Appended  */
         let secIconLink = document.createElement('a');
         secIconLink.href='#';
-        secIconLink.classList.add('text-decoration-none','text-dark');
+        secIconLink.classList.add('text-decoration-none','text-dark','modal-opener');
+        secIconLink.setAttribute('data-bs-toggle','modal');
+        secIconLink.setAttribute('data-bs-target','#productModal');
+
         let eyeIcon = document.createElement('i');
         eyeIcon.classList.add('fas','fa-eye');
         secIconLink.appendChild(eyeIcon);
@@ -146,8 +149,10 @@ function renderProducts(products){
         
         let productNameDiv = document.createElement('div');
         productNameDiv.classList.add('product-name');
-        let productName = document.createElement('h4');
+        let productName = document.createElement('h5');
         productName.textContent = `${product.name}`
+        productName.classList.add('product-link');
+        productName.id=product.productId;
         /* Product Name Created */
         productNameDiv.appendChild(productName);
          /* Product Name Appended */
@@ -188,6 +193,7 @@ function renderProducts(products){
         });
         addToCart();
         renderPagination(filteredProducts);
+        linkProducts();
 }
 
 function imgHover (shownProducts){
@@ -445,3 +451,20 @@ function filterProductsBrands(){
 
     renderProducts(allProducts);
 }
+
+function linkProducts(){
+    let productLinks = document.querySelectorAll('.product-link');
+    for (let i = 0 ; i<productLinks.length;i++){
+        productLinks[i].addEventListener('click',function(){
+            // window.open(`./product.html?product_id=${this.id}`,'_self');
+            window.location.href=`./product.html?product_id=${this.id}`
+        })
+    }
+}
+
+// function openModal(){
+//     let openers = document.querySelectorAll('.modal-opener');
+//     for (let i = 0 ; i<openers.length;i++){
+//         openers[i].addEventListener('click',function(){})
+//     }
+// }

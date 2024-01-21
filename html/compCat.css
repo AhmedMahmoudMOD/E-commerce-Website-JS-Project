@@ -95,6 +95,10 @@
     margin-top: 5px;
     text-align: center;
 }
+.product-name>h5:hover {
+    color: rgb(200, 20, 20);
+    cursor: pointer;
+}
 .product-price span{
     font-size: large;
 }
