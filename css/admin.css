@@ -51,5 +51,9 @@ body {
 th{
   text-transform: uppercase;
 }
+/* #content {
+  overflow-y: scroll;
+  height: 1000px;
+} */
 
 /* Add more styles as needed */
