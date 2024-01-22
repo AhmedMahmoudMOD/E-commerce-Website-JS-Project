@@ -1,4 +1,7 @@
 
+body {
+    font-family: Roboto,sans-serif;
+}
 .section-wrapper{
     padding-top: 100px;
     padding-bottom: 30px;
@@ -10,4 +13,43 @@
 }
 #uppercat{
     height: 3vh;
+}
+
+.spec-span{
+    color:gray;
+}
+li{
+    margin-top: 3px;
+}
+
+
+.form-control {
+   border: 1px solid #000;
+   text-align: center;
+}
+.form-control:focus{
+    box-shadow: none;
+    border-color: #000;
+}
+.input-group-text {
+    /* background-color: transparent; */
+    border: 1px solid #000;
+    border-radius: 0.375rem;
+    color: white;
+    background-color: #000;
+}
+.disabled{
+    background-color: #00000080 ;
+}
+
+.nav-link {
+    color: #00000080
+    
+}
+#navlinks  a{
+    text-decoration: none;
+    color: black;
+}
+#navlinks  a:hover{
+    color: rgb(171, 13, 13);
 }
