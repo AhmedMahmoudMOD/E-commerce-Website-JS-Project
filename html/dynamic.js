@@ -538,6 +538,12 @@ function openModal(){
 function addtoCartModal(){
     let controlButtons = document.querySelectorAll('.input-group-text');
     let cartQuantity= document.querySelector('.input-group input');
+
+    cartQuantity.addEventListener('input',function(){
+        if(this.value<1)
+            this.value=1;
+    })
+    
     controlButtons[0].setAttribute('disabled','true');
     controlButtons[0].classList.add('disabled');
     cartQuantity.value=1;
