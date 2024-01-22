@@ -203,8 +203,17 @@ a {
   margin: 10px 0 12px 0;
 }
 form .user-details .input-box{
-  /* margin-bottom: 5px; */
-  width: calc(100% / 2 - 10px);
+  width: calc(100% / 2 - 15px);
+  position: relative;
+}
+.user-details .input-box i{
+  position: absolute;
+  top: 50%;
+  font-size: 15px;
+  color: red;
+  padding-right: 5px;
+  right: 0;
+  display: none;
 }
 form .input-box span.details{
   display: block;
@@ -222,30 +231,25 @@ form .input-box span.details{
   border-bottom-width: 2px;
   transition: all 0.3s ease;
 }
-.user-details .input-box input:focus,
-.user-details .input-box input:valid{
+.user-details .input-box input:focus{
   border-color: var(--mainColor);
 }
 
-form .signup_button{
-  border: none;
+.signup_form .signup_button { 
   display: block;
-  margin: 10px auto;
-}
-
-form .signup_button input{ 
-  border-radius: 5px;
-  padding: 5px 30px;
+  margin: 0 auto;
+  padding: 5px 50px;
+  border-radius: 10px;
   border: none;
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
   background: var(--mainColor)
 }
-form .signup_button input:hover{
+
+.signup_form .signup_button:active{
 transform: scale(0.95);
 }
 @media(max-width: 767px){
@@ -254,7 +258,7 @@ transform: scale(0.95);
   }
   form .user-details .input-box{
     margin-bottom: 15px;
-    width: 100%;
+    width: 90%;
   }
 
   .signup_form form {
@@ -273,11 +277,6 @@ transform: scale(0.95);
 
 
 /* Validation  */
-/* .error-txt{
-  color: red;
-  font-size: 12px;
-  display:none;
-} */
 
 .error-txt {
   color: #ff0000;
@@ -289,104 +288,12 @@ transform: scale(0.95);
   display: block !important;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select{
+  width: 90%;
+  border-color: #ccc;
+}
+
+select:focus,
+select:active{
+  border-color: var(--mainColor);
+}

@@ -47,62 +47,91 @@
           <div class="signup_form">
             <form action="#">
               <div class="user-details">
-                <div class="input-box">
+                <div class="input-box fName">
                   <span class="details">First Name</span>
-                  <input type="text" placeholder="Enter your name" required>
+                  <input type="text" placeholder="Enter your name" name="name" >
+                  <i class="uil uil-exclamation-octagon"></i>
                 </div>
-                <div class="input-box">
+
+                <div class="input-box lName">
                   <span class="details">Last Name</span>
-                  <input type="text" placeholder="Enter your username" required>
+                  <input type="text" placeholder="Enter your Last name" >
+                  <i class="uil uil-exclamation-octagon"></i>
                 </div>
-                <div class="input-box">
+
+                <div class="input-box phoneNumber">
                   <span class="details">Phone Number</span>
-                  <input type="tel" placeholder="Enter your number" required>
+                  <input type="tel" placeholder="Enter your number" name="phone" >
+                  <i class="uil uil-exclamation-octagon"></i>
                 </div>
-                <div class="input-box">
+
+                <div class="input-box email">
                   <span class="details">Email</span>
-                  <input type="email" placeholder="Enter your email" required>
+                  <input type="email" placeholder="Enter your email" name="email" >
+                  <i class="uil uil-exclamation-octagon"></i>
                 </div>
-                <div class="input-box">
+
+                <div class="input-box password">
                   <span class="details">Password</span>
-                  <input type="password" placeholder="Enter your password" required>
+                  <input type="password" placeholder="Enter your password" name="pass" >
+                  <i class="uil uil-exclamation-octagon"></i>
                 </div>
-                <div class="input-box">
+
+                <div class="input-box password confirm_password">
                   <span class="details">Confirm Password</span>
-                  <input type="password" placeholder="Confirm your password" required>
+                  <input type="password" placeholder="Confirm your password" >
+                  <i class="uil uil-exclamation-octagon"></i>
                 </div>
-                <div class="input-box">
+
+                <div class="input-box street">
                   <span class="details">Street</span>
-                  <input type="text" placeholder="Street" required>
+                  <input type="text" placeholder="Street" >
+                  <i class="uil uil-exclamation-octagon"></i>
                 </div>
-                <div class="input-box">
+
+                <div class="input-box city">
                   <span class="details">City</span>
-                  <select name="city" id="">
-                    <option value="" disabled selected>Enter Your city</option>
+                  <select name="city" id="" >
+                    <option value="" disabled selected >Enter Your city</option>
                     <option value="Damietta">Damietta</option>
                     <option value="Cairo">Cairo</option>
                     <option value="Mansoura">Mansoura</option>
                   </select>
+                  <i class="uil uil-exclamation-octagon"></i>
                 </div>
-                <div class="input-box">
+
+                <div class="input-box state">
                   <span class="details">State</span>
-                  <input type="text" placeholder="State" required>
+                  <input type="text" placeholder="State" >
+                  <i class="uil uil-exclamation-octagon"></i>
                 </div>
-                <div class="input-box">
+
+                <div class="input-box country">
                   <span class="details">Country</span>
-                  <input type="text" placeholder="Country" required>
+                  <input type="text" placeholder="Country" >
+                  <i class="uil uil-exclamation-octagon"></i>
                 </div>
-                <div class="input-box">
+
+                <div class="input-box zipCode">
                   <span class="details">Zip Code</span>
-                  <input type="number" placeholder="Zip Code" required>
+                  <input type="text" placeholder="Zip code" >
+                  <i class="uil uil-exclamation-octagon"></i>
                 </div>
-                
+
+                <div class="input-box accountType">
+                  <span class="details">Account Type</span>
+                  <select name="city" id="">
+                    <option value="" disabled selected>Enter Your city</option>
+                    <option value="Damietta">Customer</option>
+                    <option value="Cairo">Seller</option>
+                  </select>
+                  <i class="uil uil-exclamation-octagon"></i>
+                </div>
+
               </div>
-              <button class="signup_button">
-                <input type="submit" value="Sign Up">
-              </button>
-              <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>
+              <input type="submit" class="signup_button" value="Sign Up">
             </form>
+            <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>
           </div>
         </div>
       </div>
