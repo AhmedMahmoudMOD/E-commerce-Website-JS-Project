@@ -198,8 +198,6 @@ let users = [
     cart: []
   }
 ];
-
-
 let products = [
     {
       productId: "P1",
@@ -210,7 +208,7 @@ let products = [
       category: "Men",
       discount: 0.2,
       stock: 1,
-      description: "This is A Description of Watch 1",
+      description: "This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1",
       sellerID: 2,
       addedDate: "2023-08-20T10:10:14.532Z",
       specifications: {
@@ -662,9 +660,10 @@ let products = [
         strapColor: "Black"
       },
       images: [
-        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_2048x.jpg?v=1625575132",
-        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-4_2048x.jpg?v=1625575132",
-        "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-5_2048x.jpg?v=1625575132"
+        "https://egywatch.com/cdn/shop/products/179.1940_2048x.jpg?v=1649508803",
+        "https://egywatch.com/cdn/shop/products/179.1819-1_5000x.jpg?v=1659445129",
+        "https://egywatch.com/cdn/shop/products/179.1940-3_2048x.jpg?v=1649508803",
+        "https://egywatch.com/cdn/shop/products/179.1940-2_2048x.jpg?v=1649508802"
       ]
     },
     {
@@ -1663,4 +1662,25 @@ let products = [
 let orders = [];
 let ordersHistory =[];
 
-export {users,orders,products,ordersHistory};
+let currentUser = {
+  id: 'U4',
+  userType: "customer",
+  userName: "gamma_customer",
+  email: "customer1@example.com",
+  password: "qwerty123",
+  firstName: "Grace",
+  lastName: "Brown",
+  phoneNumber: "4497460887",
+  location: {
+    street: "Maple",
+    city: "Houston",
+    state: "MA",
+    country: "China",
+    zipCode: "18746",
+  },
+  orderHistory: [],
+  wishList: [],
+  cart: []
+};
+let guestCart = [];
+export {users,orders,products,ordersHistory,currentUser,guestCart};

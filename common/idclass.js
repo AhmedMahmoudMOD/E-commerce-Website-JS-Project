@@ -2,8 +2,8 @@ export class IDGenerator {
     static UserID = 10;
     static ProductID = 50;
     static OrderID = 0;
-    static generateUserID(type) {
-        switch (type) {
+    static generateID(type) {
+        switch (type.toLowerCase()) {
             case "user":
                 return "U" + ++IDGenerator.UserID;
             case "product":
