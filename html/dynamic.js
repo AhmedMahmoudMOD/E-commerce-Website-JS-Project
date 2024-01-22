@@ -125,7 +125,7 @@ function renderProducts(products){
 
         /* Cart Button Div Created*/
         let cartBtnDiv =  document.createElement('div');
-        cartBtnDiv.classList.add('cart-btn');
+        cartBtnDiv.classList.add('cart-btn-card');
         cartBtnDiv.id=product.productId;
         let cartBtn  = document.createElement('button');
         cartBtn.classList.add('btn','btn-light','shadow-sm','rounded-pill');
@@ -201,7 +201,7 @@ function renderProducts(products){
         
 }
 
-function imgHover (shownProducts){
+export function imgHover (shownProducts){
     let proboxes=document.querySelectorAll('.product-box');
     for (let i=0;i<proboxes.length;i++){
         proboxes[i].addEventListener('mouseover',function(){
@@ -351,8 +351,8 @@ function renderPagination(products) {
 
 // Adding To Cart Function // 
 
-function addToCart (){
-    let cartBtns=document.querySelectorAll('.cart-btn');
+export function addToCart (){
+    let cartBtns=document.querySelectorAll('.cart-btn-card');
     for (let i=0;i<cartBtns.length;i++){
         cartBtns[i].addEventListener('click',function addAction(e){
             console.log(currentUserObj);
@@ -375,7 +375,8 @@ function addToCart (){
             else;
 
             cartBtns[i].querySelector('span').innerText = "  Added to Cart";
-            cartBtns[i].querySelector('button').style.backgroundColor='lightgreen';
+            cartBtns[i].querySelector('button').classList.remove('btn-light');
+            cartBtns[i].querySelector('button').classList.add('btn-success');
             this.removeEventListener('click', addAction); // removing the event after the first click
         })
         
