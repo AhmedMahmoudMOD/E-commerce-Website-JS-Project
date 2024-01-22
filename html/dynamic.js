@@ -1,5 +1,5 @@
 import {storageModule} from "../common/storageModule.js"
-import { products  , currentUser , users} from "../common/staticdata.js";
+import { products  , currentUser , users , guestCart} from "../common/staticdata.js";
 
 storageModule.setItem('products',products);
 storageModule.setItem('users',users);
@@ -7,6 +7,8 @@ storageModule.setItem('currentUser',currentUser);
 let allUsers = storageModule.getItem('users');
 let allProducts = storageModule.getItem('products');
 let currentUserObj = storageModule.getItem('currentUser'); 
+storageModule.setItem('guest-cart',guestCart);
+let guestCartArr = storageModule.getItem('guest-cart');
 
 // getting an array of brands for dynamically creating filter options
 let brands = [];
@@ -196,6 +198,7 @@ function renderProducts(products){
         renderPagination(filteredProducts);
         linkProducts();
         openModal();
+        
 }
 
 function imgHover (shownProducts){
@@ -352,19 +355,25 @@ function addToCart (){
     let cartBtns=document.querySelectorAll('.cart-btn');
     for (let i=0;i<cartBtns.length;i++){
         cartBtns[i].addEventListener('click',function addAction(e){
+            console.log(currentUserObj);
             let cartedProduct= {
                 productId : this.id,
                 quantity : 1,
             }
-            if (currentUserObj!==null){
+            if (currentUserObj!==null&&currentUserObj.userType=='customer'){
                 let index = allUsers.findIndex(user => user.id===currentUserObj.id)
                 allUsers[index].cart.push(cartedProduct);
                 currentUserObj.cart.push(cartedProduct);
+                storageModule.setItem('users',allUsers);
+                storageModule.setItem('currentUser',currentUserObj);
                 console.log(allUsers[index]);
             }
-            else{
-
+            else if(currentUserObj==null){
+                guestCartArr.push(cartedProduct);
+                storageModule.setItem('guest-cart',guestCartArr)
             }
+            else;
+
             cartBtns[i].querySelector('span').innerText = "  Added to Cart";
             cartBtns[i].querySelector('button').style.backgroundColor='lightgreen';
             this.removeEventListener('click', addAction); // removing the event after the first click
@@ -471,6 +480,8 @@ function openModal(){
             let innerCarousel = document.querySelector('#innerCarousel');
             innerCarousel.innerHTML='';
             let modalProduct = allProducts.find((product) => product.productId==this.id)
+            let addToCartBtn = document.querySelector('.cart-btn-modal button');
+            addToCartBtn.id=modalProduct.productId;
             modalProduct.images.forEach((img,index)=>{
 
                 
@@ -516,6 +527,80 @@ function openModal(){
                 productView.append(brandP,nameP,priceSpan,discountSpan,descriptionP)
             else
                 productView.append(brandP,nameP,priceSpan,descriptionP);
+
+            
+            addtoCartModal();    // Invoking Add to cart Modal
         })
+       
     }
+}
+
+function addtoCartModal(){
+    let controlButtons = document.querySelectorAll('.input-group-text');
+    let cartQuantity= document.querySelector('.input-group input');
+    controlButtons[0].setAttribute('disabled','true');
+    controlButtons[0].classList.add('disabled');
+    cartQuantity.value=1;
+    controlButtons[0].addEventListener('click',function(e){
+            if(cartQuantity.value==2){
+                controlButtons[0].setAttribute('disabled','true');
+                controlButtons[0].classList.toggle('disabled');
+            }
+            --cartQuantity.value;
+            e.stopImmediatePropagation(); // stopping the event from firing for other modals causing incrementing or decrementing values by more than one at a time
+            
+    })
+    controlButtons[1].addEventListener('click',function(e){
+        if(cartQuantity.value==1){
+            controlButtons[0].classList.toggle('disabled');
+            controlButtons[0].removeAttribute('disabled');
+        }
+            ++cartQuantity.value
+            e.stopImmediatePropagation(); // stopping the event from firing for other modals causing incrementing or decrementing values by more than one at a time
+        
+    })
+    let addToCartBtn = document.querySelector('.cart-btn-modal button');
+    addToCartBtn.addEventListener('click',function(){
+        let cartedProduct = {
+            productId : this.id,
+            quantity : Number(cartQuantity.value)
+        }
+        if (currentUserObj!==null&&currentUserObj.userType=='customer'){
+            
+            // Finding The Current User Index
+            let index = allUsers.findIndex(user => user.id===currentUserObj.id);
+           // Check if the product already exists in the currentUser Cart
+           const cartIndex = currentUserObj.cart.findIndex(product => product.productId === cartedProduct.productId);
+
+            if (cartIndex !== -1){
+                // Product already exists , just updating the quantity
+                currentUserObj.cart[cartIndex].quantity=cartedProduct.quantity;
+                allUsers[index].cart[cartIndex].quantity=cartedProduct.quantity;
+                storageModule.setItem('users',allUsers);
+                storageModule.setItem('currentUser',currentUserObj);
+            }else {
+                // Product is not already carted
+                allUsers[index].cart.push(cartedProduct);
+                currentUserObj.cart.push(cartedProduct);
+                storageModule.setItem('users',allUsers);
+                storageModule.setItem('currentUser',currentUserObj);
+            }
+            console.log(allUsers[index]);
+        }
+        else if(currentUserObj==null){
+            const cartIndex = guestCartArr.findIndex(product => product.productId === cartedProduct.productId);
+            if (cartIndex !== -1){
+                // Product already exists , just updating the quantity
+                guestCartArr[cartIndex].quantity=cartedProduct.quantity;
+                storageModule.setItem('guest-cart',guestCartArr)
+                
+            }else {
+                // Product is not already carted
+                guestCartArr.push(cartedProduct);
+                storageModule.setItem('guest-cart',guestCartArr)
+            }
+            console.log(guestCartArr);
+        }
+        else;
+    })
 }

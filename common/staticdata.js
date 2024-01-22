@@ -208,7 +208,7 @@ let products = [
       category: "Men",
       discount: 0.2,
       stock: 1,
-      description: "This is A Description of Watch 1",
+      description: "This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1",
       sellerID: 2,
       addedDate: "2023-08-20T10:10:14.532Z",
       specifications: {
@@ -1682,5 +1682,5 @@ let currentUser = {
   wishList: [],
   cart: []
 };
-let cart = [];
-export {users,orders,products,ordersHistory,currentUser,cart};
+let guestCart = [];
+export {users,orders,products,ordersHistory,currentUser,guestCart};
