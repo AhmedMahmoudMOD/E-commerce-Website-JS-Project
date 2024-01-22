@@ -70,6 +70,7 @@ let users = [
         country: "China",
         zipCode: "18746",
       },
+      cart: [{ productId: 1, quantity: 1 }, { productId: 2, quantity: 1 }, { productId: 3, quantity: 3 }, { productId: 4, quantity: 1 }],
       orderHistory: [],
       wishList: [],
     },
@@ -1692,4 +1693,25 @@ let users = [
       ]
     }
   ]
-export {users,cart,products};
+
+let currentUser = {
+  id: 4,
+  userType: "customer",
+  userName: "gamma_customer",
+  email: "customer1@example.com",
+  password: "qwerty123",
+  firstName: "Grace",
+  lastName: "Brown",
+  phoneNumber: "4497460887",
+  location: {
+    street: "Maple",
+    city: "Houston",
+    state: "MA",
+    country: "China",
+    zipCode: "18746",
+  },
+  cart: [{ productId: 1, quantity: 1 }, { productId: 2, quantity: 1 }, { productId: 3, quantity: 3 }, { productId: 4, quantity: 1 }],
+  orderHistory: [],
+  wishList: [],
+}
+export {users,cart,products, currentUser};
