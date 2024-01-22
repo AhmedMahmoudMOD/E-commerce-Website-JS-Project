@@ -1,0 +1,13 @@
+
+.section-wrapper{
+    padding-top: 100px;
+    padding-bottom: 30px;
+    width: 90%;
+    margin: 0px auto;
+}
+#product-section{
+    width: 80%;
+}
+#uppercat{
+    height: 3vh;
+}
