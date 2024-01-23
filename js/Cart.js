@@ -1,19 +1,39 @@
-import { users, products, cart } from "../common/staticdata.js"
 import { storageModule } from "../common/storageModule.js"
 
-storageModule.setItem("users", users);
-storageModule.setItem("products", products);
-storageModule.setItem("cart", cart);
+function CheckIfUserIsCustomer() // Check if the user is a customer or not
+{
+    if (storageModule.getItem("currentUser") != null) // If the user is not logged in then redirect him to the login page
+    {
+        if (storageModule.getItem("currentUser").userType != "customer") // If the user is a customer then get the cart from the storage
+        {
+            alert("You must login as a customer first");
+            window.location.href = "Login.html";
+        }
+    }
+}
+
+function GetProductFromCart() // Get the product from the cart in the storage
+{
+    if (storageModule.getItem("currentUser") == null) // If the user is not logged in then redirect him to the login page
+    {
+        return storageModule.getItem("guest-cart"); // Get the cart from the storage
+    }
+    else // If the user is logged in then check if he is a customer or not
+    {
+        return storageModule.getItem("currentUser").cart; // Get the cart from the storage
+    }
+}
 
 function GetProductsInformation() // Get each product information from cart and return it in an array of objects with the product information
 {
-    let datacart = storageModule.getItem("cart"); // Get the cart from the storage
+    let datacart = GetProductFromCart();
+
     let fullData = [];
 
     // Get the product information from the storage and push it to the fullData array
     datacart.forEach(element => {
         let product = storageModule.getItem("products").find(x => x.productId == element.productId);
-        fullData.push({ id: element.productId, title: product.name, description: product.description, price: product.price, quantity: element.quantity, image: product.images[0] });
+        fullData.push({ id: element.productId, title: product.name, description: product.description, price: product.price, discount: product.discount, quantity: element.quantity, image: product.images[0] });
     });
 
     return fullData;
@@ -21,18 +41,42 @@ function GetProductsInformation() // Get each product information from cart and 
 
 function ChangeItemFromCart(id, key, value) // Change the cart information in the storage
 {
-    let cart = storageModule.getItem("cart"); // Get the cart from the storage
+    let cart = GetProductFromCart(); // Get the cart from the storage
     let index = cart.findIndex(x => x.productId == id); // Get the index of the product in the cart
 
-    cart[index][key] = value; // Change the product information in the cart
-    storageModule.setItem("cart", cart); // Set the cart in the storage
+    if (storageModule.getItem("currentUser") == null) // If the user is not logged in then redirect him to the login page
+    {
+        cart[index][key] = value; // Change the product information in the cart
+        storageModule.setItem("guest-cart", cart); // Set the cart in the storage
+    }
+    else {
+        let user = storageModule.getItem("users").find(x => x.id == storageModule.getItem("currentUser").id); // Get the user from the storage
+        cart[index][key] = value; // Change the product information in the cart
+        user.cart = cart; // Set the cart in the storage
+        storageModule.setItem("currentUser", user); // Set the user in the storage
+        storageModule.setItem("users", storageModule.getItem("users").filter(x => x.id != user.id).concat(user)); // Set the user in the storage
+    }
 }
 
 function DeleteItemFromCart(id) // Delete the cart product information in the storage
 {
-    let cart = storageModule.getItem("cart"); // Get the cart from the storage
-    cart = cart.filter(x => x.productId != id); // Delete the product from the cart
-    storageModule.setItem("cart", cart); // Set the cart in the storage
+    let cart = GetProductFromCart(); // Get the cart from the storage
+    let index = cart.findIndex(x => x.productId == id); // Get the index of the product in the cart
+
+    if (storageModule.getItem("currentUser") == null) // If the user is not logged in then redirect him to the login page
+    {
+        cart = cart.filter(x => x.productId != id); // Delete the product from the cart
+        storageModule.setItem("guest-cart", cart); // Set the cart in the storage
+    }
+    else {
+        let user = storageModule.getItem("users").find(x => x.id == storageModule.getItem("currentUser").id); // Get the user from the storage
+
+        cart = cart.filter(x => x.productId != id); // Delete the product from the cart
+        user.cart = cart; // Set the cart in the storage
+
+        storageModule.setItem("currentUser", user); // Set the user in the storage
+        storageModule.setItem("users", storageModule.getItem("users").filter(x => x.id != user.id).concat(user)); // Set the user in the storage
+    }
 }
 
 function reloadWithWarning(changedProducts) // Reload the page and inform the user with the changes
@@ -49,7 +93,7 @@ function reloadWithWarning(changedProducts) // Reload the page and inform the us
         <strong>Quantity changed!</strong> The quantity has been changed to the maximum quantity available in stock.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>`;
-        
+
     });
 }
 
@@ -66,11 +110,11 @@ function LoadData() // Load the products information to the cart page
     // Loop through the products information and add it to the cart list
     Data.forEach(Product => {
 
-        items += Product.price * Product.quantity; // Calculate the total items price in the cart
-        total += Product.price * Product.quantity; // Calculate the total price in the cart after adding the shipping price
+        items += (Product.price - (Product.price * Product.discount)) * Product.quantity; // Calculate the total items price in the cart
+        total += (Product.price - (Product.price * Product.discount)) * Product.quantity; // Calculate the total price in the cart after adding the shipping price
 
-        let price = Math.floor(Product.price); // Get the price without the decimal part
-        let supPrice = (Product.price % 1 * 100).toFixed(); // Get the decimal part of the price
+        let price = Math.floor(Product.price - (Product.price * Product.discount)); // Get the price without the decimal part
+        let supPrice = ((Product.price - (Product.price * Product.discount)) % 1 * 100).toFixed(); // Get the decimal part of the price
 
         // Add the product information to the cart list (adding cards)
         CartList.innerHTML += `
@@ -117,6 +161,7 @@ function LoadData() // Load the products information to the cart page
     });
 }
 
+CheckIfUserIsCustomer(); // Check if the user is a customer or not
 LoadData(); // Load the products information to the cart page
 
 
@@ -135,55 +180,50 @@ document.addEventListener("click", function (e) {
     // implement checkout button functionality
     if (e.target.id == "checkout") {
         // check if the user is logged in or not
-        if (/*storageModule.getItem("currentUser") == null*/false) {
+        if (storageModule.getItem("currentUser") == null) {
             alert("You must login first");
         }
         else {
             // check if the user is a customer or not
-            if (/*storageModule.getItem("currentUser").UserType == "customer"*/true) {
-                // check if the cart is empty or not
-                if (storageModule.getItem("cart").length == 0) {
-                    alert("Your cart is empty");
-                }
-                else {
-                    // check if the products quantity is available or not
-                    let cart = storageModule.getItem("cart"); // Get the cart from the storage
-                    let changedProducts = []; // array of products that has quantity more than the stock
-
-                    cart.forEach(product => {
-                        let productInfo = storageModule.getItem("products").find(x => x.productId == product.productId); // Get the product information from the storage
-
-                        if (product.quantity > productInfo.stock) // checl if the quantity is more than the stock
-                        {
-                            // chenge the quantity to max quantity and notify the user about the change
-                            ChangeItemFromCart(product.productId, "quantity", productInfo.stock);
-                            changedProducts.push(product.productId);
-                        }
-                    })
-
-                    if (changedProducts.length > 0) // if there are changes then reload the page and infor user with changes
-                    {
-                        reloadWithWarning(changedProducts);
-                        return;
-                    }
-
-                    // check if the user has a saved address or not
-                    if (/*storageModule.getItem("currentUser").Location == null*/false) {
-                        alert("You must add an address first");
-                    }
-                    else {
-                        // check if the user has a saved phone number or not
-                        if (/*storageModule.getItem("currentUser").PhoneNumber == null*/false) {
-                            alert("You must add a phone number first");
-                        }
-                        else {
-                            alert("Your order has been placed"); ///////////////////////////////////
-                        }
-                    }
-                }
+            // check if the cart is empty or not
+            if (GetProductFromCart() == 0) {
+                alert("Your cart is empty");
             }
             else {
-                alert("You must login as a customer first");
+                // check if the products quantity is available or not
+                let cart = GetProductFromCart(); // Get the cart from the storage
+                let changedProducts = []; // array of products that has quantity more than the stock
+
+                cart.forEach(product => {
+                    let productInfo = storageModule.getItem("products").find(x => x.productId == product.productId); // Get the product information from the storage
+
+                    if (product.quantity > productInfo.stock) // checl if the quantity is more than the stock
+                    {
+                        // chenge the quantity to max quantity and notify the user about the change
+                        ChangeItemFromCart(product.productId, "quantity", productInfo.stock);
+                        changedProducts.push(product.productId);
+                    }
+                })
+
+                if (changedProducts.length > 0) // if there are changes then reload the page and infor user with changes
+                {
+                    reloadWithWarning(changedProducts);
+                    return;
+                }
+
+                // check if the user has a saved address or not
+                if (storageModule.getItem("currentUser").location == null) {
+                    alert("You must add an address first");
+                }
+                else {
+                    // check if the user has a saved phone number or not
+                    if (storageModule.getItem("currentUser").phoneNumber == null) {
+                        alert("You must add a phone number first");
+                    }
+                    else {
+                        window.location.href = "Checkout.html"; // redirect the user to the checkout page
+                    }
+                }
             }
         }
     }

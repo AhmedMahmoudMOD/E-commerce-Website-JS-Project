@@ -1,10 +1,4 @@
-import { users, products, cart, currentUser } from "../common/staticdata.js"
 import { storageModule } from "../common/storageModule.js"
-
-storageModule.setItem("users", users);
-storageModule.setItem("products", products);
-storageModule.setItem("cart", cart);
-storageModule.setItem("currentUser", currentUser);
 
 
 //////////////////////////// Call Functions ////////////////////////////
@@ -18,19 +12,19 @@ function LoginCheck() // Check if the user is logged in or not
 {
     if (storageModule.getItem("currentUser") == null) // If the user is not logged in then redirect him to the login page
     {
-        //alert("You must login first");
+        alert("You must login first");
         window.location.href = "login.html";
     }
     else // If the user is logged in then check if he is a customer or not
     {
         if (storageModule.getItem("currentUser").userType != "customer") // If the user is not a customer then redirect him to the home page
         {
-            //alert("You must login as a customer first");
-            window.location.href = "home.html";
+            alert("You must login as a customer first");
+            window.location.href = "Login.html";
         }
         else if (storageModule.getItem("currentUser").cart.length == "") // check if the cart is empty
         {
-            //alert("Your cart is empty");
+            alert("Your cart is empty");
             window.location.href = "home.html";
         }
     }
@@ -44,7 +38,7 @@ function GetProductsInformation() // Get each product information from cart and 
     // Get the product information from the storage and push it to the fullData array
     datacart.forEach(element => {
         let product = storageModule.getItem("products").find(x => x.productId == element.productId);
-        fullData.push({ id: element.productId, title: product.name, description: product.description, price: product.price, quantity: element.quantity, image: product.images[0] });
+        fullData.push({ id: element.productId, title: product.name, description: product.description, price: product.price, discount: product.discount, quantity: element.quantity, image: product.images[0] });
     });
 
     return fullData;
@@ -128,13 +122,13 @@ function LoadData() // Load the products information to the cart page
     // Loop through the products information and add it to the cart list
     Data.forEach(Product => {
 
-        items += Product.price * Product.quantity; // Calculate the total items price in the cart
+        items += (Product.price - (Product.price * Product.discount)) * Product.quantity; // Calculate the total items price in the cart
         totalAfterShipping = items + 10; // Calculate the total price in the cart after adding the shipping price
         tax = totalAfterShipping * 0.14; // Calculate the tax
         totalAfterTax = totalAfterShipping * 1.14; // Calculate the total price in the cart after adding the tax
 
-        let price = Math.floor(Product.price); // Get the price without the decimal part
-        let supPrice = (Product.price % 1 * 100).toFixed(); // Get the decimal part of the price
+        let price = Math.floor(Product.price-(Product.price * Product.discount)); // Get the price without the decimal part
+        let supPrice = ((Product.price - (Product.price * Product.discount)) % 1 * 100).toFixed(); // Get the decimal part of the price
 
         // Add the product information to the cart list (adding cards)
         CartList.innerHTML += `
