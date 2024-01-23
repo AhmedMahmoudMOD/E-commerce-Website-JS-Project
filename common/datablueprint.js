@@ -68,7 +68,7 @@ c={
   // Orders Blue Print //
   let Orders = [{
     orderID,
-    sellerID,
+    sellerID: [],
     customerID,
     placeDate,
     orderStatus,

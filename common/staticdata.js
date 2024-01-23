@@ -15,7 +15,6 @@ let users = [
       country: "Australia",
       zipCode: "12345",
     },
-    cart: []
   },
   {
     id: 'U2',
@@ -34,8 +33,7 @@ let users = [
       zipCode: "70734",
     },
     products: [],
-    orders: [],
-    cart: []
+    orderHistory: [],
   },
   {
     id: 'U3',
@@ -54,8 +52,7 @@ let users = [
       zipCode: "13564",
     },
     products: [],
-    orders: [],
-    cart: []
+    orderHistory: [],
   },
   {
     id: 'U4',
@@ -209,7 +206,7 @@ let products = [
       discount: 0.2,
       stock: 1,
       description: "This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1 This is A Description of Watch 1",
-      sellerID: 2,
+      sellerID: "U2",
       addedDate: "2023-08-20T10:10:14.532Z",
       specifications: {
         movement: "Automatic",
@@ -239,7 +236,7 @@ let products = [
       discount: 0.1,
       stock: 30,
       description: "This is A Description of Watch 2",
-      sellerID: 2,
+      sellerID: "U3",
       addedDate: "2023-05-06T00:23:37.212Z",
       specifications: {
         movement: "Mechanical",
@@ -1660,7 +1657,6 @@ let products = [
   ];
 
 let orders = [];
-let ordersHistory =[];
 
 let currentUser = {
   id: 'U4',
@@ -1683,4 +1679,4 @@ let currentUser = {
   cart: []
 };
 let guestCart = [];
-export {users,orders,products,ordersHistory,currentUser,guestCart};
+export {users,orders,products,currentUser,guestCart};

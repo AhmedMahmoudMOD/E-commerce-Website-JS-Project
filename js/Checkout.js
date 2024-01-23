@@ -1,4 +1,5 @@
 import { storageModule } from "../common/storageModule.js"
+import { IDGenerator } from "../common/idclass.js"
 
 
 //////////////////////////// Call Functions ////////////////////////////
@@ -38,7 +39,7 @@ function GetProductsInformation() // Get each product information from cart and 
     // Get the product information from the storage and push it to the fullData array
     datacart.forEach(element => {
         let product = storageModule.getItem("products").find(x => x.productId == element.productId);
-        fullData.push({ id: element.productId, title: product.name, description: product.description, price: product.price, discount: product.discount, quantity: element.quantity, image: product.images[0] });
+        fullData.push({ id: element.productId, sellerID: product.sellerID, title: product.name, description: product.description, price: product.price, discount: product.discount, quantity: element.quantity, image: product.images[0] });
     });
 
     return fullData;
@@ -179,7 +180,7 @@ function LoadData() // Load the products information to the cart page
 }
 
 // check if price changed or stock is less than quantity in cart before checkout
-function CheckStockAndPrice() {
+function PlaceOrder() {
     let changedProducts = []; // array of products that changed
     let cartpricesfromhtml = document.getElementsByName("price"); // get prices from html
 
@@ -187,7 +188,7 @@ function CheckStockAndPrice() {
     cartpricesfromhtml.forEach(element => {
         let product = storageModule.getItem("products").find(x => x.productId == element.closest(".card").id); // get product from storage
         // check if price changed
-        if (product.price != element.innerText.slice(1)) {
+        if ((product.price - (product.price * product.discount)) != element.innerText.slice(1)) {
             changedProducts.push(element.productId);
         }
         // check if stock is less than quantity in cart
@@ -203,6 +204,7 @@ function CheckStockAndPrice() {
         reloadWithWarning(changedProducts);
     }
     else {
+        CreateOrder(); // Create the order
         EmptyCart(); // Empty the cart
         window.location.href = "Success.html";
         //alert("Your order has been placed successfully");
@@ -233,10 +235,49 @@ function LoadShippingAddress() // Load the shipping address
     ShippingAddress.innerText = `${user.firstName} ${user.lastName},\n${user.phoneNumber}\n${address.street}, ${address.city}, ${address.state}, ${address.zipCode}`;
 }
 
+function CreateOrder() // Create the order
+{
+    let user = storageModule.getItem("users").find(x => x.id == storageModule.getItem("currentUser").id); // Get the user from the storage
+    let usercart = storageModule.getItem("currentUser").cart; // Get the cart from the storage
+    let fullusercart = GetProductsInformation(); // Get the products information from the storage
+    let orders = storageModule.getItem("orders"); // Get the orders from the storage
+    let orderid = IDGenerator.generateID("order"); // Order id
+    let sellerid = [];
+
+    // Loop through the cart and get the seller id
+    fullusercart.forEach(element => {
+        if (sellerid.includes(element.sellerID) == false) // Check if the seller id is already in the array
+            sellerid.push(element.sellerID);
+    });
+
+    console.log(usercart);
+    // add price and quantity to products in cart
+    usercart.forEach(element => {
+        let Product = storageModule.getItem("products").find(x => x.productId == element.productId); // Get the product from the storage
+        element.price = (Product.price - (Product.price * Product.discount));
+    });
+
+    // Create the order
+    orders.push({ orderID: orderid, sellerID: sellerid, customerID: user.id, products: usercart, placeDate: new Date(), orderStatus: "Pending", deliverDate: new Date() + 2});
+
+    storageModule.setItem("orders", orders); // Set the orders in the storage
+
+    // push order to customer order history
+    user.orderHistory.push(orderid);
+    storageModule.setItem("currentUser", user); // Set the user in the storage
+    storageModule.setItem("users", storageModule.getItem("users").filter(x => x.id != user.id).concat(user)); // Set the user in the storage
+
+    // push order to seller order history
+    sellerid.forEach(element => {
+        let seller = storageModule.getItem("users").find(x => x.id == element); // Get the seller from the storage
+        seller.orderHistory.push(orderid);
+        storageModule.setItem("users", storageModule.getItem("users").filter(x => x.id != seller.id).concat(seller)); // Set the seller in the storage
+    });
+}
+
 //////////////////////////// Event Listeners ////////////////////////////
 document.addEventListener("click", function (e) {
 
-    console.log(e.target);
     // implement delete button functionality
     if (e.target.name == "delete" || e.target.parentElement.name == "delete") {
         let product = e.target.closest(".card"); // Get the product card
@@ -249,7 +290,7 @@ document.addEventListener("click", function (e) {
 
     // implement checkout button functionality
     else if (e.target.id == "placeOrder" || e.target.parentElement.id == "placeOrder") {
-        CheckStockAndPrice(); // check if price changed or stock is less than quantity in cart before checkout
+        PlaceOrder(); // check if price changed or stock is less than quantity in cart before checkout
     }
 
     // implement save address button functionality
