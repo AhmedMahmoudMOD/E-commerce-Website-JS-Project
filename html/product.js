@@ -1,6 +1,4 @@
-
 import {storageModule} from '../common/storageModule.js';
-import { imgHover  , addToCart as cardAddtoCart} from './dynamic.js';
 
 let allProducts = storageModule.getItem('products');
 let allUsers = storageModule.getItem('users');
@@ -17,11 +15,12 @@ window.addEventListener('load',function(){
     renderInfo(shownProduct);
     renderTabs(shownProduct);
     addtoCart();
-    navLiksControl();
+    navLinksControl();
     filterRelated(shownProduct);
     renderRelated(relatedProducts);
     imgHover(relatedProducts);
     cardAddtoCart();
+   
 
 })
 function getPID(){
@@ -214,7 +213,7 @@ function addtoCart(){
     })
 }
 
-function navLiksControl(){
+function navLinksControl(){
     let lastProductId = `P${allProducts.length}`;
     let nextId = allProducts[productIndex+1]?.productId;
     let prevId = allProducts[productIndex-1]?.productId;
@@ -256,9 +255,10 @@ function filterRelated(shownProduct){
 
 function renderRelated(relatedProducts){
     productPanel.innerHTML = "";
+    console.log(relatedProducts);
     relatedProducts.forEach((product,index) => {
         let colDiv=document.createElement('div');
-        colDiv.classList.add('col')
+        colDiv.classList.add('col','fade-in')
         /* col Div Created */
         let productBox = document.createElement('div');
         productBox.classList.add('product-box');
@@ -381,4 +381,61 @@ function renderRelated(relatedProducts){
         productPanel.appendChild(colDiv);
 })
 }
+
+function imgHover (shownProducts){
+    let proboxes=document.querySelectorAll('.product-box');
+    for (let i=0;i<proboxes.length;i++){
+        proboxes[i].addEventListener('mouseover',function(){
+            proboxes[i].querySelectorAll('img')[0].src=shownProducts[i].images[1];
+        })
+        proboxes[i].addEventListener('mouseleave',function(){
+            proboxes[i].querySelectorAll('img')[0].src=shownProducts[i].images[0];
+        })
+    }
+}
+function cardAddtoCart (){
+    let cartBtns=document.querySelectorAll('.cart-btn-card');
+    for (let i=0;i<cartBtns.length;i++){
+        cartBtns[i].addEventListener('click',function addAction(e){
+            console.log(currentUserObj);
+            let cartedProduct= {
+                productId : this.id,
+                quantity : 1,
+            }
+            if (currentUserObj!==null&&currentUserObj.userType=='customer'){
+                let index = allUsers.findIndex(user => user.id===currentUserObj.id)
+                allUsers[index].cart.push(cartedProduct);
+                currentUserObj.cart.push(cartedProduct);
+                storageModule.setItem('users',allUsers);
+                storageModule.setItem('currentUser',currentUserObj);
+                console.log(allUsers[index]);
+            }
+            else if(currentUserObj==null){
+                guestCartArr.push(cartedProduct);
+                storageModule.setItem('guest-cart',guestCartArr)
+            }
+            else;
+
+            cartBtns[i].querySelector('span').innerText = "  Added to Cart";
+            cartBtns[i].querySelector('button').classList.remove('btn-light');
+            cartBtns[i].querySelector('button').classList.add('btn-success');
+            this.removeEventListener('click', addAction); // removing the event after the first click
+        })
+        
+    }
+}
+
+
+// function isBottomOfPage() {
+//     return window.innerHeight + window.scrollY >= document.body.offsetHeight-10;
+//   }
+
+//   // Event listener for the scroll event
+//   window.addEventListener('scroll', function () {
+//     // If the user has scrolled to the bottom, load related products
+//     if (isBottomOfPage()) {
+//      console.log('sus');
+     
+//     }
+//   });
 

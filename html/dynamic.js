@@ -201,7 +201,7 @@ function renderProducts(products){
         
 }
 
-export function imgHover (shownProducts){
+function imgHover (shownProducts){
     let proboxes=document.querySelectorAll('.product-box');
     for (let i=0;i<proboxes.length;i++){
         proboxes[i].addEventListener('mouseover',function(){
@@ -351,7 +351,7 @@ function renderPagination(products) {
 
 // Adding To Cart Function // 
 
-export function addToCart (){
+function addToCart (){
     let cartBtns=document.querySelectorAll('.cart-btn-card');
     for (let i=0;i<cartBtns.length;i++){
         cartBtns[i].addEventListener('click',function addAction(e){
