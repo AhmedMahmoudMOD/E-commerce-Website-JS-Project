@@ -1,7 +1,10 @@
 import { storageModule } from "../common/storageModule.js";
+import { users, products } from "../common/staticdata.js";
+
+storageModule.setItem("users",users);
+
 
 let arrusers = storageModule.getItem("users");
-console.log(arrusers);
 var ids = document.querySelectorAll(".nav-link");
 
 // load clicked tag
@@ -26,12 +29,9 @@ function loadContent(page) {
 
   function loadUserContent() {
     content.innerHTML = " ";
-    // table div
-    // opretaions div
     let upper = document.createElement("div");
     upper.id = "operations";
-    upper.classList.add("opertaionsdiv");
-    upper.classList.add("sticky-top");
+    upper.classList.add("operationsdiv");
 
     let search = document.createElement("input");
     search.classList.add("form-control");
@@ -42,27 +42,78 @@ function loadContent(page) {
     searchbutton.classList.add("btn", "btn-primary", "btn-sm", "m-2");
     searchbutton.type = "button";
     searchbutton.value = "Search";
-    // Functionality of search
-    searchbutton.onclick = function () {
-      
 
+    // Functionality of search on button click
+    searchbutton.onclick = function () {
+      performSearch(search.value.toUpperCase());
     };
+
+    // Functionality of search on keyup
+    search.addEventListener("keyup", function () {
+      performSearch(search.value.toUpperCase());
+    });
 
     // Appending search and searchbutton to div
     upper.append(search, searchbutton);
 
-    // Appending the upper div to the content
-    content.prepend(upper);
+    // Creating and appending the select element
+    let select = document.createElement("select");
+    select.classList.add("form-control", "my-select"); // Add your own class if needed
 
-    // Creating table
-    tableCreate();
+    // Array of options
+    let optionsArray = ["5", "10", "15", "20", "30"];
+
+    // Adding options to select
+    optionsArray.forEach(function (optionValue) {
+      let option = document.createElement("option");
+      option.value = optionValue;
+      option.text = optionValue;
+      select.appendChild(option);
+    });
+
+    // Appending select to div
+    upper.appendChild(select);
+
+    // Appending the upper div to the content
+    content.appendChild(upper);
+
+    // Initial table creation with default number of rows
+    select.addEventListener("change", function (e) {
+      let num = e.target.value;
+      tableCreate(parseInt(num));
+    });
+
+    // Initial table creation with default number of rows
+    tableCreate(parseInt(select.value));
   }
 
-  function tableCreate() {
+  function performSearch(filter) {
+    let table = document.getElementById("usertable");
+    let tr = table.getElementsByTagName("tr");
+
+    for (let i = 0; i < tr.length; i++) {
+      let td = tr[i].getElementsByTagName("td")[2]; // Assuming the user name is in the second column (index 1)
+      if (!td) continue;
+      let txtValue = td.textContent || td.innerText;
+
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+
+  function tableCreate(rowsToShow) {
+    // Remove existing table if it exists
+    var existingTable = document.getElementById("usertable");
+    if (existingTable) {
+      existingTable.remove();
+    }
+
     // Create elements <table> and a <tbody>
-    let biggerdiv = document.createElement("div");
-    biggerdiv.classList.add("table-responsive");
     var tbl = document.createElement("table");
+    tbl.id = "usertable";
     tbl.classList.add("table");
     var tblBody = document.createElement("tbody");
     tbl.classList.add("table-responsive");
@@ -70,10 +121,13 @@ function loadContent(page) {
     tbl.classList.add("table-hover");
 
     // Add table headers
-    var headers = Object.keys(arrusers[0]);
-
+    var headers = Object.keys(arrusers[4]);
+    //	PRODUCTS
     var trHeader = document.createElement("tr");
     headers.forEach(function (headerText) {
+      if (headerText == "products") {
+        return;
+      }
       var th = document.createElement("th");
       th.setAttribute("scope", "col");
       th.appendChild(document.createTextNode(headerText));
@@ -86,7 +140,7 @@ function loadContent(page) {
     tblBody.appendChild(trHeader);
 
     // Cells creation
-    arrusers.forEach(function (user) {
+    arrusers.slice(0, rowsToShow).forEach(function (user) {
       var row = document.createElement("tr");
 
       headers.forEach(function (header) {
@@ -95,15 +149,16 @@ function loadContent(page) {
         // Special handling for 'location' property
         if (header === "location") {
           // Convert location object to a string for display
-          cell.appendChild(
-            document.createTextNode(JSON.stringify(user[header]))
-          );
-        } else {
+          //console.log(user[header]);
+          cell.innerText = `${user[header].street}, ${user[header].city},${user[header].state},${user[header].country},${user[header].zipCode}`;
+        } else if (header == "products") {return;}  
+        else {
           cell.appendChild(document.createTextNode(user[header]));
         }
 
         row.appendChild(cell);
       });
+      // {"street":"Pine","city":"San Francisco","state":"AZ","country":"France","zipCode":"13564"}
 
       // Actions cell with Edit and Delete buttons
       var actionsCell = document.createElement("td");
@@ -114,7 +169,7 @@ function loadContent(page) {
       editButton.innerHTML = "Edit";
       editButton.addEventListener("click", function () {
         // Implement edit logic here
-         alert("Edit button clicked for user " + user.id);
+        // alert("Edit button clicked for user " + user.id);
       });
 
       var deleteButton = document.createElement("button");
@@ -122,7 +177,10 @@ function loadContent(page) {
       deleteButton.innerHTML = "Delete";
       deleteButton.addEventListener("click", function () {
         // Implement delete logic here
-        // alert("Delete button clicked for user " + user.id);
+        if (confirm("Are you sure you want to delete this user?")) {
+          deleteProduct(user.id);
+          tableCreate(parseInt(select.value));
+        }
       });
 
       actionsCell.appendChild(editButton);
@@ -135,10 +193,23 @@ function loadContent(page) {
 
     // Append the <tbody> inside the <table>
     tbl.appendChild(tblBody);
-    // Put <table> in the <body>
-    biggerdiv.appendChild(tbl);
-    // Set table border attribute
-    content.appendChild(biggerdiv);
-    tbl.setAttribute("margin", "30px");
+    // Put <table> in the <content>
+    content.appendChild(tbl);
+  }
+
+  function deleteProduct(userId) {
+    // Find the index of the user with the specified userId
+    const index = arrusers.findIndex((user) => user.id === userId);
+
+    // If the user is found, remove it from the array
+    if (index !== -1) {
+      arrusers.splice(index, 1);
+
+      // Update the local storage with the modified array
+      storageModule.setItem("users", arrusers);
+
+      // Log to console for demonstration
+      console.log("User with ID " + userId + " deleted.");
+    }
   }
 }
