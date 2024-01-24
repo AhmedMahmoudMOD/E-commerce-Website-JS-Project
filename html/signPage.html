@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login & Registration Form</title>
+    <link rel="shortcut icon" href="../images/favicon.png" type="">
     <link rel="stylesheet" href="../css/signTest.css" />
-    <!-- Unicons -->
+    <!-- iconscout Library -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
   </head>
   <body>
@@ -91,7 +92,7 @@
 
                 <div class="input-box city">
                   <span class="details">City</span>
-                  <select name="city" id="" >
+                  <select name="city" id="city" >
                     <option value="" disabled selected >Enter Your city</option>
                     <option value="Damietta">Damietta</option>
                     <option value="Cairo">Cairo</option>
@@ -120,10 +121,10 @@
 
                 <div class="input-box accountType">
                   <span class="details">Account Type</span>
-                  <select name="city" id="">
-                    <option value="" disabled selected>Enter Your city</option>
-                    <option value="Damietta">Customer</option>
-                    <option value="Cairo">Seller</option>
+                  <select name="accountType" id="accountType">
+                    <option value="" disabled selected>Account Type</option>
+                    <option value="customer">Customer</option>
+                    <option value="seller">Seller</option>
                   </select>
                   <i class="uil uil-exclamation-octagon"></i>
                 </div>
@@ -136,6 +137,6 @@
         </div>
       </div>
     </section>
-    <script src="../js/signPage.js"></script>
+    <script src="../js/test.js" type="module"></script>
   </body>
 </html>

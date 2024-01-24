@@ -11,6 +11,7 @@
 }
 a {
   text-decoration: none;
+  color: var(--mainColor);
 }
 .button {
   padding: 6px 24px;
@@ -262,7 +263,7 @@ transform: scale(0.95);
   }
 
   .signup_form form {
-    max-height: 500px;
+    max-height: 400px;
     overflow-y: scroll;
   }
   .user-details::-webkit-scrollbar{
