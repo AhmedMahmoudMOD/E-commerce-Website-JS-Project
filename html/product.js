@@ -215,6 +215,8 @@ function addtoCart(){
 
 function navLinksControl(){
     let lastProductId = `P${allProducts.length}`;
+    let nextLink = document.getElementById('nextLink');
+    let prevLink = document.getElementById('prevLink');
     let nextId = allProducts[productIndex+1]?.productId;
     let prevId = allProducts[productIndex-1]?.productId;
 
@@ -229,7 +231,6 @@ function navLinksControl(){
 
     nextLink.href=`./product.html?product_id=${nextId}`
     prevLink.href=`./product.html?product_id=${prevId}`
-
 
 }
 

@@ -50,19 +50,7 @@ function renderProducts(products){
 
     // Display only the products for the current page
    
-
-    const filteredProducts = products.filter((product) => {
-        const genderFilter =
-            (currentFilterState.men && product.category === 'Men') ||
-            (currentFilterState.women && product.category === 'Women');
-
-        const brandFilter =
-            currentFilterState.brands[product.brand] !== undefined &&
-            currentFilterState.brands[product.brand];
-
-        return genderFilter && brandFilter;
-    });
-    const currentPageProducts = filteredProducts.slice(startIndex, endIndex);
+    const currentPageProducts = products.slice(startIndex, endIndex);
     // console.log(currentPageProducts);
 
     currentPageProducts.forEach((product,index) => {
@@ -195,10 +183,11 @@ function renderProducts(products){
 
         });
         addToCart();
-        renderPagination(filteredProducts);
+        renderPagination(products);
         linkProducts();
         openModal();
         addSearchEvent();
+        
         
 }
 
@@ -236,11 +225,11 @@ function sortAlphDesc(unSortedArray){
     return unSortedArray;
 }
 function sortPriceAsc(unSortedArray){
-    unSortedArray.sort((pone,ptwo)=> pone.price-ptwo.price);
+    unSortedArray.sort((pone,ptwo)=>  (pone.price-pone.price*pone.discount)-(ptwo.price-ptwo.price*ptwo.discount));
     return unSortedArray;
 }
 function sortPriceDesc(unSortedArray){
-    unSortedArray.sort((pone,ptwo)=> ptwo.price-pone.price);
+    unSortedArray.sort((pone,ptwo)=> (ptwo.price-ptwo.price*ptwo.discount)-(pone.price-pone.price*pone.discount));
     return unSortedArray;
 }
 
@@ -252,19 +241,19 @@ function sortProducts(){
         switch(event.target.value){
             case "alph-asc":
                 sortedArr= sortAlphAsc(allProducts)
-                renderProducts(sortedArr);
+                applyFiltersAndSearch();
                 break;
             case "alph-desc":
                 sortedArr = sortAlphDesc(allProducts)
-                renderProducts(sortedArr);
+                applyFiltersAndSearch();
                 break;
             case "price-asc":
                 sortedArr= sortPriceAsc(allProducts)
-                renderProducts(sortedArr);
+                applyFiltersAndSearch();
                 break;  
             case "price-desc":
                 sortedArr= sortPriceDesc(allProducts)
-                renderProducts(sortedArr);
+                applyFiltersAndSearch();
                 break;      
             }
         })
@@ -442,7 +431,8 @@ function filterProductsGender() {
     console.log(currentFilterState);
 
     // Render the products with the updated filter
-    renderProducts(allProducts);
+
+    applyFiltersAndSearch();
 }
 
 function filterProductsBrands(){
@@ -461,7 +451,7 @@ function filterProductsBrands(){
         });
     }
 
-    renderProducts(allProducts);
+    applyFiltersAndSearch();
 }
 
 function linkProducts(){
@@ -646,15 +636,31 @@ function searchProducts (searchValue){
     return searchedProducts;
   }
 
-  function addSearchEvent(){
+
+  function addSearchEvent() {
     const searchInput = document.getElementById("searchInput");
     const searchIcon = document.getElementById("searchIcon");
 
-    searchIcon.addEventListener("click", () => {
-        const searchValue = searchInput.value;
-        console.log(searchInput.value);
-        const searchedResults = searchProducts(searchValue);
-     console.log(searchedResults);
-       renderProducts(searchedResults);
-});
-  }
+    searchIcon.addEventListener("click", applyFiltersAndSearch);
+}
+
+  function applyFiltersAndSearch() {
+    const filteredProducts = allProducts.filter((product) => {
+        const genderFilter =
+            (currentFilterState.men && product.category === 'Men') ||
+            (currentFilterState.women && product.category === 'Women');
+
+        const brandFilter =
+            currentFilterState.brands[product.brand] !== undefined &&
+            currentFilterState.brands[product.brand];
+
+        return genderFilter && brandFilter;
+    });
+
+    const searchValue = searchInput.value;
+    const searchedResults = searchProducts(searchValue);
+
+    // Combine filtered and searched results
+    const combinedResults = filteredProducts.filter(product => searchedResults.includes(product));
+    renderProducts(combinedResults);
+}
