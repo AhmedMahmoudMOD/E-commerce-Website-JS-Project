@@ -1,159 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Panel</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
 
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
-    <link href="../css/admin.css" rel="stylesheet" />
-    <style></style>
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <!-- Navbar -->
-        <nav
-          class="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-dark bg-dark"
-        >
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">Admin Panel</a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ml-auto"></ul>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="../css/admin.css" rel="stylesheet" />
+  <style></style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Admin Panel</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto"></ul>
           </div>
-        </nav>
-      </div>
-
-      <!-- Content -->
-      <div class="row">
-        <!-- Sidebar -->
-        <nav
-          class="col-sm d-none d-md-block col-md-3 col-lg-2 bg-light sidebar bg-body-tertiary navbar-dark bg-dark"
-          id="navbarNav"
-        >
-          <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-              <!-- Your existing sidebar items -->
-              <li class="nav-item">
-                <a class="nav-link active event" href="#">
-                  <i class="fa fa-home"></i> Home
-                </a>
-              </li>
-
-              <span class="text-info"><i class="fa fa-user"></i> Profile:</span>
-              <li class="nav-item">
-                <a class="nav-link" href="#" class="event" name="profile">
-                  <i class="fa fa-user"></i> Profile
-                </a>
-              </li>
-
-              <span class="text-info"
-                ><i class="fa-solid fa-table-cells"></i> Tables :
-              </span>
-              <li class="nav-item">
-                <a class="nav-link" href="#" class="event">
-                  <i class="fa fa-shopping-cart"></i> Product Catalog
-                </a>
-              </li>
-
-              <!-- Users Table -->
-              <li class="nav-item">
-                <a class="nav-link" href="#" class="event">
-                  <i class="fa fa-users"></i> Users Table
-                </a>
-              </li>
-
-              <!-- Sellers Table -->
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  class="fa-solid fa-table"
-                  href="#"
-                  class="event"
-                >
-                  <i class="fa fa-store"></i> Sellers Table
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-
-        <!-- Main Content -->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <!-- Your existing main content -->
-          <div class="container-fluid" id="content"></div>
-        </main>
-      </div>
+        </div>
+      </nav>
     </div>
 
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="input-group flex-nowrap">
-              <span class="input-group-text" id="addon-wrapping">#</span>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="addon-wrapping"
-              />
-            </div>
+    <!-- Content -->
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-sm d-none d-md-block col-md-3 col-lg-2 bg-light sidebar bg-body-tertiary navbar-dark bg-dark"
+        id="navbarNav">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <!-- Your existing sidebar items -->
+            <li class="nav-item">
+              <a class="nav-link active event" href="#">
+                <i class="fa fa-home"></i> Home
+              </a>
+            </li>
+
+            <span class="text-info"><i class="fa fa-user"></i> Profile:</span>
+            <li class="nav-item">
+              <a class="nav-link" href="#" class="event" name="profile">
+                <i class="fa fa-user"></i> Profile
+              </a>
+            </li>
+
+            <span class="text-info"><i class="fa-solid fa-table-cells"></i> Tables :
+            </span>
+            <li class="nav-item">
+              <a class="nav-link" href="#" class="event">
+                <i class="fa fa-shopping-cart"></i> Product Catalog
+              </a>
+            </li>
+
+            <!-- Users Table -->
+            <li class="nav-item">
+              <a class="nav-link" href="#" class="event">
+                <i class="fa fa-users"></i> Users Table
+              </a>
+            </li>
+
+            <!-- Sellers Table -->
+            <li class="nav-item">
+              <a class="nav-link" class="fa-solid fa-table" href="#" class="event">
+                <i class="fa fa-store"></i> Sellers Table
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <!-- Your existing main content -->
+        <div class="container-fluid" id="content">
+          <div>
 
           </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+          <!-- Table creation -->
+          <div class="text-center table-responsive">
+            <table class="table table-striped table-hover align-middle">
+              <thead class="table-primary">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">User Type</th>
+                  <th scope="col">User Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Password</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Phone Number</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Cart</th>
+                  <th scope="col">Orders</th>
+                  <th scope="col">Controls</th>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider" id="adminTableBody">
+              </tbody>
+            </table>
+
+
           </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">#</span>
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+              aria-describedby="addon-wrapping" />
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Bootstrap JS -->
-    <script src="../js/admin.js" type="module"></script>
-    <script src="../js/users.js" type="module"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-  </body>
+  <!-- Bootstrap JS -->
+  <script src="../js/admin.js" type="module"></script>
+  <script src="../js/users.js" type="module"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+
 </html>
