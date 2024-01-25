@@ -11,6 +11,7 @@ let products = storageModule.getItem("products");
 
 
 
+
 function cartToString(cart) {
     if (cart.length == 0) {
         return "Empty";
