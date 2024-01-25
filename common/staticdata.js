@@ -32,7 +32,7 @@ let users = [
       country: "UK",
       zipCode: "70734",
     },
-    products: [],
+    products: ["P2", "P3", "P4", "P5", "P6", "P7", "P8"],
     orders: [],
   },
   {
@@ -73,10 +73,10 @@ let users = [
     orderHistory: [],
     wishList: [],
     cart: [
-      { productId: 1, quantity: 1 },
-      { productId: 2, quantity: 1 },
-      { productId: 3, quantity: 3 },
-      { productId: 4, quantity: 1 },
+      { productId: "P1", quantity: 1 },
+      { productId: "P2", quantity: 1 },
+      { productId: "P3", quantity: 3 },
+      { productId: "P4", quantity: 1 },
     ],
   },
   {
@@ -226,7 +226,7 @@ let products = [
     discount: 0.2,
     stock: 1,
     description: "This is A Description of Watch 1",
-    sellerID: 2,
+    sellerID: "U2",
     addedDate: "2023-08-20T10:10:14.532Z",
     specifications: {
       movement: "Automatic",
@@ -256,7 +256,7 @@ let products = [
     discount: 0.1,
     stock: 30,
     description: "This is A Description of Watch 2",
-    sellerID: 2,
+    sellerID: "U2",
     addedDate: "2023-05-06T00:23:37.212Z",
     specifications: {
       movement: "Mechanical",
@@ -285,7 +285,7 @@ let products = [
     discount: 0.2,
     stock: 3,
     description: "This is A Description of Watch 3",
-    sellerID: 1,
+    sellerID: "U2",
     addedDate: "2023-11-23T10:06:07.965Z",
     specifications: {
       movement: "Mechanical",
@@ -313,7 +313,7 @@ let products = [
     discount: 0.2,
     stock: 10,
     description: "This is A Description of Watch 4",
-    sellerID: 2,
+    sellerID: "U2",
     addedDate: "2023-01-13T19:28:54.656Z",
     specifications: {
       movement: "Quartz",
@@ -344,7 +344,7 @@ let products = [
     discount: 0,
     stock: 1,
     description: "This is A Description of Watch 5",
-    sellerID: 1,
+    sellerID: "U2",
     addedDate: "2023-09-27T17:14:42.210Z",
     specifications: {
       movement: "Automatic",
@@ -374,7 +374,7 @@ let products = [
     discount: 0,
     stock: 1,
     description: "This is A Description of Watch 6",
-    sellerID: 1,
+    sellerID: "U2",
     addedDate: "2023-09-15T14:47:18.868Z",
     specifications: {
       movement: "Mechanical",
@@ -402,7 +402,7 @@ let products = [
     discount: 0.2,
     stock: 10,
     description: "This is A Description of Watch 7",
-    sellerID: 2,
+    sellerID: "U2",
     addedDate: "2023-10-27T15:54:28.678Z",
     specifications: {
       movement: "Quartz",
@@ -430,7 +430,7 @@ let products = [
     discount: 0.1,
     stock: 6,
     description: "This is A Description of Watch 8",
-    sellerID: 2,
+    sellerID: "U2",
     addedDate: "2023-01-05T19:02:39.237Z",
     specifications: {
       movement: "Quartz",
