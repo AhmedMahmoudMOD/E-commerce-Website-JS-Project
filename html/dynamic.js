@@ -1,9 +1,10 @@
 import {storageModule} from "../common/storageModule.js"
-import { products  , currentUser , users , guestCart} from "../common/staticdata.js";
+import { products, orders, currentUser , users , guestCart} from "../common/staticdata.js";
 
 storageModule.setItem('products',products);
 storageModule.setItem('users',users);
 storageModule.setItem('currentUser',currentUser);
+storageModule.setItem('orders',orders);
 let allUsers = storageModule.getItem('users');
 let allProducts = storageModule.getItem('products');
 let currentUserObj = storageModule.getItem('currentUser'); 

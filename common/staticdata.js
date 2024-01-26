@@ -1676,7 +1676,6 @@ let products = [
 ];
 
 let orders = [];
-let ordersHistory = [];
 
 let currentUser = {
   
@@ -1699,4 +1698,4 @@ let currentUser = {
   orders: [],
 };
 let guestCart = [];
-export {users,orders,products,ordersHistory,currentUser,guestCart};
+export {users,orders,products,currentUser,guestCart};
