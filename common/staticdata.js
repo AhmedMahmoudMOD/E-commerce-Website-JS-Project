@@ -1678,4 +1678,25 @@ let products = [
 let orders = [];
 let ordersHistory = [];
 
-export { users, orders, products, ordersHistory };
+let currentUser = {
+  id: 'U4',
+  userType: "customer",
+  userName: "gamma_customer",
+  email: "customer1@example.com",
+  password: "qwerty123",
+  firstName: "Grace",
+  lastName: "Brown",
+  phoneNumber: "4497460887",
+  location: {
+    street: "Maple",
+    city: "Houston",
+    state: "MA",
+    country: "China",
+    zipCode: "18746",
+  },
+  orderHistory: [],
+  wishList: [],
+  cart: []
+};
+let guestCart = [];
+export {users,orders,products,ordersHistory,currentUser,guestCart};
