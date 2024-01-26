@@ -1675,7 +1675,43 @@ let products = [
   },
 ];
 
-let orders = [];
+let orders = [{
+  orderID: "O1",
+  sellerID: ["U2","U3"],
+  customerID:"U4",
+  placeDate : new Date(),
+  orderStatus : "Pending",
+  deliverDate:new Date(),
+  products : [{ id : 'P2' , quantity : 2 , price : 1000
+  },{ id : 'P3' , quantity : 4 , price : 1300
+},{ id : 'P10' , quantity : 3 , price : 1200
+}] ,
+
+},{
+  orderID: "O2",
+  sellerID: ["U2","U3"],
+  customerID:"U4",
+  placeDate : new Date(),
+  orderStatus : "Pending",
+  deliverDate:new Date(),
+  products : [{ id : 'P2' , quantity : 2 , price : 1000
+  },{ id : 'P3' , quantity : 4 , price : 1300
+},{ id : 'P10' , quantity : 3 , price : 1200
+}] ,
+
+},{
+  orderID: "O3",
+  sellerID: ["U2","U3"],
+  customerID:"U4",
+  placeDate : new Date(),
+  orderStatus : "Pending",
+  deliverDate:new Date(),
+  products : [{ id : 'P2' , quantity : 2 , price : 1000
+  },{ id : 'P3' , quantity : 4 , price : 1300
+},{ id : 'P10' , quantity : 3 , price : 1200
+}] ,
+
+}];
 
 let currentUser = {
   
@@ -1695,7 +1731,7 @@ let currentUser = {
     zipCode: "70734",
   },
   products: ["P2", "P3", "P4", "P5", "P6", "P7", "P8"],
-  orders: [],
+  orders: ['O1','O2'],
 };
 let guestCart = [];
 export {users,orders,products,currentUser,guestCart};

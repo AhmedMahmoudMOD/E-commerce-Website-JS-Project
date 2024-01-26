@@ -1,8 +1,8 @@
-export class IDGenerator {
-    static UserID = 10;
-    static ProductID = 50;
-    static OrderID = 0;
-    static generateID(type) {
+let IDGenerator  = {
+  UserID : 10,
+  ProductID : 50,
+  OrderID : 0,
+  generateID(type)  {
         switch (type.toLowerCase()) {
             case "user":
                 return "U" + ++IDGenerator.UserID;
@@ -12,4 +12,5 @@ export class IDGenerator {
                 return "O" + ++IDGenerator.OrderID;
         } 
     }
-}
+};
+export {IDGenerator};

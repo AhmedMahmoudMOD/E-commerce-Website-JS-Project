@@ -1,4 +1,5 @@
 import { storageModule } from "../common/storageModule.js";
+import {IDGenerator} from "../common/idclass.js"
 
 import {users,orders,products,currentUser,guestCart} from "../common/staticdata.js"
 
@@ -10,33 +11,79 @@ let currentUserObj = storageModule.getItem('currentUser');
 let allOrders = storageModule.getItem("orders");
 let sellerProductsIDs = currentUserObj.products;
 let sellerProducts = allProducts.filter(product => sellerProductsIDs.includes(product.productId)); 
+let sellerOrdersIDs = currentUserObj.orders /// modification cand
+let sellerOrders = allOrders.filter(order=>sellerOrdersIDs.includes(order.orderID));
 
 console.log(sellerProductsIDs);
 console.log(sellerProducts);
-createTableHeader();
+console.log(sellerOrders);
 
-function createTableHeader() {
-    const attributesToDisplay = ['ProductID', 'Name', 'Brand', 'Price', 'Discount', 'Stock', 'Description', 'Actions'];
-    const tableHead = document.getElementById('tableHead');
-    const headerRow = document.createElement('tr');
+const pageType = 'products';
+  createTableHeader(pageType);
+  populateTable(pageType);
 
+function createTableHeader(type) {
+  const tableHead = document.getElementById('tableHead');
+  const headerRow = document.createElement('tr');
+
+  if (type === 'orders') {
+    const attributesToDisplay = ['Order ID', 'Customer ID', 'Place Date', 'Order Status', 'Deliver Date', 'Products', 'Actions'];
     attributesToDisplay.forEach(attribute => {
       const th = document.createElement('th');
       th.setAttribute('scope', 'col');
       th.textContent = attribute;
       headerRow.appendChild(th);
     });
-
-    tableHead.appendChild(headerRow);
+  } else if (type === 'products') {
+    const attributesToDisplay = ['Product ID', 'Name', 'Brand', 'Price', 'Discount', 'Stock', 'Description','Actions'];
+    attributesToDisplay.forEach(attribute => {
+      const th = document.createElement('th');
+      th.setAttribute('scope', 'col');
+      th.textContent = attribute;
+      headerRow.appendChild(th);
+    });
   }
 
-function populateProductsTable() {
-    const tableBody = document.getElementById('productsBody');
+  tableHead.appendChild(headerRow);
+}
 
-    // Clear existing rows
-    tableBody.innerHTML = '';
+// Function to populate the table based on the page type
+function populateTable(type) {
+  const dataTable = document.getElementById('dataTable');
+  const tableBody = document.getElementById('tableBody');
+  tableBody.innerHTML = '';
 
-    // Iterate over products and create table rows
+  if (type === 'orders') {
+    sellerOrders.forEach(order => {
+      const row = tableBody.insertRow();
+      row.insertCell().textContent = order.orderID;
+      row.insertCell().textContent = order.customerID;
+      row.insertCell().textContent = order.placeDate;
+      row.insertCell().textContent = order.orderStatus;
+      row.insertCell().textContent = order.deliverDate;
+      const productsCell = row.insertCell();
+      const sellerOnlyProducts = order.products.filter(product => sellerProductsIDs.includes(product.id));
+      console.log(sellerOnlyProducts);
+
+      sellerOnlyProducts.forEach(product => {
+        productsCell.innerHTML += `${product.id}: ${product.quantity} - ${product.price}<br>`;
+      });
+
+      const actionsCell = row.insertCell();
+      const confirmButton = document.createElement('button');
+      confirmButton.textContent = 'Confirm';
+      confirmButton.classList.add('btn', 'btn-success', 'btn-sm', 'mx-1');
+      confirmButton.addEventListener('click',() => changeOrderStatus(order.orderID, 'Confirmed', row));
+      actionsCell.appendChild(confirmButton);
+  
+      const rejectButton = document.createElement('button');
+      rejectButton.textContent = 'Reject';
+      rejectButton.classList.add('btn', 'btn-danger', 'btn-sm', 'mx-1');
+      rejectButton.addEventListener('click',() => changeOrderStatus(order.orderID, 'Rejected', row));
+      actionsCell.appendChild(rejectButton);
+
+    });
+  } else if (type === 'products') {
     sellerProducts.forEach(product => {
       const row = document.createElement('tr');
       row.innerHTML = `
@@ -48,10 +95,10 @@ function populateProductsTable() {
         <td>${product.stock}</td>
         <td>${product.description}</td>
         <td>
-          <button type="button" class="btn btn-sm btn-outline-secondary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal">
+          <button type="button" class="btn mx-1 btn-sm btn-outline-secondary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal">
             Edit
           </button>
-          <button type="button" class="btn btn-sm btn-danger" id="deleteBtn">
+          <button type="button" class="btn mx-1 btn-sm btn-danger" id="deleteBtn">
             Delete
           </button>
         </td>
@@ -63,6 +110,7 @@ function populateProductsTable() {
     
     });
   }
+}
 
   function populateEditForm(productId) {
     const product = sellerProducts.find(p => p.productId === productId);
@@ -118,7 +166,7 @@ function populateProductsTable() {
     
     console.log(sellerProducts[index]);
 
-    populateProductsTable();
+    populateTable("products");
 
     // // Close the modal
     // document.getElementById('editModal').classList.remove('show');
@@ -128,7 +176,7 @@ function populateProductsTable() {
 
   function addProduct() {
     const newProduct = {
-      productId: 'P51', // You need to implement a function to generate a unique product ID
+      productId: IDGenerator.generateID('Product'), 
       name: document.getElementById('addProductName').value,
       brand: document.getElementById('addProductBrand').value,
       price: document.getElementById('addProductPrice').value,
@@ -152,7 +200,7 @@ function populateProductsTable() {
     sellerProducts.push(newProduct);
     console.log(sellerProducts);
 
-    populateProductsTable();
+    populateTable("products");
 
   }
 
@@ -161,7 +209,21 @@ function populateProductsTable() {
     sellerProducts = sellerProducts.filter(p => p.productId !== productId);
 
     // Repopulate the products table
-    populateProductsTable();
+    populateTable("products");
+  }
+
+  function changeOrderStatus(orderID, newStatus, row) {
+    const order = sellerOrders.find(order => order.orderID === orderID);
+    const index = sellerOrders.findIndex(order => order.orderID === orderID);
+
+    if (order) {
+      order.orderStatus = newStatus;
+      row.cells[3].textContent = newStatus;
+    }
+    if (index !== -1) {
+      sellerOrders[index] = order;
+    }
+    console.log(sellerOrders);
   }
 
 
@@ -169,7 +231,5 @@ function populateProductsTable() {
   document.getElementById('saveChangesBtn').addEventListener('click', saveProductChanges);
   document.getElementById('addProductBtn').addEventListener('click', addProduct);
 
-
-  populateProductsTable();
 
   
