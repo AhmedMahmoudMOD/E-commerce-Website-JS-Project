@@ -1679,24 +1679,24 @@ let orders = [];
 let ordersHistory = [];
 
 let currentUser = {
-  id: 'U4',
-  userType: "customer",
-  userName: "gamma_customer",
-  email: "customer1@example.com",
-  password: "qwerty123",
-  firstName: "Grace",
-  lastName: "Brown",
-  phoneNumber: "4497460887",
+  
+  id: "U2",
+  userType: "seller",
+  userName: "alpha_user",
+  email: "seller1@example.com",
+  password: "secretPass",
+  firstName: "John",
+  lastName: "Doe",
+  phoneNumber: "9786386705",
   location: {
-    street: "Maple",
-    city: "Houston",
-    state: "MA",
-    country: "China",
-    zipCode: "18746",
+    street: "Willow",
+    city: "Seattle",
+    state: "AZ",
+    country: "UK",
+    zipCode: "70734",
   },
-  orderHistory: [],
-  wishList: [],
-  cart: []
+  products: ["P2", "P3", "P4", "P5", "P6", "P7", "P8"],
+  orders: [],
 };
 let guestCart = [];
 export {users,orders,products,ordersHistory,currentUser,guestCart};
