@@ -320,7 +320,7 @@ function LoadUserData(tableType) {
     } else if (tableType == " Home") {
 
         let content = document.getElementById("content"); // get content div
-        content.innerHTML = `<div class="w-25"><canvas id="myChart"></canvas></div>`; // add canvas to content div
+        content.innerHTML = `<div class="w-50"><canvas id="myChart"></canvas></div>`; // add canvas to content div
 
         // setup chart
         const Utils = ChartUtils.init(); // get chart utils
@@ -329,11 +329,11 @@ function LoadUserData(tableType) {
         const DATA_COUNT = 5; // number of data points
 
         const data = {
-            labels: getTopBrands(5).map((brand) => brand.brand), // get top 5 brands
+            labels: getTopBrands(DATA_COUNT).map((brand) => brand.brand), // get top 5 brands
             datasets: [
                 {
                     label: 'Number of Products',
-                    data: getTopBrands(5).map((brand) => brand.count), // get top 5 brands count
+                    data: getTopBrands(DATA_COUNT).map((brand) => brand.count), // get top 5 brands count
                     backgroundColor: Object.values(Utils.CHART_COLORS), // get chart colors
                 }
             ]
