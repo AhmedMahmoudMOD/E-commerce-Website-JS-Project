@@ -21,6 +21,7 @@ console.log(sellerOrders);
 const pageType = 'products';
   createTableHeader(pageType);
   populateTable(pageType);
+  addNumberValidation();
 
 function createTableHeader(type) {
   const tableHead = document.getElementById('tableHead');
@@ -159,24 +160,31 @@ function populateTable(type) {
      
     };
 
-    
-    if (index !== -1) {
-      sellerProducts[index] = updatedProduct;
+    if(isValid(updatedProduct)){
+      if (index !== -1) {
+        sellerProducts[index] = updatedProduct;
+      }
+      
+      console.log(sellerProducts[index]);
+  
+      populateTable("products");
+    document.getElementById('editModal').classList.remove('show');
+    document.body.classList.remove('modal-open');
+    document.querySelector('.modal-backdrop').remove();
+    } else{
+      alert("Pleace Make Sure Your Data is Correct");
     }
-    
-    console.log(sellerProducts[index]);
 
-    populateTable("products");
+    
+    
 
     // // Close the modal
-    // document.getElementById('editModal').classList.remove('show');
-    // document.body.classList.remove('modal-open');
-    // document.querySelector('.modal-backdrop').remove();
+    
   }
 
   function addProduct() {
     const newProduct = {
-      productId: IDGenerator.generateID('Product'), 
+      productId: "P51", 
       name: document.getElementById('addProductName').value,
       brand: document.getElementById('addProductBrand').value,
       price: document.getElementById('addProductPrice').value,
@@ -196,12 +204,18 @@ function populateTable(type) {
       images : []
     };
 
+    if(isValid(newProduct)){
+      sellerProducts.push(newProduct);
+      console.log(sellerProducts);
+
+      populateTable("products");
+      document.getElementById('addModal').classList.remove('show');
+    document.body.classList.remove('modal-open');
+    document.querySelector('.modal-backdrop').remove();
+     } else{
+        alert("Make sure your data is correct")
+     }
     
-    sellerProducts.push(newProduct);
-    console.log(sellerProducts);
-
-    populateTable("products");
-
   }
 
   function deleteProduct(productId) {
@@ -225,6 +239,84 @@ function populateTable(type) {
     }
     console.log(sellerOrders);
   }
+
+  function isValid(product){
+      if (checkEmpty(product.name)&&checkEmpty(product.brand)&&checkEmpty(product.price.toString())&&checkEmpty(product.discount.toString())&&checkEmpty(product.stock.toString()))
+        return true ;
+      else 
+        return false ;  
+  }
+  function checkEmpty(field) {
+    if (field.trim() === "") {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function addNumberValidation(){
+    let oneValuesInputs = document.querySelectorAll('.oneval');
+    let stockInputs = document.querySelectorAll('.stockinput');
+    let discountInputs = document.querySelectorAll('.discountinput')
+
+    for(let i =0; i<oneValuesInputs.length;i++){
+      oneValuesInputs[i].addEventListener('input',function(){
+        if(this.value<1)
+        this.value=1;
+      })
+    }
+
+    for(let i =0; i<stockInputs.length;i++){
+      stockInputs[i].addEventListener('input',function(){
+        if (!(/^\d*$/).test(this.value)) {
+          this.value=0;
+      }
+      })
+    }
+    for(let i =0; i<discountInputs.length;i++){
+      discountInputs[i].addEventListener('input',function(){
+        if(this.value<0)
+        this.value=0;
+        else if (this.value>0.99)
+        this.value=0.99;
+      })
+    }
+
+  }
+  function searchProducts (searchValue){
+    const searchTerm = searchValue.toLowerCase();
+
+    // Use filter to get only the objects that match the search criteria
+    const searchedProducts = allProducts.filter((product) => {
+      // Iterate through each property of the product object
+      for (const key in product) {
+        // Check if the property value includes the search term
+        if (
+          typeof product[key] === "string" &&
+          product[key].toLowerCase().includes(searchTerm)
+        ) {
+          return true; // Include the object in the filtered result
+        } else if (typeof product[key] === "object" && product[key] !== null) {
+          // If the property is an object, check its values
+          for (const subKey in product[key]) {
+            if (
+              product[key][subKey]
+                .toString()
+                .toLowerCase()
+                .includes(searchTerm)
+            ) {
+              return true; // Include the object in the filtered result
+            }
+          }
+        }
+      }
+      return false; // Exclude the object from the filtered result
+    });
+  
+    // Return the filtered array of objects
+    return searchedProducts;
+  }
+
 
 
 
