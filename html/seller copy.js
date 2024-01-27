@@ -14,10 +14,6 @@ let sellerProducts = allProducts.filter(product => sellerProductsIDs.includes(pr
 let sellerOrdersIDs = currentUserObj.orders /// modification cand
 let sellerOrders = allOrders.filter(order=>sellerOrdersIDs.includes(order.orderID));
 
-console.log(sellerProductsIDs);
-console.log(sellerProducts);
-console.log(sellerOrders);
-
 const pageType = 'products';
   createTableHeader(pageType);
   populateTable(pageType,sellerProducts);
@@ -170,7 +166,7 @@ function populateTable(type,array) {
       
       console.log(sellerProducts[index]);
   
-      populateTable("products");
+      populateTable("products",sellerProducts);
     document.getElementById('editModal').classList.remove('show');
     document.body.classList.remove('modal-open');
     document.querySelector('.modal-backdrop').remove();
@@ -187,7 +183,7 @@ function populateTable(type,array) {
 
   function addProduct() {
     const newProduct = {
-      productId: "P51", 
+      productId: IDGenerator.generateProductId(), 
       name: document.getElementById('addProductName').value,
       brand: document.getElementById('addProductBrand').value,
       price: document.getElementById('addProductPrice').value,
@@ -209,13 +205,11 @@ function populateTable(type,array) {
 
     if(isValid(newProduct)){
       sellerProducts.push(newProduct);
-      console.log(sellerProducts);
-
-      populateTable("products");
       document.getElementById('addModal').classList.remove('show');
-    document.body.classList.remove('modal-open');
-    document.querySelector('.modal-backdrop').remove();
-     } else{
+      document.body.classList.remove('modal-open');
+      document.querySelector('.modal-backdrop').remove();
+      populateTable("products",sellerProducts);
+    } else{
         alert("Make sure your data is correct")
      }
     
@@ -226,7 +220,7 @@ function populateTable(type,array) {
     sellerProducts = sellerProducts.filter(p => p.productId !== productId);
 
     // Repopulate the products table
-    populateTable("products");
+    populateTable("products",sellerProducts);
   }
 
   function changeOrderStatus(orderID, newStatus, row) {
@@ -353,15 +347,21 @@ function populateTable(type,array) {
 
   function addNavEvents(){
     let NavLinks = document.querySelectorAll('.pop-link');
+    let TableH = document.getElementById('TableH');
+    let addBtn = document.getElementById('addBtn');
     NavLinks[0].addEventListener('click',()=>{
       createTableHeader('products');
       populateTable('products',sellerProducts);
       addSearchEvent(searchProducts);
+      TableH.innerText='My Products';
+      addBtn.style.display="block";
     })
     NavLinks[1].addEventListener('click',()=>{
       createTableHeader('orders');
       populateTable('orders',sellerOrders);
       addSearchEvent(searchOrders);
+      TableH.innerText="My Orders";
+      addBtn.style.display="none";
     })
 
   }
