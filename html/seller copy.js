@@ -20,12 +20,15 @@ console.log(sellerOrders);
 
 const pageType = 'products';
   createTableHeader(pageType);
-  populateTable(pageType);
+  populateTable(pageType,sellerProducts);
   addNumberValidation();
+  addSearchEvent(searchProducts);
+  addNavEvents();
 
 function createTableHeader(type) {
   const tableHead = document.getElementById('tableHead');
   const headerRow = document.createElement('tr');
+  tableHead.innerHTML='';
 
   if (type === 'orders') {
     const attributesToDisplay = ['Order ID', 'Customer ID', 'Place Date', 'Order Status', 'Deliver Date', 'Products', 'Actions'];
@@ -49,13 +52,13 @@ function createTableHeader(type) {
 }
 
 // Function to populate the table based on the page type
-function populateTable(type) {
+function populateTable(type,array) {
   const dataTable = document.getElementById('dataTable');
   const tableBody = document.getElementById('tableBody');
   tableBody.innerHTML = '';
 
   if (type === 'orders') {
-    sellerOrders.forEach(order => {
+    array.forEach(order => {
       const row = tableBody.insertRow();
       row.insertCell().textContent = order.orderID;
       row.insertCell().textContent = order.customerID;
@@ -85,7 +88,7 @@ function populateTable(type) {
 
     });
   } else if (type === 'products') {
-    sellerProducts.forEach(product => {
+    array.forEach(product => {
       const row = document.createElement('tr');
       row.innerHTML = `
         <td>${product.productId}</td>
@@ -283,11 +286,13 @@ function populateTable(type) {
     }
 
   }
-  function searchProducts (searchValue){
+  function searchProducts (){
+    const searchInput = document.getElementById('searchInput');
+    const searchValue = searchInput.value;
     const searchTerm = searchValue.toLowerCase();
 
     // Use filter to get only the objects that match the search criteria
-    const searchedProducts = allProducts.filter((product) => {
+    const searchedProducts = sellerProducts.filter((product) => {
       // Iterate through each property of the product object
       for (const key in product) {
         // Check if the property value includes the search term
@@ -314,10 +319,52 @@ function populateTable(type) {
     });
   
     // Return the filtered array of objects
-    return searchedProducts;
+    populateTable('products',searchedProducts);
   }
 
+  function searchOrders (){
+    const searchInput = document.getElementById('searchInput');
+    const searchValue = searchInput.value;
+    const searchTerm = searchValue.toLowerCase();
 
+    // Use filter to get only the objects that match the search criteria
+    const searchedOrders = sellerOrders.filter((order) => {
+      // Iterate through each property of the order object
+      for (const key in order) {
+        // Check if the property value includes the search term
+        if (
+          typeof order[key] === "string" &&
+          order[key].toLowerCase().includes(searchTerm)
+        ) {
+          return true;
+        } 
+      }
+      return false; 
+    });
+  
+    // Return the filtered array of objects
+    populateTable('orders',searchedOrders);
+  }
+
+  function addSearchEvent(searchFunction) {
+    const searchInput = document.getElementById("searchInput");
+    searchInput.onkeyup=searchFunction;
+}
+
+  function addNavEvents(){
+    let NavLinks = document.querySelectorAll('.pop-link');
+    NavLinks[0].addEventListener('click',()=>{
+      createTableHeader('products');
+      populateTable('products',sellerProducts);
+      addSearchEvent(searchProducts);
+    })
+    NavLinks[1].addEventListener('click',()=>{
+      createTableHeader('orders');
+      populateTable('orders',sellerOrders);
+      addSearchEvent(searchOrders);
+    })
+
+  }
 
 
   document.getElementById('saveChangesBtn').addEventListener('click', saveProductChanges);
