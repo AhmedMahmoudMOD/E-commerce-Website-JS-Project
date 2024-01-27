@@ -80,7 +80,7 @@
     top : 3%;
     opacity : 1;
 }
-.cart-btn{
+.cart-btn-card{
     position: absolute;
     bottom:20px;
     text-align: center;
@@ -88,7 +88,7 @@
     opacity: 0;
     transition: all 0.2s ease-in-out;
 }
-.product-box:hover .cart-btn{
+.product-box:hover .cart-btn-card{
     opacity: 1;
 }
 .product-info{
@@ -166,4 +166,13 @@
 }
 .disabled{
     background-color: #00000080 ;
+}
+.form-select:focus{
+    box-shadow: none;
+    border-color: #000;
+}
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+    color: rgb(190, 16, 16);
 }
