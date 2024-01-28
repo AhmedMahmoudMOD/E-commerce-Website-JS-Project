@@ -104,6 +104,7 @@ function loadorderforseller(sellerId) {
     let num = 0;
     let seller = users.find((user) => user.id == sellerId);
     let ordersID = seller.orders;
+    console.log(seller);
     let orders = storageModule
         .getItem("orders")
         .filter((order) => ordersID.includes(order.orderID));

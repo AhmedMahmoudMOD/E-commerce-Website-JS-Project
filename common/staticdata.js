@@ -1696,67 +1696,28 @@ let orders = [
       "Thu Jan 25 2024 17:28:21 GMT+0200 (Eastern European Standard Time)2",
   },
 ];
-let ordersHistory = [];
 
-export { users, orders, products, ordersHistory };
 
-let orders = [{
-  orderID: "O1",
-  sellerID: ["U2","U3"],
-  customerID:"U4",
-  placeDate : new Date(),
-  orderStatus : "Pending",
-  deliverDate:new Date(),
-  products : [{ id : 'P2' , quantity : 2 , price : 1000
-  },{ id : 'P3' , quantity : 4 , price : 1300
-},{ id : 'P10' , quantity : 3 , price : 1200
-}] ,
+export {users, orders, products};
 
-},{
-  orderID: "O2",
-  sellerID: ["U2","U3"],
-  customerID:"U4",
-  placeDate : new Date(),
-  orderStatus : "Pending",
-  deliverDate:new Date(),
-  products : [{ id : 'P2' , quantity : 2 , price : 1000
-  },{ id : 'P3' , quantity : 4 , price : 1300
-},{ id : 'P10' , quantity : 3 , price : 1200
-}] ,
 
-},{
-  orderID: "O3",
-  sellerID: ["U2","U3"],
-  customerID:"U4",
-  placeDate : new Date(),
-  orderStatus : "Pending",
-  deliverDate:new Date(),
-  products : [{ id : 'P2' , quantity : 2 , price : 1000
-  },{ id : 'P3' , quantity : 4 , price : 1300
-},{ id : 'P10' , quantity : 3 , price : 1200
-}] ,
-
-}];
-
-let currentUser = {
+// let currentUser = {
   
-  id: "U2",
-  userType: "seller",
-  userName: "alpha_user",
-  email: "seller1@example.com",
-  password: "secretPass",
-  firstName: "John",
-  lastName: "Doe",
-  phoneNumber: "9786386705",
-  location: {
-    street: "Willow",
-    city: "Seattle",
-    state: "AZ",
-    country: "UK",
-    zipCode: "70734",
-  },
-  products: ["P2", "P3", "P4", "P5", "P6", "P7", "P8"],
-  orders: ['O1','O2'],
-};
-let guestCart = [];
-export {users,orders,products,currentUser,guestCart};
+//   id: "U2",
+//   userType: "seller",
+//   userName: "alpha_user",
+//   email: "seller1@example.com",
+//   password: "secretPass",
+//   firstName: "John",
+//   lastName: "Doe",
+//   phoneNumber: "9786386705",
+//   location: {
+//     street: "Willow",
+//     city: "Seattle",
+//     state: "AZ",
+//     country: "UK",
+//     zipCode: "70734",
+//   },
+//   products: ["P2", "P3", "P4", "P5", "P6", "P7", "P8"],
+//   orders: ['O1','O2'],
+// };
