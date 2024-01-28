@@ -156,7 +156,7 @@ loginBtn.addEventListener("click", function (e) {
               window.location.href = "https://www.google.com";
               break;
             case 'customer':
-              window.location.href = "https://www.youtube.com";
+              window.location.href = "../html/home.html";
               break;
             case 'admin':
               window.location.href = "https://www.facebook.com";
