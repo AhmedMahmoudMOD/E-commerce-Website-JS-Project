@@ -33,7 +33,7 @@ let users = [
       zipCode: "70734",
     },
     products: ["P1","P2", "P3", "P4", "P5", "P6", "P7", "P8","P9","P10","P11","P12","P15","P17","P20","P21","P23","P26","P29","P31","P32","P35","P36","P39","P41","P46","P47"],
-    orders: ["O1"],
+    orders: [],
   },
   {
     id: "U3",
@@ -96,12 +96,7 @@ let users = [
     },
     orderHistory: [],
     wishList: [],
-    cart: [
-      { productId: 1, quantity: 1 },
-      { productId: 2, quantity: 1 },
-      { productId: 3, quantity: 3 },
-      { productId: 4, quantity: 1 },
-    ],
+    cart: [],
   },
   {
     id: "U6",
@@ -121,12 +116,7 @@ let users = [
     },
     orderHistory: [],
     wishList: [],
-    cart: [
-      { productId: 1, quantity: 1 },
-      { productId: 2, quantity: 1 },
-      { productId: 3, quantity: 3 },
-      { productId: 4, quantity: 1 },
-    ],
+    cart: [],
   },
   {
     id: "U7",
@@ -146,12 +136,7 @@ let users = [
     },
     orderHistory: [],
     wishList: [],
-    cart: [
-      { productId: 1, quantity: 1 },
-      { productId: 2, quantity: 1 },
-      { productId: 3, quantity: 3 },
-      { productId: 4, quantity: 1 },
-    ],
+    cart: [],
   },
   {
     id: "U8",
@@ -1678,67 +1663,50 @@ let products = [
   },
 ];
 
-let orders = [
-  {
-    orderID: "O1",
-    sellerID: ["U2", "U3"],
-    customerID: "U4",
-    products: [
-      { productId: "P1", quantity: "1", price: 160 },
-      { productId: "P2", quantity: "4", price: 990 },
-      { productId: "P3", quantity: "3", price: 1360 },
-      { productId: "P4", quantity: "5", price: 400 },
-    ],
-    placeDate: "2024-01-25T15:28:21.643Z",
-    orderStatus: "Pending",
-    deliverDate:
-      "Thu Jan 25 2024 17:28:21 GMT+0200 (Eastern European Standard Time)2",
-  },
-];
+let orders = [];
 
-
-export {users, orders, products , currentUser};
-
-
-let currentUser = {
-  id: "U3",
-  userType: "seller",
-  userName: "john_doe",
-  email: "seller2@example.com",
-  password: "password123",
-  firstName: "Frank",
-  lastName: "Doe",
-  phoneNumber: "9007849974",
-  location: {
-    street: "Pine",
-    city: "San Francisco",
-    state: "AZ",
-    country: "France",
-    zipCode: "13564",
-  },
-  products : [
-    "P13", "P14", "P16", "P18", "P19", "P22", "P24", "P25", "P27", "P28",
-    "P30", "P33", "P34", "P37", "P38", "P40", "P42", "P43", "P44", "P45",
-    "P48", "P50"
-  ],
-  orders: [],
-}
-  
-//   id: "U2",
-//   userType: "seller",
-//   userName: "alpha_user",
-//   email: "seller1@example.com",
-//   password: "secretPass",
-//   firstName: "John",
-//   lastName: "Doe",
-//   phoneNumber: "9786386705",
-//   location: {
-//     street: "Willow",
-//     city: "Seattle",
-//     state: "AZ",
-//     country: "UK",
-//     zipCode: "70734",
+// let orders = [
+//   {
+//     orderID: "O1",
+//     sellerID: ["U2", "U3"],
+//     customerID: "U4",
+//     products: [
+//       { productId: "P1", quantity: "1", price: 160 },
+//       { productId: "P2", quantity: "4", price: 990 },
+//       { productId: "P3", quantity: "3", price: 1360 },
+//       { productId: "P4", quantity: "5", price: 400 },
+//     ],
+//     placeDate: "2024-01-25T15:28:21.643Z",
+//     orderStatus: "Pending",
+//     deliverDate:
+//       "Thu Jan 25 2024 17:28:21 GMT+0200 (Eastern European Standard Time)2",
 //   },
-//   products: ["P2", "P3", "P4", "P5", "P6", "P7", "P8"],
-//   orders: ['O1','O2'],
-// };
+// ];
+
+
+export {users, orders, products};
+
+
+// let currentUser = {
+//   id: "U3",
+//   userType: "seller",
+//   userName: "john_doe",
+//   email: "seller2@example.com",
+//   password: "password123",
+//   firstName: "Frank",
+//   lastName: "Doe",
+//   phoneNumber: "9007849974",
+//   location: {
+//     street: "Pine",
+//     city: "San Francisco",
+//     state: "AZ",
+//     country: "France",
+//     zipCode: "13564",
+//   },
+//   products : [
+//     "P13", "P14", "P16", "P18", "P19", "P22", "P24", "P25", "P27", "P28",
+//     "P30", "P33", "P34", "P37", "P38", "P40", "P42", "P43", "P44", "P45",
+//     "P48", "P50"
+//   ],
+//   orders: [],
+// }

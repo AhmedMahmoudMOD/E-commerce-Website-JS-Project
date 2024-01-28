@@ -1,13 +1,9 @@
 import {storageModule} from "../common/storageModule.js"
-import { products , users  , currentUser} from "../common/staticdata.js";
 
-// storageModule.setItem('products',products);
-// storageModule.setItem('users',users);
-// storageModule.setItem('currentUser',currentUser);
+
 let allUsers = storageModule.getItem('users');
 let allProducts = storageModule.getItem('products');
 let currentUserObj = storageModule.getItem('currentUser'); 
-// storageModule.setItem('guest-cart',guestCart);?
 let guestCartArr = storageModule.getItem('guest-cart');
 
 // getting an array of brands for dynamically creating filter options

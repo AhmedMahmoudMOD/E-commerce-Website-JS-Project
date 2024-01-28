@@ -1,10 +1,6 @@
 import { storageModule } from "../common/storageModule.js";
 import {IDGenerator} from "../common/idclass.js"
 
-import {users,orders,products,currentUser} from "../common/staticdata.js"
-
-storageModule.setItem('currentUser',currentUser);
-storageModule.setItem('orders',orders);
 
 let allUsers=storageModule.getItem('users');
 let allProducts = storageModule.getItem('products');
@@ -13,7 +9,7 @@ let sellerIndex = allUsers.findIndex(user => user.id===currentUserObj.id)
 let allOrders = storageModule.getItem("orders");
 let sellerProductsIDs = currentUserObj.products;
 let sellerProducts = allProducts.filter(product => sellerProductsIDs.includes(product.productId)); 
-let sellerOrdersIDs = currentUserObj.orders /// modification cand
+let sellerOrdersIDs = currentUserObj.orders;
 let sellerOrders = allOrders.filter(order=>sellerOrdersIDs.includes(order.orderID));
 
 let pageType = 'products';
