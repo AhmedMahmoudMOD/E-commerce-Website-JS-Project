@@ -72,12 +72,7 @@ let users = [
     },
     orderHistory: [],
     wishList: [],
-    cart: [
-      { productId: "P1", quantity: 1 },
-      { productId: "P2", quantity: 1 },
-      { productId: "P3", quantity: 3 },
-      { productId: "P4", quantity: 1 },
-    ],
+    cart: [],
   },
   {
     id: "U5",
@@ -1698,10 +1693,29 @@ let orders = [
 ];
 
 
-export {users, orders, products};
+export {users, orders, products , currentUser};
 
 
-// let currentUser = {
+let currentUser = {
+  id: "U4",
+  userType: "customer",
+  userName: "gamma_customer",
+  email: "customer1@example.com",
+  password: "qwerty123",
+  firstName: "Grace",
+  lastName: "Brown",
+  phoneNumber: "4497460887",
+  location: {
+    street: "Maple",
+    city: "Houston",
+    state: "MA",
+    country: "China",
+    zipCode: "18746",
+  },
+  orderHistory: [],
+  wishList: [],
+  cart: [],
+}
   
 //   id: "U2",
 //   userType: "seller",

@@ -237,11 +237,12 @@ function LoadShippingAddress() // Load the shipping address
 
 function CreateOrder() // Create the order
 {
+   
     let user = storageModule.getItem("users").find(x => x.id == storageModule.getItem("currentUser").id); // Get the user from the storage
     let usercart = storageModule.getItem("currentUser").cart; // Get the cart from the storage
     let fullusercart = GetProductsInformation(); // Get the products information from the storage
     let orders = storageModule.getItem("orders"); // Get the orders from the storage
-    let orderid = IDGenerator.generateID("order"); // Order id
+    let orderid = IDGenerator.generateOrderId(); // Order id
     let sellerid = [];
 
     // Loop through the cart and get the seller id
@@ -270,7 +271,7 @@ function CreateOrder() // Create the order
     // push order to seller order history
     sellerid.forEach(element => {
         let seller = storageModule.getItem("users").find(x => x.id == element); // Get the seller from the storage
-        seller.orderHistory.push(orderid);
+        seller.orders.push(orderid);
         storageModule.setItem("users", storageModule.getItem("users").filter(x => x.id != seller.id).concat(seller)); // Set the seller in the storage
     });
 }
@@ -308,6 +309,12 @@ document.addEventListener("click", function (e) {
 
     // implement checkout button functionality
     else if (e.target.id == "placeOrder" || e.target.parentElement.id == "placeOrder") {
+        if (storageModule.getItem("currentUser").cart.length == "") // check if the cart is empty
+        {
+            alert("Your cart is empty");
+            window.location.href = "home.html";
+            return;
+        }
         PlaceOrder(); // check if price changed or stock is less than quantity in cart before checkout
     }
 
