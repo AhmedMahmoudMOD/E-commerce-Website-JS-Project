@@ -677,9 +677,10 @@ let products = [
       strapColor: "Black",
     },
     images: [
-      "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-2_2048x.jpg?v=1625575132",
-      "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-4_2048x.jpg?v=1625575132",
-      "https://egywatch.com/cdn/shop/products/GA-AE-2000W-1BVDF-5_2048x.jpg?v=1625575132",
+      "https://egywatch.com/cdn/shop/files/SB06J100_2048x.jpg?v=1694427322",
+      "https://egywatch.com/cdn/shop/files/SB06J100-1_2048x.jpg?v=1694427613",
+      "https://egywatch.com/cdn/shop/files/SB06J100-3_2048x.jpg?v=1694427613",
+      "https://egywatch.com/cdn/shop/files/SB06J100-2_2048x.jpg?v=1694427613"
     ],
   },
   {
@@ -1116,9 +1117,11 @@ let products = [
       strapColor: "Silver",
     },
     images: [
-      "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-01_2048x.jpg?v=1624886717",
-      "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-02_2048x.jpg?v=1624886717",
-      "https://egywatch.com/cdn/shop/products/T111.417.37.441.04-03_2048x.jpg?v=1624886717",
+      "https://egywatch.com/cdn/shop/files/SB05K400_2048x.jpg?v=1692878021",
+      "https://egywatch.com/cdn/shop/files/SB05K400-2_2048x.jpg?v=1692878023",
+      "https://egywatch.com/cdn/shop/files/SB05K400-4_2048x.jpg?v=1692878022",
+      "https://egywatch.com/cdn/shop/files/SB05K400-3_2048x.jpg?v=1692878022",
+      "https://egywatch.com/cdn/shop/files/SB05K400-1_2048x.jpg?v=1692878023"
     ],
   },
   {
@@ -1462,9 +1465,10 @@ let products = [
       strapColor: "Silver",
     },
     images: [
-      "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF_2048x.jpg?v=1634635114",
-      "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF-1_2048x.jpg?v=1634635114",
-      "https://egywatch.com/cdn/shop/products/MTP-1314D-7AVDF-2_2048x.jpg?v=1634635114",
+      "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF_2048x.jpg?v=1695281414",
+      "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF-1_2048x.jpg?v=1695281413",
+      "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF-2_2048x.jpg?v=1695281414",
+      "https://egywatch.com/cdn/shop/files/MTP-V005L-7BUDF-3_2048x.jpg?v=1695281413",
     ],
   },
   {

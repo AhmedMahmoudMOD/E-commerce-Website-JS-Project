@@ -107,7 +107,7 @@ function renderProducts(products){
         }
 
         let pImg = document.createElement('img');
-        pImg.classList.add('img-fluid');
+        pImg.classList.add('img-fluid','p-img');
         pImg.src=product.images[0];
         /* Product Image Created */
         let cartBtnDiv =  document.createElement('div');
@@ -285,7 +285,7 @@ function renderPagination(products) {
      prevPageLink.href = '#';
      prevPageLink.textContent = 'Previous';
  
-     prevPageLink.addEventListener('click', function () {
+     prevPageLink.addEventListener('click', function (e) {
          if (currentPage > 1) {
             e.preventDefault();
              currentPage--;
@@ -696,5 +696,6 @@ function searchProducts (searchValue){
 
     // Combine filtered and searched results
     const combinedResults = filteredProducts.filter(product => searchedResults.includes(product));
+    currentPage=1;
     renderProducts(combinedResults);
 }
