@@ -12,7 +12,7 @@ function CheckIfUserIsCustomer() // Check if the user is a customer or not
             title: "Oops...",
             text: "You must login as a customer first",
         }).then(() => {
-            window.location.href = "Login.html";
+            window.location.href = "../html/signPage.html";
         });
     }
 
@@ -27,7 +27,7 @@ function checkIfCartIsEmpty() // Check if the cart is empty or not
             title: "Oops...",
             text: "Your cart is empty",
         }).then(() => {
-            window.location.href = "Home.html";
+            window.location.href = "../html/home.html";
         });
     }
 }
@@ -227,7 +227,7 @@ document.addEventListener("click", function (e) {
                 title: "Oops...",
                 text: "You must login first",
             }).then(() => {
-                window.location.href = "Login.html";
+                window.location.href = "../html/signPage.html";
             });
         }
         else {
@@ -239,7 +239,7 @@ document.addEventListener("click", function (e) {
                     title: "Oops...",
                     text: "Your cart is empty",
                 }).then(() => {
-                    window.location.href = "Home.html";
+                    window.location.href = "../html/signPage.html";
                 });
             }
             else {

@@ -14,19 +14,19 @@ function LoginCheck() // Check if the user is logged in or not
     if (storageModule.getItem("currentUser") == null) // If the user is not logged in then redirect him to the login page
     {
         alert("You must login first");
-        window.location.href = "login.html";
+        window.location.href = "../html/signPage.html";
     }
     else // If the user is logged in then check if he is a customer or not
     {
         if (storageModule.getItem("currentUser").userType != "customer") // If the user is not a customer then redirect him to the home page
         {
             alert("You must login as a customer first");
-            window.location.href = "Login.html";
+            window.location.href = "../html/signPage.html";
         }
         else if (storageModule.getItem("currentUser").cart.length == "") // check if the cart is empty
         {
             alert("Your cart is empty");
-            window.location.href = "home.html";
+            window.location.href = "../html/signPage.html";
         }
     }
 }
