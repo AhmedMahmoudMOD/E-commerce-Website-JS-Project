@@ -23,20 +23,27 @@ renderProducts(ourProductsDiv,ourProducts);
 cardAddtoCart();
 
 
-// // Retrieve the currentUser from local storage
-// const storedCurrentUser = storageModule.getItem('currentUser');
+// Retrieve the currentUser from local storage
+const storedCurrentUser = storageModule.getItem('currentUser');
 
-// // Check if currentUser exists and has a username property
-// if (storedCurrentUser && storedCurrentUser.username) {
-//   // Access the username and update the navUsername
-//   const navUsernameElement = document.querySelector('.navUserName');
-//   if (navUsernameElement) {
-//     navUsernameElement.textContent = storedCurrentUser.username;
-//   }
-// } else {
-//   // Handle the case where the currentUser or username is not available
-//   console.error('Error: currentUser or username not found in local storage');
-// }
+// Check if currentUser exists and has a username property
+if (storedCurrentUser && storedCurrentUser.userName) {
+    // Access the username and update the navUsername
+    const navUsernameElement = document.getElementById('userProfileDiv');
+    const userNameText = navUsernameElement.querySelectorAll("a")[0]
+    if (navUsernameElement) {
+        userNameText.textContent = storedCurrentUser.userName;
+    }
+} else {
+    // Handle the case where the currentUser or username is not available
+    console.error('Error: currentUser or username not found in local storage');
+    // Create a login button and redirect to Login page
+    const loginButton = document.createElement('button');
+    loginButton.textContent = 'Log In';
+    loginButton.addEventListener('click', function() {
+        window.location.href = '../html/signPage.html';
+    })
+}
 
 // Ahmed Mahmoud //
 
@@ -212,6 +219,6 @@ function cardAddtoCart (){
 
 function filterOffers(Products){
   // Filter Based  on  Discunt
-  let offeredProducts = Products.filter(product=> product.brand!==0)
-  return offeredProducts.slice(0,4);
+    let offeredProducts = Products.filter(product=> product.brand!==0)
+    return offeredProducts.slice(0,4);
 }
