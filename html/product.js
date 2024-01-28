@@ -122,12 +122,14 @@ function renderTabs(shownProduct){
     let speceUl = document.createElement('ul');
     speceUl.classList.add('list-unstyled','mt-3')
     for (const spec in shownProduct.specifications) {
+    if(shownProduct.specifications[spec]!=""){
        let specSpan = document.createElement('span');
        specSpan.classList.add('spec-span');
        specSpan.textContent=shownProduct.specifications[spec];
        let specLi = document.createElement('li');
        specLi.innerHTML=`<b>${spec.toUpperCase()}</b> : ${specSpan.textContent}`
        speceUl.appendChild(specLi);
+    }
     }
 
     specsTab.appendChild(speceUl);
@@ -567,7 +569,7 @@ function addtoCartModal(){
             e.stopImmediatePropagation(); // stopping the event from firing for other modals causing incrementing or decrementing values by more than one at a time
         
     })
-    let addToCartBtn = document.querySelector('.cart-btn-modal button');
+    let addToCartBtn = document.querySelector('#cartModalBtn');
     addToCartBtn.addEventListener('click',function(){
         let cartedProduct = {
             productId : this.id,
@@ -593,7 +595,6 @@ function addtoCartModal(){
                 storageModule.setItem('users',allUsers);
                 storageModule.setItem('currentUser',currentUserObj);
             }
-            console.log(allUsers[index]);
         }
         else if(currentUserObj==null){
             const cartIndex = guestCartArr.findIndex(product => product.productId === cartedProduct.productId);
@@ -607,7 +608,7 @@ function addtoCartModal(){
                 guestCartArr.push(cartedProduct);
                 storageModule.setItem('guest-cart',guestCartArr)
             }
-            console.log(guestCartArr);
+        
         }
         else{
             Swal.fire({
@@ -616,6 +617,7 @@ function addtoCartModal(){
                 text: "Add to Cart is Only Avaliable to Our Customers",
                 footer: '<a href="./signUp.html">Sign Up or Login As Customer</a>'
               });
+            
         }
     })
 }

@@ -1,9 +1,9 @@
 import {storageModule} from "../common/storageModule.js"
 import { products  , currentUser , users , guestCart} from "../common/staticdata.js";
 
-storageModule.setItem('products',products);
-storageModule.setItem('users',users);
-storageModule.setItem('currentUser',currentUser);
+// storageModule.setItem('products',products);
+// storageModule.setItem('users',users);
+// storageModule.setItem('currentUser',currentUser);
 let allUsers = storageModule.getItem('users');
 let allProducts = storageModule.getItem('products');
 let currentUserObj = storageModule.getItem('currentUser'); 
@@ -13,7 +13,7 @@ let guestCartArr = storageModule.getItem('guest-cart');
 // getting an array of brands for dynamically creating filter options
 let brands = [];
 
-products.forEach(product => {
+allProducts.forEach(product => {
     if (!brands.includes(product.brand)) {
         brands.push(product.brand);
     }

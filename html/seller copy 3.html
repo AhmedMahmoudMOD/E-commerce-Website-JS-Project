@@ -13,7 +13,7 @@
   </head>
 <body>
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Company name</a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Seller Dashboard</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -49,7 +49,7 @@
 
     <main class="col-md-10 ms-sm-auto col-lg-10 col-xl-11 px-md-4" id="mainWrapper">
       <div class="row justify-content-between ">
-      <h2 class="my-3 col-3" id="TableH">My Products</h2>
+      <h2 class="my-3 col-5 col-md-4" id="TableH">My Products</h2>
       <div class="col-2 my-3">
      <button class="btn btn-sm btn-success  col-12 add-btn" id="addBtn" data-bs-toggle="modal" data-bs-target="#addModal">
         Add
@@ -78,74 +78,92 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body row row-cols-3">
-        <!-- <form id="editForm"> -->
-          <input type="hidden" id="editProductId" name="editProductId">
-          <div class="mb-3 col-6">
-            <label for="editProductName" class="form-label">Name</label>
-            <input type="text" class="form-control" id="editProductName" name="editProductName">
-          </div>
-          <div class="mb-3 col-6">
-            <label for="editProductBrand" class="form-label">Brand</label>
-            <input type="text" class="form-control" id="editProductBrand" name="editProductBrand">
-          </div>
-          <div class="mb-3 col">
-            <label for="editProductPrice" class="form-label">Price</label>
-            <input type="number" min="1" class="form-control oneval" id="editProductPrice" name="editProductPrice">
-          </div>
-          <div class="mb-3 col">
-            <label for="editProductDiscount" class="form-label">Discount</label>
-            <input type="number" min="0" max="1" class="form-control discountinput" id="editProductDiscount" name="editProductDiscount">
-          </div>
-          <div class="mb-3 col">
-            <label for="editProductStock" class="form-label">Stock</label>
-            <input type="number" min="0" class="form-control stockinput" id="editProductStock" name="editProductStock">
-          </div>
-          <div class="mb-3 col-12">
-            <label for="editProductDescription" class="form-label">Description</label>
-            <textarea class="form-control" id="editProductDescription" name="editProductDescription"></textarea>
-          </div>
-          <div class="mb-3 col">
-            <label for="editProductMovement" class="form-label">Movement</label>
-            <input type="text" class="form-control" id="editProductMovement" name="editProductMovement">
-          </div>
-          <div class="mb-3 col">
-            <label for="editProductCaseMaterial" class="form-label">Case Material</label>
-            <input type="text" class="form-control" id="editProductCaseMaterial" name="editProductCaseMaterial">
-          </div>
-          <div class="mb-3 col">
-            <label for="editProductCaseDiameter" class="form-label">Case Diameter</label>
-            <input type="number" min="1" class="form-control oneval" id="editProductCaseDiameter" name="editProductCaseDiameter">
-          </div>
-          <div class="mb-3">
-            <label for="editProductGlass" class="form-label">Glass</label>
-            <input type="text" class="form-control" id="editProductGlass" name="editProductGlass">
-          </div>
-          <div class="mb-3 col">
-            <label for="editProductWaterResistance" class="form-label">Water Resistance</label>
-            <input type="text" class="form-control" id="editProductWaterResistance" name="editProductWaterResistance">
-          </div>
-          <div class="mb-3 col">
-            <label for="editProductStrapMaterial" class="form-label">Strap Material</label>
-            <input type="text" class="form-control" id="editProductStrapMaterial" name="editProductStrapMaterial">
-          </div>
-          <div class="mb-3 col-6">
-            <label for="editProductStrapWidth" class="form-label">Strap Width</label>
-            <input type="number" min="1" class="form-control oneval" id="editProductStrapWidth" name="editProductStrapWidth">
-          </div>
-          <div class="mb-3 col-6">
-            <label for="editProductStrapColor" class="form-label">Strap Color</label>
-            <input type="text" class="form-control" id="editProductStrapColor" name="editProductStrapColor">
-          </div>
-          <div class="row mb-3 col-6 m-auto">
-          <button type="button" class="btn btn-primary col-12"  id="saveChangesBtn">
+        <input type="hidden" id="editProductId" name="editProductId">
+        <div class="mb-2 col-6">
+          <label for="editProductName" class="form-label">Name</label>
+          <input type="text" class="form-control" id="editProductName" name="editProductName">
+        </div>
+        <div class="mb-2 col-6">
+          <label for="editProductBrand" class="form-label">Brand</label>
+          <input type="text" class="form-control" id="editProductBrand" name="editProductBrand">
+        </div>
+        <div class="mb-2 col-6">
+          <label for="editProductPrice" class="form-label">Price</label>
+          <input type="number" class="form-control oneval" min="1" id="editProductPrice" name="editProductPrice">
+        </div>
+        <div class="mb-2 col-6">
+          <label for="editProductDiscount" class="form-label">Discount</label>
+          <input type="number" class="form-control discountinput" min="0" max="1" id="editProductDiscount" name="editProductDiscount">
+        </div>
+        <div class="mb-2 col-6">
+          <label for="editProductStock" class="form-label">Stock</label>
+          <input type="number" class="form-control stockinput" min="0" id="editProductStock" name="editProductStock">
+        </div>
+        <div class="mb-2 col-6">
+          <label for="editProductCategory" class="form-label">Category</label>
+          <select class="form-select" id="editProductCategory" name="editProductCategory">
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+          </select>
+        </div>
+        <div class="mb-2 col-12">
+          <label for="editProductDescription" class="form-label">Description</label>
+          <textarea class="form-control" id="editProductDescription" name="editProductDescription" rows="2"></textarea>
+        </div>
+        <div class="mb-2 col-4">
+          <label for="editProductImage1" class="form-label">Image Link 1</label>
+          <input type="text" class="form-control" id="editProductImage1" name="editProductImage1">
+        </div>
+        <div class="mb-2 col-4">
+          <label for="editProductImage2" class="form-label">Image Link 2</label>
+          <input type="text" class="form-control" id="editProductImage2" name="editProductImage2">
+        </div>
+        <div class="mb-2 col-4">
+          <label for="editProductImage3" class="form-label">Image Link 3</label>
+          <input type="text" class="form-control" id="editProductImage3" name="editProductImage3">
+        </div>
+        <div class="mb-2 col">
+          <label for="editProductMovement" class="form-label">Movement</label>
+          <input type="text" class="form-control" id="editProductMovement" name="editProductMovement">
+        </div>
+        <div class="mb-2 col">
+          <label for="editProductCaseMaterial" class="form-label">Case Material</label>
+          <input type="text" class="form-control" id="editProductCaseMaterial" name="editProductCaseMaterial">
+        </div>
+        <div class="mb-2 col">
+          <label for="editProductCaseDiameter" class="form-label">Case Diameter</label>
+          <input type="number" class="form-control oneval" min="1" id="editProductCaseDiameter" name="editProductCaseDiameter">
+        </div>
+        <div class="mb-2">
+          <label for="editProductGlass" class="form-label">Glass</label>
+          <input type="text" class="form-control" id="editProductGlass" name="editProductGlass">
+        </div>
+        <div class="mb-2 col">
+          <label for="editProductWaterResistance" class="form-label">Water Resistance</label>
+          <input type="text" class="form-control" id="editProductWaterResistance" name="editProductWaterResistance">
+        </div>
+        <div class="mb-2 col">
+          <label for="editProductStrapMaterial" class="form-label">Strap Material</label>
+          <input type="text" class="form-control" id="editProductStrapMaterial" name="editProductStrapMaterial">
+        </div>
+        <div class="mb-2 col-6">
+          <label for="editProductStrapWidth" class="form-label">Strap Width</label>
+          <input type="number" class="form-control oneval" min="1" id="editProductStrapWidth" name="editProductStrapWidth">
+        </div>
+        <div class="mb-2 col-6">
+          <label for="editProductStrapColor" class="form-label">Strap Color</label>
+          <input type="text" class="form-control" id="editProductStrapColor" name="editProductStrapColor">
+        </div>
+        <div class="row mb-2 col-6 m-auto">
+          <button type="button" class="btn btn-primary col-12" id="saveChangesBtn">
             Save Changes
           </button>
         </div>
-        <!-- </form> -->
       </div>
     </div>
   </div>
 </div>
+
 <!-- Add Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -155,59 +173,78 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body row row-cols-3">
-        <div class="mb-3 col-6">
+        <div class="mb-2 col-6">
           <label for="addProductName" class="form-label">Name</label>
           <input type="text" class="form-control" id="addProductName" name="addProductName">
         </div>
-        <div class="mb-3 col-6">
+        <div class="mb-2 col-6">
           <label for="addProductBrand" class="form-label">Brand</label>
           <input type="text" class="form-control" id="addProductBrand" name="addProductBrand">
         </div>
-        <div class="mb-3 col">
+        <div class="mb-2 col-6">
           <label for="addProductPrice" class="form-label">Price</label>
           <input type="number" class="form-control oneval" min="1" id="addProductPrice" name="addProductPrice">
         </div>
-        <div class="mb-3 col">
+        <div class="mb-2 col-6">
           <label for="addProductDiscount" class="form-label">Discount</label>
           <input type="number" class="form-control discountinput" min="0" max="1" id="addProductDiscount" name="addProductDiscount">
         </div>
-        <div class="mb-3 col">
+        <div class="mb-2 col-6">
           <label for="addProductStock" class="form-label">Stock</label>
           <input type="number" class="form-control stockinput" min="0" id="addProductStock" name="addProductStock">
         </div>
-        <div class="mb-3 col-12">
-          <label for="addProductDescription" class="form-label">Description</label>
-          <textarea class="form-control" id="addProductDescription" name="addProductDescription"></textarea>
+        <div class="mb-2 col-6">
+          <label for="addProductCategory" class="form-label">Category</label>
+          <select class="form-select" id="addProductCategory" name="addProductCategory">
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+          </select>
         </div>
-        <div class="mb-3 col">
+        <div class="mb-2 col-12">
+          <label for="addProductDescription" class="form-label">Description</label>
+          <textarea class="form-control" id="addProductDescription" name="addProductDescription" rows="2"></textarea>
+        </div>
+        <div class="mb-2 col-4">
+          <label for="addProductImage1" class="form-label">Image Link 1</label>
+          <input type="text" class="form-control" id="addProductImage1" name="addProductImage1">
+      </div>
+      <div class="mb-2 col-4">
+          <label for="addProductImage2" class="form-label">Image Link 2</label>
+          <input type="text" class="form-control" id="addProductImage2" name="addProductImage2">
+      </div>
+      <div class="mb-2 col-4">
+          <label for="addProductImage3" class="form-label">Image Link 3</label>
+          <input type="text" class="form-control" id="addProductImage3" name="addProductImage3">
+      </div>
+        <div class="mb-2 col">
           <label for="addProductMovement" class="form-label">Movement</label>
           <input type="text" class="form-control" id="addProductMovement" name="addProductMovement">
         </div>
-        <div class="mb-3 col">
+        <div class="mb-2 col">
           <label for="addProductCaseMaterial" class="form-label">Case Material</label>
           <input type="text" class="form-control" id="addProductCaseMaterial" name="addProductCaseMaterial">
         </div>
-        <div class="mb-3 col">
+        <div class="mb-2 col">
           <label for="addProductCaseDiameter" class="form-label">Case Diameter</label>
           <input type="number" class="form-control oneval" min="1" id="addProductCaseDiameter" name="addProductCaseDiameter">
         </div>
-        <div class="mb-3">
+        <div class="mb-2 col">
           <label for="addProductGlass" class="form-label">Glass</label>
           <input type="text" class="form-control" id="addProductGlass" name="addProductGlass">
         </div>
-        <div class="mb-3 col">
+        <div class="mb-2 col">
           <label for="addProductWaterResistance" class="form-label">Water Resistance</label>
           <input type="text" class="form-control" id="addProductWaterResistance" name="addProductWaterResistance">
         </div>
-        <div class="mb-3 col">
+        <div class="mb-2 col">
           <label for="addProductStrapMaterial" class="form-label">Strap Material</label>
           <input type="text" class="form-control" id="addProductStrapMaterial" name="addProductStrapMaterial">
         </div>
-        <div class="mb-3 col-6">
+        <div class="mb-2 col-6">
           <label for="addProductStrapWidth" class="form-label">Strap Width</label>
           <input type="number" class="form-control oneval" min="1" id="addProductStrapWidth" name="addProductStrapWidth">
         </div>
-        <div class="mb-3 col-6">
+        <div class="mb-2 col-6">
           <label for="addProductStrapColor" class="form-label">Strap Color</label>
           <input type="text" class="form-control" id="addProductStrapColor" name="addProductStrapColor">
         </div>

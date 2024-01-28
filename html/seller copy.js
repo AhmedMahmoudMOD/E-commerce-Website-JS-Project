@@ -5,9 +5,11 @@ import {users,orders,products,currentUser,guestCart} from "../common/staticdata.
 
 storageModule.setItem('currentUser',currentUser);
 storageModule.setItem('orders',orders);
+
 let allUsers=storageModule.getItem('users');
 let allProducts = storageModule.getItem('products');
 let currentUserObj = storageModule.getItem('currentUser');
+let sellerIndex = allUsers.findIndex(user => user.id===currentUserObj.id)
 let allOrders = storageModule.getItem("orders");
 let sellerProductsIDs = currentUserObj.products;
 let sellerProducts = allProducts.filter(product => sellerProductsIDs.includes(product.productId)); 
@@ -35,7 +37,7 @@ function createTableHeader(type) {
       headerRow.appendChild(th);
     });
   } else if (type === 'products') {
-    const attributesToDisplay = ['Product ID', 'Name', 'Brand', 'Price', 'Discount', 'Stock', 'Description','Actions'];
+    const attributesToDisplay = ['Product ID', 'Name', 'Brand','Category','Price', 'Discount', 'Stock','Actions'];
     attributesToDisplay.forEach(attribute => {
       const th = document.createElement('th');
       th.setAttribute('scope', 'col');
@@ -90,10 +92,10 @@ function populateTable(type,array) {
         <td>${product.productId}</td>
         <td>${product.name}</td>
         <td>${product.brand}</td>
+        <td>${product.category}</td>
         <td>${product.price}</td>
         <td>${product.discount}</td>
         <td>${product.stock}</td>
-        <td>${product.description}</td>
         <td>
           <button type="button" class="btn mx-1 btn-sm btn-outline-secondary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal">
             Edit
@@ -121,6 +123,9 @@ function populateTable(type,array) {
       document.getElementById('editProductPrice').value = product.price;
       document.getElementById('editProductDiscount').value = product.discount;
       document.getElementById('editProductStock').value = product.stock;
+      document.getElementById('editProductImage1').value = product.images[0];
+      document.getElementById('editProductImage2').value = product.images[1];
+      document.getElementById('editProductImage3').value = product.images[2];
       document.getElementById('editProductDescription').value = product.description;
       document.getElementById('editProductMovement').value = product.specifications.movement;
       document.getElementById('editProductCaseMaterial').value = product.specifications.caseMaterial;
@@ -136,23 +141,28 @@ function populateTable(type,array) {
   function saveProductChanges() {
     const productId = document.getElementById('editProductId').value;
     const index = sellerProducts.findIndex(p => p.productId === productId);
+    const allIndex = allProducts.findIndex(p => p.productId === productId);
+    const editedProduct=sellerProducts.find(p => p.productId === productId);
 
     const updatedProduct = {
       productId,
       name: document.getElementById('editProductName').value,
       brand: document.getElementById('editProductBrand').value,
-      price: document.getElementById('editProductPrice').value,
-      discount: document.getElementById('editProductDiscount').value,
-      stock: document.getElementById('editProductStock').value,
+      category : document.getElementById('editProductCategory').value,
+      price: +document.getElementById('editProductPrice').value,
+      discount: +document.getElementById('editProductDiscount').value,
+      rating : editedProduct.rating,
+      stock: +document.getElementById('editProductStock').value,
       description: document.getElementById('editProductDescription').value,
+      addedDate : editedProduct.addedDate,
       specifications: {
         movement: document.getElementById('editProductMovement').value,
         caseMaterial: document.getElementById('editProductCaseMaterial').value,
-        caseDiameter: document.getElementById('editProductCaseDiameter').value,
+        caseDiameter: +document.getElementById('editProductCaseDiameter').value,
         glass: document.getElementById('editProductGlass').value,
         waterResistance: document.getElementById('editProductWaterResistance').value,
         strapMaterial: document.getElementById('editProductStrapMaterial').value,
-        strapWidth: document.getElementById('editProductStrapWidth').value,
+        strapWidth: +document.getElementById('editProductStrapWidth').value,
         strapColor: document.getElementById('editProductStrapColor').value,
       },
       images: sellerProducts[index].images
@@ -161,7 +171,9 @@ function populateTable(type,array) {
 
     if(isValid(updatedProduct)){
       if (index !== -1) {
-        sellerProducts[index] = updatedProduct;
+        sellerProducts[index] =updatedProduct;
+        allProducts[allIndex]=updatedProduct;
+        storageModule.setItem('products',allProducts);
       }
       
       console.log(sellerProducts[index]);
@@ -186,25 +198,40 @@ function populateTable(type,array) {
       productId: IDGenerator.generateProductId(), 
       name: document.getElementById('addProductName').value,
       brand: document.getElementById('addProductBrand').value,
-      price: document.getElementById('addProductPrice').value,
-      discount: document.getElementById('addProductDiscount').value,
-      stock: document.getElementById('addProductStock').value,
+      price: +document.getElementById('addProductPrice').value,
+      rating : 5,
+      category: document.getElementById('addProductCategory').value,
+      discount: +document.getElementById('addProductDiscount').value,
+      stock: +document.getElementById('addProductStock').value,
       description: document.getElementById('addProductDescription').value,
+      addedDate : new Date(),
       specifications: {
         movement: document.getElementById('addProductMovement').value,
         caseMaterial: document.getElementById('addProductCaseMaterial').value,
-        caseDiameter: document.getElementById('addProductCaseDiameter').value,
+        caseDiameter: +document.getElementById('addProductCaseDiameter').value,
         glass: document.getElementById('addProductGlass').value,
         waterResistance: document.getElementById('addProductWaterResistance').value,
         strapMaterial: document.getElementById('addProductStrapMaterial').value,
-        strapWidth: document.getElementById('addProductStrapWidth').value,
+        strapWidth: +document.getElementById('addProductStrapWidth').value,
         strapColor: document.getElementById('addProductStrapColor').value,
       },
       images : []
     };
 
+    newProduct.images.push(document.getElementById('addProductImage1').value);
+    newProduct.images.push(document.getElementById('addProductImage2').value);
+    newProduct.images.push(document.getElementById('addProductImage3').value);
+
+
     if(isValid(newProduct)){
       sellerProducts.push(newProduct);
+      currentUserObj.products.push(newProduct.productId);
+      allUsers[sellerIndex].products=currentUserObj.products;
+      allProducts.push(newProduct);
+      storageModule.setItem('currentUser',currentUserObj);
+      storageModule.setItem('users',allUsers);
+      storageModule.setItem('products',allProducts);
+  
       document.getElementById('addModal').classList.remove('show');
       document.body.classList.remove('modal-open');
       document.querySelector('.modal-backdrop').remove();
@@ -218,6 +245,13 @@ function populateTable(type,array) {
   function deleteProduct(productId) {
     // Filter out the product to be deleted
     sellerProducts = sellerProducts.filter(p => p.productId !== productId);
+    currentUserObj.products=currentUserObj.products.filter(pId => pId !== productId);
+    allUsers[sellerIndex].products=currentUserObj.products;
+    allProducts = allProducts.filter(p => p.productId !== productId);
+
+    storageModule.setItem('currentUser',currentUserObj);
+    storageModule.setItem('users',allUsers);
+    storageModule.setItem('products',allProducts);
 
     // Repopulate the products table
     populateTable("products",sellerProducts);
@@ -238,7 +272,8 @@ function populateTable(type,array) {
   }
 
   function isValid(product){
-      if (checkEmpty(product.name)&&checkEmpty(product.brand)&&checkEmpty(product.price.toString())&&checkEmpty(product.discount.toString())&&checkEmpty(product.stock.toString()))
+
+      if (checkEmpty(product.name)&&checkEmpty(product.brand)&&checkEmpty(product.price.toString())&&checkEmpty(product.discount.toString())&&checkEmpty(product.description)&&checkEmpty(product.stock.toString())&&checkEmpty(product['images'][0])&&checkEmpty(product['images'][1])&&checkEmpty(product['images'][2]))
         return true ;
       else 
         return false ;  
