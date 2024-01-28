@@ -33,7 +33,7 @@ let users = [
       zipCode: "70734",
     },
     products: ["P2", "P3", "P4", "P5", "P6", "P7", "P8"],
-    orders: [],
+    orders: ["O1"],
   },
   {
     id: "U3",
@@ -1678,6 +1678,27 @@ let products = [
     ],
   },
 ];
+
+let orders = [
+  {
+    orderID: "O1",
+    sellerID: ["U2", "U3"],
+    customerID: "U4",
+    products: [
+      { productId: "P1", quantity: "1", price: 160 },
+      { productId: "P2", quantity: "4", price: 990 },
+      { productId: "P3", quantity: "3", price: 1360 },
+      { productId: "P4", quantity: "5", price: 400 },
+    ],
+    placeDate: "2024-01-25T15:28:21.643Z",
+    orderStatus: "delivered",
+    deliverDate:
+      "Thu Jan 25 2024 17:28:21 GMT+0200 (Eastern European Standard Time)2",
+  },
+];
+let ordersHistory = [];
+
+export { users, orders, products, ordersHistory };
 
 let orders = [{
   orderID: "O1",
