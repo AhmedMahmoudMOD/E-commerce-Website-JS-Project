@@ -14,6 +14,12 @@
     .cart{
       cursor: pointer;
     }
+    .cartIcon{
+      color: #000;
+    }
+    .cartIcon:hover{
+      color: #838383;
+    }
     .carousel-caption {
       text-align: center;
       color: #fff;
@@ -78,20 +84,22 @@
         </form> -->
         <!-- Cart Icon -->
         <div class="cart me-3">
-          <a href="../html/Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+          <a href="../html/Cart.html" class="cartIcon"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
-        <div class="nav-item dropdown d-flex align-items-center" id="userProfileDiv">
-          <i class="fa-solid fa-user" style="margin: 0 20px; cursor: pointer;"></i>
-          <a class="nav-link dropdown-toggle navUserName" href="#" role="button"data-bs-toggle="dropdown" aria-expanded="false">User name</a>
-          <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="../html/accDetailes.html">Profile</a></li>
-              <li><a class="dropdown-item" href="#">Calendar</a></li>
-              <li><a class="dropdown-item" href="#">Setting</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li>
-                  <a class="dropdown-item" href="#">Logout</a>
-              </li>
-          </ul>
+        <div id="userProfileDiv">
+          <div class="nav-item dropdown d-flex align-items-center" >
+            <i class="fa-solid fa-user" style="margin: 0 20px; cursor: pointer;"></i>
+            <a class="nav-link dropdown-toggle navUserName" href="#" role="button"data-bs-toggle="dropdown" aria-expanded="false">User name</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="../html/accDetailes.html">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Calendar</a></li>
+                <li><a class="dropdown-item" href="#">Setting</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                    <a class="dropdown-item" href="#" id="logoutBtn">Logout</a>
+                </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
