@@ -16,7 +16,9 @@ let sellerProducts = allProducts.filter(product => sellerProductsIDs.includes(pr
 let sellerOrdersIDs = currentUserObj.orders /// modification cand
 let sellerOrders = allOrders.filter(order=>sellerOrdersIDs.includes(order.orderID));
 
-const pageType = 'products';
+let pageType = 'products';
+const rowsPerPage = 4;
+let currentPage = 1;
   createTableHeader(pageType);
   populateTable(pageType,sellerProducts);
   addNumberValidation();
@@ -54,9 +56,17 @@ function populateTable(type,array) {
   const dataTable = document.getElementById('dataTable');
   const tableBody = document.getElementById('tableBody');
   tableBody.innerHTML = '';
+    const startIndex = (currentPage - 1) * rowsPerPage;
+    const endIndex = startIndex + rowsPerPage;
+
+    // Display only the products for the current page
+   
+    const currentPageRows = array.slice(startIndex, endIndex);
 
   if (type === 'orders') {
-    array.forEach(order => {
+    pageType='orders';
+    currentPage=1;
+    currentPageRows.forEach(order => {
       const row = tableBody.insertRow();
       row.insertCell().textContent = order.orderID;
       row.insertCell().textContent = order.customerID;
@@ -65,7 +75,6 @@ function populateTable(type,array) {
       row.insertCell().textContent = order.deliverDate;
       const productsCell = row.insertCell();
       const sellerOnlyProducts = order.products.filter(product => sellerProductsIDs.includes(product.id));
-      console.log(sellerOnlyProducts);
 
       sellerOnlyProducts.forEach(product => {
         productsCell.innerHTML += `${product.id}: ${product.quantity} - ${product.price}<br>`;
@@ -86,7 +95,8 @@ function populateTable(type,array) {
 
     });
   } else if (type === 'products') {
-    array.forEach(product => {
+    pageType='products';
+    currentPageRows.forEach(product => {
       const row = document.createElement('tr');
       row.innerHTML = `
         <td>${product.productId}</td>
@@ -112,6 +122,7 @@ function populateTable(type,array) {
     
     });
   }
+  renderPagination(array);
 }
 
   function populateEditForm(productId) {
@@ -372,6 +383,7 @@ function populateTable(type,array) {
     });
   
     // Return the filtered array of objects
+    currentPage=1;
     populateTable('orders',searchedOrders);
   }
 
@@ -400,6 +412,83 @@ function populateTable(type,array) {
     })
 
   }
+
+  function renderPagination(array) {
+    const totalPages = Math.ceil(array.length / rowsPerPage);
+    const paginationSection = document.querySelector('.pagination');
+    paginationSection.innerHTML = ''; // Clear previous pagination links
+      
+     // Create and append "Previous" button
+     const prevPageItem = document.createElement('li');
+     prevPageItem.classList.add('page-item');
+     prevPageItem.id = 'prevPage';
+ 
+     const prevPageLink = document.createElement('a');
+     prevPageLink.classList.add('page-link');
+     if(currentPage == 1)
+        prevPageLink.classList.add('disabled')
+     prevPageLink.href = '#';
+     prevPageLink.textContent = 'Previous';
+ 
+     prevPageLink.addEventListener('click', function (e) {
+         if (currentPage > 1) {
+            e.preventDefault();
+             currentPage--;
+             populateTable(pageType,array);
+             renderPagination(array);
+         }
+     });
+     prevPageItem.appendChild(prevPageLink);
+     paginationSection.appendChild(prevPageItem);
+
+    // Create and append Bootstrap pagination links
+    for (let i = 1; i <= totalPages; i++) {
+        const listItem = document.createElement('li');
+        listItem.classList.add('page-item');
+
+        const link = document.createElement('a');
+        link.classList.add('page-link');
+        if(currentPage==i)
+        link.classList.add('active');
+        link.href = '#';
+        link.textContent = i;
+
+        // Add click event listener to handle page change
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            currentPage = i;
+            populateTable(pageType,array);
+            renderPagination(array);
+        });
+
+        listItem.appendChild(link);
+        paginationSection.appendChild(listItem);
+    }
+
+    // Create and append "Next" button
+    const nextPageItem = document.createElement('li');
+    nextPageItem.classList.add('page-item');
+    nextPageItem.id = 'nextPage';
+
+    const nextPageLink = document.createElement('a');
+    nextPageLink.classList.add('page-link');
+    if(currentPage==totalPages)
+        nextPageLink.classList.add('disabled');
+    nextPageLink.href='#';
+    nextPageLink.textContent = 'Next';
+
+    nextPageLink.addEventListener('click', function (e) {
+        if (currentPage < totalPages) {
+            e.preventDefault();
+            currentPage++;
+            populateTable(pageType,array);
+             renderPagination(array);
+        }
+    });
+
+    nextPageItem.appendChild(nextPageLink);
+    paginationSection.appendChild(nextPageItem);
+}
 
 
   document.getElementById('saveChangesBtn').addEventListener('click', saveProductChanges);
