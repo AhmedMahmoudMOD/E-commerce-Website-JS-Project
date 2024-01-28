@@ -17,7 +17,7 @@ let sellerOrdersIDs = currentUserObj.orders /// modification cand
 let sellerOrders = allOrders.filter(order=>sellerOrdersIDs.includes(order.orderID));
 
 let pageType = 'products';
-const rowsPerPage = 4;
+const rowsPerPage = 10;
 let currentPage = 1;
   createTableHeader(pageType);
   populateTable(pageType,sellerProducts);
@@ -107,10 +107,10 @@ function populateTable(type,array) {
         <td>${product.discount}</td>
         <td>${product.stock}</td>
         <td>
-          <button type="button" class="btn mx-1 btn-sm btn-outline-secondary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal">
+          <button type="button" class="btn mx-1 btn-sm btn-outline-secondary edit-btn col-4 col-md-5" data-bs-toggle="modal" data-bs-target="#editModal">
             Edit
           </button>
-          <button type="button" class="btn mx-1 btn-sm btn-danger" id="deleteBtn">
+          <button type="button" class="btn mx-1 btn-sm btn-danger col-4 col-md-5" id="deleteBtn">
             Delete
           </button>
         </td>
