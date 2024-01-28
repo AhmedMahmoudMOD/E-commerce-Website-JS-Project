@@ -144,7 +144,9 @@ function loadorderforseller(sellerId) {
 }
 
 function createTableHeader(tableType) {
-    if (currentPage == " Home") { return; }
+    if (currentPage == " charts") {
+      return;
+    }
 
     tableHead.innerHTML = `
     <tr id="header">
@@ -170,6 +172,7 @@ function createTableHeader(tableType) {
         <th scope="col">Controls</th>  
     `;
     } else if (tableType == " Sellers Table") {
+        content.innerHTML=" ";
         header.innerHTML += `
         <th scope="col">Products</th>
         <th scope="col">Orders</th>
@@ -317,54 +320,55 @@ function LoadUserData(tableType) {
             </td>
             `;
         });
-    } else if (tableType == " Home") {
+    } else if (tableType == " charts") {
+      let content = document.getElementById("content"); // get content div
+      content.innerHTML = `<div class="w-50"><canvas id="myChart"></canvas></div>`; // add canvas to content div
 
-        let content = document.getElementById("content"); // get content div
-        content.innerHTML = `<div class="w-50"><canvas id="myChart"></canvas></div>`; // add canvas to content div
+      // setup chart
+      const Utils = ChartUtils.init(); // get chart utils
+      const ctx = document.getElementById("myChart"); // get canvas
 
-        // setup chart
-        const Utils = ChartUtils.init(); // get chart utils
-        const ctx = document.getElementById('myChart'); // get canvas
+      const DATA_COUNT = 5; // number of data points
 
-        const DATA_COUNT = 5; // number of data points
+      const data = {
+        labels: getTopBrands(DATA_COUNT).map((brand) => brand.brand), // get top 5 brands
+        datasets: [
+          {
+            label: "Number of Products",
+            data: getTopBrands(DATA_COUNT).map((brand) => brand.count), // get top 5 brands count
+            backgroundColor: Object.values(Utils.CHART_COLORS), // get chart colors
+          },
+        ],
+      };
 
-        const data = {
-            labels: getTopBrands(DATA_COUNT).map((brand) => brand.brand), // get top 5 brands
-            datasets: [
-                {
-                    label: 'Number of Products',
-                    data: getTopBrands(DATA_COUNT).map((brand) => brand.count), // get top 5 brands count
-                    backgroundColor: Object.values(Utils.CHART_COLORS), // get chart colors
-                }
-            ]
-        };
-
-        const config = {
-            type: 'doughnut',
-            data: data,
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Top Number of Products by Brand'
-                    }
-                }
+      const config = {
+        type: "doughnut",
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "top",
             },
-        };
+            title: {
+              display: true,
+              text: "Top Number of Products by Brand",
+            },
+          },
+        },
+      };
 
-        new Chart(ctx, config);
+      new Chart(ctx, config);
     }
 }
 
 
 function LoadSearchOptions(tableType) {
-    if (currentPage == " Home") { return; }
+    if (currentPage == "  charts") {
+      return;
+    }
     let searchBy = document.getElementById("searchBy");
-    searchBy.innerHTML = "";
+    //searchBy.innerHTML = "";
     if (tableType == " Users Table" || tableType == " Sellers Table") {
         searchBy.innerHTML += `
             <option value="1">ID</option>
@@ -382,54 +386,74 @@ function LoadSearchOptions(tableType) {
 }
 
 function deleteUser(id) {
-    let user = users.find((user) => user.id == id); // get user object
-    // if user is seller then delete all products for this seller
-    if (user.userType == "seller") {
-        user.products.forEach((productID) => {
-            deleteProduct(productID);
-        });
-    }
+  // Add a confirmation dialog
+  const isConfirmed = confirm("Are you sure you want to delete this user?");
+  if (!isConfirmed) {
+    return; // Exit the function if the user cancels the action
+  }
 
-    users = users.filter((user) => user.id != id); // delete user from users array
+  let user = users.find((user) => user.id == id); // get user object
+  if (!user) {
+    alert("User not found!");
+    return;
+  }
 
-    storageModule.setItem("users", users); // update users array in local storage
+  // if user is seller then delete all products for this seller
+  if (user.userType == "seller") {
+    user.products.forEach((productID) => {
+      deleteProduct(productID);
+    });
+  }
 
-    LoadUserData(currentPage); // reload table
+  users = users.filter((user) => user.id != id); // delete user from users array
+
+  storageModule.setItem("users", users); // update users array in local storage
+
+  LoadUserData(currentPage); // reload table
 }
 
 function deleteProduct(id) {
-    let product = products.find((product) => product.productId == id);
-    // delete product from products array
-    products = products.filter((product) => product.productId != id);
-    storageModule.setItem("products", products);
+  // Add a confirmation dialog
+  const isConfirmed = confirm("Are you sure you want to delete this product?");
+  if (!isConfirmed) {
+    return; // Exit the function if the user cancels the action
+  }
 
-    // delete product from seller array
-    let currentSeller = users.find((user) => user.id == product.sellerID);
+  let product = products.find((product) => product.productId == id);
+  if (!product) {
+    alert("Product not found!");
+    return;
+  }
+  // delete product from products array
+  products = products.filter((product) => product.productId != id);
+  storageModule.setItem("products", products);
+
+  // delete product from seller array
+  let currentSeller = users.find((user) => user.id == product.sellerID);
+  if (currentSeller) {
     currentSeller.products = currentSeller.products.filter(
-        (productId) => productId != id
+      (productId) => productId != id
     );
     users = users.map((user) => {
-        if (user.id == currentSeller.id) {
-            return currentSeller;
-        }
-
-        return user;
+      if (user.id == currentSeller.id) {
+        return currentSeller;
+      }
+      return user;
     });
     storageModule.setItem("users", users);
+  }
 
-    // delete product from customers cart
-    users.forEach((user) => {
-        if (user.userType != "customer") {
-            return;
-        }
-        user.cart = user.cart.filter((product) => product.productId != id);
-    });
-    storageModule.setItem("users", users);
+  // delete product from customers cart
+  users.forEach((user) => {
+    if (user.userType != "customer") {
+      return;
+    }
+    user.cart = user.cart.filter((product) => product.productId != id);
+  });
+  storageModule.setItem("users", users);
 
-    if (currentPage == " Sellers Table")
-        loadProductsForSeller(currentSeller.id);
-    else if (currentPage == " Product Catalog")
-        LoadUserData(currentPage);
+  if (currentPage == " Sellers Table") loadProductsForSeller(currentSeller.id);
+  else if (currentPage == " Product Catalog") LoadUserData(currentPage);
 }
 
 /////////////////////////// Main ///////////////////////////

@@ -1,3 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      Super Panel
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto"></ul>
+    </div>
+  </div>
+</nav>;
+
 import { storageModule } from "../common/storageModule.js";
 
 let arrproducts = storageModule.getItem("products");
@@ -145,7 +167,7 @@ function loadContent(page) {
         var th = document.createElement("th");
         th.setAttribute("scope", "col");
         th.appendChild(document.createTextNode(headerText));
-        
+
         trHeader.appendChild(th);
       });
       var th = document.createElement("th");
@@ -171,10 +193,10 @@ function loadContent(page) {
               imgElement.style.maxWidth = "26px"; // Set maximum width for images if needed
               imagesCellContent.appendChild(imgElement);
             });
-            
+
             cell.appendChild(imagesCellContent);
           } else if (header === "specifications") {
-            cell.innerHTML=" ";
+            cell.innerHTML = " ";
           } else {
             cell.appendChild(document.createTextNode(product[header]));
           }
