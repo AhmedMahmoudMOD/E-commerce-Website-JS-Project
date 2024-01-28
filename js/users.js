@@ -1,17 +1,17 @@
 import { orders } from "../common/staticdata.js";
-//import { products } from "../common/staticdata.js";
 import { storageModule } from "../common/storageModule.js";
 
 storageModule.setItem("orders", orders);
 
 let users = storageModule.getItem("users");
-let tableBody = document.getElementById("adminTableBody");
-let tableHead = document.getElementById("adminTableHead");
+let products = storageModule.getItem("products");
+let tableBody;
+let tableHead;
 let modalBody = document.getElementById("modalTableBody");
 let modalHead = document.getElementById("modalTableHead");
 let modalTitle = document.getElementById("mainModalTitle");
 let currentPage = "";
-let products = storageModule.getItem("products");
+let container = document.getElementById("content");
 
 function cartToString(cart) {
     if (cart.length == 0) {
@@ -34,10 +34,9 @@ function ordersToString(orders) {
     });
     return ordersString;
 }
-/////// state color display
+
 function color(status) {
     if (status == "Pending") {
-        console.log(status);
         return "text-warning"; // orange
     } else if (status == "delivered") {
         return "text-success";
@@ -83,7 +82,6 @@ function loadProductsForSeller(sellerId) {
     `;
 
     products.forEach((Product) => {
-        console.log(products);
         modalBody.innerHTML += `
         <tr>
             <th scope="row">${++num}</th>
@@ -101,6 +99,7 @@ function loadProductsForSeller(sellerId) {
         `;
     });
 }
+
 function loadorderforseller(sellerId) {
     let num = 0;
     let seller = users.find((user) => user.id == sellerId);
@@ -144,10 +143,6 @@ function loadorderforseller(sellerId) {
 }
 
 function createTableHeader(tableType) {
-    if (currentPage == " charts") {
-      return;
-    }
-
     tableHead.innerHTML = `
     <tr id="header">
         <th scope="col">#</th>
@@ -172,7 +167,6 @@ function createTableHeader(tableType) {
         <th scope="col">Controls</th>  
     `;
     } else if (tableType == " Sellers Table") {
-        content.innerHTML=" ";
         header.innerHTML += `
         <th scope="col">Products</th>
         <th scope="col">Orders</th>
@@ -229,16 +223,31 @@ function getTopBrands(num) {
 
 }
 
+function getUsersCount() {
+    let customers = 0;
+    let sellers = 0;
+    users.forEach((user) => {
+        if (user.userType == "customer") {
+            customers++;
+        }
+        else if (user.userType == "seller") {
+            sellers++;
+        }
+    });
+    return [customers, sellers];
+}
+
 function LoadUserData(tableType) {
     let count = 0;
-    tableBody.innerHTML = "";
+    LoadEmptyTable();
     if (tableType == " Users Table") {
+        createTableHeader(currentPage);
         users.forEach((user) => {
             if (user.userType != "customer") {
                 return;
             }
             tableBody.innerHTML += `
-        <tr>
+            <tr>
             <th scope="row">${++count}</th>
             <td>${user.id}</td>
             <td>${user.userType}</td>
@@ -249,24 +258,26 @@ function LoadUserData(tableType) {
             <td>${user.lastName}</td>
             <td>${user.phoneNumber}</td>
             <td>${user.location.street}, ${user.location.city}, ${user.location.state
-                }, ${user.location.country}, ${user.location.zipCode}</td>
+            }, ${user.location.country}, ${user.location.zipCode}</td>
             <td>${cartToString(user.cart)}</td>
             <td>${ordersToString(user.orderHistory)}</td>
             <td>
-                <button type="button" class="btn btn-danger delete-user" data-id="${user.id
-                }">Delete</button>
+            <button type="button" class="btn btn-danger delete-user" data-id="${user.id
+            }">Delete</button>
             </td>
-        </tr>
-        `;
+            </tr>
+            `;
         });
+        LoadSearchOptions(currentPage);
     } else if (tableType == " Sellers Table") {
+        createTableHeader(currentPage);
         let num = 0;
         users.forEach((user) => {
             if (user.userType != "seller") {
                 return;
             }
             tableBody.innerHTML += `
-        <tr>
+            <tr>
             <th scope="row">${++num}</th>
             <td>${user.id}</td>
             <td>${user.userType}</td>
@@ -277,30 +288,31 @@ function LoadUserData(tableType) {
             <td>${user.lastName}</td>
             <td>${user.phoneNumber}</td>
             <td>${user.location.street}, ${user.location.city}, ${user.location.state
-                }, ${user.location.country}, ${user.location.zipCode}</td>
+            }, ${user.location.country}, ${user.location.zipCode}</td>
             <td>
-                <button type="button" class="btn btn-primary modal-dialog-scrollable" data-bs-toggle="modal" data-bs-target="#mainModal" name="product" productFor="${user.id
-                }">
-                    Show
-                </button>
+            <button type="button" class="btn btn-primary modal-dialog-scrollable" data-bs-toggle="modal" data-bs-target="#mainModal" name="product" productFor="${user.id
+            }">
+            Show
+            </button>
             </td>
             <td>
-                <button type="button" class="btn btn-primary modal-dialog-scrollable" data-bs-toggle="modal" data-bs-target="#mainModal" name="order" orderFor="${user.id
-                }">
-                    Display
-                </button>
+            <button type="button" class="btn btn-primary modal-dialog-scrollable" data-bs-toggle="modal" data-bs-target="#mainModal" name="order" orderFor="${user.id
+            }">
+            Display
+            </button>
             </td>
             <td>
-                <button type="button" class="btn btn-danger delete-user" data-id="${user.id
-                }">Delete</button>
+            <button type="button" class="btn btn-danger delete-user" data-id="${user.id
+            }">Delete</button>
             </td>
             `;
         });
-        let count = 0;
+        LoadSearchOptions(currentPage);
     } else if (tableType == " Product Catalog") {
+        createTableHeader(currentPage);
         products.forEach((product) => {
             tableBody.innerHTML += `
-        <tr>
+            <tr>
             <th scope="row">${++count}</th>
             <td>${product.productId}</td>
             <td>${product.name}</td>
@@ -313,60 +325,158 @@ function LoadUserData(tableType) {
             <td>${product.description}</td>
             <td>${product.sellerID}</td>
             <td>${product.addedDate}</td>
-             <td><img src="${product.images[0]
-                }" width="50px" height="50px"></td>            
+            <td><img src="${product.images[0]
+            }" width="50px" height="50px"></td>            
             <td>
-                 <button type="button" class="btn btn-danger delete-product" data-id="${product.productId}">Delete</button>
+            <button type="button" class="btn btn-danger delete-product" data-id="${product.productId}">Delete</button>
             </td>
             `;
         });
+        LoadSearchOptions(currentPage);
     } else if (tableType == " charts") {
-      let content = document.getElementById("content"); // get content div
-      content.innerHTML = `<div class="w-50"><canvas id="myChart"></canvas></div>`; // add canvas to content div
+        
+        container.innerHTML = ""; // clear container
 
-      // setup chart
-      const Utils = ChartUtils.init(); // get chart utils
-      const ctx = document.getElementById("myChart"); // get canvas
-
-      const DATA_COUNT = 5; // number of data points
-
-      const data = {
-        labels: getTopBrands(DATA_COUNT).map((brand) => brand.brand), // get top 5 brands
-        datasets: [
-          {
-            label: "Number of Products",
-            data: getTopBrands(DATA_COUNT).map((brand) => brand.count), // get top 5 brands count
-            backgroundColor: Object.values(Utils.CHART_COLORS), // get chart colors
-          },
-        ],
-      };
-
-      const config = {
-        type: "doughnut",
-        data: data,
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              position: "top",
-            },
-            title: {
-              display: true,
-              text: "Top Number of Products by Brand",
-            },
-          },
-        },
-      };
-
-      new Chart(ctx, config);
+        // add canvas to content div
+        container.innerHTML = ` 
+        <div class="container mt-3">
+            <div class="row gap-3">
+                <div class="col p-3 rounded-5 border bg-dark bg-opacity-10 chart-container">
+                    <canvas id="BrandChart"></canvas>
+                </div>
+                <div class="col p-3 rounded-5 border bg-dark bg-opacity-10 chart-container">
+                    <canvas id="userCountChart"></canvas>
+                </div>
+                <div class="col p-3 rounded-5 border bg-dark bg-opacity-10 chart-container">
+                    <canvas id="UserChart"></canvas>
+                </div>
+            </div>
+        </div>`; 
+        
+        InitializeCharts(); // initialize charts
     }
 }
 
+function InitializeCharts() {
+    // setup chart
+    const Utils = ChartUtils.init(); // get chart utils
+
+    const Brands_ctx = document.getElementById("BrandChart"); // get canvas
+    const User_ctx = document.getElementById("UserChart"); // get canvas
+    const UserCount_ctx = document.getElementById("userCountChart"); // get canvas
+
+    const Brands_DATA_COUNT = 5; // number of data points
+
+    const brandsData = {
+        labels: getTopBrands(Brands_DATA_COUNT).map((brand) => brand.brand), // get top 5 brands
+        datasets: [
+            {
+                label: "Number of Products",
+                data: getTopBrands(Brands_DATA_COUNT).map((brand) => brand.count), // get top 5 brands count
+                backgroundColor: Object.values(Utils.CHART_COLORS), // get chart colors
+            },
+        ],
+    };
+
+    const brandsConfig = {
+        type: "doughnut",
+        data: brandsData,
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            animation: { animateRotate: true, duration: 2500 },
+            plugins: {
+                legend: {
+                    position: "top",
+                },
+                title: {
+                    display: true,
+                    text: "Top Number of Products by Brand",
+                },
+            },
+        },
+    };
+
+    new Chart(Brands_ctx, brandsConfig);
+
+    const User_DATA_COUNT = 7;
+    const History_NUMBER_CFG = { count: User_DATA_COUNT, min: 1000, max: 10000 };
+
+    const labels = Utils.months({ count: 7 });
+    const userData = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Customers',
+                data: Utils.numbers(History_NUMBER_CFG),
+                borderColor: Utils.CHART_COLORS.red,
+                backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+            },
+            {
+                label: 'Sellers',
+                data: Utils.numbers(History_NUMBER_CFG),
+                borderColor: Utils.CHART_COLORS.blue,
+                backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
+            }
+        ]
+    };
+
+    const userConfig = {
+        type: 'line',
+        data: userData,
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            animation: { duration: 2500 },
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Users count by Month'
+                }
+            }
+        },
+    };
+
+    new Chart(User_ctx, userConfig);
+
+
+    const userCountData = {
+        labels: ['Customer', 'Seller'],
+        datasets: [
+            {
+                label: 'Count',
+                data: getUsersCount(),
+                backgroundColor: Object.values(Utils.CHART_COLORS),
+            }
+        ]
+    };
+
+    const userCountConfig = {
+        type: 'pie',
+        data: userCountData,
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            animation: { duration: 2500 },
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Current Users Count'
+                }
+            }
+        },
+    };
+
+    new Chart(UserCount_ctx, userCountConfig);
+}
 
 function LoadSearchOptions(tableType) {
-    if (currentPage == "  charts") {
-      return;
-    }
     let searchBy = document.getElementById("searchBy");
     //searchBy.innerHTML = "";
     if (tableType == " Users Table" || tableType == " Sellers Table") {
@@ -383,14 +493,22 @@ function LoadSearchOptions(tableType) {
             <option value="4">Price</option>
             `;
     }
+
+    // search function
+    $("#search").on("keyup", function () {
+        let searchBy = document.getElementById("searchBy").value; // get search by value
+        let value = $(this).val().toLowerCase(); // get search value
+        let tableBody = document.getElementById("adminTableBody"); // get table body
+
+        // searching each row for value
+        Array.from(tableBody.rows).forEach((row) => {
+            $(row).toggle(row.cells[parseInt(searchBy)].innerText.toLowerCase().includes(value.toLowerCase()));
+        });
+    });
 }
 
 function deleteUser(id) {
   // Add a confirmation dialog
-  const isConfirmed = confirm("Are you sure you want to delete this user?");
-  if (!isConfirmed) {
-    return; // Exit the function if the user cancels the action
-  }
 
   let user = users.find((user) => user.id == id); // get user object
   if (!user) {
@@ -413,11 +531,6 @@ function deleteUser(id) {
 }
 
 function deleteProduct(id) {
-  // Add a confirmation dialog
-  const isConfirmed = confirm("Are you sure you want to delete this product?");
-  if (!isConfirmed) {
-    return; // Exit the function if the user cancels the action
-  }
 
   let product = products.find((product) => product.productId == id);
   if (!product) {
@@ -456,36 +569,97 @@ function deleteProduct(id) {
   else if (currentPage == " Product Catalog") LoadUserData(currentPage);
 }
 
+function LoadEmptyTable() {
+    container.innerHTML = "";
+
+    container.innerHTML = `
+    <!-- Search bar -->
+    <div class="d-flex flex-row mb-3 border p-2" id="searchContainer">
+        <div class="col">
+        <label>search:</label>
+        <input
+            type="search"
+            placeholder="search"
+            class="form-control w-75"
+            id="search"
+        />
+        </div>
+        <div class="col">
+        <label>Search By:</label>
+        <select
+            name="searchBy"
+            id="searchBy"
+            class="form-select w-75"
+        ></select>
+        </div>
+        <div class="col"></div>
+    </div>
+    <!-- End of search bar -->
+
+    <!-- Table creation -->
+    <div class="text-center table-responsive">
+        <table
+        class="table table-striped table-hover align-middle"
+        style="font-size: small"
+        >
+        <thead class="table-primary" id="adminTableHead"></thead>
+        <tbody class="table-group-divider" id="adminTableBody"></tbody>
+        </table>
+    </div>
+    <!-- End of table creation -->
+    `;
+    tableBody = document.getElementById("adminTableBody");
+    tableHead = document.getElementById("adminTableHead");
+}
+
+function FireDeleteSweetAlert(func, id)
+{
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            func(id);
+            Swal.fire({
+                title: "Deleted!",
+                text: "Deleted successfully.",
+                icon: "success"
+            });
+        }
+    });
+}
+
 /////////////////////////// Main ///////////////////////////
 
+LoadUserData(" charts"); // Load charts by default 
+
 document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("delete-user")) {
-        let id = e.target.getAttribute("data-id");
-        deleteUser(id);
-    } else if (e.target.classList.contains("nav-link")) {
+
+    if (e.target.classList.contains("delete-user")) { // if delete user button is clicked
+        
+        FireDeleteSweetAlert(deleteUser, e.target.getAttribute("data-id"));
+
+    } else if (e.target.classList.contains("nav-link")) { // if nav link is clicked
+        
         currentPage = e.target.innerText;
-        createTableHeader(currentPage);
         LoadUserData(currentPage);
-        LoadSearchOptions(currentPage);
-    } else if (e.target.classList.contains("modal-dialog-scrollable")) {
-        if (e.target.getAttribute("name") == "product") {
+
+    } else if (e.target.classList.contains("modal-dialog-scrollable")) { // if modal button is clicked
+        
+        if (e.target.getAttribute("name") == "product") { // if product button is clicked
             loadProductsForSeller(e.target.getAttribute("productFor"));
-        } else if (e.target.getAttribute("name") == "order") {
+
+        } else if (e.target.getAttribute("name") == "order") { // if order button is clicked
             loadorderforseller(e.target.getAttribute("orderFor"));
         }
-    } else if (e.target.classList.contains("delete-product")) {
-        deleteProduct(e.target.getAttribute("data-id"));
+
+    } else if (e.target.classList.contains("delete-product")) { // if delete product button is clicked
+        
+        FireDeleteSweetAlert(deleteProduct, e.target.getAttribute("data-id"));
     }
-});
-
-// search function
-$("#search").on("keyup", function () {
-    let searchBy = document.getElementById("searchBy").value; // get search by value
-    let value = $(this).val().toLowerCase(); // get search value
-    let tableBody = document.getElementById("adminTableBody"); // get table body
-
-    // searching each row for value
-    Array.from(tableBody.rows).forEach((row) => {
-        $(row).toggle(row.cells[parseInt(searchBy)].innerText.toLowerCase().includes(value.toLowerCase()));
-    });
 });
