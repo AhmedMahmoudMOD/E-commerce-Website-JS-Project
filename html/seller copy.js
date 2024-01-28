@@ -1,10 +1,6 @@
 import { storageModule } from "../common/storageModule.js";
 import {IDGenerator} from "../common/idclass.js"
 
-import {users,orders,products,currentUser,guestCart} from "../common/staticdata.js"
-
-storageModule.setItem('currentUser',currentUser);
-storageModule.setItem('orders',orders);
 
 let allUsers=storageModule.getItem('users');
 let allProducts = storageModule.getItem('products');
@@ -13,11 +9,11 @@ let sellerIndex = allUsers.findIndex(user => user.id===currentUserObj.id)
 let allOrders = storageModule.getItem("orders");
 let sellerProductsIDs = currentUserObj.products;
 let sellerProducts = allProducts.filter(product => sellerProductsIDs.includes(product.productId)); 
-let sellerOrdersIDs = currentUserObj.orders /// modification cand
+let sellerOrdersIDs = currentUserObj.orders;
 let sellerOrders = allOrders.filter(order=>sellerOrdersIDs.includes(order.orderID));
 
 let pageType = 'products';
-const rowsPerPage = 4;
+const rowsPerPage = 10;
 let currentPage = 1;
   createTableHeader(pageType);
   populateTable(pageType,sellerProducts);
@@ -77,7 +73,7 @@ function populateTable(type,array) {
       const sellerOnlyProducts = order.products.filter(product => sellerProductsIDs.includes(product.id));
 
       sellerOnlyProducts.forEach(product => {
-        productsCell.innerHTML += `${product.id}: ${product.quantity} - ${product.price}<br>`;
+        productsCell.innerHTML += `${product.productId}: ${product.quantity} - ${product.price}<br>`;
       });
 
       const actionsCell = row.insertCell();
@@ -107,10 +103,10 @@ function populateTable(type,array) {
         <td>${product.discount}</td>
         <td>${product.stock}</td>
         <td>
-          <button type="button" class="btn mx-1 btn-sm btn-outline-secondary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal">
+          <button type="button" class="btn mx-1 btn-sm btn-outline-secondary edit-btn col-4 col-md-5" data-bs-toggle="modal" data-bs-target="#editModal">
             Edit
           </button>
-          <button type="button" class="btn mx-1 btn-sm btn-danger" id="deleteBtn">
+          <button type="button" class="btn mx-1 btn-sm btn-danger col-4 col-md-5" id="deleteBtn">
             Delete
           </button>
         </td>
@@ -118,7 +114,7 @@ function populateTable(type,array) {
 
       tableBody.appendChild(row);
       row.querySelector('.edit-btn').addEventListener('click', () => populateEditForm(product.productId));
-      row.querySelector('#deleteBtn').addEventListener('click', () => deleteProduct(product.productId));
+      row.querySelector('#deleteBtn').addEventListener('click', () => FireDeleteSweetAlert(deleteProduct, product.productId));
     
     });
   }
@@ -194,7 +190,11 @@ function populateTable(type,array) {
     document.body.classList.remove('modal-open');
     document.querySelector('.modal-backdrop').remove();
     } else{
-      alert("Pleace Make Sure Your Data is Correct");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Complete All Required Fields With Valid Non Empty Data",
+      });
     }
 
     
@@ -248,7 +248,11 @@ function populateTable(type,array) {
       document.querySelector('.modal-backdrop').remove();
       populateTable("products",sellerProducts);
     } else{
-        alert("Make sure your data is correct")
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Complete All Required Fields With Vlaid Non Empty Data",
+      });
      }
     
   }
@@ -488,6 +492,28 @@ function populateTable(type,array) {
 
     nextPageItem.appendChild(nextPageLink);
     paginationSection.appendChild(nextPageItem);
+}
+
+function FireDeleteSweetAlert(func, id)
+{
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            func(id);
+            Swal.fire({
+                title: "Deleted!",
+                text: "Deleted successfully.",
+                icon: "success"
+            });
+        }
+    });
 }
 
 

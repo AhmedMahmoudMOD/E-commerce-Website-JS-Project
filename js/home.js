@@ -1,15 +1,17 @@
 // Import the storageModule
 import { storageModule } from "../common/storageModule.js";
-import {users,products,orders} from "../common/staticdata.js"
-import { IDGenerator } from "../common/idclass.js";
+import {users,products,orders} from "../common/staticdata.js";
 
 
-storageModule.setItem('products',products);
+websiteDataLoad();
+
+
 let currentUserObj = storageModule.getItem('currentUser');
 let allProducts = storageModule.getItem('products');
 let newArrivals = allProducts.slice(-4);
 let newArrivalsDiv = document.getElementById('newArrivals');
 let allUsers = storageModule.getItem('users');
+let guestCartArr = storageModule.getItem('guest-cart');
 
 renderProducts(newArrivalsDiv,newArrivals);
 // imgHover(newArrivals);
@@ -241,4 +243,15 @@ function filterOffers(Products){
   // Filter Based  on  Discunt
     let offeredProducts = Products.filter(product=> product.brand!==0)
     return offeredProducts.slice(0,4);
+}
+
+function websiteDataLoad(){
+    if(storageModule.getItem('products')===null)
+        storageModule.setItem('products',products);
+    if(storageModule.getItem('users')===null)
+        storageModule.setItem('users',users);
+    if(storageModule.getItem('orders')===null)
+        storageModule.setItem('orders',orders);
+
+    storageModule.setItem('guest-cart',[]);
 }

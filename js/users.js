@@ -1,7 +1,4 @@
-import { orders } from "../common/staticdata.js";
 import { storageModule } from "../common/storageModule.js";
-
-storageModule.setItem("orders", orders);
 
 let users = storageModule.getItem("users");
 let products = storageModule.getItem("products");
