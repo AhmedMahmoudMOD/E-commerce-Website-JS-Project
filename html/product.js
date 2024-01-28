@@ -14,12 +14,14 @@ window.addEventListener('load',function(){
     renderCarousel(shownProduct);
     renderInfo(shownProduct);
     renderTabs(shownProduct);
-    addtoCart();
+    checkStock();
+    // addtoCart();
     navLinksControl();
     filterRelated(shownProduct);
     renderRelated(relatedProducts);
     imgHover(relatedProducts);
     cardAddtoCart();
+    // addBuyNoWEvent ();
    
 
 })
@@ -209,7 +211,14 @@ function addtoCart(){
             }
             console.log(guestCartArr);
         }
-        else;
+        else{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Add to Cart is Only Avaliable to Our Customers",
+                footer: '<a href="./signUp.html">Sign Up or Login As Customer</a>'
+              });
+        }
     })
 }
 
@@ -409,34 +418,51 @@ function cardAddtoCart (){
                 currentUserObj.cart.push(cartedProduct);
                 storageModule.setItem('users',allUsers);
                 storageModule.setItem('currentUser',currentUserObj);
-                console.log(allUsers[index]);
+                cartBtns[i].querySelector('span').innerText = "  Added to Cart";
+                cartBtns[i].querySelector('button').classList.remove('btn-light');
+                cartBtns[i].querySelector('button').classList.add('btn-success');
+                this.removeEventListener('click', addAction); // removing the event after the first click
             }
             else if(currentUserObj==null){
                 guestCartArr.push(cartedProduct);
                 storageModule.setItem('guest-cart',guestCartArr)
+                cartBtns[i].querySelector('span').innerText = "  Added to Cart";
+                cartBtns[i].querySelector('button').classList.remove('btn-light');
+                cartBtns[i].querySelector('button').classList.add('btn-success');
+                this.removeEventListener('click', addAction); // removing the event after the first click
             }
-            else;
+            else{
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Add to Cart is Only Avaliable to Our Customers",
+                    footer: '<a href="./signUp.html">Sign Up or Login As Customer</a>'
+                  });
+            }
 
-            cartBtns[i].querySelector('span').innerText = "  Added to Cart";
-            cartBtns[i].querySelector('button').classList.remove('btn-light');
-            cartBtns[i].querySelector('button').classList.add('btn-success');
-            this.removeEventListener('click', addAction); // removing the event after the first click
+           
         })
         
     }
 }
 
+function  addBuyNoWEvent (){
+    let buyNow = document.getElementById('buyNow');
+    buyNow.addEventListener('click',()=>{
+        window.location.href='./Checkout.html';
+    })
+}
 
-// function isBottomOfPage() {
-//     return window.innerHeight + window.scrollY >= document.body.offsetHeight-10;
-//   }
-
-//   // Event listener for the scroll event
-//   window.addEventListener('scroll', function () {
-//     // If the user has scrolled to the bottom, load related products
-//     if (isBottomOfPage()) {
-//      console.log('sus');
-     
-//     }
-//   });
-
+function checkStock(){
+    if(shownProduct.stock!=0){
+        cartDiv.style.display='flex';
+        buyNow.style.display='block';
+        soldout.style.display='none';
+        addtoCart();
+        addBuyNoWEvent();
+    }else{
+        cartDiv.style.display='none';
+        buyNow.style.display='none';
+        soldout.style.display='block';
+    }
+}
