@@ -110,9 +110,10 @@ function renderProducts(products){
         pImg.classList.add('img-fluid');
         pImg.src=product.images[0];
         /* Product Image Created */
-
-        /* Cart Button Div Created*/
         let cartBtnDiv =  document.createElement('div');
+        /* Cart Button Div Created*/
+        if(product.stock!=0){
+        
         cartBtnDiv.classList.add('cart-btn-card');
         cartBtnDiv.id=product.productId;
         let cartBtn  = document.createElement('button');
@@ -125,6 +126,7 @@ function renderProducts(products){
         cartBtn.append(cartIcon,cartTitle);
         /* Cart Btn Appended */
         cartBtnDiv.append(cartBtn);
+        }
         /* Cart Btn Div Appended */
         if(product.discount!==0)
             innerBox.append(iconsDiv,onSaleDiv,pImg,cartBtnDiv);
@@ -151,10 +153,13 @@ function renderProducts(products){
         let productPriceDiv = document.createElement('div');
         productPriceDiv.classList.add('product-price');
         let productPriceSpan = document.createElement('span');
-        productPriceSpan.textContent = `${product.price} EGP`;
+        if (product.stock==0)
+            productPriceSpan.textContent="Sold Out";
+        else
+            productPriceSpan.textContent = `${product.price} EGP`;
         /* Product Price Created */
          productPriceDiv.appendChild(productPriceSpan);
-        if(product.discount!=0){
+        if(product.discount!=0&&product.stock!=0){
             let discountedPriceSpan = document.createElement('span');
             let discountedPrice=product.price-product.discount*product.price;
             discountedPriceSpan.textContent = `  ${discountedPrice} EGP`;
@@ -163,6 +168,9 @@ function renderProducts(products){
             productPriceDiv.appendChild(discountedPriceSpan);
         }
          /* Product Price Appended */
+
+         if (product.stock==0)
+         productPriceSpan="Sold Out";
 
         
         productInfoDiv.appendChild(productNameDiv);
@@ -355,18 +363,30 @@ function addToCart (){
                 currentUserObj.cart.push(cartedProduct);
                 storageModule.setItem('users',allUsers);
                 storageModule.setItem('currentUser',currentUserObj);
+                cartBtns[i].querySelector('span').innerText = "  Added to Cart";
+                cartBtns[i].querySelector('button').classList.remove('btn-light');
+                cartBtns[i].querySelector('button').classList.add('btn-success');
+                this.removeEventListener('click', addAction);// removing the event after the first click
                 console.log(allUsers[index]);
             }
             else if(currentUserObj==null){
                 guestCartArr.push(cartedProduct);
-                storageModule.setItem('guest-cart',guestCartArr)
+                storageModule.setItem('guest-cart',guestCartArr);
+                cartBtns[i].querySelector('span').innerText = "  Added to Cart";
+                cartBtns[i].querySelector('button').classList.remove('btn-light');
+                cartBtns[i].querySelector('button').classList.add('btn-success');
+                this.removeEventListener('click', addAction);
             }
-            else;
+            else{
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Add to Cart is Only Avaliable to Our Customers",
+                    footer: '<a href="./signUp.html">Sign Up or Login As Customer</a>'
+                  });
+            }
 
-            cartBtns[i].querySelector('span').innerText = "  Added to Cart";
-            cartBtns[i].querySelector('button').classList.remove('btn-light');
-            cartBtns[i].querySelector('button').classList.add('btn-success');
-            this.removeEventListener('click', addAction); // removing the event after the first click
+             
         })
         
     }
@@ -519,8 +539,15 @@ function openModal(){
             else
                 productView.append(brandP,nameP,priceSpan,descriptionP);
 
+            if(modalProduct.stock==0){
+                soldout.style.display='block';
+                modalCart.style.display='none';
+            } else{
+                soldout.style.display='none';
+                modalCart.style.display='flex';
+                addtoCartModal();    // Invoking Add to cart Modal
+            }
             
-            addtoCartModal();    // Invoking Add to cart Modal
         })
        
     }
@@ -598,7 +625,14 @@ function addtoCartModal(){
             }
             console.log(guestCartArr);
         }
-        else;
+        else{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Add to Cart is Only Avaliable to Our Customers",
+                footer: '<a href="./signUp.html">Sign Up or Login As Customer</a>'
+              });
+        }
     })
 }
 
