@@ -2,19 +2,39 @@ import { storageModule } from "../common/storageModule.js"
 
 function CheckIfUserIsCustomer() // Check if the user is a customer or not
 {
-    if (storageModule.getItem("currentUser") != null) // If the user is not logged in then redirect him to the login page
+    if (storageModule.getItem("currentUser") == null || Object.keys(storageModule.getItem("currentUser")).length == 0) // If the user is not logged in then redirect him to the login page
+    {return;}
+
+    if (storageModule.getItem("currentUser").userType != "customer") // If the user is a customer then get the cart from the storage
     {
-        if (storageModule.getItem("currentUser").userType != "customer") // If the user is a customer then get the cart from the storage
-        {
-            alert("You must login as a customer first");
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You must login as a customer first",
+        }).then(() => {
             window.location.href = "Login.html";
-        }
+        });
+    }
+
+}
+
+function checkIfCartIsEmpty() // Check if the cart is empty or not
+{
+    if (GetProductFromCart() == 0) // If the cart is empty then redirect the user to the home page
+    {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Your cart is empty",
+        }).then(() => {
+            window.location.href = "Home.html";
+        });
     }
 }
 
 function GetProductFromCart() // Get the product from the cart in the storage
 {
-    if (storageModule.getItem("currentUser") == null) // If the user is not logged in then redirect him to the login page
+    if (storageModule.getItem("currentUser") == null || Object.keys(storageModule.getItem("currentUser")).length == 0) // If the user is not logged in then redirect him to the login page
     {
         return storageModule.getItem("guest-cart"); // Get the cart from the storage
     }
@@ -63,7 +83,7 @@ function DeleteItemFromCart(id) // Delete the cart product information in the st
     let cart = GetProductFromCart(); // Get the cart from the storage
     let index = cart.findIndex(x => x.productId == id); // Get the index of the product in the cart
 
-    if (storageModule.getItem("currentUser") == null) // If the user is not logged in then redirect him to the login page
+    if (storageModule.getItem("currentUser") == null || Object.keys(storageModule.getItem("currentUser")).length == 0) // If the user is not logged in then redirect him to the login page
     {
         cart = cart.filter(x => x.productId != id); // Delete the product from the cart
         storageModule.setItem("guest-cart", cart); // Set the cart in the storage
@@ -89,7 +109,7 @@ function reloadWithWarning(changedProducts) // Reload the page and inform the us
         let productCard = document.getElementById(changedProductId);
 
         // changed the HTML to inform user with changes in the product
-        productCard.innerHTML += `<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        productCard.innerHTML += `<div class="alert alert-warning alert-dismissible fade show m-3" role="alert">
         <strong>Quantity changed!</strong> The quantity has been changed to the maximum quantity available in stock.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>`;
@@ -161,7 +181,10 @@ function LoadData() // Load the products information to the cart page
     });
 }
 
+/////////////////////////// Main ///////////////////////////
+
 CheckIfUserIsCustomer(); // Check if the user is a customer or not
+checkIfCartIsEmpty(); // Check if the cart is empty or not
 LoadData(); // Load the products information to the cart page
 
 
@@ -171,23 +194,53 @@ document.addEventListener("click", function (e) {
     if (e.target.name == "delete" || e.target.parentElement.name == "delete") {
         let product = e.target.closest(".card"); // Get the product card
 
-        // remove the product from the cart
-        DeleteItemFromCart(product.id);
+        Swal.fire({ // Ask the user if he is sure about deleting the product
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-        LoadData(); // Load the products information to the cart page
+                // remove the product from the cart
+                DeleteItemFromCart(product.id);
+                LoadData(); // Load the products information to the cart page
+
+                Swal.fire({ // Notify the user that the product has been deleted
+                    title: "Deleted!",
+                    text: "Your item has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
     }
 
     // implement checkout button functionality
-    if (e.target.id == "checkout") {
+    if (e.target.id == "checkout" || e.target.parentElement.id == "checkout") {
         // check if the user is logged in or not
-        if (storageModule.getItem("currentUser") == null) {
-            alert("You must login first");
+        if (storageModule.getItem("currentUser") == null || Object.keys(storageModule.getItem("currentUser")).length == 0){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "You must login first",
+            }).then(() => {
+                window.location.href = "Login.html";
+            });
         }
         else {
             // check if the user is a customer or not
             // check if the cart is empty or not
             if (GetProductFromCart() == 0) {
-                alert("Your cart is empty");
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Your cart is empty",
+                }).then(() => {
+                    window.location.href = "Home.html";
+                });
             }
             else {
                 // check if the products quantity is available or not
@@ -213,12 +266,24 @@ document.addEventListener("click", function (e) {
 
                 // check if the user has a saved address or not
                 if (storageModule.getItem("currentUser").location == null) {
-                    alert("You must add an address first");
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "You must add an address first",
+                    }).then(() => {
+                        window.location.href = "Address.html";
+                    });
                 }
                 else {
                     // check if the user has a saved phone number or not
                     if (storageModule.getItem("currentUser").phoneNumber == null) {
-                        alert("You must add a phone number first");
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "You must add a phone number first",
+                        }).then(() => {
+                            window.location.href = "PhoneNumber.html";
+                        });
                     }
                     else {
                         window.location.href = "Checkout.html"; // redirect the user to the checkout page

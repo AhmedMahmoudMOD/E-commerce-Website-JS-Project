@@ -282,10 +282,28 @@ document.addEventListener("click", function (e) {
     if (e.target.name == "delete" || e.target.parentElement.name == "delete") {
         let product = e.target.closest(".card"); // Get the product card
 
-        // remove the product from the cart
-        DeleteItemFromCart(product.id);
+        Swal.fire({ // Ask the user if he is sure about deleting the product
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-        LoadData(); // Load the products information to the cart page
+                // remove the product from the cart
+                DeleteItemFromCart(product.id);
+                LoadData(); // Load the products information to the cart page
+
+                Swal.fire({ // Notify the user that the product has been deleted
+                    title: "Deleted!",
+                    text: "Your item has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
     }
 
     // implement checkout button functionality
