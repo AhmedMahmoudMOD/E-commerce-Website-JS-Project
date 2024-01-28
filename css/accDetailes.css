@@ -1,0 +1,109 @@
+:root{
+  --text-color : red;
+  --btn-color : #4CAF50;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+}
+
+.container{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.details-container {
+  max-width: 900px;
+  width: 90%;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 50px 20px 0;
+}
+
+.user-detail label{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.user-detail span{
+  font-size: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.user-detail {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  background-color: var(--btn-color);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  right: 0;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.userImg {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+/* .userImg i{
+  font-size: 100px;
+  text-align: center;
+  padding-bottom: 20px;
+} */
+
+.userImg img{
+  width: 200px;
+  height: 200px;
+}
+
+.userImg .userMail {
+  font-size: 15px;
+  text-align: center;
+}
+
+@media(max-width: 767px){
+  .container{
+    flex-direction: column;
+    /* margin-right: 0; */
+    margin: 0 20px;
+  }
+  .details-container{
+    margin-top: 20px;
+  }
+  .userImg{
+    margin-top: 30px;
+  }
+
+}
+
+@media(max-width:430px){
+  .user-detail span{
+    font-size: 15px;
+    font-weight: bold;
+  }
+}
+
+#saveChanges{
+  display: block;
+  margin: 30px auto 0;
+  
+}
