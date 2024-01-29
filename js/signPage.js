@@ -296,8 +296,9 @@ loginBtn.addEventListener("click", function (e) {
   
   // Add New Users To Local Storage 
   function addNewUser (){
+    let newUser = {};
     if(accountTypeField.querySelector("select").value=='user'){
-    let newUser = {
+     newUser = {
       id: IDGenerator.generateUserId() ,
     userType: accountTypeField.querySelector("select").value,
     userName: firstNameField.querySelector("input").value + lastNameField.querySelector("input").value,
@@ -319,7 +320,7 @@ loginBtn.addEventListener("click", function (e) {
     }
   }else if (accountTypeField.querySelector("select").value=='seller'){
 
-    let newUser = {
+     newUser = {
       id: IDGenerator.generateUserId() ,
     userType: accountTypeField.querySelector("select").value,
     userName: firstNameField.querySelector("input").value + lastNameField.querySelector("input").value,
