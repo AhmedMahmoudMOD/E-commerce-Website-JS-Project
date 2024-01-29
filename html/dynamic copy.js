@@ -348,26 +348,45 @@ function addToCart (){
     let cartBtns=document.querySelectorAll('.cart-btn-card');
     for (let i=0;i<cartBtns.length;i++){
         cartBtns[i].addEventListener('click',function addAction(e){
-            console.log(currentUserObj);
             let cartedProduct= {
                 productId : this.id,
                 quantity : 1,
             }
             if (currentUserObj!==null&&currentUserObj.userType=='customer'){
                 let index = allUsers.findIndex(user => user.id===currentUserObj.id)
+                const cartIndex = currentUserObj.cart.findIndex(product => product.productId === cartedProduct.productId);
+
+            if (cartIndex !== -1){
+                // Product already exists , just updating the quantity
+                currentUserObj.cart[cartIndex].quantity=cartedProduct.quantity;
+                allUsers[index].cart[cartIndex].quantity=cartedProduct.quantity;
+                storageModule.setItem('users',allUsers);
+                storageModule.setItem('currentUser',currentUserObj);
+            }else {
+                // Product is not already carted
                 allUsers[index].cart.push(cartedProduct);
                 currentUserObj.cart.push(cartedProduct);
                 storageModule.setItem('users',allUsers);
                 storageModule.setItem('currentUser',currentUserObj);
+            }
+                
                 cartBtns[i].querySelector('span').innerText = "  Added to Cart";
                 cartBtns[i].querySelector('button').classList.remove('btn-light');
                 cartBtns[i].querySelector('button').classList.add('btn-success');
                 this.removeEventListener('click', addAction);// removing the event after the first click
-                console.log(allUsers[index]);
             }
             else if(currentUserObj==null){
-                guestCartArr.push(cartedProduct);
-                storageModule.setItem('guest-cart',guestCartArr);
+                const cartIndex = guestCartArr.findIndex(product => product.productId === cartedProduct.productId);
+                if (cartIndex !== -1){
+                    // Product already exists , just updating the quantity
+                    guestCartArr[cartIndex].quantity=cartedProduct.quantity;
+                    storageModule.setItem('guest-cart',guestCartArr)
+                    
+                }else {
+                    // Product is not already carted
+                    guestCartArr.push(cartedProduct);
+                    storageModule.setItem('guest-cart',guestCartArr)
+                }
                 cartBtns[i].querySelector('span').innerText = "  Added to Cart";
                 cartBtns[i].querySelector('button').classList.remove('btn-light');
                 cartBtns[i].querySelector('button').classList.add('btn-success');
