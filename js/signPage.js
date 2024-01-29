@@ -297,7 +297,7 @@ loginBtn.addEventListener("click", function (e) {
   // Add New Users To Local Storage 
   function addNewUser (){
     let newUser = {};
-    if(accountTypeField.querySelector("select").value=='user'){
+    if(accountTypeField.querySelector("select").value=='customer'){
      newUser = {
       id: IDGenerator.generateUserId() ,
     userType: accountTypeField.querySelector("select").value,
