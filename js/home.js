@@ -224,18 +224,28 @@ function cardAddtoCart (){
               currentUserObj.cart.push(cartedProduct);
               storageModule.setItem('users',allUsers);
               storageModule.setItem('currentUser',currentUserObj);
+              cartBtns[i].querySelector('span').innerText = "  Added to Cart";
+                cartBtns[i].querySelector('button').classList.remove('btn-light');
+                cartBtns[i].querySelector('button').classList.add('btn-success');
+                this.removeEventListener('click', addAction);
               console.log(allUsers[index]);
           }
           else if(currentUserObj==null){
               guestCartArr.push(cartedProduct);
-              storageModule.setItem('guest-cart',guestCartArr)
+              storageModule.setItem('guest-cart',guestCartArr);
+              cartBtns[i].querySelector('span').innerText = "  Added to Cart";
+                cartBtns[i].querySelector('button').classList.remove('btn-light');
+                cartBtns[i].querySelector('button').classList.add('btn-success');
+                this.removeEventListener('click', addAction);
           }
-          else;
-
-          cartBtns[i].querySelector('span').innerText = "  Added to Cart";
-          cartBtns[i].querySelector('button').classList.remove('btn-light');
-          cartBtns[i].querySelector('button').classList.add('btn-success');
-          this.removeEventListener('click', addAction); // removing the event after the first click
+          else{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Add to Cart is Only Avaliable to Our Customers",
+                footer: '<a href="./signPage.html">Sign Up or Login As Customer</a>'
+              });
+          }
       })
       
   }
@@ -417,5 +427,5 @@ function websiteDataLoad(){
     if(storageModule.getItem('orders')===null)
         storageModule.setItem('orders',orders);
 
-    // storageModule.setItem('guest-cart',[]);
+    //  storageModule.setItem('guest-cart',[]);
 }

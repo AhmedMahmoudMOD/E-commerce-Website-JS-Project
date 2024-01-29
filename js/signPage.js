@@ -296,6 +296,7 @@ loginBtn.addEventListener("click", function (e) {
   
   // Add New Users To Local Storage 
   function addNewUser (){
+    if(accountTypeField.querySelector("select").value=='user'){
     let newUser = {
       id: IDGenerator.generateUserId() ,
     userType: accountTypeField.querySelector("select").value,
@@ -316,6 +317,28 @@ loginBtn.addEventListener("click", function (e) {
     wishList: [],
     cart: guestCartArr,
     }
+  }else if (accountTypeField.querySelector("select").value=='seller'){
+
+    let newUser = {
+      id: IDGenerator.generateUserId() ,
+    userType: accountTypeField.querySelector("select").value,
+    userName: firstNameField.querySelector("input").value + lastNameField.querySelector("input").value,
+    email: emailFieldSignup.querySelector("input").value,
+    password: passwordFieldSignup.querySelector("input").value,
+    firstName: firstNameField.querySelector("input").value,
+    lastName: lastNameField.querySelector("input").value,
+    phoneNumber: phoneNumberField.querySelector("input").value,
+    location: {
+      street: streetField.querySelector("input").value,
+      city: cityField.querySelector("select").value,
+      state: stateField.querySelector("input").value,
+      country: countryField.querySelector("input").value,
+      zipCode: zipCodeField.querySelector("input").value,
+    },
+    orders: [],
+    wishList: [],
+    }
+  }
 
     allUsers.push(newUser);
     storageModule.setItem('users',allUsers);

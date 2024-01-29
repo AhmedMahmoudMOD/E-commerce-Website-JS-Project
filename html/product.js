@@ -225,17 +225,18 @@ function addtoCart(){
 }
 
 function navLinksControl(){
-    let lastProductId = `P${allProducts.length}`;
+    let lastProductId = allProducts[allProducts.length - 1].productId
+    let firstProductId = allProducts[0].productId;
     let nextLink = document.getElementById('nextLink');
     let prevLink = document.getElementById('prevLink');
     let nextId = allProducts[productIndex+1]?.productId;
     let prevId = allProducts[productIndex-1]?.productId;
 
-    if(productID=='P1'){
+    if(productID==firstProductId){
         prevLink.style.display='none';
         linkDivider.style.display='none';
     }
-    if(productID==lastProductId){
+    if(productID===lastProductId){
         nextLink.style.display='none';
         linkDivider.style.display='none';
     }
