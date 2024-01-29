@@ -31,6 +31,17 @@ function LoginCheck() // Check if the user is logged in or not
     }
 }
 
+function subtractFromStock(productId, quantity) // Subtract the quantity of the product in the cart
+{
+    let products = storageModule.getItem("products") // Get the products from the storage
+    products.map(product => {
+        if (product.productId == productId) {
+            product.stock = product.stock - quantity;
+        }
+    });
+    storageModule.setItem("products", products); // Set the products in the storage
+}
+
 function GetProductsInformation() // Get each product information from cart and return it in an array of objects with the product information
 {
     let datacart = storageModule.getItem("currentUser").cart; // Get the cart from the storage
@@ -205,6 +216,11 @@ function PlaceOrder() {
     }
     else {
         CreateOrder(); // Create the order
+        let user = storageModule.getItem("users").find(x => x.id == storageModule.getItem("currentUser").id); // Get the user from the storage
+        let cart = user.cart; // Get the cart from the storage
+        cart.forEach(element => {
+            subtractFromStock(element.productId, element.quantity); // Subtract the quantity of the product in the cart
+            }); 
         EmptyCart(); // Empty the cart
         window.location.href = "Success.html";
         //alert("Your order has been placed successfully");
@@ -316,6 +332,7 @@ document.addEventListener("click", function (e) {
             return;
         }
         PlaceOrder(); // check if price changed or stock is less than quantity in cart before checkout
+
     }
 
     // implement save address button functionality
