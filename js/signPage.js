@@ -298,7 +298,7 @@ loginBtn.addEventListener("click", function (e) {
   function addNewUser (){
     let newUser = {};
     if(accountTypeField.querySelector("select").value=='customer'){
-      newUser = {
+     newUser = {
       id: IDGenerator.generateUserId() ,
     userType: accountTypeField.querySelector("select").value,
     userName: firstNameField.querySelector("input").value + lastNameField.querySelector("input").value,
