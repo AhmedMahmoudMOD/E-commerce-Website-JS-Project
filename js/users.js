@@ -10,6 +10,33 @@ let modalTitle = document.getElementById("mainModalTitle");
 let currentPage = "";
 let container = document.getElementById("content");
 
+function LoginCheck() // Check if the user is logged in or not
+{
+    if (storageModule.getItem("currentUser") == null || Object.keys(storageModule.getItem("currentUser")).length == 0) // If the user is not logged in then redirect him to the login page
+    {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You must login as a admin first",
+        }).then(() => {
+            window.location.href = "../html/signPage.html";
+        });
+    }
+    else // If the user is logged in then check if he is a customer or not
+    {
+        if (storageModule.getItem("currentUser").userType != "admin") // If the user is not a customer then redirect him to the home page
+        {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "You must login as a admin first",
+            }).then(() => {
+                window.location.href = "../html/signPage.html";
+            });
+        }
+    }
+}
+
 function cartToString(cart) {
     if (cart.length == 0) {
         return "Empty";
@@ -634,7 +661,8 @@ function FireDeleteSweetAlert(func, id)
 
 /////////////////////////// Main ///////////////////////////
 
-LoadUserData(" charts"); // Load charts by default 
+LoginCheck(); // Check if the user is logged in or not
+LoadUserData(" charts"); // Load charts by default
 
 document.addEventListener("click", function (e) {
 
@@ -643,9 +671,14 @@ document.addEventListener("click", function (e) {
         FireDeleteSweetAlert(deleteUser, e.target.getAttribute("data-id"));
 
     } else if (e.target.classList.contains("nav-link")) { // if nav link is clicked
+        if(e.target.innerText == "Sign out") {
+            storageModule.setItem("currentUser", {});
+            window.location.href = "home.html";
+        }else{
+            currentPage = e.target.innerText;
+            LoadUserData(currentPage);
+        }
         
-        currentPage = e.target.innerText;
-        LoadUserData(currentPage);
 
     } else if (e.target.classList.contains("modal-dialog-scrollable")) { // if modal button is clicked
         
