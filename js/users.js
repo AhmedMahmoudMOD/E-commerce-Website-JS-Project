@@ -22,9 +22,9 @@ function LoginCheck() // Check if the user is logged in or not
             window.location.href = "../html/signPage.html";
         });
     }
-    else // If the user is logged in then check if he is a customer or not
+    else // If the user is logged in then check if he is a admin or not
     {
-        if (storageModule.getItem("currentUser").userType != "admin") // If the user is not a customer then redirect him to the home page
+        if (storageModule.getItem("currentUser").userType != "admin") // If the user is not a admin then redirect him to the home page
         {
             Swal.fire({
                 icon: "error",

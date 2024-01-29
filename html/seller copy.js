@@ -15,7 +15,6 @@ let sellerOrders = allOrders.filter(order=>sellerOrdersIDs.includes(order.orderI
 let pageType = 'products';
 const rowsPerPage = 10;
 let currentPage = 1;
-  LoginCheck();
   createTableHeader(pageType);
   populateTable(pageType,sellerProducts);
   addNumberValidation();
@@ -71,7 +70,7 @@ function populateTable(type,array) {
       row.insertCell().textContent = order.orderStatus;
       row.insertCell().textContent = order.deliverDate;
       const productsCell = row.insertCell();
-      const sellerOnlyProducts = order.products.filter(product => sellerProductsIDs.includes(product.id));
+      const sellerOnlyProducts = order.products.filter(product => sellerProductsIDs.includes(product.productId));
 
       sellerOnlyProducts.forEach(product => {
         productsCell.innerHTML += `${product.productId}: ${product.quantity} - ${product.price}<br>`;
@@ -528,19 +527,28 @@ function FireDeleteSweetAlert(func, id)
 
 function LoginCheck() // Check if the user is logged in or not
 {
-    if (storageModule.getItem("currentUser") == null) // If the user is not logged in then redirect him to the login page
+    if (storageModule.getItem("currentUser") == null || Object.keys(storageModule.getItem("currentUser")).length == 0) // If the user is not logged in then redirect him to the login page
     {
-        alert("You must login first");
-        window.location.href = "../html/signPage.html";
-    }
-    else // If the user is logged in then check if he is a customer or not
-    {
-        if (storageModule.getItem("currentUser").userType != "seller") // If the user is not a customer then redirect him to the home page
-        {
-            alert("You must login as a seller first");
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You must login as a seller first",
+        }).then(() => {
             window.location.href = "../html/signPage.html";
+        });
+    }
+    else // If the user is logged in then check if he is a seller or not
+    {
+        if (storageModule.getItem("currentUser").userType != "seller") // If the user is not a seller then redirect him to the home page
+        {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "You must login as a seller first",
+            }).then(() => {
+                window.location.href = "../html/signPage.html";
+            });
         }
-        
     }
 }
 
