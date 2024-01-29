@@ -15,6 +15,7 @@ let sellerOrders = allOrders.filter(order=>sellerOrdersIDs.includes(order.orderI
 let pageType = 'products';
 const rowsPerPage = 10;
 let currentPage = 1;
+  LoginCheck();
   createTableHeader(pageType);
   populateTable(pageType,sellerProducts);
   addNumberValidation();
@@ -161,6 +162,7 @@ function populateTable(type,array) {
       rating : editedProduct.rating,
       stock: +document.getElementById('editProductStock').value,
       description: document.getElementById('editProductDescription').value,
+      sellerID:currentUserObj.id,
       addedDate : editedProduct.addedDate,
       specifications: {
         movement: document.getElementById('editProductMovement').value,
@@ -215,6 +217,7 @@ function populateTable(type,array) {
       discount: +document.getElementById('addProductDiscount').value,
       stock: +document.getElementById('addProductStock').value,
       description: document.getElementById('addProductDescription').value,
+      sellerID:currentUserObj.id,
       addedDate : new Date(),
       specifications: {
         movement: document.getElementById('addProductMovement').value,
@@ -263,6 +266,13 @@ function populateTable(type,array) {
     currentUserObj.products=currentUserObj.products.filter(pId => pId !== productId);
     allUsers[sellerIndex].products=currentUserObj.products;
     allProducts = allProducts.filter(p => p.productId !== productId);
+
+    allUsers.forEach((user) => {
+      if (user.userType != "customer") {
+        return;
+      }
+      user.cart = user.cart.filter((product) => product.productId != productId);
+    });
 
     storageModule.setItem('currentUser',currentUserObj);
     storageModule.setItem('users',allUsers);
@@ -514,6 +524,24 @@ function FireDeleteSweetAlert(func, id)
             });
         }
     });
+}
+
+function LoginCheck() // Check if the user is logged in or not
+{
+    if (storageModule.getItem("currentUser") == null) // If the user is not logged in then redirect him to the login page
+    {
+        alert("You must login first");
+        window.location.href = "../html/signPage.html";
+    }
+    else // If the user is logged in then check if he is a customer or not
+    {
+        if (storageModule.getItem("currentUser").userType != "seller") // If the user is not a customer then redirect him to the home page
+        {
+            alert("You must login as a seller first");
+            window.location.href = "../html/signPage.html";
+        }
+        
+    }
 }
 
 
