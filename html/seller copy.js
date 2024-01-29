@@ -161,6 +161,7 @@ function populateTable(type,array) {
       rating : editedProduct.rating,
       stock: +document.getElementById('editProductStock').value,
       description: document.getElementById('editProductDescription').value,
+      sellerID:currentUserObj.id,
       addedDate : editedProduct.addedDate,
       specifications: {
         movement: document.getElementById('editProductMovement').value,
@@ -215,6 +216,7 @@ function populateTable(type,array) {
       discount: +document.getElementById('addProductDiscount').value,
       stock: +document.getElementById('addProductStock').value,
       description: document.getElementById('addProductDescription').value,
+      sellerID:currentUserObj.id,
       addedDate : new Date(),
       specifications: {
         movement: document.getElementById('addProductMovement').value,
