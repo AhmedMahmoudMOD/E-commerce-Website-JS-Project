@@ -8,26 +8,28 @@ websiteDataLoad();
 
 let currentUserObj = storageModule.getItem('currentUser');
 let allProducts = storageModule.getItem('products');
-let newArrivals = allProducts.slice(-4);
-let newArrivalsDiv = document.getElementById('newArrivals');
 let allUsers = storageModule.getItem('users');
 let guestCartArr = storageModule.getItem('guest-cart');
 
+let newArrivals = allProducts.slice(-4);
+let newArrivalsDiv = document.getElementById('newArrivals');
 renderProducts(newArrivalsDiv,newArrivals);
-// imgHover(newArrivals);
+imgHover(newArrivalsDiv,newArrivals);
 
 
 let specialOffersDiv = document.getElementById('specialOffers');
 let specialOffers = filterOffers(allProducts);
 renderProducts(specialOffersDiv,specialOffers);
-// imgHover(specialOffers);
+imgHover(specialOffersDiv,specialOffers);
 
 let ourProductsDiv = document.getElementById('ourProducts');
 let ourProducts = allProducts.slice(0,8);
 renderProducts(ourProductsDiv,ourProducts);
-// imgHover(ourProducts);
+imgHover(ourProductsDiv,ourProducts);
 
 cardAddtoCart();
+linkProducts();
+openModal();
 
 
 // Retrieve the currentUser from local storage
@@ -196,8 +198,8 @@ function renderProducts(containerDiv,Products){
       containerDiv.appendChild(colDiv);
 })
 }
-function imgHover (shownProducts){
-  let proboxes=document.querySelectorAll('.product-box');
+function imgHover (shownProductsDiv,shownProducts){
+  let proboxes=shownProductsDiv.querySelectorAll('.product-box');
   for (let i=0;i<proboxes.length;i++){
       proboxes[i].addEventListener('mouseover',function(){
           proboxes[i].querySelectorAll('img')[0].src=shownProducts[i].images[1];
@@ -245,6 +247,168 @@ function filterOffers(Products){
     return offeredProducts.slice(0,4);
 }
 
+function linkProducts(){
+    let productLinks = document.querySelectorAll('.product-link');
+    for (let i = 0 ; i<productLinks.length;i++){
+        productLinks[i].addEventListener('click',function(){
+            // window.open(`./product.html?product_id=${this.id}`,'_self');
+            window.location.href=`./product.html?product_id=${this.id}`
+        })
+    }
+}
+
+function openModal(){
+    let openers = document.querySelectorAll('.modal-opener');
+    for (let i = 0 ; i<openers.length;i++){
+        openers[i].addEventListener('click',function(e){
+            let innerCarousel = document.querySelector('#innerCarousel');
+            innerCarousel.innerHTML='';
+            let modalProduct = allProducts.find((product) => product.productId==this.id)
+            let addToCartBtn = document.querySelector('.cart-btn-modal button');
+            addToCartBtn.id=modalProduct.productId;
+            modalProduct.images.forEach((img,index)=>{
+
+                
+                // Create Carousel Item Div
+                let carouselItem = document.createElement('div');
+                carouselItem.classList.add('carousel-item');
+                if(index==0)
+                    carouselItem.classList.add('active');
+
+                // Create Img 
+                let carouselImage= document.createElement('img');
+                carouselImage.src = img;
+                carouselImage.classList.add('d-block', 'w-100','img-c');
+                // Appending
+                carouselItem.appendChild(carouselImage);
+                innerCarousel.appendChild(carouselItem);
+
+            })
+            let productView = document.querySelector('#productView');
+            productView.innerHTML='';
+
+            let brandP = document.createElement('p');
+            brandP.innerText=modalProduct.brand;
+            let nameP = document.createElement('h5');
+            nameP.classList.add('mb-4')
+            nameP.innerText=modalProduct.name;
+            let priceSpan = document.createElement('span');
+            priceSpan.innerText=`${modalProduct.price} EGP`
+            let discountSpan = document.createElement('span');
+            
+            if(modalProduct.discount!=0){
+                
+                let discountedPrice = modalProduct.price-modalProduct.price*modalProduct.discount;
+                discountSpan.innerText=`  ${discountedPrice} EGP`;
+                priceSpan.style.textDecorationLine='line-through';
+                discountSpan.style.color = 'red';
+            }
+            let descriptionP = document.createElement('p');
+            descriptionP.classList.add('mt-4');
+            descriptionP.innerText=modalProduct.description;
+
+            if(modalProduct.discount!=0)
+                productView.append(brandP,nameP,priceSpan,discountSpan,descriptionP)
+            else
+                productView.append(brandP,nameP,priceSpan,descriptionP);
+
+            if(modalProduct.stock==0){
+                soldout.style.display='block';
+                modalCart.style.display='none';
+            } else{
+                soldout.style.display='none';
+                modalCart.style.display='flex';
+                addtoCartModal();    // Invoking Add to cart Modal
+            }
+            
+        })
+       
+    }
+}
+function addtoCartModal(){
+    let controlButtons = productModal.querySelectorAll('.input-group-text');
+    let cartQuantity= productModal.querySelector('.input-group input');
+
+    cartQuantity.addEventListener('input',function(){
+        if(this.value<1)
+            this.value=1;
+    })
+    
+    controlButtons[0].setAttribute('disabled','true');
+    controlButtons[0].classList.add('disabled');
+    cartQuantity.value=1;
+    controlButtons[0].addEventListener('click',function(e){
+            if(cartQuantity.value==2){
+                controlButtons[0].setAttribute('disabled','true');
+                controlButtons[0].classList.toggle('disabled');
+            }
+            --cartQuantity.value;
+            e.stopImmediatePropagation(); // stopping the event from firing for other modals causing incrementing or decrementing values by more than one at a time
+            
+    })
+    controlButtons[1].addEventListener('click',function(e){
+        if(cartQuantity.value==1){
+            controlButtons[0].classList.toggle('disabled');
+            controlButtons[0].removeAttribute('disabled');
+        }
+            ++cartQuantity.value
+            e.stopImmediatePropagation(); // stopping the event from firing for other modals causing incrementing or decrementing values by more than one at a time
+        
+    })
+    let addToCartBtn = document.querySelector('.cart-btn-modal button');
+    addToCartBtn.addEventListener('click',function(){
+        let cartedProduct = {
+            productId : this.id,
+            quantity : Number(cartQuantity.value)
+        }
+        if (currentUserObj!==null&&currentUserObj.userType=='customer'){
+            
+            // Finding The Current User Index
+            let index = allUsers.findIndex(user => user.id===currentUserObj.id);
+           // Check if the product already exists in the currentUser Cart
+           const cartIndex = currentUserObj.cart.findIndex(product => product.productId === cartedProduct.productId);
+
+            if (cartIndex !== -1){
+                // Product already exists , just updating the quantity
+                currentUserObj.cart[cartIndex].quantity=cartedProduct.quantity;
+                allUsers[index].cart[cartIndex].quantity=cartedProduct.quantity;
+                storageModule.setItem('users',allUsers);
+                storageModule.setItem('currentUser',currentUserObj);
+            }else {
+                // Product is not already carted
+                allUsers[index].cart.push(cartedProduct);
+                currentUserObj.cart.push(cartedProduct);
+                storageModule.setItem('users',allUsers);
+                storageModule.setItem('currentUser',currentUserObj);
+            }
+            console.log(allUsers[index]);
+        }
+        else if(currentUserObj==null){
+            const cartIndex = guestCartArr.findIndex(product => product.productId === cartedProduct.productId);
+            if (cartIndex !== -1){
+                // Product already exists , just updating the quantity
+                guestCartArr[cartIndex].quantity=cartedProduct.quantity;
+                storageModule.setItem('guest-cart',guestCartArr)
+                
+            }else {
+                // Product is not already carted
+                guestCartArr.push(cartedProduct);
+                storageModule.setItem('guest-cart',guestCartArr)
+            }
+            console.log(guestCartArr);
+        }
+        else{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Add to Cart is Only Avaliable to Our Customers",
+                footer: '<a href="./signPage.html">Sign Up or Login As Customer</a>'
+              });
+        }
+    })
+}
+
+
 function websiteDataLoad(){
     if(storageModule.getItem('products')===null)
         storageModule.setItem('products',products);
@@ -253,5 +417,5 @@ function websiteDataLoad(){
     if(storageModule.getItem('orders')===null)
         storageModule.setItem('orders',orders);
 
-    storageModule.setItem('guest-cart',[]);
+    // storageModule.setItem('guest-cart',[]);
 }

@@ -378,7 +378,7 @@ function addToCart (){
                     icon: "error",
                     title: "Oops...",
                     text: "Add to Cart is Only Avaliable to Our Customers",
-                    footer: '<a href="./signUp.html">Sign Up or Login As Customer</a>'
+                    footer: '<a href="./signPage.html">Sign Up or Login As Customer</a>'
                   });
             }
 
@@ -626,7 +626,7 @@ function addtoCartModal(){
                 icon: "error",
                 title: "Oops...",
                 text: "Add to Cart is Only Avaliable to Our Customers",
-                footer: '<a href="./signUp.html">Sign Up or Login As Customer</a>'
+                footer: '<a href="./signPage.html">Sign Up or Login As Customer</a>'
               });
         }
     })
