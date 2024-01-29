@@ -154,7 +154,7 @@ loginBtn.addEventListener("click", function (e) {
        // Check user type for redirection
           switch (registeredUser.userType) {
             case 'seller':
-              window.location.href = "../html/seller copy 3.html";
+              window.location.href = "../html/seller.html";
               break;
             case 'customer':
               window.location.href = "../html/home.html";
