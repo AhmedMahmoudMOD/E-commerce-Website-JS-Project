@@ -41,21 +41,32 @@ if (storedCurrentUser && storedCurrentUser.userName) {
     // Access the username and update the navUsername
     
     const userNameText = navUsernameElement.querySelectorAll("a")[0]
-    if (navUsernameElement) {
+    if (storedCurrentUser) {
         userNameText.textContent = storedCurrentUser.userName;
     }
 } else {
-    // Handle the case where the currentUser or username is not available
-    // console.error('Error: currentUser or username not found in local storage');
+    // case where the currentUser or username is not available
     // Create a login button and redirect to Login page
     navUsernameElement.style.display='none';
     const loginButton = document.createElement('button');
-    loginButton.classList.add('btn','btn-primary');
+    loginButton.classList.add('btn','btn-primary','me-4');
+    loginButton.style.width = '100px';
     loginButton.textContent = 'Log In';
     navbar.appendChild(loginButton);
     loginButton.addEventListener('click', function() {
         window.location.href = '../html/signPage.html';
     })
+}
+
+const logoutButton = document.getElementById('logoutBtn');
+if (logoutButton) {
+    logoutButton.addEventListener('click', function() {
+        // Clear the currentUser object in local storage
+        localStorage.removeItem('currentUser');
+        // Redirect to the login page
+        // window.location.href = '../html/signPage.html';
+        location.reload()
+    });
 }
 
 // Ahmed Mahmoud //
