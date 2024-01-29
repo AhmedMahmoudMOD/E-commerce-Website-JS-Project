@@ -605,7 +605,12 @@ function addtoCartModal(){
                 storageModule.setItem('users',allUsers);
                 storageModule.setItem('currentUser',currentUserObj);
             }
-            console.log(allUsers[index]);
+            Swal.fire({
+                icon: "success",
+                title: "Item Added to Cart",
+                showConfirmButton: false,
+                timer: 2500,
+              });
         }
         else if(currentUserObj==null){
             const cartIndex = guestCartArr.findIndex(product => product.productId === cartedProduct.productId);
@@ -619,7 +624,12 @@ function addtoCartModal(){
                 guestCartArr.push(cartedProduct);
                 storageModule.setItem('guest-cart',guestCartArr)
             }
-            console.log(guestCartArr);
+            Swal.fire({
+                icon: "success",
+                title: "Item Added to Cart",
+                showConfirmButton: false,
+                timer: 2500,
+              });
         }
         else{
             Swal.fire({

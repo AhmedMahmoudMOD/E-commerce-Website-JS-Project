@@ -154,7 +154,7 @@ loginBtn.addEventListener("click", function (e) {
           // Check user type for redirection
           switch (registeredUser.userType) {
             case 'seller':
-              window.location.href = "https://www.google.com";
+              window.location.href = "../html/seller copy 3.html";
               break;
             case 'customer':
               window.location.href = "../html/home.html";
@@ -296,8 +296,9 @@ loginBtn.addEventListener("click", function (e) {
   
   // Add New Users To Local Storage 
   function addNewUser (){
-    if(accountTypeField.querySelector("select").value=='user'){
-    let newUser = {
+    let newUser = {};
+    if(accountTypeField.querySelector("select").value=='customer'){
+     newUser = {
       id: IDGenerator.generateUserId() ,
     userType: accountTypeField.querySelector("select").value,
     userName: firstNameField.querySelector("input").value + lastNameField.querySelector("input").value,
@@ -319,7 +320,7 @@ loginBtn.addEventListener("click", function (e) {
     }
   }else if (accountTypeField.querySelector("select").value=='seller'){
 
-    let newUser = {
+     newUser = {
       id: IDGenerator.generateUserId() ,
     userType: accountTypeField.querySelector("select").value,
     userName: firstNameField.querySelector("input").value + lastNameField.querySelector("input").value,
