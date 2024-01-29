@@ -133,18 +133,22 @@ function renderProducts(containerDiv,Products){
 
       /* Cart Button Div Created*/
       let cartBtnDiv =  document.createElement('div');
-      cartBtnDiv.classList.add('cart-btn-card');
-      cartBtnDiv.id=product.productId;
-      let cartBtn  = document.createElement('button');
-      cartBtn.classList.add('btn','btn-light','shadow-sm','rounded-pill');
-      let cartIcon = document.createElement('i');
-      cartIcon.classList.add('fal','fa-shopping-cart');
-      let cartTitle = document.createElement('span');
-      cartTitle.innerText='  Add to Cart';
 
-      cartBtn.append(cartIcon,cartTitle);
-      /* Cart Btn Appended */
-      cartBtnDiv.append(cartBtn);
+      if(product.stock!=0){
+        
+        cartBtnDiv.classList.add('cart-btn-card');
+        cartBtnDiv.id=product.productId;
+        let cartBtn  = document.createElement('button');
+        cartBtn.classList.add('btn','btn-light','shadow-sm','rounded-pill');
+        let cartIcon = document.createElement('i');
+        cartIcon.classList.add('fal','fa-shopping-cart');
+        let cartTitle = document.createElement('span');
+        cartTitle.innerText='  Add to Cart';
+
+        cartBtn.append(cartIcon,cartTitle);
+        /* Cart Btn Appended */
+        cartBtnDiv.append(cartBtn);
+        }
       /* Cart Btn Div Appended */
       if(product.discount!==0)
           innerBox.append(iconsDiv,onSaleDiv,pImg,cartBtnDiv);
@@ -171,10 +175,14 @@ function renderProducts(containerDiv,Products){
       let productPriceDiv = document.createElement('div');
       productPriceDiv.classList.add('product-price');
       let productPriceSpan = document.createElement('span');
+      if (product.stock==0)
+      productPriceSpan.textContent="Sold Out";
+     else
       productPriceSpan.textContent = `${product.price} EGP`;
+      
       /* Product Price Created */
        productPriceDiv.appendChild(productPriceSpan);
-      if(product.discount!=0){
+      if(product.discount!=0&&product.stock!=0){
           let discountedPriceSpan = document.createElement('span');
           let discountedPrice=product.price-product.discount*product.price;
           discountedPriceSpan.textContent = `  ${discountedPrice} EGP`;
@@ -184,7 +192,8 @@ function renderProducts(containerDiv,Products){
       }
        /* Product Price Appended */
 
-      
+       
+
       productInfoDiv.appendChild(productNameDiv);
       productInfoDiv.appendChild(productPriceDiv);
 

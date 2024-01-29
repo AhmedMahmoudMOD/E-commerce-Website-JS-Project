@@ -165,9 +165,6 @@ function renderProducts(products){
         }
          /* Product Price Appended */
 
-         if (product.stock==0)
-         productPriceSpan="Sold Out";
-
         
         productInfoDiv.appendChild(productNameDiv);
         productInfoDiv.appendChild(productPriceDiv);
