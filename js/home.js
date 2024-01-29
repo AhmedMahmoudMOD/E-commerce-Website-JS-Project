@@ -436,6 +436,6 @@ function websiteDataLoad(){
         storageModule.setItem('users',users);
     if(storageModule.getItem('orders')===null)
         storageModule.setItem('orders',orders);
-
+   if(storageModule.getItem('guest-cart')===null)
      storageModule.setItem('guest-cart',[]);
 }

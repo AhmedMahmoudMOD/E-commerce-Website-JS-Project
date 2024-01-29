@@ -150,8 +150,8 @@ loginBtn.addEventListener("click", function (e) {
     
         if (registeredUser) {
           storageModule.setItem('currentUser', registeredUser);
-    
-          // Check user type for redirection
+          storageModule.setItem('guest-cart',[]);
+       // Check user type for redirection
           switch (registeredUser.userType) {
             case 'seller':
               window.location.href = "../html/seller copy 3.html";
