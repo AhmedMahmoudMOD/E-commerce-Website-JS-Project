@@ -1,7 +1,7 @@
 import { storageModule } from "../common/storageModule.js";
 import {IDGenerator} from "../common/idclass.js"
 
-
+LoginCheck();
 let allUsers=storageModule.getItem('users');
 let allProducts = storageModule.getItem('products');
 let currentUserObj = storageModule.getItem('currentUser');
@@ -547,6 +547,13 @@ function LoginCheck() // Check if the user is logged in or not
 
   document.getElementById('saveChangesBtn').addEventListener('click', saveProductChanges);
   document.getElementById('addProductBtn').addEventListener('click', addProduct);
+
+  logoutButton.addEventListener('click', function() {
+    // Clear the currentUser object in local storage
+    localStorage.removeItem('currentUser');
+    // Redirect to the login page
+    location.reload()
+});
 
 
   

@@ -318,6 +318,7 @@ loginBtn.addEventListener("click", function (e) {
     wishList: [],
     cart: guestCartArr,
     }
+    storageModule.setItem('guest-cart',[]);
   }else if (accountTypeField.querySelector("select").value=='seller'){
 
      newUser = {
