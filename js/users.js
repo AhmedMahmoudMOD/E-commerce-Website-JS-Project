@@ -634,6 +634,8 @@ function FireDeleteSweetAlert(func, id)
 
 /////////////////////////// Main ///////////////////////////
 
+LoginCheck(); // Check Authrization 
+
 LoadUserData(" charts"); // Load charts by default 
 
 document.addEventListener("click", function (e) {
@@ -661,3 +663,21 @@ document.addEventListener("click", function (e) {
         FireDeleteSweetAlert(deleteProduct, e.target.getAttribute("data-id"));
     }
 });
+
+function LoginCheck() // Check if the user is logged in or not
+{
+    if (storageModule.getItem("currentUser") == null) // If the user is not logged in then redirect him to the login page
+    {
+        alert("You must login first");
+        window.location.href = "../html/signPage.html";
+    }
+    else // If the user is logged in then check if he is a customer or not
+    {
+        if (storageModule.getItem("currentUser").userType != "admin") // If the user is not a customer then redirect him to the home page
+        {
+            alert("You Don't Have Permission to Access This Page , Sorry !");
+            window.location.href = "../html/home.html";
+        }
+        
+    }
+}
