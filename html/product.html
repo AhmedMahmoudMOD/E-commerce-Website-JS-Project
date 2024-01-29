@@ -11,67 +11,69 @@
     <title>Product Test</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-light  fixed-top">
-        <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="images/logo.png" alt=""></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+    <!-- Start of navbar -->
+    <nav class="navbar navbar-expand-lg bg-light" id="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../html/home.html"><img src="../images/logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="../html/home.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Product</a>
+              <a class="nav-link" href="../html/dyamnicTest.html">Product</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../html/dyamnicTest.html">Offers</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button"data-bs-toggle="dropdown" aria-expanded="false">Catalogue</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                </ul>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Brands</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../html/dyamnicTest.html">CASIO</a></li>
+                <li><a class="dropdown-item" href="../html/dyamnicTest.html">SWATCH</a></li>
+                <li><a class="dropdown-item" href="../html/dyamnicTest.html">TOMMY HILFIGER</a></li>
+                <li><a class="dropdown-item" href="../html/dyamnicTest.html">TISSOT</a></li>
+                <li><a class="dropdown-item" href="../html/dyamnicTest.html">GUCCI</a></li>
+                <li><a class="dropdown-item" href="../html/dyamnicTest.html">LACOSTE</a></li>
+              </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="#">Contact Us</a>
+              <a class="nav-link" href="#footerSection">Contact Us</a>
             </li>
-        </ul>
-
-        <div class="cart me-3">
-          <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-        <form class="d-flex mx-right" role="search">
-          <input class="form-control me-2"type="search" placeholder="Search" aria-label="Search"/>
-        </form>
-        <div class="nav-item dropdown d-flex align-items-center">
-          <i class="fa-solid fa-user" style="margin: 0 20px; cursor: pointer;"></i>
-          <a class="nav-link dropdown-toggle" href="#" role="button"data-bs-toggle="dropdown" aria-expanded="false">User name</a>
-          <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="#">Calendar</a></li>
-              <li><a class="dropdown-item" href="#">Setting</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li>
-                  <a class="dropdown-item" href="#">Logout</a>
-              </li>
           </ul>
+
+          <!-- Cart Icon -->
+          <div class="cart me-3">
+            <a href="../html/Cart.html" class="cartIcon"><i class="fa-solid fa-cart-shopping"></i></a>
+          </div>
+          <div id="userProfileDiv">
+            <div class="nav-item dropdown d-flex align-items-center">
+              <i class="fa-solid fa-user" style="margin: 0 20px; cursor: pointer;"></i>
+              <a class="nav-link dropdown-toggle navUserName" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">User name</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="../html/accDetailes.html">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Calendar</a></li>
+                <li><a class="dropdown-item" href="#">Setting</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" id="logoutBtn">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
     </nav>
-   
+  <!-- End of navbar -->
+  
     <section class="section-wrapper" id="product-section"> 
             <div class="container-fluid" id="uppercat">
                 <div id="navlinks" class="row justify-content-between">
@@ -145,7 +147,7 @@
     <section class="section-wrapper container" id="related-section">
           
           <h2>You     May     Also    Like</h2>
-         
+        
           <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4  gx-4 gy-4" id="productPanel">
         </div>
     </section>  
@@ -191,6 +193,46 @@
         </div>
       </div>
     </div>  
+
+    <!--- Footer -->
+    <footer class="bg-dark text-light py-4" id="footerSection">
+      <div class="container text-center">
+          <div class="row">
+              <div class="col-md-3">
+                  <img src="../images/logo.png" alt="CoolGadgets Logo" class="mb-2" width="100">
+                  <p>Discover the Future <br> With CoolGadgets!</p>
+              </div>
+              <div class="col-md-3">
+                  <h3>Navigation</h3>
+                  <ul class="list-unstyled">
+                      <li><a href="#" class="text-decoration-none text-light">Home</a></li>
+                      <li><a href="../html/product.html" class="text-decoration-none text-light">Products</a></li>
+                      <li><a href="../html/accDetailes.html" target="_blank" class="text-decoration-none text-light">Profile</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-3">
+                  <h3>Useful Links</h3>
+                  <ul class="list-unstyled">
+                      <li><a href="#" class="text-decoration-none text-light">Coupons</a></li>
+                      <li><a href="#" class="text-decoration-none text-light">Blog Post</a></li>
+                      <li><a href="#" class="text-decoration-none text-light">Return Policy</a></li>
+                      <li><a href="#" class="text-decoration-none text-light">Join Affiliate</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-3">
+                  <h3>Follow Us</h3>
+                  <ul class="list-unstyled">
+                      <li><a href="https://www.facebook.com" target="_blank" class="text-decoration-none text-light">Facebook</a></li>
+                      <li><a href="https://www.twitter.com" target="_blank" class="text-decoration-none text-light">Twitter</a></li>
+                      <li><a href="https://www.instagram.com" target="_blank" class="text-decoration-none text-light">Instagram</a></li>
+                      <li><a href="https://www.youtube.com" target="_blank" class="text-decoration-none text-light">YouTube</a></li>
+                  </ul>
+              </div>
+          </div>
+          <hr class="my-4">
+          <div class="text-center">&copy; Copyright 2024 - ITI Mansoura Students-Intake 44</div>
+      </div>
+    </footer>
 
 
     

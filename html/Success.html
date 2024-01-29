@@ -16,49 +16,70 @@
 </head>
 
 <body>
-    <!-- Start of navbar -->
-    <nav class="navbar navbar-expand-lg bg-warning">
+    <!-- NavBar  -->
+    <nav class="navbar navbar-expand-lg bg-light fixed-top" id="navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
+        <a class="navbar-brand" href="../html/home.html"><img src="../images/logo.png" alt=""></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="../html/home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../html/dyamnicTest.html">Product</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../html/dyamnicTest.html">Offers</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button"data-bs-toggle="dropdown" aria-expanded="false">Brands</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="../html/dyamnicTest.html">CASIO</a></li>
+                    <li><a class="dropdown-item" href="../html/dyamnicTest.html">SWATCH</a></li>
+                    <li><a class="dropdown-item" href="../html/dyamnicTest.html">TOMMY HILFIGER</a></li>
+                    <li><a class="dropdown-item" href="../html/dyamnicTest.html">TISSOT</a></li>
+                    <li><a class="dropdown-item" href="../html/dyamnicTest.html">GUCCI</a></li>
+                    <li><a class="dropdown-item" href="../html/dyamnicTest.html">LACOSTE</a></li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../html/home.html" >Contact Us</a>
+            </li>
+        </ul>
+
+        <!-- Cart Icon -->
+        <div class="cart me-3">
+          <a href="../html/Cart.html" class="cartIcon"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
+        <div id="userProfileDiv">
+          <div class="nav-item dropdown d-flex align-items-center" >
+            <i class="fa-solid fa-user" style="margin: 0 20px; cursor: pointer;"></i>
+            <a class="nav-link dropdown-toggle navUserName" href="#" role="button"data-bs-toggle="dropdown" aria-expanded="false">User name</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="../html/accDetailes.html">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Calendar</a></li>
+                <li><a class="dropdown-item" href="#">Setting</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                    <a class="dropdown-item" href="#" id="logoutBtn">Logout</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
     </nav>
-    <!-- End of navbar -->
     
     <!-- Start of success message -->
     <div class="container mt-5">
@@ -70,6 +91,49 @@
         </div>
     </div>
     <!-- End of success message -->
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"
+    ></script>
+    <script>
+        // Retrieve the currentUser from local storage
+const storedCurrentUser = storageModule.getItem('currentUser');
+const navUsernameElement = document.getElementById('userProfileDiv');
+
+// Check if currentUser exists and has a username property
+if (storedCurrentUser && storedCurrentUser.userName) {
+    // Access the username and update the navUsername
+    
+    const userNameText = navUsernameElement.querySelectorAll("a")[0]
+    if (storedCurrentUser) {
+        userNameText.textContent = storedCurrentUser.userName;
+    }
+} else {
+    // case where the currentUser or username is not available
+    // Create a login button and redirect to Login page
+    navUsernameElement.style.display='none';
+    const loginButton = document.createElement('button');
+    loginButton.classList.add('btn','btn-primary','me-4');
+    loginButton.style.width = '100px';
+    loginButton.textContent = 'Log In';
+    navbar.appendChild(loginButton);
+    loginButton.addEventListener('click', function() {
+        window.location.href = '../html/signPage.html';
+    })
+}
+
+const logoutButton = document.getElementById('logoutBtn');
+if (logoutButton) {
+    logoutButton.addEventListener('click', function() {
+        // Clear the currentUser object in local storage
+        localStorage.removeItem('currentUser');
+        // Redirect to the login page
+        // window.location.href = '../html/signPage.html';
+        location.reload()
+    });
+}
+    </script>
     
 </body>
 
