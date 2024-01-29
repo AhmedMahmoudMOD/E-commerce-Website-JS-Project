@@ -2,6 +2,7 @@ import {storageModule} from "../common/storageModule.js";
 import {IDGenerator} from "../common/idclass.js"
 let allUsers = storageModule.getItem('users');
 let currentUser = storageModule.getItem('currentUser');
+let guestCartArr = storageModule.getItem('guest-cart');
 
     const loginForm = document.querySelector(".login_form");
     const eField = loginForm.querySelector(".email");
@@ -313,8 +314,9 @@ loginBtn.addEventListener("click", function (e) {
     },
     orderHistory: [],
     wishList: [],
-    cart: [],
+    cart: guestCartArr,
     }
+
     allUsers.push(newUser);
     storageModule.setItem('users',allUsers);
   }
