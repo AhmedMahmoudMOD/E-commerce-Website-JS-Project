@@ -11,7 +11,7 @@ LoadShippingAddress(); // Load the shipping address
 /////////////////////////////// Functions //////////////////////////////
 function LoginCheck() // Check if the user is logged in or not
 {
-    if (storageModule.getItem("currentUser") == null) // If the user is not logged in then redirect him to the login page
+    if (storageModule.getItem("currentUser") == null || Object.keys(storageModule.getItem("currentUser")).length == 0) // If the user is not logged in then redirect him to the login page
     {
         alert("You must login first");
         window.location.href = "../html/signPage.html";
