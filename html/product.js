@@ -15,14 +15,13 @@ window.addEventListener('load',function(){
     renderInfo(shownProduct);
     renderTabs(shownProduct);
     checkStock();
-    // addtoCart();
     navLinksControl();
     filterRelated(shownProduct);
     renderRelated(relatedProducts);
     imgHover(relatedProducts);
     cardAddtoCart();
     openModal();
-    // addBuyNoWEvent ();
+    linkProducts();
    
 
 })
@@ -226,17 +225,18 @@ function addtoCart(){
 }
 
 function navLinksControl(){
-    let lastProductId = `P${allProducts.length}`;
+    let lastProductId = allProducts[allProducts.length - 1].productId
+    let firstProductId = allProducts[0].productId;
     let nextLink = document.getElementById('nextLink');
     let prevLink = document.getElementById('prevLink');
     let nextId = allProducts[productIndex+1]?.productId;
     let prevId = allProducts[productIndex-1]?.productId;
 
-    if(productID=='P1'){
+    if(productID==firstProductId){
         prevLink.style.display='none';
         linkDivider.style.display='none';
     }
-    if(productID==lastProductId){
+    if(productID===lastProductId){
         nextLink.style.display='none';
         linkDivider.style.display='none';
     }
@@ -439,7 +439,7 @@ function cardAddtoCart (){
                     icon: "error",
                     title: "Oops...",
                     text: "Add to Cart is Only Avaliable to Our Customers",
-                    footer: '<a href="./signUp.html">Sign Up or Login As Customer</a>'
+                    footer: '<a href="./signPage.html">Sign Up or Login As Customer</a>'
                   });
             }
 
@@ -615,9 +615,18 @@ function addtoCartModal(){
                 icon: "error",
                 title: "Oops...",
                 text: "Add to Cart is Only Avaliable to Our Customers",
-                footer: '<a href="./signUp.html">Sign Up or Login As Customer</a>'
+                footer: '<a href="./signPage.html">Sign Up or Login As Customer</a>'
               });
             
         }
     })
+}
+function linkProducts(){
+    let productLinks = document.querySelectorAll('.product-link');
+    for (let i = 0 ; i<productLinks.length;i++){
+        productLinks[i].addEventListener('click',function(){
+            // window.open(`./product.html?product_id=${this.id}`,'_self');
+            window.location.href=`./product.html?product_id=${this.id}`
+        })
+    }
 }
