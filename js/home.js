@@ -427,5 +427,5 @@ function websiteDataLoad(){
     if(storageModule.getItem('orders')===null)
         storageModule.setItem('orders',orders);
 
-    //  storageModule.setItem('guest-cart',[]);
+    storageModule.setItem('guest-cart',[]);
 }
