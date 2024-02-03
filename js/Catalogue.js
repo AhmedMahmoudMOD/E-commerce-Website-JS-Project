@@ -69,7 +69,9 @@ function renderProducts(products){
         iconLink.classList.add('text-decoration-none','text-dark');
         let WishIcon = document.createElement('i');
         WishIcon.classList.add('far','fa-heart');
-        iconLink.addEventListener('click',()=> wishListControls(product.productId));
+        if(isAlreadyWishlisted(product.productId))
+            WishIcon.style.color='red';
+        WishIcon.addEventListener('click',(e)=> wishListToggle(product.productId,e.target));
         iconLink.appendChild(WishIcon);
         /* Wish Icon  Link Appended  */
         let secIconLink = document.createElement('a');
@@ -723,7 +725,7 @@ function searchProducts (searchValue){
     renderProducts(combinedResults);
 }
 
-function wishListControls(productID){
+function wishListToggle(productID,icon){
     if (currentUserObj == null || currentUserObj.userType!= 'customer')
     {
         Swal.fire({
@@ -735,12 +737,33 @@ function wishListControls(productID){
     }
     else 
     {
-        currentUserObj.wishList.push(productID);
-        let index = allUsers.findIndex(user => user.id===currentUserObj.id)
-        allUsers[index]=currentUserObj;
-        console.log(currentUserObj.wishList);
-        storageModule.setItem('currentUser',currentUserObj);
-        storageModule.setItem('users',allUsers);
+        
+        let index = allUsers.findIndex(user => user.id===currentUserObj.id);
+        if(isAlreadyWishlisted(productID)){
+            currentUserObj.wishList=currentUserObj.wishList.filter(pID => pID !== productID);
+            allUsers[index]=currentUserObj;
+            icon.style.color='black';
+            storageModule.setItem('currentUser',currentUserObj);
+            storageModule.setItem('users',allUsers);
+
+        } else {
+            currentUserObj.wishList.push(productID);
+            allUsers[index]=currentUserObj;
+            console.log(icon);
+            console.log(currentUserObj.wishList);
+            icon.style.color='red';
+            storageModule.setItem('currentUser',currentUserObj);
+            storageModule.setItem('users',allUsers);
+       }
+    }
+}
+
+function isAlreadyWishlisted(productID){
+    const wishIndex = currentUserObj.wishList.findIndex(pID => pID === productID);
+    if(wishIndex!==-1){
+        return true;
+    } else {
+        return false;
     }
 }
 
