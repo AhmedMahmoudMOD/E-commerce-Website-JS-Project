@@ -759,13 +759,14 @@ function wishListToggle(productID,icon){
 }
 
 function isAlreadyWishlisted(productID){
-    const wishIndex = currentUserObj.wishList.findIndex(pID => pID === productID);
-    if(wishIndex!==-1){
+    const wishIndex = currentUserObj?.wishList.findIndex(pID => pID === productID);
+    if(wishIndex!==-1&&currentUserObj!==null){
         return true;
     } else {
         return false;
     }
 }
+
 
 
 // NavBar
