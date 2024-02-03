@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="generator" content="">
-    <title>Seller Dashboard</title>
+    <title>Customer Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="../images/favicon.png" type="image/png">
@@ -15,8 +15,12 @@
   </head>
 <body>
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Seller Dashboard</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6">
+    <a class="mx-2" href="../html/home.html"><i style="color: azure;" class="fas fa-home-lg-alt"></i></a>
+    <a class="mx-2" href="../html/accDetailes.html"><i style="color: azure;" class="fas fa-id-card"></i></a>
+    <a class="mx-2" href="../html/Catalogue.html"><i style="color: azure;" class="far fa-watch"></i></a>
+  </div>
+   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" id="searchInput" placeholder="Search" aria-label="Search">
@@ -33,14 +37,12 @@
       <div class="position-sticky pt-3 sidebar-sticky" id="stickySide">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link pop-link" href="#" id="products">
-              <span data-feather="shopping-cart" class="align-text-bottom"></span>
+            <a class="nav-link pop-link"  id="wishlist">
               Wishlist
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link pop-link" href="#" id="orders">
-              <span data-feather="file" class="align-text-bottom"></span>
+            <a class="nav-link pop-link" id="orders">
               Orders
             </a>
           </li>
@@ -82,7 +84,7 @@
         </div>
         <div class="modal-body">
             <div class="table-responsive">
-                <table class="table  table-striped table-responsive-lg " id="modalTable">
+                <table class="table  table-striped table-dark  table-responsive-lg " id="modalTable">
                   <thead id="modalTableHead">
                   </thead>
                   <tbody id="modalTableBody">

@@ -70,7 +70,7 @@ function createTableHeader(type) {
        
       const showButton = document.createElement('button');
       showButton.textContent = 'Show';
-      showButton.classList.add('btn', 'btn-dark', 'btn-sm', 'mx-1','col-10','col-md-10','col-lg-7');
+      showButton.classList.add('btn', 'btn-light', 'btn-sm', 'mx-1','col-10','col-md-10','col-lg-7');
       showButton.setAttribute('data-bs-toggle','modal');
       showButton.setAttribute('data-bs-target','#proModal');
       showButton.addEventListener('click',()=>createHeadersModal('products'));
@@ -104,7 +104,7 @@ function createTableHeader(type) {
           <td class='align-middle'>${product.price-(product.price*product.discount)}</td>
           <td><img src="${product.images[0]}" height="50px" , width="50px"></td>
           <td class='align-middle'>
-            <button type="button" class="btn mx-1 btn-sm btn-dark edit-btn col-4 col-md-5 goto-btn">
+            <button type="button" class="btn mx-1 btn-sm btn-light col-4 col-md-5 goto-btn">
               Go To
             </button>
             <button type="button" class="btn mx-1 btn-sm btn-danger col-4 col-md-5 remove-btn">
@@ -210,17 +210,19 @@ function createTableHeader(type) {
     let addBtn = document.getElementById('addBtn');
     NavLinks[0].addEventListener('click',()=>{
       createTableHeader('wishlist');
+      currentPage=1;
       populateTable('wishlist',customerWishlist);
       addSearchEvent(searchProducts);
       TableH.innerText='My Wishlist';
-      addBtn.style.display="none";
+      
     })
     NavLinks[1].addEventListener('click',()=>{
       createTableHeader('orders');
+      currentPage=1;
       populateTable('orders',customerOrders);
       addSearchEvent(searchOrders);
       TableH.innerText="My Orders";
-      addBtn.style.display="none";
+      
     })
 
   }

@@ -4,8 +4,8 @@
   }
   body {
     font-size: .875rem;
-    background-color: rgb(28, 26, 26);
-    color: whitesmoke;
+    /* background-color: rgb(28, 26, 26);
+    color: whitesmoke; */
   }
   
   .feather {
@@ -146,7 +146,7 @@
     }
 
     #stickySide{
-      background-color: rgb(148, 80, 80);
+      background-color: rgb(136, 120, 120);
     }
   
     @media (max-width: 576px) {
@@ -191,4 +191,14 @@
       display: flex;
       padding-left: 0;
       list-style: none;
+  }
+
+  .pop-link:hover{
+      color: azure;
+      cursor: pointer;
+  }
+
+  #logoutButton:hover{
+    cursor: pointer;
+    color: azure;
   }
