@@ -4,6 +4,8 @@
   }
   body {
     font-size: .875rem;
+    background-color: rgb(28, 26, 26);
+    color: whitesmoke;
   }
   
   .feather {
@@ -141,6 +143,10 @@
       text-align: center;
       white-space: nowrap;
       -webkit-overflow-scrolling: touch;
+    }
+
+    #stickySide{
+      background-color: rgb(148, 80, 80);
     }
   
     @media (max-width: 576px) {

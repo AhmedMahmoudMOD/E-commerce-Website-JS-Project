@@ -374,6 +374,14 @@ function addtoCartModal(){
     cartQuantity.addEventListener('input',function(){
         if(this.value<1)
             this.value=1;
+        // Modification Fix // 
+        if(this.value==1){
+            controlButtons[0].setAttribute('disabled','true');
+            controlButtons[0].classList.toggle('disabled');
+        }else{
+            controlButtons[0].classList.remove('disabled');
+            controlButtons[0].removeAttribute('disabled');
+        }
     })
     
     controlButtons[0].setAttribute('disabled','true');
@@ -494,8 +502,8 @@ function wishListToggle(productID,icon){
 }
 
 function isAlreadyWishlisted(productID){
-    const wishIndex = currentUserObj?.wishList.findIndex(pID => pID === productID);
-    if(wishIndex!==-1&&currentUserObj!==null){
+    const wishIndex = currentUserObj?.wishList?.findIndex(pID => pID === productID);
+    if(wishIndex!==-1&&currentUserObj!==null&&currentUserObj.userType=='customer'){
         return true;
     } else {
         return false;
