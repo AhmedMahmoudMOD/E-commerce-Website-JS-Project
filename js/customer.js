@@ -6,8 +6,8 @@ let allProducts = storageModule.getItem('products');
 let currentUserObj = storageModule.getItem('currentUser');
 let customerIndex = allUsers.findIndex(user => user.id===currentUserObj.id)
 let allOrders = storageModule.getItem("orders");
-// let sellerProductsIDs = currentUserObj.products;
-// let sellerProducts = allProducts.filter(product => sellerProductsIDs.includes(product.productId)); 
+let customerWishlistIDs = currentUserObj.wishList;
+let customerWishlist = allProducts.filter(product => customerWishlistIDs.includes(product.productId)); 
 let customerOrdersIDs = currentUserObj.orderHistory;
 let customerOrders = allOrders.filter(order=>customerOrdersIDs.includes(order.orderID));
 
@@ -33,8 +33,8 @@ function createTableHeader(type) {
         th.textContent = attribute;
         headerRow.appendChild(th);
       });
-    } else if (type === 'products') {
-      const attributesToDisplay = ['Product ID', 'Name', 'Brand','Category','Price', 'Discount', 'Stock','Actions'];
+    } else if (type === 'wishlist') {
+      const attributesToDisplay = ['Name', 'Brand','Category','Price','Image','Actions'];
       attributesToDisplay.forEach(attribute => {
         const th = document.createElement('th');
         th.setAttribute('scope', 'col');
@@ -68,11 +68,7 @@ function createTableHeader(type) {
         row.insertCell().textContent = order.orderStatus;
         row.insertCell().textContent = order.deliverDate;
         const productsCell = row.insertCell();
-        // const sellerOnlyProducts = order.products.filter(product => sellerProductsIDs.includes(product.productId));
-    //     productsCell.innerHTML=`<button type="button" class="btn mx-1 btn-sm btn-dark col-4 col-md-8" data-bs-toggle="modal" data-bs-target="#proModal">
-    //     Show
-    //   </button>`
-
+       
       const showButton = document.createElement('button');
       showButton.textContent = 'Show';
       showButton.classList.add('btn', 'btn-dark', 'btn-sm', 'mx-1','col-4','col-md-8');
@@ -82,9 +78,7 @@ function createTableHeader(type) {
       showButton.addEventListener('click',()=>populateTableModal(order.products));
       productsCell.appendChild(showButton);
 
-        // order.products.forEach(product => {
-        //   productsCell.innerHTML += `${product.productId}: ${product.quantity} - ${product.price}<br>`;
-        // });
+       
   
         const actionsCell = row.insertCell();
         const confirmButton = document.createElement('button');
@@ -100,31 +94,29 @@ function createTableHeader(type) {
         actionsCell.appendChild(rejectButton);
   
       });
-    } else if (type === 'products') {
-      pageType='products';
+    } else if (type === 'wishlist') {
+      pageType='wishlist';
       currentPageRows.forEach(product => {
         const row = document.createElement('tr');
         row.innerHTML = `
-          <td>${product.productId}</td>
-          <td>${product.name}</td>
-          <td>${product.brand}</td>
-          <td>${product.category}</td>
-          <td>${product.price}</td>
-          <td>${product.discount}</td>
-          <td>${product.stock}</td>
-          <td>
-            <button type="button" class="btn mx-1 btn-sm btn-outline-secondary edit-btn col-4 col-md-5" data-bs-toggle="modal" data-bs-target="#editModal">
-              Edit
+          <td class='align-middle'>${product.name}</td>
+          <td class='align-middle'>${product.brand}</td>
+          <td class='align-middle'>${product.category}</td>
+          <td class='align-middle'>${product.price-(product.price*product.discount)}</td>
+          <td><img src="${product.images[0]}" height="50px" , width="50px"></td>
+          <td class='align-middle'>
+            <button type="button" class="btn mx-1 btn-sm btn-dark edit-btn col-4 col-md-5 goto-btn">
+              Go To
             </button>
-            <button type="button" class="btn mx-1 btn-sm btn-danger col-4 col-md-5" id="deleteBtn">
-              Delete
+            <button type="button" class="btn mx-1 btn-sm btn-danger col-4 col-md-5 remove-btn">
+              Remove
             </button>
           </td>
         `;
   
         tableBody.appendChild(row);
-        row.querySelector('.edit-btn').addEventListener('click', () => populateEditForm(product.productId));
-        row.querySelector('#deleteBtn').addEventListener('click', () => FireDeleteSweetAlert(deleteProduct, product.productId));
+        row.querySelector('.goto-btn').addEventListener('click', () => goToPage(product.productId));
+        row.querySelector('.remove-btn').addEventListener('click', () => FireRemoveSweetAlert(removeFromWishList, product.productId));
       
       });
     }
@@ -174,6 +166,41 @@ function createTableHeader(type) {
     currentPage=1;
     populateTable('orders',searchedOrders);
   }
+  function searchProducts (){
+    const searchInput = document.getElementById('searchInput');
+    const searchValue = searchInput.value;
+    const searchTerm = searchValue.toLowerCase();
+
+    // Use filter to get only the objects that match the search criteria
+    const searchedProducts = customerWishlist.filter((product) => {
+      // Iterate through each property of the product object
+      for (const key in product) {
+        // Check if the property value includes the search term
+        if (
+          typeof product[key] === "string" &&
+          product[key].toLowerCase().includes(searchTerm)
+        ) {
+          return true; // Include the object in the filtered result
+        } else if (typeof product[key] === "object" && product[key] !== null) {
+          // If the property is an object, check its values
+          for (const subKey in product[key]) {
+            if (
+              product[key][subKey]
+                .toString()
+                .toLowerCase()
+                .includes(searchTerm)
+            ) {
+              return true; // Include the object in the filtered result
+            }
+          }
+        }
+      }
+      return false; // Exclude the object from the filtered result
+    });
+  
+    // Return the filtered array of objects
+    populateTable('wishlist',searchedProducts);
+  }
   function addSearchEvent(searchFunction) {
     const searchInput = document.getElementById("searchInput");
     searchInput.onkeyup=searchFunction;
@@ -184,11 +211,11 @@ function createTableHeader(type) {
     let TableH = document.getElementById('TableH');
     let addBtn = document.getElementById('addBtn');
     NavLinks[0].addEventListener('click',()=>{
-      createTableHeader('products');
-      populateTable('products',sellerProducts);
+      createTableHeader('wishlist');
+      populateTable('wishlist',customerWishlist);
       addSearchEvent(searchProducts);
-      TableH.innerText='My Products';
-      addBtn.style.display="block";
+      TableH.innerText='My Wishlist';
+      addBtn.style.display="none";
     })
     NavLinks[1].addEventListener('click',()=>{
       createTableHeader('orders');
@@ -313,6 +340,42 @@ function populateTableModal(orderProducts){
 
           tableBody.appendChild(row);
     })
+}
+
+function goToPage(productID){
+  window.location.href=`./product.html?product_id=${productID}`
+}
+
+function removeFromWishList(productID){
+    customerWishlist=customerWishlist.filter(p => p.productId !== productID);
+    currentUserObj.wishList=currentUserObj.wishList.filter(pID => pID !== productID);
+    allUsers[customerIndex].wishList=currentUserObj.wishList;
+    storageModule.setItem('currentUser',currentUserObj);
+    storageModule.setItem('users',allUsers);
+
+    populateTable('wishlist',customerWishlist);
+}
+
+function FireRemoveSweetAlert(func, id)
+{
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, remove it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            func(id);
+            Swal.fire({
+                title: "Removed!",
+                text: "Removed successfully.",
+                icon: "success"
+            });
+        }
+    });
 }
 
 logoutButton.addEventListener('click', function() {

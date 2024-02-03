@@ -69,6 +69,7 @@ function renderProducts(products){
         iconLink.classList.add('text-decoration-none','text-dark');
         let WishIcon = document.createElement('i');
         WishIcon.classList.add('far','fa-heart');
+        iconLink.addEventListener('click',()=> wishListControls(product.productId));
         iconLink.appendChild(WishIcon);
         /* Wish Icon  Link Appended  */
         let secIconLink = document.createElement('a');
@@ -720,6 +721,27 @@ function searchProducts (searchValue){
     const combinedResults = filteredProducts.filter(product => searchedResults.includes(product));
     currentPage=1;
     renderProducts(combinedResults);
+}
+
+function wishListControls(productID){
+    if (currentUserObj == null || currentUserObj.userType!= 'customer')
+    {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Wishlist Feature Only Available for Our Customers",
+            footer: '<a href="./signPage.html">Sign Up or Login As Customer</a>'
+        });
+    }
+    else 
+    {
+        currentUserObj.wishList.push(productID);
+        let index = allUsers.findIndex(user => user.id===currentUserObj.id)
+        allUsers[index]=currentUserObj;
+        console.log(currentUserObj.wishList);
+        storageModule.setItem('currentUser',currentUserObj);
+        storageModule.setItem('users',allUsers);
+    }
 }
 
 
