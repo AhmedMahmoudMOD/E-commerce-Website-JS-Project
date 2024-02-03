@@ -26,7 +26,7 @@ function createTableHeader(type) {
     tableHead.innerHTML='';
   
     if (type === 'orders') {
-      const attributesToDisplay = ['Order ID', 'Seller ID', 'Place Date', 'Order Status', 'Deliver Date', 'Products', 'Actions'];
+      const attributesToDisplay = ['Order ID', 'Seller ID', 'Place Date', 'Order Status', 'Products', 'Actions'];
       attributesToDisplay.forEach(attribute => {
         const th = document.createElement('th');
         th.setAttribute('scope', 'col');
@@ -66,12 +66,11 @@ function createTableHeader(type) {
         row.insertCell().textContent = order.sellerID;
         row.insertCell().textContent = order.placeDate;
         row.insertCell().textContent = order.orderStatus;
-        row.insertCell().textContent = order.deliverDate;
         const productsCell = row.insertCell();
        
       const showButton = document.createElement('button');
       showButton.textContent = 'Show';
-      showButton.classList.add('btn', 'btn-dark', 'btn-sm', 'mx-1','col-4','col-md-8');
+      showButton.classList.add('btn', 'btn-dark', 'btn-sm', 'mx-1','col-10','col-md-10','col-lg-7');
       showButton.setAttribute('data-bs-toggle','modal');
       showButton.setAttribute('data-bs-target','#proModal');
       showButton.addEventListener('click',()=>createHeadersModal('products'));
@@ -83,14 +82,14 @@ function createTableHeader(type) {
         const actionsCell = row.insertCell();
         const confirmButton = document.createElement('button');
         confirmButton.textContent = 'Confirm';
-        confirmButton.classList.add('btn', 'btn-success', 'btn-sm', 'mx-1');
+        confirmButton.classList.add('btn', 'btn-success', 'btn-sm','mx-1','col-5','col-md-5','col-lg-5');
         confirmButton.addEventListener('click',() => changeOrderStatus(order.orderID, 'Deliverd', row));
         actionsCell.appendChild(confirmButton);
     
         const rejectButton = document.createElement('button');
-        rejectButton.textContent = 'Reject';
-        rejectButton.classList.add('btn', 'btn-danger', 'btn-sm', 'mx-1');
-        rejectButton.addEventListener('click',() => changeOrderStatus(order.orderID, 'Rejected', row));
+        rejectButton.textContent = 'Cancel';
+        rejectButton.classList.add('btn', 'btn-danger', 'btn-sm','mx-1','col-5','col-md-5','col-lg-5');
+        rejectButton.addEventListener('click',() => changeOrderStatus(order.orderID, 'Canceled', row));
         actionsCell.appendChild(rejectButton);
   
       });
@@ -125,7 +124,7 @@ function createTableHeader(type) {
 
   function changeOrderStatus(orderID, newStatus, row) {
     const order = customerOrders.find(order => order.orderID === orderID);
-    const index = customerOrders.findIndex(order => order.orderID === orderID);
+    const index = allOrders.findIndex(order => order.orderID === orderID);
 
     if (order) {
       order.orderStatus = newStatus;
@@ -135,11 +134,10 @@ function createTableHeader(type) {
       else if(newStatus=='Rejected')
          row.cells[3].style.color='red';
 
+      allOrders[index] = order;
+      storageModule.setItem('orders',allOrders); 
+
     }
-    if (index !== -1) {
-      customerOrders[index] = order;
-    }
-    console.log(customerOrders);
   }
 
   function searchOrders (){

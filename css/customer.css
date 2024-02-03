@@ -145,18 +145,15 @@
   
     @media (max-width: 576px) {
       #dataTable th:not(:first-child),
-      #dataTable td:not(:first-child),
-      #dataTable th:nth-last-child(2),
-      #dataTable td:nth-last-child(2)
+      #dataTable td:not(:first-child)
        {
         display: none;
       }
     
-      /* Display only Product ID and Name columns */
-      #dataTable th:first-child,
-      #dataTable td:first-child,
-      #dataTable th:nth-child(2),
-      #dataTable td:nth-child(2),
+      #dataTable th:nth-child(4),
+      #dataTable td:nth-child(4),
+      #dataTable th:nth-child(5),
+      #dataTable td:nth-child(5),
       #dataTable th:last-child,
       #dataTable td:last-child
       {

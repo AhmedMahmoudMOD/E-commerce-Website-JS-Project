@@ -11,6 +11,7 @@ let shownProduct = getProduct(productID);
 let relatedProducts = filterRelated(shownProduct);
 
 window.addEventListener('load',function(){
+    this.document.getElementsByTagName('title')[0].innerText=shownProduct.name;
     renderCarousel(shownProduct);
     renderInfo(shownProduct);
     renderTabs(shownProduct);
@@ -299,6 +300,9 @@ function renderRelated(relatedProducts){
         iconLink.classList.add('text-decoration-none','text-dark');
         let WishIcon = document.createElement('i');
         WishIcon.classList.add('far','fa-heart');
+        if(isAlreadyWishlisted(product.productId))
+            WishIcon.style.color='red';
+        WishIcon.addEventListener('click',(e)=> wishListToggle(product.productId,e.target));
         iconLink.appendChild(WishIcon);
         /* Wish Icon  Link Appended  */
         let secIconLink = document.createElement('a');
@@ -670,6 +674,48 @@ function linkProducts(){
             // window.open(`./product.html?product_id=${this.id}`,'_self');
             window.location.href=`./product.html?product_id=${this.id}`
         })
+    }
+}
+
+function wishListToggle(productID,icon){
+    if (currentUserObj == null || currentUserObj.userType!= 'customer')
+    {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Wishlist Feature Only Available for Our Customers",
+            footer: '<a href="./signPage.html">Sign Up or Login As Customer</a>'
+        });
+    }
+    else 
+    {
+        
+        let index = allUsers.findIndex(user => user.id===currentUserObj.id);
+        if(isAlreadyWishlisted(productID)){
+            currentUserObj.wishList=currentUserObj.wishList.filter(pID => pID !== productID);
+            allUsers[index]=currentUserObj;
+            icon.style.color='black';
+            storageModule.setItem('currentUser',currentUserObj);
+            storageModule.setItem('users',allUsers);
+
+        } else {
+            currentUserObj.wishList.push(productID);
+            allUsers[index]=currentUserObj;
+            console.log(icon);
+            console.log(currentUserObj.wishList);
+            icon.style.color='red';
+            storageModule.setItem('currentUser',currentUserObj);
+            storageModule.setItem('users',allUsers);
+       }
+    }
+}
+
+function isAlreadyWishlisted(productID){
+    const wishIndex = currentUserObj.wishList.findIndex(pID => pID === productID);
+    if(wishIndex!==-1){
+        return true;
+    } else {
+        return false;
     }
 }
 
