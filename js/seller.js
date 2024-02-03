@@ -27,7 +27,7 @@ function createTableHeader(type) {
   tableHead.innerHTML='';
 
   if (type === 'orders') {
-    const attributesToDisplay = ['Order ID', 'Customer ID', 'Place Date', 'Order Status', 'Deliver Date', 'Products', 'Actions'];
+    const attributesToDisplay = ['Order ID', 'Customer ID', 'Place Date', 'Order Status', 'Products', 'Actions'];
     attributesToDisplay.forEach(attribute => {
       const th = document.createElement('th');
       th.setAttribute('scope', 'col');
@@ -68,25 +68,29 @@ function populateTable(type,array) {
       row.insertCell().textContent = order.customerID;
       row.insertCell().textContent = order.placeDate;
       row.insertCell().textContent = order.orderStatus;
-      row.insertCell().textContent = order.deliverDate;
       const productsCell = row.insertCell();
       const sellerOnlyProducts = order.products.filter(product => sellerProductsIDs.includes(product.productId));
 
-      sellerOnlyProducts.forEach(product => {
-        productsCell.innerHTML += `${product.productId}: ${product.quantity} - ${product.price}<br>`;
-      });
+      const showButton = document.createElement('button');
+      showButton.textContent = 'Show';
+      showButton.classList.add('btn', 'btn-light', 'btn-sm', 'mx-1','col-10','col-md-10','col-lg-7');
+      showButton.setAttribute('data-bs-toggle','modal');
+      showButton.setAttribute('data-bs-target','#proModal');
+      showButton.addEventListener('click',()=>createHeadersModal('products'));
+      showButton.addEventListener('click',()=>populateTableModal(sellerOnlyProducts));
+      productsCell.appendChild(showButton);
 
       const actionsCell = row.insertCell();
       const confirmButton = document.createElement('button');
       confirmButton.textContent = 'Confirm';
-      confirmButton.classList.add('btn', 'btn-success', 'btn-sm', 'mx-1');
-      confirmButton.addEventListener('click',() => changeOrderStatus(order.orderID, 'Confirmed', row));
+      confirmButton.classList.add('btn', 'btn-success', 'btn-sm', 'mx-1','col-5','col-md-5','col-lg-5');
+      // confirmButton.addEventListener('click',() => changeOrderStatus(order.orderID, 'Confirmed', row));
       actionsCell.appendChild(confirmButton);
   
       const rejectButton = document.createElement('button');
       rejectButton.textContent = 'Reject';
-      rejectButton.classList.add('btn', 'btn-danger', 'btn-sm', 'mx-1');
-      rejectButton.addEventListener('click',() => changeOrderStatus(order.orderID, 'Rejected', row));
+      rejectButton.classList.add('btn', 'btn-danger', 'btn-sm', 'mx-1','col-5','col-md-5','col-lg-5');
+      // rejectButton.addEventListener('click',() => changeOrderStatus(order.orderID, 'Rejected', row));
       actionsCell.appendChild(rejectButton);
 
     });
@@ -103,7 +107,7 @@ function populateTable(type,array) {
         <td>${product.discount}</td>
         <td>${product.stock}</td>
         <td>
-          <button type="button" class="btn mx-1 btn-sm btn-outline-secondary edit-btn col-4 col-md-5" data-bs-toggle="modal" data-bs-target="#editModal">
+          <button type="button" class="btn mx-1 btn-sm btn-light edit-btn col-4 col-md-5" data-bs-toggle="modal" data-bs-target="#editModal">
             Edit
           </button>
           <button type="button" class="btn mx-1 btn-sm btn-danger col-4 col-md-5" id="deleteBtn">
@@ -411,6 +415,7 @@ function populateTable(type,array) {
     let addBtn = document.getElementById('addBtn');
     NavLinks[0].addEventListener('click',()=>{
       createTableHeader('products');
+      currentPage=1;
       populateTable('products',sellerProducts);
       addSearchEvent(searchProducts);
       TableH.innerText='My Products';
@@ -418,6 +423,7 @@ function populateTable(type,array) {
     })
     NavLinks[1].addEventListener('click',()=>{
       createTableHeader('orders');
+      currentPage=1;
       populateTable('orders',sellerOrders);
       addSearchEvent(searchOrders);
       TableH.innerText="My Orders";
@@ -524,6 +530,47 @@ function FireDeleteSweetAlert(func, id)
         }
     });
 }
+
+function createHeadersModal(type){
+
+  const tableHead = document.getElementById('modalTableHead');
+  const headerRow = document.createElement('tr');
+  tableHead.innerHTML='';
+
+  if (type === 'products') {
+    const attributesToDisplay = ['Name', 'Brand','Price', 'Quantity','Image'];
+    attributesToDisplay.forEach(attribute => {
+      const th = document.createElement('th');
+      th.setAttribute('scope', 'col');
+      th.textContent = attribute;
+      headerRow.appendChild(th);
+    });
+  }
+
+  tableHead.appendChild(headerRow);
+  
+}
+
+function populateTableModal(orderProducts){
+  const tableBody = document.getElementById('modalTableBody');
+  tableBody.innerHTML = '';
+  orderProducts.forEach((product)=>{
+      let orderProductID = product.productId;
+      let productName = allProducts.find((product)=>product.productId==orderProductID)?.name;
+      let productImage = allProducts.find((product)=>product.productId==orderProductID)?.images[0];
+      let productBrand = allProducts.find((product)=>product.productId==orderProductID)?.brand;
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class='align-middle'>${productName}</td>
+        <td class='align-middle'>${productBrand}</td>
+        <td class='align-middle'>${product.price}</td>
+        <td class='align-middle'>${product.quantity}</td>
+        <td><img src="${productImage}" height="50px" , width="50px"></td> `
+
+        tableBody.appendChild(row);
+  })
+}
+
 
 function LoginCheck() // Check if the user is logged in or not
 {
