@@ -1,6 +1,8 @@
 import { storageModule } from "../common/storageModule.js";
 import {IDGenerator} from "../common/idclass.js"
 
+LoginCheck();
+
 let allUsers=storageModule.getItem('users');
 let allProducts = storageModule.getItem('products');
 let currentUserObj = storageModule.getItem('currentUser');
@@ -376,6 +378,33 @@ function FireRemoveSweetAlert(func, id)
             });
         }
     });
+  }
+
+  function LoginCheck() // Check if the user is logged in or not
+{
+    if (storageModule.getItem("currentUser") == null || Object.keys(storageModule.getItem("currentUser")).length == 0) // If the user is not logged in then redirect him to the login page
+    {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You must login as a customer first",
+        }).then(() => {
+            window.location.href = "../html/home.html";
+        });
+    }
+    else // If the user is logged in then check if he is a customer or not
+    {
+        if (storageModule.getItem("currentUser").userType != "customer") // If the user is not a customer then redirect him to the home page
+        {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "You must login as a customer first",
+            }).then(() => {
+                window.location.href = "../html/home.html";
+            });
+        }
+    }
 }
 
 logoutButton.addEventListener('click', function() {
