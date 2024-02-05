@@ -518,6 +518,17 @@ function websiteDataLoad(){
         storageModule.setItem('users',users);
     if(storageModule.getItem('orders')===null)
         storageModule.setItem('orders',orders);
-   if(storageModule.getItem('guest-cart')===null)
-     storageModule.setItem('guest-cart',[]);
+    if(storageModule.getItem('guest-cart')===null)
+    storageModule.setItem('guest-cart',[]);
+}
+
+
+
+// Version Two 
+if (currentUserObj?.userType === "customer"){
+    dashLink.href = "../html/customer.html"
+} else if(currentUserObj?.userType === "seller") {
+    dashLink.href = "../html/seller.html"
+} else if(currentUserObj?.userType === "admin") {
+    dashLink.href = "../html/admin.html"
 }

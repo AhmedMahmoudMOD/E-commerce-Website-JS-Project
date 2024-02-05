@@ -449,3 +449,14 @@ if (logoutButton) {
         }, false)
     })
 })()
+
+
+// Version Two 
+let currentUserObj = storageModule.getItem('currentUser');
+if (currentUserObj?.userType === "customer"){
+    dashLink.href = "../html/customer.html"
+} else if(currentUserObj?.userType === "seller") {
+    dashLink.href = "../html/seller.html"
+} else if(currentUserObj?.userType === "admin") {
+    dashLink.href = "../html/admin.html"
+}
