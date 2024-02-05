@@ -146,7 +146,7 @@
     }
 
     #stickySide{
-      background-color: rgb(136, 120, 120);
+      background-color: rgb(252, 249, 249);
     }
   
     @media (max-width: 576px) {
@@ -194,7 +194,7 @@
   }
 
   .pop-link:hover{
-      color: azure;
+      color: rgb(32, 135, 135);
       cursor: pointer;
   }
 

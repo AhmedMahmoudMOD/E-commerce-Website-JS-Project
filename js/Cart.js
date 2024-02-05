@@ -360,7 +360,7 @@ if (logoutButton) {
 }
 
 
-// Version Two 
+// Nav Dasboard
 if (currentUserObj?.userType === "customer"){
     dashLink.href = "../html/customer.html"
 } else if(currentUserObj?.userType === "seller") {
