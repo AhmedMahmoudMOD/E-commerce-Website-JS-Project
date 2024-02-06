@@ -8,10 +8,10 @@ let allProducts = storageModule.getItem('products');
 let currentUserObj = storageModule.getItem('currentUser');
 let customerIndex = allUsers.findIndex(user => user.id===currentUserObj.id)
 let allOrders = storageModule.getItem("orders");
-let customerWishlistIDs = currentUserObj.wishList;
+let customerWishlistIDs = currentUserObj?.wishList;
 let customerWishlist = allProducts.filter(product => customerWishlistIDs.includes(product.productId)); 
-let customerOrdersIDs = currentUserObj.orderHistory;
-let customerOrders = allOrders.filter(order=>customerOrdersIDs.includes(order.orderID));
+let customerOrdersIDs = currentUserObj?.orderHistory;
+let customerOrders = allOrders.filter(order=>customerOrdersIDs?.includes(order.orderID));
 
 let pageType = 'orders';
 const rowsPerPage = 10;

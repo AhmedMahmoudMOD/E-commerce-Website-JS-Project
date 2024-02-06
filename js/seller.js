@@ -8,9 +8,9 @@ let currentUserObj = storageModule.getItem('currentUser');
 let sellerIndex = allUsers.findIndex(user => user.id===currentUserObj.id)
 let allOrders = storageModule.getItem("orders");
 let sellerProductsIDs = currentUserObj.products;
-let sellerProducts = allProducts.filter(product => sellerProductsIDs.includes(product.productId)); 
+let sellerProducts = allProducts.filter(product => sellerProductsIDs?.includes(product.productId)); 
 let sellerOrdersIDs = currentUserObj.orders;
-let sellerOrders = allOrders.filter(order=>sellerOrdersIDs.includes(order.orderID));
+let sellerOrders = allOrders?.filter(order=>sellerOrdersIDs.includes(order.orderID));
 
 let pageType = 'products';
 const rowsPerPage = 10;
