@@ -82,8 +82,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function checkPass(passField) {
+    let passPattern = /^(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{10,}$/;
     passField.querySelector("input").value = passField.querySelector("input").value.trim();
-    if (passField.querySelector("input").value === "") {
+    if (!passField.querySelector("input").value.match(passPattern)) {
       passField.classList.add("error");
       showIcon(passField);
       return false;
