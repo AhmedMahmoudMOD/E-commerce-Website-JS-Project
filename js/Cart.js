@@ -361,6 +361,7 @@ if (logoutButton) {
 
 
 // Nav Dasboard
+let currentUserObj = storageModule.getItem('currentUser');
 if (currentUserObj?.userType === "customer"){
     dashLink.href = "../html/customer.html"
 } else if(currentUserObj?.userType === "seller") {
