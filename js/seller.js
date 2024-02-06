@@ -126,6 +126,8 @@ function populateTable(type,array) {
 }
 
   function populateEditForm(productId) {
+    let form = document.querySelector('#editform');
+    form.classList.remove('was-validated');
     const product = sellerProducts.find(p => p.productId === productId);
     if (product) {
       document.getElementById('editProductId').value = product.productId;
@@ -149,7 +151,9 @@ function populateTable(type,array) {
     }
   }
 
-  function saveProductChanges() {
+  function saveProductChanges(e) {
+    let form = document.querySelector("#editform");
+    console.log(e);
     const productId = document.getElementById('editProductId').value;
     const index = sellerProducts.findIndex(p => p.productId === productId);
     const allIndex = allProducts.findIndex(p => p.productId === productId);
@@ -181,35 +185,31 @@ function populateTable(type,array) {
      
     };
 
-    if(isValid(updatedProduct)){
+    if(isValid(updatedProduct)&&form.checkValidity()){
+      e.preventDefault();
       if (index !== -1) {
         sellerProducts[index] =updatedProduct;
         allProducts[allIndex]=updatedProduct;
         storageModule.setItem('products',allProducts);
+
       }
       
-      console.log(sellerProducts[index]);
-  
+      console.log(updatedProduct);
       populateTable("products",sellerProducts);
-    document.getElementById('editModal').classList.remove('show');
+     document.getElementById('editModal').classList.remove('show');
     document.body.classList.remove('modal-open');
     document.querySelector('.modal-backdrop').remove();
     } else{
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Please Complete All Required Fields With Valid Non Empty Data",
-      });
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            form.classList.add('was-validated');
+    
     }
-
-    
-    
-
-    // // Close the modal
     
   }
 
-  function addProduct() {
+  function addProduct(e) {
+    let form = document.querySelector('#addform');
     const newProduct = {
       productId: IDGenerator.generateProductId(), 
       name: document.getElementById('addProductName').value,
@@ -240,7 +240,8 @@ function populateTable(type,array) {
     newProduct.images.push(document.getElementById('addProductImage3').value);
 
 
-    if(isValid(newProduct)){
+    if(isValid(newProduct)&&form.checkValidity()){
+      e.preventDefault();
       sellerProducts.push(newProduct);
       currentUserObj.products.push(newProduct.productId);
       allUsers[sellerIndex].products=currentUserObj.products;
@@ -248,21 +249,19 @@ function populateTable(type,array) {
       storageModule.setItem('currentUser',currentUserObj);
       storageModule.setItem('users',allUsers);
       storageModule.setItem('products',allProducts);
-  
+      
       document.getElementById('addModal').classList.remove('show');
       document.body.classList.remove('modal-open');
       document.querySelector('.modal-backdrop').remove();
       populateTable("products",sellerProducts);
     } else{
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Please Complete All Required Fields With Vlaid Non Empty Data",
-      });
-     }
+      
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            form.classList.add('was-validated');
     
   }
-
+  }
   function deleteProduct(productId) {
     // Filter out the product to be deleted
     sellerProducts = sellerProducts.filter(p => p.productId !== productId);
@@ -303,6 +302,7 @@ function populateTable(type,array) {
 
     const validations = [
       checkEmpty(product.name),
+      checkDub(product.name,product.productId),
       checkEmpty(product.brand),
       checkEmpty(product.price.toString()),
       checkEmpty(product.discount.toString()),
@@ -341,7 +341,7 @@ function populateTable(type,array) {
     for(let i =0; i<stockInputs.length;i++){
       stockInputs[i].addEventListener('input',function(){
         if (!(/^\d*$/).test(this.value)) {
-          this.value=0;
+          this.value=1;
       }
       })
     }
@@ -611,7 +611,53 @@ function LoginCheck() // Check if the user is logged in or not
     }
 }
 
+document.getElementById("addProductDescription").addEventListener("input", function() {
+  let description = this.value;
+  let pattern = /^(?=(.*[A-Za-z]){10})[A-Za-z0-9]+(\s[A-Za-z0-9]+)*$/; // Adjust the pattern as needed
 
+  if (pattern.test(description)) {
+      this.setCustomValidity(""); // No validation message shown
+      this.classList.add("is-valid");
+      this.classList.remove("is-invalid");
+  } else {
+      this.setCustomValidity("Invalid characters in description"); // Validation message shown
+      this.classList.remove("is-valid");
+      this.classList.add("is-invalid");
+  }
+});
+document.getElementById("editProductDescription").addEventListener("input", function() {
+  let description = this.value;
+  let pattern = /^(?=(.*[A-Za-z]){10})[A-Za-z0-9]+(\s[A-Za-z0-9]+)*$/; // Adjust the pattern as needed
+
+  if (pattern.test(description)) {
+      this.setCustomValidity(""); // No validation message shown
+      this.classList.add("is-valid");
+      this.classList.remove("is-invalid");
+  } else {
+      this.setCustomValidity("Invalid characters in description"); // Validation message shown
+      this.classList.remove("is-valid");
+      this.classList.add("is-invalid");
+  }
+});
+
+function checkDub(pName,pID){
+  let p = sellerProducts.find(product => product.name===pName && product.productId!==pID);
+  if(p){
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "You have a product with the same name , Please change it",
+  })
+    return false;
+  }else {
+    return true;
+  }
+}
+
+  addBtn.addEventListener('click',function(){
+    let form = document.querySelector('#addform');
+    form.classList.remove('was-validated');
+  })
   document.getElementById('saveChangesBtn').addEventListener('click', saveProductChanges);
   document.getElementById('addProductBtn').addEventListener('click', addProduct);
 

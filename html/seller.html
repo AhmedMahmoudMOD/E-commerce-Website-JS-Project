@@ -90,90 +90,153 @@
       </div>
       <div class="modal-body row row-cols-3">
         <input type="hidden" id="editProductId" name="editProductId">
-        <div class="mb-2 col-6">
-          <label for="editProductName" class="form-label">Name <span class="text-muted fw-light small">(required)</span></label>
-          <input type="text" class="form-control" id="editProductName" name="editProductName">
-        </div>
-        <div class="mb-2 col-6">
-          <label for="editProductBrand" class="form-label">Brand <span class="text-muted fw-light small">(required)</span></label>
-          <input type="text" class="form-control" id="editProductBrand" name="editProductBrand">
-        </div>
-        <div class="mb-2 col-6">
-          <label for="editProductPrice" class="form-label">Price <span class="text-muted fw-light small">(required)</span></label>
-          <input type="number" class="form-control oneval" min="1" id="editProductPrice" name="editProductPrice">
-        </div>
-        <div class="mb-2 col-6">
-          <label for="editProductDiscount" class="form-label">Discount <span class="text-muted fw-light small">(required)</span></label>
-          <input type="number" class="form-control discountinput" min="0" max="1" id="editProductDiscount" name="editProductDiscount">
-        </div>
-        <div class="mb-2 col-6">
-          <label for="editProductStock" class="form-label">Stock <span class="text-muted fw-light small">(required)</span></label>
-          <input type="number" class="form-control stockinput" min="0" id="editProductStock" name="editProductStock">
-        </div>
-        <div class="mb-2 col-6">
-          <label for="editProductCategory" class="form-label">Category</label>
-          <select class="form-select" id="editProductCategory" name="editProductCategory">
-              <option value="Men">Men</option>
-              <option value="Women">Women</option>
-          </select>
-        </div>
-        <div class="mb-2 col-12">
-          <label for="editProductDescription" class="form-label">Description <span class="text-muted fw-light small">(required)</span></label>
-          <textarea class="form-control" id="editProductDescription" name="editProductDescription" rows="2"></textarea>
-        </div>
-        <div class="mb-2 col-4">
-          <label for="editProductImage1" class="form-label">Image Link 1 <span class="text-muted fw-light small">(required)</span></label>
-          <input type="text" class="form-control" id="editProductImage1" name="editProductImage1">
-        </div>
-        <div class="mb-2 col-4">
-          <label for="editProductImage2" class="form-label">Image Link 2 <span class="text-muted fw-light small">(required)</span></label>
-          <input type="text" class="form-control" id="editProductImage2" name="editProductImage2">
-        </div>
-        <div class="mb-2 col-4">
-          <label for="editProductImage3" class="form-label">Image Link 3 <span class="text-muted fw-light small">(required)</span></label>
-          <input type="text" class="form-control" id="editProductImage3" name="editProductImage3">
-        </div>
-        <div class="mb-2 col">
-          <label for="editProductMovement" class="form-label">Movement</label>
-          <input type="text" class="form-control" id="editProductMovement" name="editProductMovement">
-        </div>
-        <div class="mb-2 col">
-          <label for="editProductCaseMaterial" class="form-label">Case Material</label>
-          <input type="text" class="form-control" id="editProductCaseMaterial" name="editProductCaseMaterial">
-        </div>
-        <div class="mb-2 col">
-          <label for="editProductCaseDiameter" class="form-label">Case Diameter</label>
-          <input type="number" class="form-control oneval" min="1" id="editProductCaseDiameter" name="editProductCaseDiameter">
-        </div>
-        <div class="mb-2">
-          <label for="editProductGlass" class="form-label">Glass</label>
-          <input type="text" class="form-control" id="editProductGlass" name="editProductGlass">
-        </div>
-        <div class="mb-2 col">
-          <label for="editProductWaterResistance" class="form-label">Water Resistance</label>
-          <input type="text" class="form-control" id="editProductWaterResistance" name="editProductWaterResistance">
-        </div>
-        <div class="mb-2 col">
-          <label for="editProductStrapMaterial" class="form-label">Strap Material</label>
-          <input type="text" class="form-control" id="editProductStrapMaterial" name="editProductStrapMaterial">
-        </div>
-        <div class="mb-2 col-6">
-          <label for="editProductStrapWidth" class="form-label">Strap Width</label>
-          <input type="number" class="form-control oneval" min="1" id="editProductStrapWidth" name="editProductStrapWidth">
-        </div>
-        <div class="mb-2 col-6">
-          <label for="editProductStrapColor" class="form-label">Strap Color</label>
-          <input type="text" class="form-control" id="editProductStrapColor" name="editProductStrapColor">
-        </div>
-        <div class="row mb-2 col-6 m-auto">
-          <button type="button" class="btn btn-primary col-12" id="saveChangesBtn">
-            Save Changes
-          </button>
-        </div>
+        <form class="needs-validation row col-12" id="editform" novalidate>
+          <div class="mb-2 col-6">
+            <label for="editProductName" class="form-label">Name <span class="text-muted fw-light small">(required)</span></label>
+            <input type="text" class="form-control" id="editProductName" name="editProductName" required pattern="^(?=(.*[A-Za-z]){3})[A-Za-z0-9]+(\s[A-Za-z0-9]+)*$">
+            <div class="valid-feedback">
+                Valid Name 
+            </div>
+            <div class="invalid-feedback">
+                Invalid Name, Must Be 3 Letters Or More
+            </div>
+          </div>
+          <div class="mb-2 col-6">
+            <label for="editProductBrand" class="form-label">Brand <span class="text-muted fw-light small">(required)</span></label>
+            <input type="text" class="form-control" id="editProductBrand" name="editProductBrand" required pattern="[A-Za-z]{3,}(\s[A-Za-z]+)*">
+            <div class="valid-feedback">
+                Valid Brand
+            </div>
+            <div class="invalid-feedback">
+                Invalid Brand Name, Must Be 3 Letters Or More
+            </div>
+          </div>
+          <div class="mb-2 col-6">
+            <label for="editProductPrice" class="form-label">Price <span class="text-muted fw-light small">(required)</span></label>
+            <input type="number" class="form-control oneval" min="1" id="editProductPrice" name="editProductPrice" required>
+            <div class="valid-feedback">
+                Valid Price
+            </div>
+            <div class="invalid-feedback">
+                Invalid Price
+            </div>
+          </div>
+          <div class="mb-2 col-6">
+            <label for="editProductDiscount" class="form-label">Discount <span class="text-muted fw-light small">(required)</span></label>
+            <input type="number" class="form-control discountinput" min="0" max="1" id="editProductDiscount" name="editProductDiscount" required step="0.01" pattern="^0(\.\d{1,2})?$">
+            <div class="valid-feedback">
+                Valid Discount
+            </div>
+            <div class="invalid-feedback">
+                Invalid Discount (should be between 0 and 0.99)
+            </div>
+          </div>
+          <div class="mb-2 col-6">
+            <label for="editProductStock" class="form-label">Stock <span class="text-muted fw-light small">(required)</span></label>
+            <input type="number" class="form-control stockinput" min="1" id="editProductStock" name="editProductStock" required>
+            <div class="valid-feedback">
+                Valid Stock
+            </div>
+            <div class="invalid-feedback">
+              Valid Stock , Must Be Than Zero
+            </div>
+          </div>
+          <div class="mb-2 col-6">
+            <label for="editProductCategory" class="form-label">Category</label>
+            <select class="form-select" id="editProductCategory" name="editProductCategory" required>
+                <option value="Men">Men</option>
+                <option value="Women">Women</option>
+            </select>
+            <div class="valid-feedback">
+                Valid Category
+            </div>
+            <div class="invalid-feedback">
+                Invalid Category
+            </div>
+          </div>
+          <div class="mb-2 col-12">
+            <label for="editProductDescription" class="form-label">Description <span class="text-muted fw-light small">(required)</span></label>
+            <textarea class="form-control" id="editProductDescription" name="editProductDescription" rows="2" required pattern="[A-Za-z]{10,}"></textarea>
+            <div class="valid-feedback">
+                Valid Description
+            </div>
+            <div class="invalid-feedback">
+                Invalid Description, Must Be 10 Letters Or More
+            </div>
+          </div>
+          <div class="mb-2 col-4">
+            <label for="editProductImage1" class="form-label">Image Link 1 <span class="text-muted fw-light small">(required)</span></label>
+            <input type="text" class="form-control" id="editProductImage1" name="editProductImage1" required pattern="^(https:\/\/).*$">
+            <div class="valid-feedback">
+                Valid Image Link
+            </div>
+            <div class="invalid-feedback">
+              Invalid Image Link, Must be not empty and starts with https://            
+            </div>
+          </div>
+          <div class="mb-2 col-4">
+            <label for="editProductImage2" class="form-label">Image Link 2 <span class="text-muted fw-light small">(required)</span></label>
+            <input type="text" class="form-control" id="editProductImage2" name="editProductImage2" required pattern="^(https:\/\/).*$">
+            <div class="valid-feedback">
+                Valid Image Link 
+            </div>
+            <div class="invalid-feedback">
+              Invalid Image Link, Must be not empty and starts with https://           
+             </div>
+          </div>
+          <div class="mb-2 col-4">
+            <label for="editProductImage3" class="form-label">Image Link 3 <span class="text-muted fw-light small">(required)</span></label>
+            <input type="text" class="form-control" id="editProductImage3" name="editProductImage3" required pattern="^(https:\/\/).*$">
+            <div class="valid-feedback">
+                Valid Image Link 
+            </div>
+            <div class="invalid-feedback">
+                Invalid Image Link, Must be not empty and starts with https://
+            </div>
+          </div>
+          <div class="mb-2 col-4">
+            <label for="editProductMovement" class="form-label">Movement</label>
+            <input type="text" class="form-control" id="editProductMovement" name="editProductMovement">
+          </div>
+          <div class="mb-2 col-4">
+            <label for="editProductCaseMaterial" class="form-label">Case Material</label>
+            <input type="text" class="form-control" id="editProductCaseMaterial" name="editProductCaseMaterial">
+          </div>
+          <div class="mb-2 col-4">
+            <label for="editProductCaseDiameter" class="form-label">Case Diameter</label>
+            <input type="number" class="form-control oneval" min="1" id="editProductCaseDiameter" name="editProductCaseDiameter">
+          </div>
+          <div class="mb-2 col-4">
+            <label for="editProductGlass" class="form-label">Glass</label>
+            <input type="text" class="form-control" id="editProductGlass" name="editProductGlass">
+          </div>
+          <div class="mb-2 col-4">
+            <label for="editProductWaterResistance" class="form-label">Water Resistance</label>
+            <input type="text" class="form-control" id="editProductWaterResistance" name="editProductWaterResistance">
+          </div>
+          <div class="mb-2 col-4">
+            <label for="editProductStrapMaterial" class="form-label">Strap Material</label>
+            <input type="text" class="form-control" id="editProductStrapMaterial" name="editProductStrapMaterial">
+          </div>
+          <div class="mb-2 col-6">
+            <label for="editProductStrapWidth" class="form-label">Strap Width</label>
+            <input type="number" class="form-control oneval" min="1" id="editProductStrapWidth" name="editProductStrapWidth">
+          </div>
+          <div class="mb-2 col-6">
+            <label for="editProductStrapColor" class="form-label">Strap Color</label>
+            <input type="text" class="form-control" id="editProductStrapColor" name="editProductStrapColor">
+          </div>
+          <div class="row mb-2 col-6 m-auto">
+            <button type="submit" class="btn btn-primary col-12" id="saveChangesBtn">
+              Save Changes
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
+
 
 <!-- Add Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
@@ -184,70 +247,131 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body row row-cols-3">
+        <form class="needs-validation row col-12" id="addform" novalidate>
+          <div class="mb-2 col-6">
+            <label for="addProductName" class="form-label">Name <span class="text-muted fw-light small">(required)</span></label>
+            <input type="text" class="form-control" id="addProductName" name="addProductName" pattern="^(?=(.*[A-Za-z]){3})[A-Za-z0-9]+(\s[A-Za-z0-9]+)*$" required>
+            <div class="valid-feedback">
+                Valid Name 
+            </div>
+            <div class="invalid-feedback">
+                Invalid Name , Must Be 3 Letters Or More
+            </div>
+        </div>
         <div class="mb-2 col-6">
-        <label for="addProductName" class="form-label">Name <span class="text-muted fw-light small">(required)</span></label>
-        <input type="text" class="form-control" id="addProductName" name="addProductName">
-      </div>
-      <div class="mb-2 col-6">
-        <label for="addProductBrand" class="form-label">Brand <span class="text-muted fw-light small">(required)</span></label>
-        <input type="text" class="form-control" id="addProductBrand" name="addProductBrand">
-      </div>
-      <div class="mb-2 col-6">
-        <label for="addProductPrice" class="form-label">Price <span class="text-muted fw-light small">(required)</span></label>
-        <input type="number" class="form-control oneval" min="1" id="addProductPrice" name="addProductPrice">
-      </div>
-      <div class="mb-2 col-6">
-        <label for="addProductDiscount" class="form-label">Discount <span class="text-muted fw-light small">(required)</span></label>
-        <input type="number" class="form-control discountinput" min="0" max="1" id="addProductDiscount" name="addProductDiscount">
-      </div>
-      <div class="mb-2 col-6">
-        <label for="addProductStock" class="form-label">Stock <span class="text-muted fw-light small">(required)</span></label>
-        <input type="number" class="form-control stockinput" min="0" id="addProductStock" name="addProductStock">
+            <label for="addProductBrand" class="form-label">Brand <span class="text-muted fw-light small">(required)</span></label>
+            <input type="text" class="form-control" id="addProductBrand" name="addProductBrand" required pattern="[A-Za-z]{3,}(\s[A-Za-z]+)*">
+            <div class="valid-feedback">
+                Valid Brand
+            </div>
+            <div class="invalid-feedback">
+                Invalid Brand Name , Must Be 3 Letters Or More
+            </div>
+        </div>
+        <div class="mb-2 col-6">
+            <label for="addProductPrice" class="form-label">Price <span class="text-muted fw-light small">(required)</span></label>
+            <input type="number" class="form-control oneval" min="1" id="addProductPrice" name="addProductPrice" required>
+            <div class="valid-feedback">
+                Valid Price
+            </div>
+            <div class="invalid-feedback">
+                Invalid Price
+            </div>
+        </div>
+        <div class="mb-2 col-6">
+          <label for="addProductDiscount" class="form-label">Discount <span class="text-muted fw-light small">(required)</span></label>
+          <input type="number" class="form-control discountinput" id="addProductDiscount" name="addProductDiscount" required min="0" max="0.99" step="0.01" pattern="^0(\.\d{1,2})?$">
+          <div class="valid-feedback">
+              Valid Discount
+          </div>
+          <div class="invalid-feedback">
+              Invalid Discount (should be between 0 and 0.99)
+          </div>
       </div>
         <div class="mb-2 col-6">
-          <label for="addProductCategory" class="form-label">Category</label>
-          <select class="form-select" id="addProductCategory" name="addProductCategory">
-              <option value="Men">Men</option>
-              <option value="Women">Women</option>
-          </select>
+            <label for="addProductStock" class="form-label">Stock <span class="text-muted fw-light small">(required)</span></label>
+            <input type="number" class="form-control stockinput" min="1" id="addProductStock" name="addProductStock" required>
+            <div class="valid-feedback">
+                Valid Stock , Must Be More Than Zero
+            </div>
+            <div class="invalid-feedback">
+                Invalid Stock
+            </div>
+        </div>
+        <div class="mb-2 col-6">
+            <label for="addProductCategory" class="form-label">Category</label>
+            <select class="form-select" id="addProductCategory" name="addProductCategory" required>
+                <option value="Men">Men</option>
+                <option value="Women">Women</option>
+            </select>
+            <div class="valid-feedback">
+                Valid Category
+            </div>
+            <div class="invalid-feedback">
+                Invalid Category
+            </div>
         </div>
         <div class="mb-2 col-12">
-          <label for="addProductDescription" class="form-label">Description <span class="text-muted fw-light small">(required)</span></label>
-          <textarea class="form-control" id="addProductDescription" name="addProductDescription" rows="2"></textarea>
+            <label for="addProductDescription" class="form-label">Description <span class="text-muted fw-light small">(required)</span></label>
+            <textarea class="form-control" id="addProductDescription" name="addProductDescription" rows="2" required pattern="[A-Za-z]{3,}"></textarea>
+            <div class="valid-feedback">
+                Valid Description
+            </div>
+            <div class="invalid-feedback">
+                Invalid Description , ,  Must Be 10 Letters Or More
+            </div>
         </div>
         <div class="mb-2 col-4">
-          <label for="addProductImage1" class="form-label">Image Link 1 <span class="text-muted fw-light small">(required)</span></label>
-          <input type="text" class="form-control" id="addProductImage1" name="addProductImage1">
+            <label for="addProductImage1" class="form-label">Image Link 1 <span class="text-muted fw-light small">(required)</span></label>
+            <input type="text" class="form-control" id="addProductImage1" name="addProductImage1" required pattern="^(https:\/\/).*$">
+            <div class="valid-feedback">
+                Valid Image Link
+            </div>
+            <div class="invalid-feedback">
+              Invalid Image Link, Must be not empty and starts with https://
+            </div>
         </div>
         <div class="mb-2 col-4">
-          <label for="addProductImage2" class="form-label">Image Link 2 <span class="text-muted fw-light small">(required)</span></label>
-          <input type="text" class="form-control" id="addProductImage2" name="addProductImage2">
+            <label for="addProductImage2" class="form-label">Image Link 2 <span class="text-muted fw-light small">(required)</span></label>
+            <input type="text" class="form-control" id="addProductImage2" name="addProductImage2" required pattern="^(https:\/\/).*$">
+            <div class="valid-feedback">
+                Valid Image Link 
+            </div>
+            <div class="invalid-feedback">
+              Invalid Image Link, Must be not empty and starts with https://
+            </div>
         </div>
         <div class="mb-2 col-4">
-          <label for="addProductImage3" class="form-label">Image Link 3 <span class="text-muted fw-light small">(required)</span></label>
-          <input type="text" class="form-control" id="addProductImage3" name="addProductImage3">
+            <label for="addProductImage3" class="form-label">Image Link 3 <span class="text-muted fw-light small">(required)</span></label>
+            <input type="text" class="form-control" id="addProductImage3" name="addProductImage3" required pattern="^(https:\/\/).*$">
+            <div class="valid-feedback">
+                Valid Image Link 
+            </div>
+            <div class="invalid-feedback">
+              Invalid Image Link, Must be not empty and starts with https://
+            </div>
         </div>
-        <div class="mb-2 col">
+        <div class="mb-2 col-4">
           <label for="addProductMovement" class="form-label">Movement</label>
           <input type="text" class="form-control" id="addProductMovement" name="addProductMovement">
         </div>
-        <div class="mb-2 col">
+        <div class="mb-2 col-4">
           <label for="addProductCaseMaterial" class="form-label">Case Material</label>
           <input type="text" class="form-control" id="addProductCaseMaterial" name="addProductCaseMaterial">
         </div>
-        <div class="mb-2 col">
+        <div class="mb-2 col-4">
           <label for="addProductCaseDiameter" class="form-label">Case Diameter</label>
           <input type="number" class="form-control oneval" min="1" id="addProductCaseDiameter" name="addProductCaseDiameter">
         </div>
-        <div class="mb-2 col">
+        <div class="mb-2 col-4">
           <label for="addProductGlass" class="form-label">Glass</label>
           <input type="text" class="form-control" id="addProductGlass" name="addProductGlass">
         </div>
-        <div class="mb-2 col">
+        <div class="mb-2 col-4">
           <label for="addProductWaterResistance" class="form-label">Water Resistance</label>
           <input type="text" class="form-control" id="addProductWaterResistance" name="addProductWaterResistance">
         </div>
-        <div class="mb-2 col">
+        <div class="mb-2 col-4">
           <label for="addProductStrapMaterial" class="form-label">Strap Material</label>
           <input type="text" class="form-control" id="addProductStrapMaterial" name="addProductStrapMaterial">
         </div>
@@ -264,6 +388,7 @@
             Add Product
           </button>
         </div>
+      </form>
       </div>
     </div>
   </div>

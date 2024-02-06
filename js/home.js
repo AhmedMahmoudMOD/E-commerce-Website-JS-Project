@@ -223,7 +223,6 @@ function cardAddtoCart (){
   let cartBtns=document.querySelectorAll('.cart-btn-card');
   for (let i=0;i<cartBtns.length;i++){
       cartBtns[i].addEventListener('click',function addAction(e){
-          console.log(currentUserObj);
           let cartedProduct= {
               productId : this.id,
               quantity : 1,
@@ -234,8 +233,8 @@ function cardAddtoCart (){
 
             if (cartIndex !== -1){
                 // Product already exists , just updating the quantity
-                currentUserObj.cart[cartIndex].quantity=cartedProduct.quantity;
-                allUsers[index].cart[cartIndex].quantity=cartedProduct.quantity;
+                currentUserObj.cart[cartIndex].quantity=currentUserObj.cart[cartIndex].quantity+1
+                allUsers[index].cart[cartIndex].quantity==currentUserObj.cart[cartIndex].quantity+1
                 storageModule.setItem('users',allUsers);
                 storageModule.setItem('currentUser',currentUserObj);
             }else {
@@ -245,17 +244,18 @@ function cardAddtoCart (){
                 storageModule.setItem('users',allUsers);
                 storageModule.setItem('currentUser',currentUserObj);
             }
-              cartBtns[i].querySelector('span').innerText = "  Added to Cart";
-                cartBtns[i].querySelector('button').classList.remove('btn-light');
-                cartBtns[i].querySelector('button').classList.add('btn-success');
-                this.removeEventListener('click', addAction);
-              console.log(allUsers[index]);
+            Swal.fire({
+                icon: "success",
+                title: "Item Added to Cart",
+                showConfirmButton: false,
+                timer: 2500,
+              });
           }
           else if(currentUserObj==null){
             const cartIndex = guestCartArr.findIndex(product => product.productId === cartedProduct.productId);
             if (cartIndex !== -1){
                 // Product already exists , just updating the quantity
-                guestCartArr[cartIndex].quantity=cartedProduct.quantity;
+                guestCartArr[cartIndex].quantity=guestCartArr[cartIndex].quantity+1;
                 storageModule.setItem('guest-cart',guestCartArr)
                 
             }else {
@@ -263,10 +263,12 @@ function cardAddtoCart (){
                 guestCartArr.push(cartedProduct);
                 storageModule.setItem('guest-cart',guestCartArr)
             }
-              cartBtns[i].querySelector('span').innerText = "  Added to Cart";
-                cartBtns[i].querySelector('button').classList.remove('btn-light');
-                cartBtns[i].querySelector('button').classList.add('btn-success');
-                this.removeEventListener('click', addAction);
+            Swal.fire({
+                icon: "success",
+                title: "Item Added to Cart",
+                showConfirmButton: false,
+                timer: 2500,
+              });
           }
           else{
             Swal.fire({
