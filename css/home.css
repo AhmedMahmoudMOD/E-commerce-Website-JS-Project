@@ -110,3 +110,7 @@
 .disabled{
   background-color: #00000080 ;
 }
+
+.icons :hover{
+  cursor: pointer;
+}

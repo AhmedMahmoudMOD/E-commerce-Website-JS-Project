@@ -251,7 +251,7 @@ function createTableHeader(type) {
             e.preventDefault();
              currentPage--;
              populateTable(pageType,array);
-             renderPagination(array);
+            //  renderPagination(array);
          }
      });
      prevPageItem.appendChild(prevPageLink);
@@ -274,7 +274,7 @@ function createTableHeader(type) {
             e.preventDefault();
             currentPage = i;
             populateTable(pageType,array);
-            renderPagination(array);
+            // renderPagination(array);
         });
 
         listItem.appendChild(link);
@@ -288,7 +288,7 @@ function createTableHeader(type) {
 
     const nextPageLink = document.createElement('a');
     nextPageLink.classList.add('page-link');
-    if(currentPage==totalPages)
+    if(currentPage==totalPages||array.length==0)
         nextPageLink.classList.add('disabled');
     nextPageLink.href='#';
     nextPageLink.textContent = 'Next';
@@ -298,7 +298,7 @@ function createTableHeader(type) {
             e.preventDefault();
             currentPage++;
             populateTable(pageType,array);
-             renderPagination(array);
+            //  renderPagination(array);
         }
     });
 

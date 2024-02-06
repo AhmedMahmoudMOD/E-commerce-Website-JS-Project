@@ -301,10 +301,22 @@ function populateTable(type,array) {
 
   function isValid(product){
 
-      if (checkEmpty(product.name)&&checkEmpty(product.brand)&&checkEmpty(product.price.toString())&&checkEmpty(product.discount.toString())&&checkEmpty(product.description)&&checkEmpty(product.stock.toString())&&checkEmpty(product['images'][0])&&checkEmpty(product['images'][1])&&checkEmpty(product['images'][2]))
-        return true ;
-      else 
-        return false ;  
+    const validations = [
+      checkEmpty(product.name),
+      checkEmpty(product.brand),
+      checkEmpty(product.price.toString()),
+      checkEmpty(product.discount.toString()),
+      checkEmpty(product.description),
+      checkEmpty(product.stock.toString()),
+      checkEmpty(product['images'][0]),
+      checkEmpty(product['images'][1]),
+      checkEmpty(product['images'][2])
+  ];
+  if (validations.every((isValid) => isValid)) {
+    return true;
+  }else {
+   return false;
+  }
   }
   function checkEmpty(field) {
     if (field.trim() === "") {
@@ -454,7 +466,7 @@ function populateTable(type,array) {
             e.preventDefault();
              currentPage--;
              populateTable(pageType,array);
-             renderPagination(array);
+            //  renderPagination(array);
          }
      });
      prevPageItem.appendChild(prevPageLink);
@@ -477,7 +489,7 @@ function populateTable(type,array) {
             e.preventDefault();
             currentPage = i;
             populateTable(pageType,array);
-            renderPagination(array);
+            // renderPagination(array);
         });
 
         listItem.appendChild(link);
@@ -491,7 +503,7 @@ function populateTable(type,array) {
 
     const nextPageLink = document.createElement('a');
     nextPageLink.classList.add('page-link');
-    if(currentPage==totalPages)
+    if(currentPage==totalPages||array.length==0)
         nextPageLink.classList.add('disabled');
     nextPageLink.href='#';
     nextPageLink.textContent = 'Next';
@@ -501,7 +513,7 @@ function populateTable(type,array) {
             e.preventDefault();
             currentPage++;
             populateTable(pageType,array);
-             renderPagination(array);
+            //  renderPagination(array);
         }
     });
 

@@ -89,7 +89,6 @@ function renderProducts(containerDiv,Products){
       let iconsDiv = document.createElement('div');
       iconsDiv.classList.add('icons','position-absolute');
       let iconLink = document.createElement('a'); 
-      iconLink.href='#';
       iconLink.classList.add('text-decoration-none','text-dark');
       let WishIcon = document.createElement('i');
       WishIcon.classList.add('far','fa-heart');
@@ -99,7 +98,6 @@ function renderProducts(containerDiv,Products){
       iconLink.appendChild(WishIcon);
       /* Wish Icon  Link Appended  */
       let secIconLink = document.createElement('a');
-      secIconLink.href='#';
       secIconLink.classList.add('text-decoration-none','text-dark','modal-opener');
       secIconLink.setAttribute('data-bs-toggle','modal');
       secIconLink.setAttribute('data-bs-target','#productModal');
@@ -519,7 +517,7 @@ function websiteDataLoad(){
     if(storageModule.getItem('orders')===null)
         storageModule.setItem('orders',orders);
     if(storageModule.getItem('guest-cart')===null)
-    storageModule.setItem('guest-cart',[]);
+       storageModule.setItem('guest-cart',[]);
 }
 
 

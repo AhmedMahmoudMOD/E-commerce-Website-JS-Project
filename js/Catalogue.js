@@ -65,7 +65,6 @@ function renderProducts(products){
         let iconsDiv = document.createElement('div');
         iconsDiv.classList.add('icons','position-absolute');
         let iconLink = document.createElement('a'); 
-        iconLink.href='#';
         iconLink.classList.add('text-decoration-none','text-dark');
         let WishIcon = document.createElement('i');
         WishIcon.classList.add('far','fa-heart');
@@ -75,7 +74,6 @@ function renderProducts(products){
         iconLink.appendChild(WishIcon);
         /* Wish Icon  Link Appended  */
         let secIconLink = document.createElement('a');
-        secIconLink.href='#';
         secIconLink.classList.add('text-decoration-none','text-dark','modal-opener');
         secIconLink.setAttribute('data-bs-toggle','modal');
         secIconLink.setAttribute('data-bs-target','#productModal');
@@ -245,21 +243,18 @@ function sortProducts(){
         switch(event.target.value){
             case "alph-asc":
                 sortedArr= sortAlphAsc(allProducts)
-                applyFiltersAndSearch();
                 break;
             case "alph-desc":
                 sortedArr = sortAlphDesc(allProducts)
-                applyFiltersAndSearch();
                 break;
             case "price-asc":
                 sortedArr= sortPriceAsc(allProducts)
-                applyFiltersAndSearch();
                 break;  
             case "price-desc":
                 sortedArr= sortPriceDesc(allProducts)
-                applyFiltersAndSearch();
                 break;      
             }
+            applyFiltersAndSearch();
         })
 }
 
@@ -286,7 +281,7 @@ function renderPagination(products) {
             e.preventDefault();
              currentPage--;
              renderProducts(products);
-             renderPagination(products);
+            //  renderPagination(products);
          }
      });
      prevPageItem.appendChild(prevPageLink);
@@ -309,7 +304,7 @@ function renderPagination(products) {
             e.preventDefault();
             currentPage = i;
             renderProducts(products);
-            renderPagination(products);
+            // renderPagination(products);
         });
 
         listItem.appendChild(link);
@@ -323,8 +318,8 @@ function renderPagination(products) {
 
     const nextPageLink = document.createElement('a');
     nextPageLink.classList.add('page-link');
-    if(currentPage==totalPages)
-        nextPageLink.classList.add('disabled');
+    if(currentPage==totalPages||products.length==0)
+      nextPageLink.classList.add('disabled');
     nextPageLink.href='#';
     nextPageLink.textContent = 'Next';
 
@@ -333,7 +328,7 @@ function renderPagination(products) {
             e.preventDefault();
             currentPage++;
             renderProducts(products);
-            renderPagination(products);
+            // renderPagination(products);
         }
     });
 

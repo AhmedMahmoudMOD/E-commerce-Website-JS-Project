@@ -17,7 +17,6 @@ window.addEventListener('load',function(){
     renderTabs(shownProduct);
     checkStock();
     navLinksControl();
-    filterRelated(shownProduct);
     renderRelated(relatedProducts);
     imgHover(relatedProducts);
     cardAddtoCart();
@@ -296,7 +295,6 @@ function renderRelated(relatedProducts){
         let iconsDiv = document.createElement('div');
         iconsDiv.classList.add('icons','position-absolute');
         let iconLink = document.createElement('a'); 
-        iconLink.href='#';
         iconLink.classList.add('text-decoration-none','text-dark');
         let WishIcon = document.createElement('i');
         WishIcon.classList.add('far','fa-heart');
@@ -306,7 +304,6 @@ function renderRelated(relatedProducts){
         iconLink.appendChild(WishIcon);
         /* Wish Icon  Link Appended  */
         let secIconLink = document.createElement('a');
-        secIconLink.href='#';
         secIconLink.classList.add('text-decoration-none','text-dark','modal-opener');
         secIconLink.setAttribute('data-bs-toggle','modal');
         secIconLink.setAttribute('data-bs-target','#productModal');
@@ -768,7 +765,7 @@ if (logoutButton) {
 
 
 
-// Version Two 
+// DashNav
 if (currentUserObj?.userType === "customer"){
     dashLink.href = "../html/customer.html"
 } else if(currentUserObj?.userType === "seller") {

@@ -135,10 +135,9 @@
     padding-left: 0;
     list-style: none;
 }
-/* .img-c:hover{
-    transform: scale(1.2);
-    transition: all 1s ease-in-out;
-}  */
+.icons , #searchIcon :hover{
+    cursor: pointer;
+}
 .carousel-inner{
     height: 370px; /* Set a fixed height */
     overflow: hidden; /* Hide overflow to prevent additional issues */

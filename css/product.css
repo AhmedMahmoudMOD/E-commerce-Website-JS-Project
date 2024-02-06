@@ -142,3 +142,11 @@ li{
 .product-box:hover .product-price{
     opacity: 1;
 } 
+
+#soldout {
+    display: none;
+}
+
+.icons :hover{
+    cursor: pointer;
+}
