@@ -164,7 +164,7 @@ function LoadData() // Load the products information to the cart page
                       <!-- End of information -->
                       <!-- Controls -->
                       <div class="d-flex flex-sm-column col-12 col-sm-3 gap-3 justify-content-evenly">
-                        <h1 class ="fw-bold align-self-center" name="price">$${price}</h1>
+                        <h1 class ="fw-bold align-self-center" name="price" id="price">${price} EGP</h1>
                         <input type="number" class="form-control" name="quantity" placeholder="Quantity" min= 1 max = 999 value="${Product.quantity}">
                         <button type="button" name="delete" class="btn btn-danger col-5 flex-shrink-1 align-self-center"><i class="fa-solid fa-trash fa-xl" style="color: #ffffff;"></i></button>
                       </div>
@@ -182,10 +182,10 @@ function LoadData() // Load the products information to the cart page
             document.getElementById("price").innerHTML += `<sup>.${supPrice}</sup>`;
         }
 
-        document.getElementById("items").innerText = `$${items.toFixed(2)}`; // Add the total items price to the cart
-        document.getElementById("TBT").innerText = `$${totalAfterShipping.toFixed(2)}`; // Add the total price to the cart
-        document.getElementById("ETTBC").innerText = `$${tax.toFixed(2)}`; // Add the tax to the cart
-        document.getElementById("total").innerText = `$${totalAfterTax.toFixed(2)}`; // Add the total price to the cart
+        document.getElementById("items").innerText = `EGP ${items.toFixed(2)}`; // Add the total items price to the cart
+        document.getElementById("TBT").innerText = `EGP${totalAfterShipping.toFixed(2)}`; // Add the total price to the cart
+        document.getElementById("ETTBC").innerText = `EGP${tax.toFixed(2)}`; // Add the tax to the cart
+        document.getElementById("total").innerText = `EGP${totalAfterTax.toFixed(2)}`; // Add the total price to the cart
 
     });
 }

@@ -1,5 +1,5 @@
-// Assuming you have a storageModule defined as mentioned before
 import { storageModule } from "../common/storageModule.js";
+
 
 // Function to initialize user data
 function initializeUserData() {
@@ -33,16 +33,42 @@ function initializeUserData() {
         document.getElementById('editLastName').addEventListener('click', () => editField('lastName'));
         document.getElementById('editUserEmail').addEventListener('click', () => editField('email'));
         document.getElementById('editUserPass').addEventListener('click', () => editField('password'));
-        document.getElementById('editUserStreet').addEventListener('click', () => editField('street'));
-        document.getElementById('editUserCity').addEventListener('click', () => editField('city'));
-        document.getElementById('editUserState').addEventListener('click', () => editField('state'));
-        document.getElementById('editUserCountry').addEventListener('click', () => editField('country'));
-        document.getElementById('editUserZipCode').addEventListener('click', () => editField('zipcode'));
+        document.getElementById('editUserStreet').addEventListener('click', () => editFieldLocation('street'));
+        document.getElementById('editUserCity').addEventListener('click', () => editFieldLocation('city'));
+        document.getElementById('editUserState').addEventListener('click', () => editFieldLocation('state'));
+        document.getElementById('editUserCountry').addEventListener('click', () => editFieldLocation('country'));
+        document.getElementById('editUserZipCode').addEventListener('click', () => editFieldLocation('zipCode'));
 
         // Attach event listener to the "Save Changes" button
-        document.getElementById('saveChanges').addEventListener('click', saveChanges);
+        document.getElementById('saveChanges').addEventListener('click', () => {
+            // Iterate through all editable fields
+            document.querySelectorAll('[data-editable]').forEach(element => {
+                const fieldName = element.getAttribute('data-editable');
+                const editedValue = element.textContent.trim();
+                
+                // Update the user object in local storage
+                const currentUser = storageModule.getItem('currentUser');
+                currentUser[fieldName] = editedValue;
+                storageModule.setItem('currentUser', currentUser);
+            });
+
+            document.querySelectorAll('[data-editableLocation]').forEach(element => {
+                // catch Location Elements 
+                const locationName = element.getAttribute('data-editableLocation')
+                const editedValue = element.textContent.trim();
+
+                const currentUser = storageModule.getItem('currentUser');
+                currentUser.location[locationName] = editedValue;
+                storageModule.setItem('currentUser', currentUser);
+            });
+
+            alert("Changes saved successfully!");
+            location.reload();
+        });
+
     } else {
         alert('User not logged in.'); // Handle the case where no user is logged in
+        return;
     }
 }
 
@@ -67,13 +93,73 @@ function editField(fieldName) {
             inputField.addEventListener('blur', () => saveEditedValue(fieldName, inputField, element));
         });
     } else {
-        console.error(`No editable elements found for field: ${fieldName}`);
+        alert(`No editable elements found for field: ${fieldName}`);
+        return;
     }
 }
 
-// Function to save the edited value
+
+function editFieldLocation(fieldName) {
+    // Get all elements with the data-editableLocation attribute
+    const editableElements = document.querySelectorAll(`[data-editableLocation="${fieldName}"]`);
+
+    // Check if there are editable elements
+    if (editableElements.length > 0) {
+        editableElements.forEach(element => {
+            const fieldValue = element.textContent;
+
+            // Create an input field for editing
+            const inputField = document.createElement('input');
+            inputField.value = fieldValue;
+
+            // Replace the element with the input field
+            element.replaceWith(inputField);
+
+            // Add an event listener to save the edited value when the input field loses focus
+            inputField.addEventListener('blur', () => saveEditedValueLocation(fieldName, inputField, element));
+        });
+    } else {
+        alert(`No editable elements found for field: ${fieldName}`);
+        return;
+    }
+}
+
+
 function saveEditedValue(fieldName, inputField, originalElement) {
-    const editedValue = inputField.value;
+    const editedValue = inputField.value.trim();
+
+    // Validation for empty fields
+    if (editedValue.trim() === "") {
+        alert("Please enter a value for the field.");
+        return;
+    }
+
+    // Validation for email field
+    if (fieldName === "email") {
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (!emailPattern.test(editedValue)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+    }
+
+    // Validation for password field
+    if (fieldName === "password") {
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{10,}$/;
+        if (!passwordPattern.test(editedValue)) {
+            alert("Password must contain at least one lowercase letter, one uppercase letter, and be at least 10 characters long.");
+            return;
+        }
+    }
+
+    // Validation for ZIP code field
+    if (fieldName === "zipCode") {
+        const zipCodePattern = /^\d{0,5}$/;
+        if (!zipCodePattern.test(editedValue)) {
+            alert("ZIP code must be a numeric value with up to 5 digits.");
+            return;
+        }
+    }
 
     // Update the displayed user details
     originalElement.textContent = editedValue;
@@ -85,7 +171,39 @@ function saveEditedValue(fieldName, inputField, originalElement) {
 
     // Update the user data in the array of users
     updateUserInArray(currentUser);
+
+    // alert("Changes saved successfully!");
+    location.reload();
 }
+
+
+function saveEditedValueLocation(fieldName, inputField, originalElement) {
+    const editedValue = inputField.value.trim();
+
+    // Validation for ZIP code field
+    if (fieldName === "zipCode") {
+        const zipCodePattern = /^\d{0,5}$/;
+        if (!zipCodePattern.test(editedValue)) {
+            alert("ZIP code must be a numeric value with up to 5 digits.");
+            return;
+        }
+    }
+
+    // Update the displayed user details
+    originalElement.textContent = editedValue;
+
+    // Update the user object in local storage
+    const currentUser = storageModule.getItem('currentUser');
+    currentUser.location[fieldName] = editedValue;
+    storageModule.setItem('currentUser', currentUser);
+
+    // Update the user data in the array of users
+    updateUserInArray(currentUser);
+
+    // alert("Changes saved successfully!");
+    location.reload();
+}
+
 
 // Function to update the user in the array of users
 function updateUserInArray(updatedUser) {
@@ -101,8 +219,8 @@ function updateUserInArray(updatedUser) {
         // Update the array of users in local storage
         storageModule.setItem('users', users);
 
-        alert('Changes saved successfully!');
-        location.reload()
+        // alert('Changes saved successfully!');
+        // location.reload()
     } else {
         alert('User not found in the array of users.');
     }
@@ -161,5 +279,3 @@ if (currentUserObj?.userType === "customer"){
 } else if(currentUserObj?.userType === "admin") {
     dashLink.href = "../html/admin.html"
 }
-
-
