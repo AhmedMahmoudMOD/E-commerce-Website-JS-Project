@@ -4,6 +4,7 @@ import {IDGenerator} from "../common/idclass.js"
 LoginCheck();
 let allUsers=storageModule.getItem('users');
 let allProducts = storageModule.getItem('products');
+let allProductsDB = storageModule.getItem('productsDB');
 let currentUserObj = storageModule.getItem('currentUser');
 let sellerIndex = allUsers.findIndex(user => user.id===currentUserObj.id)
 let allOrders = storageModule.getItem("orders");
@@ -157,6 +158,7 @@ function populateTable(type,array) {
     const productId = document.getElementById('editProductId').value;
     const index = sellerProducts.findIndex(p => p.productId === productId);
     const allIndex = allProducts.findIndex(p => p.productId === productId);
+    const allIndexDB = allProductsDB.findIndex(p => p.productId === productId);
     const editedProduct=sellerProducts.find(p => p.productId === productId);
 
     const updatedProduct = {
@@ -190,7 +192,10 @@ function populateTable(type,array) {
       if (index !== -1) {
         sellerProducts[index] =updatedProduct;
         allProducts[allIndex]=updatedProduct;
+        allProducts[allIndexDB]=updatedProduct;
         storageModule.setItem('products',allProducts);
+        storageModule.setItem('productsDB',allProductsDB);
+
 
       }
       
@@ -246,6 +251,8 @@ function populateTable(type,array) {
       currentUserObj.products.push(newProduct.productId);
       allUsers[sellerIndex].products=currentUserObj.products;
       allProducts.push(newProduct);
+      allProductsDB.push(newProduct);
+      storageModule.setItem('productsDB',allProductsDB);
       storageModule.setItem('currentUser',currentUserObj);
       storageModule.setItem('users',allUsers);
       storageModule.setItem('products',allProducts);
@@ -568,9 +575,9 @@ function populateTableModal(orderProducts){
   tableBody.innerHTML = '';
   orderProducts.forEach((product)=>{
       let orderProductID = product.productId;
-      let productName = allProducts.find((product)=>product.productId==orderProductID)?.name;
-      let productImage = allProducts.find((product)=>product.productId==orderProductID)?.images[0];
-      let productBrand = allProducts.find((product)=>product.productId==orderProductID)?.brand;
+      let productName = allProductsDB.find((product)=>product.productId==orderProductID)?.name;
+      let productImage = allProductsDB.find((product)=>product.productId==orderProductID)?.images[0];
+      let productBrand = allProductsDB.find((product)=>product.productId==orderProductID)?.brand;
       const row = document.createElement('tr');
       row.innerHTML = `
         <td class='align-middle'>${productName}</td>

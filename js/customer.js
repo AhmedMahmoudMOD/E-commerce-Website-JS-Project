@@ -5,6 +5,7 @@ LoginCheck();
 
 let allUsers=storageModule.getItem('users');
 let allProducts = storageModule.getItem('products');
+let allProductsDB = storageModule.getItem('productsDB');
 let currentUserObj = storageModule.getItem('currentUser');
 let customerIndex = allUsers.findIndex(user => user.id===currentUserObj.id)
 let allOrders = storageModule.getItem("orders");
@@ -329,9 +330,9 @@ function populateTableModal(orderProducts){
     tableBody.innerHTML = '';
     orderProducts.forEach((product)=>{
         let orderProductID = product.productId;
-        let productName = allProducts.find((product)=>product.productId==orderProductID)?.name;
-        let productImage = allProducts.find((product)=>product.productId==orderProductID)?.images[0];
-        let productBrand = allProducts.find((product)=>product.productId==orderProductID)?.brand;
+        let productName = allProductsDB.find((product)=>product.productId==orderProductID)?.name;
+        let productImage = allProductsDB.find((product)=>product.productId==orderProductID)?.images[0];
+        let productBrand = allProductsDB.find((product)=>product.productId==orderProductID)?.brand;
         const row = document.createElement('tr');
         row.innerHTML = `
           <td class='align-middle'>${productName}</td>

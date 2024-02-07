@@ -514,6 +514,8 @@ function isAlreadyWishlisted(productID){
 function websiteDataLoad(){
     if(storageModule.getItem('products')===null)
         storageModule.setItem('products',products);
+    if(storageModule.getItem('productsDB')===null)
+        storageModule.setItem('productsDB',products);
     if(storageModule.getItem('users')===null)
         storageModule.setItem('users',users);
     if(storageModule.getItem('orders')===null)
